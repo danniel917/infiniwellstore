@@ -24,19 +24,27 @@
   {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
     {%- assign t = template | split: '.' | first -%}
     <!-- Breadcrumb - Single Line -->
-    <div class="breadcrump" role="navigation" aria-label="breadcrumbs">
+    <div class="breadcrump" role="navigation" aria-label="breadcrumbs" style="font-weight: normal;">
       <div class="container-1300">
         {% assign full_url = request.path %}
         {% assign productURL = full_url | split: '/' %}
-        <a href="/">Home</a>
-        {% if productURL[1] == 'collections' %}
-          <span> / </span>
-          <a href="{{ collections[productURL[2] ].url }}" title="{{ collections[productURL[2] ].title }}">
+
+        <a href="{{ routes.root_url }}" style="font-weight: normal;">Home</a>
+        <span> / </span>
+
+        {% if productURL[1] == 'collections' and collections[productURL[2]] %}
+          <a href="{{ collections[productURL[2]].url }}" title="{{ collections[productURL[2]].title }}" style="font-weight: normal;">
             {{ collections[productURL[2]].title }}
           </a>
+          <span> / </span>
+        {% elsif product.collections.size > 0 %}
+          <a href="{{ product.collections.first.url }}" title="{{ product.collections.first.title }}" style="font-weight: normal;">
+            {{ product.collections.first.title }}
+          </a>
+          <span> / </span>
         {% endif %}
-        <span> / </span>
-        <span>{{ product.title }}</span>
+
+        <span style="font-weight: normal;">{{ product.title }}</span>
       </div>
     </div>
   {%- endunless -%}
