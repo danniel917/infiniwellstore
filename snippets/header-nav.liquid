@@ -1,0 +1,26 @@
+<div class="header__nav">
+  <nav>
+    <ul class="d-flex list-reset" itemscope itemtype="https://schema.org/BreadcrumbList">
+      {% for link in linklists[nav].links %}
+      <li {% if link.links != blank %}class="has-children"{% endif %} itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a href="{{ link.url }}" itemprop="item">
+          <span itemprop="name">{{ link.title }}</span>
+        </a>
+        <meta itemprop="position" content="1" />
+        {% if link.links != blank %}
+          <ul class="list-reset sub-menu sub-menu--1">
+            {% for child_link in link.links %}
+              <li>
+                <a href="{{ child_link.url }}">
+                  {{ child_link.title }}
+                </a>
+              </li>
+            {% endfor%}
+          </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

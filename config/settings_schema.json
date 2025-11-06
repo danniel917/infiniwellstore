@@ -1,0 +1,597 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Godzilla",
+    "theme_author": "Dolly",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/en\/manual\/online-store\/os\/using-themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Support Menu Order Page Link"
+      },
+      {
+        "type": "text",
+        "id": "trackLinkText",
+        "label": "Order Track Link Text"
+      },
+      {
+        "type": "url",
+        "id": "trackLink",
+        "label": "Order Track Link"
+      }
+    ]
+  },
+  {
+    "name": "Product Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tag1",
+        "label": "Tag 1"
+      },
+      {
+        "type": "text",
+        "id": "tagLabel1",
+        "label": "Tag Label 1"
+      },
+      {
+        "type": "color",
+        "id": "tagColor1",
+        "label": "Tag Color",
+        "default": "#191919"
+      },
+      {
+        "type": "text",
+        "id": "tag2",
+        "label": "Tag 2"
+      },
+      {
+        "type": "text",
+        "id": "tagLabel2",
+        "label": "Tag Label 2"
+      },
+      {
+        "type": "color",
+        "id": "tagColor2",
+        "label": "Tag Color",
+        "default": "#191919"
+      },
+      {
+        "type": "text",
+        "id": "tag3",
+        "label": "Tag 3"
+      },
+      {
+        "type": "text",
+        "id": "tagLabel3",
+        "label": "Tag Label 3"
+      },
+      {
+        "type": "color",
+        "id": "tagColor3",
+        "label": "Tag Color",
+        "default": "#191919"
+      },
+      {
+        "type": "text",
+        "id": "product_recommendation_limit",
+        "label": "Product Recommendation products limit (if no slider)",
+        "default": "4"
+      }
+    ]
+  },
+  {
+    "name": "Frequently Bought Together Products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "freqBoughtTitle",
+        "label": "Title"
+      },
+      {
+        "type": "range",
+        "id": "freqBoughtLimit",
+        "min": 4,
+        "max": 10,
+        "step": 1,
+        "label": "Product Limit",
+        "default": 4
+      },
+      {
+        "type": "product",
+        "id": "product_1",
+        "label": "Product 1"
+      },
+      {
+        "type": "product",
+        "id": "product_2",
+        "label": "Product 2"
+      },
+      {
+        "type": "product",
+        "id": "product_3",
+        "label": "Product 3"
+      },
+      {
+        "type": "product",
+        "id": "product_4",
+        "label": "Product 4"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Free Shipping"
+      },
+      {
+        "type": "text",
+        "id": "freeShippingThresholdValue",
+        "label": "Threshold Value"
+      },
+      {
+        "type": "text",
+        "id": "freeShippingMsg",
+        "label": "Free Shipping Message (When the value is reached)"
+      },
+      {
+        "type": "header",
+        "content": "Mini Cart Bottom Shipping\/Order Info"
+      },
+      {
+        "type": "image_picker",
+        "id": "infoimage1",
+        "label": "Info Image First"
+      },
+      {
+        "type": "text",
+        "id": "info1",
+        "label": "Info Title First"
+      },
+      {
+        "type": "image_picker",
+        "id": "infoimage2",
+        "label": "Info Image Second"
+      },
+      {
+        "type": "text",
+        "id": "info2",
+        "label": "Info Title Second"
+      },
+      {
+        "type": "header",
+        "content": "Compatible Products"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "btnText",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "btnLink",
+        "label": "Button Link"
+      },
+      {
+        "type": "product",
+        "id": "product1",
+        "label": "Product 1"
+      },
+      {
+        "type": "product",
+        "id": "product2",
+        "label": "Product 2"
+      },
+      {
+        "type": "product",
+        "id": "product3",
+        "label": "Product 3"
+      },
+      {
+        "type": "product",
+        "id": "product4",
+        "label": "Product 4"
+      },
+      {
+        "type": "header",
+        "content": "Free Gift"
+      },
+      {
+        "type": "text",
+        "id": "freeGift1ThresholdValue",
+        "label": "Free Gift 1 Threshold Value"
+      },
+      {
+        "type": "product",
+        "id": "freeProduct1",
+        "label": "Free Product 1"
+      },
+      {
+        "type": "text",
+        "id": "freeGift2ThresholdValue",
+        "label": "Free Gift 2 Threshold Value"
+      },
+      {
+        "type": "product",
+        "id": "freeProduct2",
+        "label": "Free Product 2"
+      },
+      {
+        "type": "header",
+        "content": "Special Notes"
+      },
+      {
+        "type": "text",
+        "id": "specialTitle",
+        "label": "Special Notes Title"
+      },
+      {
+        "type": "richtext",
+        "id": "specialDescription",
+        "label": "Special Notes Description"
+      }
+    ]
+  },
+  {
+    "name": "Contact Information",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Live Chat Info"
+      },
+      {
+        "type": "text",
+        "id": "chattitle",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "chatdescription",
+        "label": "Chat description"
+      },
+      {
+        "type": "text",
+        "id": "chatText",
+        "label": "Chat Button Text"
+      },
+      {
+        "type": "url",
+        "id": "chatLink",
+        "label": "Chat Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Live Chat Info (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "chatnumber",
+        "label": "Chat Number"
+      },
+      {
+        "type": "header",
+        "content": "Phone Numbers Info"
+      },
+      {
+        "type": "text",
+        "id": "phonetitle",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "contactdescription",
+        "label": "Contact Number Info"
+      },
+      {
+        "type": "checkbox",
+        "id": "numberPlusSign",
+        "label": "Plus sign for tel number",
+        "default": true,
+        "info": "Add Plus sign to tel number into the href to get directly called"
+      },
+      {
+        "type": "header",
+        "content": "Contact Number Info (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "phonemobtitle",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "number",
+        "label": "Call Us No."
+      },
+      {
+        "type": "header",
+        "content": "Email Info"
+      },
+      {
+        "type": "text",
+        "id": "emailtitle",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "emailAddressdesc",
+        "label": "Email Address With Some Extra Info"
+      },
+      {
+        "type": "header",
+        "content": "Email Info (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "emailAddress",
+        "label": "Email Address (Mobile)"
+      },
+      {
+        "type": "header",
+        "content": "Address Info"
+      },
+      {
+        "type": "text",
+        "id": "addtitle",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "officeadd",
+        "label": "Main Office Address"
+      },
+      {
+        "type": "header",
+        "content": "Hours Info"
+      },
+      {
+        "type": "text",
+        "id": "hrtitle",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "weekdays",
+        "label": "Week Days Title"
+      },
+      {
+        "type": "text",
+        "id": "weekdayshr",
+        "label": "Week Days Hours"
+      },
+      {
+        "type": "text",
+        "id": "weekend",
+        "label": "Weekend Title"
+      },
+      {
+        "type": "text",
+        "id": "weekendshr",
+        "label": "Weekend Days Hours"
+      },
+      {
+        "type": "header",
+        "content": "Text Us Info (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "texttitle",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "textnumber",
+        "label": "Text Number (Mobile)"
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product suggestions"
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_enabled",
+        "label": "Enable product suggestions",
+        "info": "This will also affect the search bar on the search results page.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "predictive_search_show_price",
+        "label": "Show price",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Social media"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "en": "Social accounts"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": {
+          "en": "Facebook"
+        },
+        "info": {
+          "en": "https:\/\/facebook.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": {
+          "en": "Twitter"
+        },
+        "info": {
+          "en": "http:\/\/twitter.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": {
+          "en": "Instagram"
+        },
+        "info": {
+          "en": "http:\/\/instagram.com\/shopify"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": {
+          "en": "Tiktok"
+        },
+        "info": {
+          "en": "http:\/\/tiktok.com"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": {
+          "en": "YouTube"
+        },
+        "info": {
+          "en": "http:\/\/youtube.com"
+        }
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_link",
+        "label": {
+          "en": "Linkedin"
+        },
+        "info": {
+          "en": "http:\/\/linkedin.com"
+        }
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Sharing options"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": {
+          "en": "Share on Facebook"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": {
+          "en": "Tweet on Twitter"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": {
+          "en": "Share on Pinterest"
+        }
+      },
+      {
+        "type": "checkbox",
+        "id": "copy_link",
+        "label": {
+          "en": "Print"
+        }
+      }
+    ]
+  },
+  {
+    "name": {
+      "en": "Favicon"
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": {
+          "en": "Favicon image"
+        },
+        "info": {
+          "en": "Will be scaled down to 32 x 32px"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Instant Search",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Popular searches"
+      },
+      {
+        "type": "text",
+        "id": "popular_search_header",
+        "label": "Header"
+      },
+      {
+        "type": "textarea",
+        "id": "popular_searches",
+        "label": "Queries",
+        "default": "DHH-B, BPC-157 Rapid Pro, PTD-DBM, GI PrimeGI Prime, IgNIGHT, BPC-157 Probiotic | ABC"
+      },
+      {
+        "type": "header",
+        "content": "Trending Products"
+      },
+      {
+        "type": "text",
+        "id": "trending_products_header",
+        "label": "Header",
+        "default": "Trending Products:"
+      },
+      {
+        "type": "product_list",
+        "id": "trending_products",
+        "label": "Products",
+        "info": "Discover best-selling products by clearing this field."
+      },
+      {
+        "type": "range",
+        "id": "search_products_to_show",
+        "label": "Maximum products to show",
+        "default": 10,
+        "min": 4,
+        "max": 10,
+        "step": 1
+      }
+    ]
+  }
+]

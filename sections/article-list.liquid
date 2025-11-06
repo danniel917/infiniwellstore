@@ -1,0 +1,82 @@
+{% if section.blocks.size > 0 %}
+  {% if section.settings.title1 != blank %}
+    <div class="article-list">
+      <div class="container-1222">
+        <div class="top-section flex">
+          <h2>
+            {{ section.settings.title1 }}
+            {% if section.settings.title2 != blank %}
+              <span class="color-grey h2">{{ section.settings.title2 }}</span>
+            {%- endif -%}
+          </h2>
+          {% if section.settings.buttonText != blank %}
+            <a
+              href="{{ section.settings.buttonLink }}"
+              title="Read More About {{ section.settings.buttonText }}"
+              aria-label="Read More About {{ section.settings.buttonText }}"
+              class="btn--primary"
+            >
+              {{- section.settings.buttonText }}
+            </a>
+          {%- endif -%}
+        </div>
+        {%- for block in section.blocks -%}
+          {% if block.settings.article != blank %}
+            {% assign articleRelated = block.settings.article %}
+
+            {%
+              include 'article_Card' with articleRelated:articleRelated, show_tags:true,show_title:true, show_description:true, show_readMore:
+              true
+            %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Article List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article List"
+    }
+  ]
+}
+{% endschema %}

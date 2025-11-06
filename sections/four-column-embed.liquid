@@ -1,0 +1,98 @@
+{% if section.settings.title1 != blank %}
+  <div class="four-column-embed">
+    <h2
+      class="h1"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      {{ section.settings.title1 }}
+      {% if section.settings.title2 != blank %}
+        <span class="color-grey h1">{{ section.settings.title2 }}</span>
+      {% endif %}
+    </h2>
+    <script async src="//asset.fwcdn3.com/js/integrations/shopify.js"></script>
+    <script async src="//asset.fwcdn3.com/js/fwn.js"></script>
+    <fw-embed-feed
+      branding="false"
+      mode="row"
+      channel="infiniwell"
+      placement="middle"
+      autoplay="false"
+      style="--fw-font-family: 'Helvetica', sans-serif;"
+    >
+    </fw-embed-feed>
+    {% if section.settings.preTitle != blank or section.settings.title != blank or section.settings.buttonText != blank %}
+   
+    <div
+      class="bottom-section flex"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      {% if section.settings.preTitle != blank %}
+        <p class="pre-title">{{ section.settings.preTitle }}</p>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.buttonText != blank %}
+        <a
+          href="{{ section.settings.buttonLink }}"
+          title="Read More About {{ section.settings.buttonText }}"
+          aria-label="Read More About {{ section.settings.buttonText }}"
+          class="link--primary"
+        >
+          {{ section.settings.buttonText }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Four column Embed Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title 1"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title 2"
+    },
+    {
+      "type": "text",
+      "id": "preTitle",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Four column Embed Slider"
+    }
+  ]
+}
+{% endschema %}

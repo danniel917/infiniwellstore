@@ -1,0 +1,108 @@
+<div class="right-sidebar">
+  <div class="inner-section flex">
+    <div class="left-section">
+      <ul class="ipad-none">
+        {% if settings.chattitle != blank %}
+          <li class="chat">
+            <h2 class="h3">{{ settings.chattitle }}</h2>
+
+            {% if settings.chatdescription != blank %}
+              <div class="full-format small">
+                {{ settings.chatdescription }}
+              </div>
+            {% endif %}
+            {% if settings.chatText != blank or settings.chatLink != blank %}
+              <a href="{{ettings.chatLink}}" class="btn--primary" title="{{settings.chatText}}">
+                {{- settings.chatText -}}
+              </a>
+            {% endif %}
+          </li>
+        {% endif %}
+        {% if settings.phonetitle != blank %}
+          <li class="phone">
+            <h2 class="h3">{{ settings.phonetitle }}</h2>
+            {% if settings.contactdescription != blank %}
+              <div class="full-format small">
+                {{ settings.contactdescription }}
+              </div>
+            {% endif %}
+          </li>
+        {% endif %}
+        {% if settings.emailtitle != blank %}
+          <li class="email">
+            <h2 class="h3">{{ settings.emailtitle }}</h2>
+
+            {% if settings.emailAddressdesc != blank %}
+              <div class="full-format small">
+                {{ settings.emailAddressdesc }}
+              </div>
+            {% endif %}
+          </li>
+        {% endif %}
+      </ul>
+      <div class="contact-section ipad-block">
+        <ul>
+          {% if settings.chattitle != blank %}
+            <li>
+              {% render 'icon-contact' %}
+              <span>{{ settings.chattitle }}</span> {{ settings.chatnumber }}
+            </li>
+          {% endif %}
+          {% if settings.texttitle != blank %}
+            <li>
+              {% render 'icon-message' %}
+              <span>{{ settings.texttitle }}</span> {{ settings.textnumber }}
+            </li>
+          {% endif %}
+          {% if settings.phonemobtitle != blank %}
+            <li>
+              {% render 'icon-phone' %}
+              <span>{{ settings.phonemobtitle }}</span> {{ settings.number }}
+            </li>
+          {% endif %}
+          {% if settings.emailtitle != blank %}
+            <li>
+              {% render 'icon-message' %}
+              <span>{{ settings.emailtitle }}</span> {{ settings.emailAddress }}
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="right-section">
+      <ul>
+        {% if settings.officeadd != blank or settings.addtitle != blank %}
+          <li class="address">
+            <h2 class="h3">{{ settings.addtitle }}</h2>
+            <div class="description full-format">
+              {{ settings.officeadd }}
+            </div>
+          </li>
+        {% endif %}
+        {% if settings.hrtitle != blank %}
+          <li class="hour">
+            <h2 class="h3">Hours (EST)</h2>
+
+            <div class="time">
+              <p>
+                <span>{{ settings.weekdays }}</span>{{ settings.weekdayshr }}
+              </p>
+              <p>
+                <span>{{ settings.weekend }}</span>{{ settings.weekendshr }}
+              </p>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  {% if section.settings.storeTitle != blank %}
+    <div class="middle-section">
+      <h2 class="h3">{{ section.settings.storeTitle }}</h2>
+      <div class="box flex">
+        <h3>APP PLACEHOLDER</h3>
+      </div>
+    </div>
+  {% endif %}
+  {% comment %} Form section {% endcomment %}
+</div>

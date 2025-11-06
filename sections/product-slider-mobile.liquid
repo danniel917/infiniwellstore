@@ -1,0 +1,103 @@
+{% if section.blocks.size > 0 %}
+
+  <div
+    class="product-slider-mobile"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+  >
+    <div class="slider js__product-slider-mobile">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {% if block.settings.image != blank %}
+            <div class=" swiper-slide slide ">
+              <div class="image-section">
+                {{
+                  block.settings.image
+                  | image_url: width: 1500
+                  | image_tag: loading: 'lazy', width: block.settings.image.width, height: block.settings.image.height
+                }}
+              </div>
+
+              {% comment %}
+                <div class="content">
+                                {% if block.settings.pretitle != blank %}
+                                    <span class="pretitle">{{ block.settings.pretitle }}</span>
+                                  {% endif %}
+                                  {% if block.settings.title != blank %}
+                                    <h3 class="title">{{ block.settings.title }}</h3>
+                                {% endif %}
+                                </div>
+              {% endcomment %}
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}"></a>
+              {% endif %}
+              {% comment %}
+                <a
+                  class="btn--primary js__quick-view-click"
+                  title="{{ productRelated.title }}"
+                  href="javascript:;"
+                  title="Shop {{productRelated.title}}"
+                  data-id="{{productRelated.id}}"
+                  data-slider_main="{%- for img in productRelated.images -%}{{- img | img_url: '710x710' -}}|{%- endfor -%}"
+                  data-slider_thumb="{%- for img in productRelated.images -%}{{- img | img_url: '150x150' -}}|{%- endfor -%}"
+                  data-var_images="{%- for var in productRelated.variants -%}{{- var.image | img_url: '150x150' -}}|{%- endfor -%}"
+                  >Quick View</a
+                >
+              {% endcomment %}
+            </div>
+          {%- endif -%}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{%- endif -%}
+
+<style>
+  {% comment %}
+  .product-slider-mobile {
+    display: none;
+  }
+  @media (max-width: 480px) {
+    {% comment %} .four-column-product-slider {
+      display: none;
+    } {% endcomment %}
+    .product-slider-mobile {
+      display: flex;
+    }
+  }
+  {% endcomment %}
+</style>
+
+{% schema %}
+{
+  "name": "Product Slider Mobile",
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image",
+          "info": {
+            "en": "480 x 600px Recommended"
+          }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Product Slider Mobile"
+    }
+  ]
+}
+{% endschema %}

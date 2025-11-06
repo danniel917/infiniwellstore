@@ -1,0 +1,8 @@
+{% if request.path contains '404' %}
+  <meta name="robots" content="noindex, nofollow">
+{% endif %}
+
+{% assign language_path = request.path | remove_first: '/' | split: '/' | first | prepend: '/' %}
+{% if language_path contains '-' %}
+    <link rel="canonical" href="{{ canonical_url | remove: language_path }}">
+{% endif %}

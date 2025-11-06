@@ -1,0 +1,91 @@
+{% if section.settings.title1 != blank %}
+  <div class="half-image-half-content-v2">
+    <div class="container-1330 flex">
+      <div
+        class="content full-format {% if section.settings.image == blank %} full {% endif %}"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        {% if section.settings.preTitle != blank %}
+          <span class="pre-title">{{ section.settings.preTitle }}</span>
+        {% endif %}
+        <h2>
+          {{ section.settings.title1 }}
+          {% if section.settings.title2 != blank %}
+            <span class="color-grey h2">{{ section.settings.title2 }}</span>
+          {% endif %}
+        </h2>
+        {% if section.settings.description != blank %}
+          {{ section.settings.description }}
+        {% endif %}
+        {% if section.settings.buttonText != blank %}
+          <a
+            href="{{ section.settings.buttonLink }}"
+            title="Read More About {{ section.settings.buttonText }}"
+            aria-label="Read More About {{ section.settings.buttonText }}"
+            class="btn--primary"
+          >
+            {{ section.settings.buttonText }}
+          </a>
+        {% endif %}
+      </div>
+      {% if section.settings.image != blank %}
+        <div class="image-section">
+          {{ section.settings.image | image_url: width: 1262 | image_tag: loading: 'lazy', widths: '1262x1000' }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Half Img Half Content V2",
+
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": {
+        "en": "1272 x 1272px Recommended"
+      }
+    },
+    {
+      "type": "text",
+      "id": "preTitle",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Half Image Half Content V2"
+    }
+  ]
+}
+{% endschema %}

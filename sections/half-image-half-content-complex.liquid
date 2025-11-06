@@ -1,0 +1,299 @@
+{%- style -%}
+  .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.paddingtop | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px;
+    }
+
+    @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottommobile | round: 0 }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'image' -%}
+        <div
+          class="half-image-half-content-complex none-980 section-{{ section.id }}-padding"
+        >
+          <div
+            class="container-1300 "
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <div class="inner flex">
+              <div class="content">
+                {% if block.settings.icon != blank %}
+                  <div class="icon-section">
+                    {{ block.settings.icon | image_url: width: 120 | image_tag: loading: 'lazy', widths: '120x120' }}
+                  </div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <h2 class="h3">{{ block.settings.title }}</h2>
+                {% endif %}
+                <div class="full-format">
+                  {% if block.settings.description != blank %}
+                    {{ block.settings.description }}
+                  {% endif %}
+                </div>
+                {% if block.settings.buttonText != blank %}
+                  <a
+                    href="{{ block.settings.buttonLink }}"
+                    title="Read More About {{ block.settings.buttonText }}"
+                    aria-label="Read More About {{ block.settings.buttonText }}"
+                    class="link--primary"
+                  >
+                    {{- block.settings.buttonText -}}
+                  </a>
+                {% endif %}
+                {% assign collectionTitle = block.settings.collectionName %}
+                {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {%- when 'collection' -%}
+                      {% if collectionTitle == block.settings.title %}
+                        <div class="product-slider">
+                          <h3>{{ block.settings.title }}</h3>
+                          <div class=" collection-product-slider js__small-product-slider">
+                            <div class="swiper-wrapper">
+                              {% assign collectionsname = block.settings.collection %}
+                              {% for productRelated in collectionsname.products %}
+                                <div class="swiper-slide">
+                                  <a href="{{ productRelated.url}}">
+                                    <div class="image-section">
+                                      <img
+                                        class="js__product-image-{{productRelated.id}} "
+                                        data-src="{{  productRelated.images[0] | img_url: '558x558' }}"
+                                        src="{{  productRelated.images[0] | img_url: '558x558' }}"
+                                        alt="{{ productRelated.featured_image.alt | escape }}"
+                                        loading="lazy"
+                                      >
+                                      {% comment %} <img src="{{ 'dummy-product.webp' | asset_url }}"> {% endcomment %}
+                                    </div>
+                                    <span class="uppercase">{{ productRelated.title }}</span>
+                                  </a>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                          <div class="swiper-button-arrow swiper-button-next-small-product-slider">
+                            {% include 'icon-arrow-small-slide' %}
+                          </div>
+                          <div class="swiper-button-arrow swiper-button-prev-small-product-slider">
+                            {% include 'icon-arrow-small-slide' %}
+                          </div>
+                        </div>
+                      {% endif %}
+                  {% endcase %}
+                {% endfor %}
+              </div>
+              {% if block.settings.image != blank %}
+                <div class="image-section">
+                  {{ block.settings.image | image_url: width: 1260 | image_tag: loading: 'lazy', widths: '1260x1300' }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+  <div class="block-980 half-image-half-content-complex-accordion section-{{ section.id }}-padding">
+    <ul class="accordian js__accordian">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'image' -%}
+            <li>
+              <h3 class="h5">{{ block.settings.title }}</h3>
+              <div class="half-image-half-content-complex  content">
+                <div class="container-1300 ">
+                  <div class="inner flex">
+                    <div class="content">
+                      <div class="full-format">
+                        {% if block.settings.description != blank %}
+                          {{ block.settings.description }}
+                        {% endif %}
+                      </div>
+                      {% if block.settings.buttonText != blank %}
+                        <a
+                          href="{{ block.settings.buttonLink }}"
+                          title="Read More About {{ block.settings.buttonText }}"
+                          aria-label="Read More About {{ block.settings.buttonText }}"
+                          class="link--primary"
+                        >
+                          {{- block.settings.buttonText -}}
+                        </a>
+                      {% endif %}
+                      {% assign collectionTitle = block.settings.collectionName %}
+                      {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+                          {%- when 'collection' -%}
+                            {% if collectionTitle == block.settings.title %}
+                              <div class="product-slider">
+                                <h3>{{ block.settings.title }}</h3>
+                                <div class=" collection-product-slider js__small-product-slider">
+                                  <div class="swiper-wrapper">
+                                    {% assign collectionsname = block.settings.collection %}
+                                    {% for productRelated in collectionsname.products %}
+                                      <div class="swiper-slide">
+                                        <a href="{{ productRelated.url}}">
+                                          <div class="image-section">
+                                            <img
+                                              class="js__product-image-{{productRelated.id}} "
+                                              data-src="{{  productRelated.images[0] | img_url: '558x558' }}"
+                                              src="{{  productRelated.images[0] | img_url: '558x558' }}"
+                                              alt="{{ productRelated.featured_image.alt | escape }}"
+                                              loading="lazy"
+                                            >
+                                            {% comment %} <img src="{{ 'dummy-product.webp' | asset_url }}"> {% endcomment %}
+                                          </div>
+                                          <span class="uppercase">{{ productRelated.title }}</span>
+                                        </a>
+                                      </div>
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                                <div class="swiper-button-arrow swiper-button-next-small-product-slider">
+                                  {% include 'icon-arrow-small-slide' %}
+                                </div>
+                                <div class="swiper-button-arrow swiper-button-prev-small-product-slider">
+                                  {% include 'icon-arrow-small-slide' %}
+                                </div>
+                              </div>
+                            {% endif %}
+                        {% endcase %}
+                      {% endfor %}
+                    </div>
+                    {% if block.settings.image != blank %}
+                      <div class="image-section">
+                        {{
+                          block.settings.image
+                          | image_url: width: 1260
+                          | image_tag: loading: 'lazy', widths: '1260x1300'
+                        }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </li>
+        {% endcase %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Half Img Half Collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "paddingtop",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingbottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Section",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1260 x 1300px Recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon",
+          "info": "120 x 120px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "buttonText",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "buttonLink",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "collectionName",
+          "label": "Collection Title"
+        }
+      ]
+    },
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Half Image Half Content With Collections"
+    }
+  ]
+}
+{% endschema %}

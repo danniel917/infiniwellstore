@@ -1,0 +1,215 @@
+{% assign itemCount = 0 %}
+{% comment %} Ingredients slider Section {% endcomment %}
+{% if product.metafields.ingredients_info_section.title_black != blank %}
+  <div class="three-column-card-slider pdp">
+    <h2 class="h1">
+      {{ product.metafields.ingredients_info_section.title_black }}
+      {% if product.metafields.ingredients_info_section.title_gray != blank %}
+        <span class="color-grey h1">{{ product.metafields.ingredients_info_section.title_gray }}</span>
+      {% endif %}
+    </h2>
+
+    {% for value in product.metafields.ingredients_info_section_card.title %}
+      {% assign itemCount = itemCount | plus: 1 %}
+    {% endfor %}
+
+    <div class="slider {% if itemCount > 1 %}splide js_three-column-card-slider{% endif %}">
+      <div class="splide__track">
+        <div class="splide__list">
+          {% for value in product.metafields.ingredients_info_section_card.title %}
+            {% assign title = product.metafields.ingredients_info_section_card.title[forloop.index0] %}
+            {% assign link = product.metafields.ingredients_info_section_card.card_link[forloop.index0] %}
+            {% assign image = product.metafields.ingredients_info_section.image[forloop.index0] | first %}
+            {% assign list = product.metafields.ingredients_info_section_card.list_content[forloop.index0] %}
+
+            <div class="splide__slide">
+              {% if link != blank %}
+                <a
+                  href="{{ link }}"
+                  title="Read More About {{ title }}"
+                  aria-label="Read More About {{ title }}"
+                  class="full-link">
+              {% endif %}
+              <div class="ingredient-section">
+                <div class="inner-section">
+                  <div class="ingredient-front">
+                    {% if image != blank %}
+                      <div class="image-section">
+                        <img
+                          src="{{ image.cloudinary_src }}"
+                          alt="{{ image.alt }}"
+                          width="{{ image.width }}"
+                          height="{{ image.height }}"
+                          loading="lazy">
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="ingredient-back">
+                    <h3>{{ title }}</h3>
+                    {% if list != blank %}
+                      {{ list }}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% if link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Pdp Ingredients Section",
+    "presets": [
+      {
+        "name": "Product Three Column Ingredients Slider"
+      }
+    ]
+  }
+{% endschema %}
+
+<!-- Splide JS and CSS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
+<script>
+  (function() {
+    let sliderInstance = null;
+    const MOBILE_BREAKPOINT = 768;
+    const RESIZE_DEBOUNCE_TIME = 250;
+    let resizeTimeout = null;
+
+    function debugLog(message, data = null) {
+      console.log(`[Slider Debug] ${message}`, data || '');
+    }
+
+    function createSlider() {
+      debugLog('Attempting to create slider');
+      try {
+        const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+        debugLog('Is mobile:', isMobile);
+
+        if (!isMobile) {
+          // On desktop, just center the slides without slider functionality
+          const sliderElement = document.querySelector('.js_three-column-card-slider');
+          sliderElement.classList.remove('splide');
+          sliderElement.style.display = 'flex';
+          sliderElement.style.justifyContent = 'center';
+          sliderElement.style.gap = '1rem';
+          sliderElement.style.padding = '0 1rem';
+          return null;
+        }
+
+        const slider = new Splide('.js_three-column-card-slider', {
+          type: 'loop',
+          drag: 'free',
+          focus: 'center',
+          arrows: false,
+          pagination: false,
+          autoScroll: {
+            speed: 0.5,
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            rewind: true,
+            pauseOnMouseEnter: true
+          },
+          perPage: 1,
+          gap: '1rem',
+          padding: { left: '1rem', right: '1rem' }
+        });
+
+        debugLog('Slider created successfully', slider);
+        return slider.mount(window.splide.Extensions);
+      } catch (error) {
+        debugLog('Error creating slider', error);
+        console.error('Slider creation error:', error);
+        return null;
+      }
+    }
+
+    function initSlider() {
+      debugLog('Initializing slider');
+      const sliderElement = document.querySelector('.js_three-column-card-slider');
+      debugLog('Slider element found?', !!sliderElement);
+
+      if (!sliderElement) {
+        debugLog('No slider element found, returning');
+        return;
+      }
+
+      try {
+        const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+
+        if (sliderInstance) {
+          sliderInstance.destroy();
+          sliderInstance = null;
+        }
+
+        if (isMobile) {
+          debugLog('Mobile view - creating slider');
+          sliderElement.classList.add('splide');
+          sliderElement.style.display = '';
+          sliderElement.style.justifyContent = '';
+          sliderElement.style.gap = '';
+          sliderElement.style.padding = '';
+          sliderInstance = createSlider();
+        } else {
+          debugLog('Desktop view - static centered layout');
+          createSlider(); // This will handle the static desktop layout
+        }
+      } catch (error) {
+        debugLog('Error in initSlider', error);
+        console.error('Slider initialization error:', error);
+      }
+    }
+
+    function handleResize() {
+      debugLog('Resize event detected');
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        debugLog('Resize debounce timeout - calling initSlider');
+        initSlider();
+      }, RESIZE_DEBOUNCE_TIME);
+    }
+
+    // Initialize on DOM content loaded
+    debugLog('Adding DOMContentLoaded listener');
+    document.addEventListener('DOMContentLoaded', () => {
+      debugLog('DOM Content Loaded - initializing slider');
+      initSlider();
+    });
+
+    // Handle resize events
+    debugLog('Adding resize listener');
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on page unload
+    window.addEventListener('unload', function() {
+      debugLog('Page unload - cleaning up');
+      if (sliderInstance) {
+        try {
+          sliderInstance.destroy();
+          sliderInstance = null;
+          debugLog('Slider instance destroyed');
+        } catch (error) {
+          debugLog('Error destroying slider on unload', error);
+        }
+      }
+      window.removeEventListener('resize', handleResize);
+      debugLog('Cleanup complete');
+    });
+
+    // Check if Splide is available
+    debugLog('Checking Splide availability', {
+      splide: typeof Splide !== 'undefined',
+      extensions: window.splide && window.splide.Extensions
+    });
+  })();
+</script>

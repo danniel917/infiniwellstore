@@ -1,0 +1,165 @@
+{% comment %}
+  FAQ Exclude List - Product Pages
+  To add/remove products from FAQ exclusion, edit the excluded_products array below
+{% endcomment %}
+{% assign excluded_products = 'bpc-157-rapid-pro,tri-peptide-cosmetic-ghk-cu-argireline-leuphasyl,ghk-cu,duo-cosmetic-ghk-cu-zu-thymulin,bpc-157-delayed,bpc-157-rapid,smart-chocolate-bpc-157-cognizin®,abc,bpc-157,bpc-157-delayed-pro,bpc-157-rapid-pro' | split: ',' %}
+{% assign hide_faq = false %}
+{% for excluded_handle in excluded_products %}
+  {% if product.handle == excluded_handle %}
+    {% assign hide_faq = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% unless hide_faq %}
+  {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
+    <h2 class="text-center">
+      {{ product.metafields.custom.faq_heading | default : 'FAQs' }}
+    </h2>
+  {% endif %}
+
+  {{ 'section-faq-dropdown-collection-page.css' | asset_url | stylesheet_tag }}
+  <div class="learn-more-sec">
+     {{ product.metafields.custom.short_description | metafield_tag }}
+              <div class="additional-content">
+              
+{% if product.metafields.custom.faq %}
+  <section class="pdp-tab-small collection-faq-section">
+    
+    <div class="pdp-tab-small__wrapper">
+      {% assign questions = product.metafields.custom.faq | metafield_tag | split: 'Q: ' %}
+      <ul class="accordian js__accordian">
+        {% for question in questions offset: 1 %}
+          <li class="outer-list">
+            <h3 class="h5">{{ question | split: 'A:' | first | remove: '<p>' | remove: '</p>' }}</h3>
+            <div class="content">
+              {{ question | split: 'A: ' | last | remove_last: '<p>' }}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% else %}
+    {% if section.blocks.size > 0 %}
+  <div class="collapsible-container">
+    {% for block in section.blocks %}
+      <div class="collapsible">
+        <div class="dropdown-header">
+          <h2>{{ block.settings.title }}</h2>
+          <svg
+            class="collapsed"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15.117"
+            height="15.117"
+            viewBox="0 0 15.117 15.117"
+          >
+            <g id="Grupo_1124" data-name="Grupo 1124" transform="translate(1 1)">
+              <path id="Trazado_449" data-name="Trazado 449" d="M7027.74,1021v13.117" transform="translate(-7020.74 -1021)" fill="none" stroke="#6b86ab" stroke-linecap="round" stroke-width="2"/>
+              <path id="Trazado_450" data-name="Trazado 450" d="M0,0V13.117" transform="translate(0 6) rotate(-90)" fill="none" stroke="#6b86ab" stroke-linecap="round" stroke-width="2"/>
+            </g>
+          </svg>
+          <svg
+            class="expanded"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15.117"
+            height="2"
+            viewBox="0 0 15.117 2"
+          >
+            <g id="Grupo_1097" data-name="Grupo 1097" transform="translate(1 -5)">
+              <path id="Trazado_450" data-name="Trazado 450" d="M0,0V13.117" transform="translate(0 6) rotate(-90)" fill="none" stroke="#6b86ab" stroke-linecap="round" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="dropdown-content">
+          {{ block.settings.copy }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+              </div>
+{% endif %}
+{% render 'dropdown-helper' %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.querySelector('.custom-toggle-button');
+  const additionalContent = document.querySelector('.additional-content');
+
+  if (toggleButton) {
+    toggleButton.addEventListener('click', function() {
+      if (additionalContent.style.display === 'none' || additionalContent.style.display === '') {
+        additionalContent.style.display = 'block';
+        toggleButton.textContent = 'Learn More -';
+      } else {
+        additionalContent.style.display = 'none';
+        toggleButton.textContent = 'Learn More +';
+      }
+    });
+  }
+});
+</script>
+  {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+   {% for question in questions offset: 1 %}
+    {
+      "@type": "Question",
+      "name": "{{ question | split: "A: " | first | remove: "<p>" | remove: "</p>"  | strip_html }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ question | split: "A: " | last | remove_last: "<p>" | strip_html }}"
+      }
+    }  {% unless forloop.last %},{% endunless %}
+   {% endfor %}
+  ]
+}
+</script>
+ {% endif %}
+{% endunless %}                
+{% schema %}
+{
+  "name": "Product FAQ",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "use_product_metafield",
+      "label": "Use Product FAQ metafield"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Your title"
+        },
+        {
+          "type": "richtext",
+          "id": "copy",
+          "label": "Label",
+          "default": "<p>Welcome to my shop!</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product FAQ"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

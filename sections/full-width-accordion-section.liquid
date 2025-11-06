@@ -1,0 +1,89 @@
+{% if section.settings.title != blank %}
+  <div class="full-width-accrodian">
+    <div class="container-980">
+      <h2>{{ section.settings.title }}</h2>
+      <ul class="accordian js__accordians">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'list' -%}
+              <li data-attr="tab-{{block.settings.title | downcase | remove: ' ' }}">
+                {% if block.settings.title != blank %}
+                  <h3 class="h4">
+                    {{ block.settings.title }}
+                    {% include 'lp-icon-accordion-minus' %}
+                    {% include 'lp-icon-accordion-plus' %}
+                  </h3>
+                {% endif %}
+              </li>
+              {% assign category = block.settings.title | downcase | remove: ' ' %}
+
+            {%- when 'content' -%}
+              <div class="content tab-{{block.settings.category | downcase | remove: ' ' }}">
+                {% assign categoryFAQ = block.settings.category | downcase | remove: ' ' %}
+                {% if categoryFAQ == category %}
+                  <div class="inner flex">
+                    <h4 class="h5">{{ block.settings.title }}</h4>
+                    {% if block.settings.address != blank %}
+                      {{ block.settings.address }}
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Full width Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "label": "Address"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Full Width Accordion"
+    }
+  ]
+}
+{% endschema %}

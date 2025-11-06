@@ -1,0 +1,5 @@
+{% paginate collections.all.products by 1000 %}
+  {% for productData in collections.all.products %}
+    {% include 'product-modal', productData: productData %}
+  {% endfor %}
+{% endpaginate %}

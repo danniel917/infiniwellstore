@@ -1,0 +1,136 @@
+{% if section.blocks.size > 0 %}
+  {% if section.settings.title1 != blank %}
+    <div class="three-column-video-card" id="loadMoreList">
+      <div class="container-1300">
+        <h2>
+          {{ section.settings.title1 }}
+          {% if section.settings.title2 != blank %}
+            <span class="color-grey h2">{{ section.settings.title2 }}</span>
+          {% endif %}
+        </h2>
+        <ul class="flex-wrap loadMoreList">
+          {%- for block in section.blocks -%}
+            <li>
+              {% if block.settings.image != blank %}
+                {% if block.settings.videoLink != blank %}
+                  <a
+                    href="{{ block.settings.videoLink }}"
+                    aria-label="Read More About {{ block.settings.title }}"
+                    title="Read More About {{ block.settings.title }}"
+                    data-lity
+                    class="full-link"
+                  >
+                {% endif %}
+                <div class="image-section {% if block.settings.videoLink != blank %} video {% endif %}">
+                  {{ block.settings.image | image_url: width: 796 | image_tag: loading: 'lazy', widths: '769x622' }}
+                </div>
+                {% if block.settings.videoLink != blank %}
+                  </a>
+                {% endif %}
+              {% endif %}
+              <div class="content">
+                {% if block.settings.title != blank %}
+                  <h3 class="h5">{{ block.settings.title }}</h3>
+                {% endif %}
+                <div class="full-format small">
+                  {% if block.settings.description != blank %}
+                    {{ block.settings.description }}
+                  {% endif %}
+                </div>
+                {% if block.settings.buttonText != blank and block.settings.videoLink != blank %}
+                  <a
+                    href="{{ block.settings.videoLink }}"
+                    title="Read More About {{ block.settings.buttonText }}"
+                    data-lity
+                    aria-label="Read More About {{ block.settings.buttonText }}"
+                    class="link--primary"
+                  >
+                    {{- block.settings.buttonText }}
+                  </a>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        {% if section.blocks.size > 6 %}
+          <a href="javasscript:void(0)" id="loadmore" class="btn--primary">View More Videos</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+<script>
+  const loadmore = document.querySelector('#loadmore');
+  let currentItems = 6;
+  loadmore.addEventListener('click', (e) => {
+    const elementList = [...document.querySelectorAll('.loadMoreList li')];
+    for (let i = currentItems; i < currentItems + 6; i++) {
+      if (elementList[i]) {
+        elementList[i].style.display = 'block';
+      }
+    }
+    currentItems += 6;
+
+    // Load more button will be hidden after list fully loaded
+    if (currentItems >= elementList.length) {
+      event.target.style.display = 'none';
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Three Columns Video Card",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "796 x 622px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "buttonText",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "videoLink",
+          "label": "Video Link",
+          "info": "Video Link (Vimeo / Mp4 / Youtube)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three Columns Video Card"
+    }
+  ]
+}
+{% endschema %}

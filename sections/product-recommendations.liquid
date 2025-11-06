@@ -1,0 +1,301 @@
+<!-- Product Recommendations -->
+{% assign metafieldsHandleForProducts = product.metafields.product_recommendations.product_handle %}
+{% if metafieldsHandleForProducts != blank %}
+  <div
+    class="pdp-recommendations four-column-product-slider"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+  >
+    <div class="top-section flex">
+      <h2 class="h1">
+        {% if product.metafields.product_recommendations.title != blank %}
+          {{ product.metafields.product_recommendations.title }}
+          {% if product.metafields.product_recommendations.title_gray != blank %}
+            <span class="color-grey h1">{{ product.metafields.product_recommendations.title_gray | replace: 'Rewcommend','Recommend' }}</span>
+          {% endif %}
+        {% else %}
+          You MAY <span class="color-grey h1">ALSO LIKE</span>
+        {% endif %}
+      </h2>
+
+      {% if product.metafields.product_recommendations.button_text != blank
+        and product.metafields.product_recommendations.button_link != blank
+      %}
+        <a
+          href="{{ product.metafields.product_recommendations.button_link }}"
+          title="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+          aria-label="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+          class="btn--primary"
+        >
+          {{ product.metafields.product_recommendations.button_text }}
+        </a>
+        <a
+          href="{{ product.metafields.product_recommendations.button_link }}"
+          title="Read More About {{ product.metafields.product_recommendations.button_text }}"
+          aria-label="Read More About {{ product.metafields.product_recommendations.button_text}}"
+          class="link--primary"
+        >
+          {{- product.metafields.product_recommendations.button_text -}}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="inner">
+      <div class="product-recommendations-list slider js__product-slider">
+        <div class="swiper-wrapper">
+          {% assign productHandles = metafieldsHandleForProducts | split: '|' %}
+
+          {% for productRec in productHandles %}
+            {% assign productRelated = all_products[productRec] %}
+
+            <div class="product-card swiper-slide slide ">
+              {% include 'product_Card'  with  productRelated: productRelated , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: true, show_secondary_button: true %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev-product-slider" style="transform:rotate(180deg);">
+          {% include 'icon-arrow-slide' %}
+        </div>
+        <div class="swiper-button-next-product-slider">
+          {% include 'icon-arrow-slide' %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% assign productHandles = metafieldsHandleForProducts | split: '|' %}
+
+  {% for productRec in productHandles %}
+    {% assign productRelated = all_products[productRec] %}
+    {% include 'product-modal', productData: productRelated %}
+  {% endfor %}
+{% else %}
+<div
+  class="product-recommendations "
+  data-base-url="{{ routes.product_recommendations_url }}"
+  data-product-id="{{ product.id }}"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+>
+  {%- if recommendations.products_count > 0 -%}
+    <div class="pdp-recommendations ">
+      <div class="four-column-product-slider">
+        {% if product.metafields.product_recommendations.title != blank %}
+          <div class="top-section flex">
+            <h2 class="h1">
+              {{ product.metafields.product_recommendations.title }}
+              {% if product.metafields.product_recommendations.title_gray != blank %}
+                <span class="color-grey h1">{{ product.metafields.product_recommendations.title_gray }}</span>
+              {% endif %}
+            </h2>
+
+            {% if product.metafields.product_recommendations.button_text != blank
+              and product.metafields.product_recommendations.button_link != blank
+            %}
+              <a
+                href="{{ product.metafields.product_recommendations.button_link }}"
+                title="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+                aria-label="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+                class="btn--primary"
+              >
+                {{ product.metafields.product_recommendations.button_text }}
+              </a>
+              <a
+                href="{{ product.metafields.product_recommendations.button_link }}"
+                title="Read More About {{ product.metafields.product_recommendations.button_text }}"
+                aria-label="Read More About {{ product.metafields.product_recommendations.button_text}}"
+                class="link--primary"
+              >
+                {{- product.metafields.product_recommendations.button_text -}}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="inner">
+          <div
+            class="product-recommendations-list slider js__product-slider"
+
+            id="js__pdp-recommendation-slider"
+          >
+            <div class="swiper-wrapper">
+              {% comment %}
+                <div
+                  class="product-recommendations-list flex-wrap "
+                  {%- if settings.product_recommendation_slider == 'on' -%}
+                    id="js__pdp-recommendation-slider"
+                  {%- endif -%}
+                >
+              {% endcomment %}
+              {%- for productRelated in recommendations.products -%}
+                <div class="product-card swiper-slide slide ">
+                  {% include 'product_Card' with productRelated: productRelated , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: true, show_secondary_button: false %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-button-prev-product-slider" style="transform:rotate(180deg);">
+              {% include 'icon-arrow-slide-white' %}
+            </div>
+            <div class="swiper-button-next-product-slider">
+              {% include 'icon-arrow-slide' %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {%- for productRelated in recommendations.products -%}
+        {% render 'product-modal', productData: productRelated %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  var loadProductRecommendationsIntoSection = function () {
+    // Look for an element with class 'product-recommendations'
+    var productRecommendationsSection = document.querySelector('.product-recommendations');
+    if (productRecommendationsSection === null) {
+      return;
+    }
+    // Read product id from data attribute
+    var productId = productRecommendationsSection.dataset.productId;
+    // Read base URL from data attribute
+    var baseUrl = productRecommendationsSection.dataset.baseUrl;
+    // Read limit from data attribute
+    var limit = productRecommendationsSection.dataset.limit;
+    // Build request URL
+    var requestUrl = baseUrl + '?section_id=product-recommendations&product_id=' + productId + '&limit=' + limit;
+    // Create request and submit it using Ajax
+    var request = new XMLHttpRequest();
+    request.open('GET', requestUrl);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 300) {
+        var container = document.createElement('div');
+        console.log('aaaaaa recomendation');
+        container.innerHTML = request.response;
+        productRecommendationsSection.parentElement.innerHTML =
+          container.querySelector('.product-recommendations').innerHTML;
+
+        // RECHARGE
+        console.log('before ddddd recomendation');
+        callRechargeScript();
+
+        // NO RECHARGE
+        console.log('before NO RECHARGE ddddd recomendation');
+        callNoRechargeScript();
+
+        function formatEuroPrices() {
+          // Select all price elements
+          const priceElements = document.querySelectorAll('.product-card__price span');
+      
+          priceElements.forEach(function(element) {
+            let priceText = element.textContent.trim();
+            
+            // Check if the price text starts with the Euro symbol
+            if (priceText.startsWith('€')) {
+              // Remove the Euro symbol temporarily
+              priceText = priceText.substring(1);
+              
+              // Replace the comma with a dot
+              priceText = priceText.replace(',', '.');
+              
+              // Add the Euro symbol back and update the element
+              element.textContent = '€' + priceText;
+            }
+          });
+        }
+      
+        // Run the formatting function when the page loads
+        formatEuroPrices();
+
+        var productRecomm = new Swiper('#js__pdp-recommendation-slider', {
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+          grabCursor: false,
+
+          loop: true,
+
+          loopedSlides: 100,
+          updateOnWindowResize: true,
+          direction: 'horizontal',
+          // effect: 'coverflow',
+          freeModeSticky: true,
+          freeMode: true,
+          freeModeMomentumBounce: false,
+          freeModeMomentumRatio: 0.1,
+          freeModeMomentumVelocityRatio: 0.8,
+          // freeMode: true,
+
+          centeredSlides: true,
+          threshold: 1,
+          breakpoints: {
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            481: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            601: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+
+            769: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            981: {
+              slidesPerView: 5,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 6,
+              spaceBetween: 20,
+            },
+            1440: {
+              slidesPerView: 'auto',
+              spaceBetween: 20,
+            },
+          },
+
+          navigation: {
+            nextEl: '.swiper-button-next-product-slider',
+            prevEl: '.swiper-button-prev-product-slider ',
+          },
+        });
+      }
+    };
+    request.send();
+  };
+
+  // Listen for changes done in the Theme Editor
+  document.addEventListener('shopify:section:load', function (event) {
+    if (event.detail.sectionId === 'product-recommendations') {
+      loadProductRecommendationsIntoSection();
+    }
+  });
+
+  // Fetching the recommendations on page load
+  loadProductRecommendationsIntoSection();
+</script>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recommendations"
+    }
+  ]
+}
+{% endschema %}

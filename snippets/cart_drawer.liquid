@@ -1,0 +1,970 @@
+{% if template != 'cart' %}
+  <style>
+  .cart-sidebar__footer .inner-wrapper {
+    overflow: hidden;
+}
+  </style>
+  <div id="CartSidebar" class="cart-sidebar">
+    <!-- header -->
+    
+    <div class="cart-sidebar__header">
+      <div class="logo">
+        <a href="/" class="logo-wrapper">
+          {{- 'Logo-gray.svg' | inline_asset_content -}}
+        </a>
+      </div>
+      <div class="nav-icons">
+        <ul class="flex"> 
+          <li class="has-sub-nav has-sub-nav-account">
+            {% if customer %}
+            <a href="/account" title="My Account" class="user site-nav__link">
+              {{- 'icon-account.svg' | inline_asset_content -}}
+                {%else%}
+                <a href="/account/login" title="Log In" class="user site-nav__link">
+                  {{- 'icon-account.svg' | inline_asset_content -}}
+                    {%endif%}
+                </a>
+                
+        </li>
+          <li>
+            <a class=" cart" title="cart">
+              {{- 'icon-bag.svg' | inline_asset_content -}}
+               <span class="js__ajax-cart-count cart-count"> {{ cart.item_count }}</span>
+            </a>
+            {% comment %}
+              <a class="js__cart-expand js__update-cart-icon cart" href="javascript:;" title="cart">{% include
+              "icon-cart" %}
+                  <span class="js__ajax-cart-count cart-count">
+                      {{ cart.item_count }}</span>
+              </a>
+            {% endcomment %}
+          </li>
+        </ul>
+      </div>
+      {% comment %}
+        <div class="flex-space-between">
+          <p class="flex-align-center">
+            <button class="icon-close" id="js__cart-close">close cart {% include 'icon-mobile-menu-close' %}</button>
+            YOUR Cart
+          </p>
+          <a href="/cart" class="link--primary" title="Cart">View Cart</a>
+        </div>
+        <div class="free-shipping js__progressbar_visiblity hide" style="display:none">
+          <!-- Free Shipping Values from Schema -->
+          <span class="hide js__free-shipping-limit">{{ settings.freeShippingThresholdValue }} </span>
+          <!-- Free Shipping Message (When the value is reached) -->
+          <p>
+            <span class="js__free-shipping-message" style="display: none;">{{ settings.freeShippingMsg }}</span
+            ><span
+              class="js__free-shipping-limit-message"
+              style="display: none;"
+            >
+              You are
+              <strong
+                class="js__free-shipping-remaning-amount"
+              ></strong>
+              away from free shipping.</span
+            >
+          </p>
+          <div class="free-shipping__progress-bar js__free-shipping__progress-bar"><span></span></div>
+        </div>
+
+        <div class="shipping-details js__progressbar_visiblity hide">
+          <span class="hide js__free-shipping-limit">{{ settings.freeShippingThresholdValue }} </span>
+          <span class=" title js__free-shipping-message" style="display: none;">{{ settings.freeShippingMsg }}</span>
+          <span class="title js__free-shipping-limit-message"
+            >You are
+            <b
+              ><span
+                class="js__free-shipping-remaning-amount"
+                >$40</span
+              >
+              away</b
+            >
+            from free shipping</span
+          >
+          <ul class="flex ">
+            <li class="dark-bar js__grandtotal-shipping" data-percentage="0"></li>
+            <li>
+              <div class="icon car js__free-shipping__icon">
+                <img src="{{ 'icon-car.webp' | asset_url }}" alt="icon-car">
+              </div>
+              <span>Free Shipping</span>
+              <div class="free-shipping__progress-bar js__free-shipping__progress-bar"><span></span></div>
+            </li>
+            {% if settings.freeProduct1 != blank %}
+              <li>
+                <div class="icon js__free-gift-1__icon">
+                  <img src="{{ 'icon-gift.webp' | asset_url }}" alt="icon-gift">
+                </div>
+                <span>Free Gift</span>
+                <div class="free-shipping__progress-bar js__free__gift-1__progress-bar"><span></span></div>
+              </li>
+            {% endif %}
+            {% if settings.freeProduct2 != blank %}
+              <li>
+                <div class="icon js__free-gift-2__icon">
+                  <img src="{{ 'icon-gift.webp' | asset_url }}">
+                </div>
+                <span>Free Gift</span>
+                <div class="free-shipping__progress-bar js__free__gift-2__progress-bar"><span></span></div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endcomment %}
+    </div>
+
+
+
+    <div class="tab-section">
+
+      <div class="tab-head">
+        <div class="cart-tab-link js__tab-mybag active" data-attr="tab-mybag">
+          <a class="tab-button" title="MY BAG">MY cart</a>
+        </div>
+        <div class="cart-tab-link" data-attr="tab-mywishlist">
+          <a class="tab-button" title="my wishlist">My Wishlist</a>
+        </div>
+        {% if customer %}
+          <div class="cart-tab-link" data-attr="tab-myorders">
+            <a class="tab-button" title="my orders">My Orders</a>
+          </div>
+                  {%endif%}
+       
+      </div>
+      <div class="cart-tab-content my-bag active" id="tab-mybag">
+        <div class="inner-wrapper">
+          <button class="icon-close js__cart-close" id="js__cart-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <g clip-path="url(#clip0_4342_1083)">
+              <path d="M0.547791 0.777832L13.1168 13.4479" stroke="#84827E" stroke-linecap="round"/>
+              <path d="M0.884399 13.4478L13.4534 0.777621" stroke="#84827E" stroke-linecap="round"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_4342_1083">
+              <rect width="14" height="14" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+            </button>
+          {% comment %} Progress bar {% endcomment %}
+          <div class="shipping-details js__progressbar_visiblity hide">
+          <span class="js__minicart-cart-count cart-count">
+            <span class="count"></span> items
+          </span>
+            <span class="hide js__free-shipping-limit">{{ settings.freeShippingThresholdValue }} </span>
+            <span class=" title js__free-shipping-message" style="display: none;">{{ settings.freeShippingMsg }}</span>
+            <span class="title js__free-shipping-limit-message"
+              >
+            
+               
+               add 
+              <span
+                  class="js__free-shipping-remaning-amount"
+                  >$5</span
+                >
+                more
+              for <b>FREE</b> shipping</span
+            >
+            <ul class="flex ">
+              <li class="dark-bar js__grandtotal-shipping" data-percentage="0"></li>
+              <li>
+                {% comment %} <div class="icon car js__free-shipping__icon">
+                  <img class="icon-free-shipping"src="{{'icon-shipping.png' | asset_url }}" alt="icon-car">
+                </div> {% endcomment %}
+                {% comment %} <span>Free Shipping</span> {% endcomment %}
+                <div class="free-shipping__progress-bar js__free-shipping__progress-bar"><span></span></div>
+              </li>
+              {% if settings.freeProduct1 != blank %}
+                <li>
+                  <div class="icon js__free-gift-1__icon">
+                    <img src="{{ 'icon-gift.webp' | asset_url }}" alt="icon-gift">
+                  </div>
+                  <span>Free Gift</span>
+                  <div class="free-shipping__progress-bar js__free__gift-1__progress-bar"><span></span></div>
+                </li>
+              {% endif %}
+              {% if settings.freeProduct2 != blank %}
+                <li>
+                  <div class="icon js__free-gift-2__icon">
+                    <img src="{{ 'icon-gift.webp' | asset_url }}">
+                  </div>
+                  <span>Free Gift</span>
+                  <div class="free-shipping__progress-bar js__free__gift-2__progress-bar"><span></span></div>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+
+          {% comment %} Products list {% endcomment %}
+          <div class="cart-sidebar__middle">
+            <ul class="added-products js__ajax-products-bind">
+              <!-- Looping of items -->
+              {% for item in cart.items %}
+                <li class="flex-wrap">
+                  <div class="image-section">
+                    <a href="{{item.url}}" alt="{{item.title}}">
+                      <img
+                        class="lazyload"
+                        data-src="{{ item.product.featured_image.src | product_img_url: 'master' }}"
+                        alt="{{item.title}}"
+                      >
+                    </a>
+                  </div>
+                  <div class="content">
+                    <p>
+                      <a href="{{item.url}}" title="{{item.title}}">{{ item.title }}</a>
+                      {% comment %} <div
+                        class="remove js__cart-item-remove"
+                        onclick="removeCartItem(this)"
+                        data-cart-remove-variant="{{item.id}}"
+                        data-cart-item-count=""
+                      >
+                        Remove
+                      </div> {% endcomment %}
+                     
+                    </p>
+                    
+                    <button
+                     class="btn--wishlist"
+                    >
+                      Save to Wishlist
+                    </button>
+                    <div class="flex-space-between mobile-none">
+                      <div class="cart-quantity-outer">
+                        <a class="minus-qty" onclick="minusQuantity(this)" data-variant-id="{{item.id}}">minus</a>
+                        <input
+                          type="text"
+                          class="cart__quantity-selector"
+                          name="updates[]"
+                          value="{{item.quantity}}"
+                          maxlength="3"
+                          size="3"
+                        >
+                        <a class="plus-qty" onclick="plusQuantity(this)" data-variant-id="{{item.id}}">plus</a>
+                      </div>
+                      <div class="text-right">
+                        <p>{{ item.price }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+            {% render 'gift-product-cart' %} 
+      
+            <!-- Frequently Bought Together Product List -->
+             <div class="freq-product-list js__freq-bought-products ">
+              <div class="heading flex js__freq-bought-accordian active">
+                <div class="logo"> {{- 'infiniwell-Logo.svg' | inline_asset_content -}}</div>
+                <span class="title uppercase "> {{ settings.freqBoughtTitle }}</span>
+               
+              </div>
+            
+              <div class="freq-product-list-slider js__freq-bought-accordian-content">
+                <div class="slider js__freq-product-slider">
+                   <div class="swiper-wrapper flex js__top-cart-addons" data-limit="{{ settings.freqBoughtLimit }}">
+                     {% comment %}
+                       
+                   
+                    {% assign product1 = all_products[settings.product_1] %}
+                    {%- assign current_variant1 = product1.selected_or_first_available_variant -%}
+                      <div class="swiper-slide slider addons-slide addons-slide-{{product1.id}}" data-handler="{{settings.product_1}}"  data-attr-variantid="{{current_variant1.id}}">
+                         <div class="image-section">
+                            <a href="{{product1.url}}" title="{{product1.title}}">
+                              {% if product1.metafields.product.image != blank -%}
+                                {% assign productImage = product1.metafields.product.image | first %}
+                                  <img
+                                    class="lazyload"
+                                    data-src="{{ productImage.cloudinary_src }}"
+                                    alt="{{product1.title}}"
+                                    >
+                              {%- else -%}
+                                <img
+                                  class="lazyload"
+                                  data-src="{{ product1.featured_image.src | product_img_url: 'master' }}"
+                                  alt="{{product1.title}}"
+                                  >
+                              {%- endif -%}
+                           
+                            </a>
+                         </div>
+                         <div class="content">
+                            <p>
+                               <a href="{{product1.url}}" title="{{product1.title}}">{{ product1.title }}</a>
+                            </p>
+                            <p class="product-card__price">
+                               <span>{{ product1.price | money }}</span>
+                            </p>
+                            <div class="add-link">
+                              <button
+                                class="freq-add js__quick-view-click"
+                                title="{{ product1.title }}"
+                                href="javascript:;"
+                                title="Shop {{product1.title}}"
+                                data-id="mini-cart-{{product1.id}}"
+                                data-slider_main="{%- for img in product1.images -%}{{- img | img_url: '710x710' -}}|{%- endfor -%}"
+                                data-slider_thumb="{%- for img in product1.images -%}{{- img | img_url: '150x150' -}}|{%- endfor -%}"
+                                data-var_images="{%- for var in product1.variants -%}{{- var.image | img_url: '150x150' -}}|{%- endfor -%}"
+                                >Quick Add +</button>
+                            </div>
+                         </div>
+                      </div>
+                      {% assign product2 = all_products[settings.product_2] %}
+                      {%- assign current_variant2 = product2.selected_or_first_available_variant -%}
+                      <div class="swiper-slide slider addons-slide addons-slide-{{current_variant2.id}}" data-handler="{{settings.product_2}}" data-attr-variantid="{{current_variant2.id}}">
+                         <div class="image-section">
+                            <a href="{{product2.url}}" title="{{product2.title}}">
+                            product image
+                            {% if product2.metafields.product.image != blank -%}
+                            {% assign productImage = product2.metafields.product.image | first %}
+                                  <img
+                                    class="lazyload"
+                                    data-src="{{ productImage.cloudinary_src }}"
+                                    alt="{{product2.title}}"
+                                    >
+                              {%- else -%}
+                                <img
+                                  class="lazyload"
+                                  data-src="{{ product2.featured_image.src | product_img_url: 'master' }}"
+                                  alt="{{product2.title}}"
+                                  >
+                              {%- endif -%}
+                            </a>
+                         </div>
+                         <div class="content">
+                            <p>
+                               <a href="{{product2.url}}" title="{{product2.title}}">{{ product2.title }}</a>
+                            </p>
+                            <p class="product-card__price">
+                               <span>{{ product2.price | money }}</span>
+                            </p>
+                            <div class="add-link">
+                              <button
+                                class="freq-add js__quick-view-click"
+                                title="{{ product2.title }}"
+                                href="javascript:;"
+                                title="Shop {{product2.title}}"
+                                data-id="mini-cart-{{product2.id}}"
+                                data-slider_main="{%- for img in product2.images -%}{{- img | img_url: '710x710' -}}|{%- endfor -%}"
+                                data-slider_thumb="{%- for img in product2.images -%}{{- img | img_url: '150x150' -}}|{%- endfor -%}"
+                                data-var_images="{%- for var in product2.variants -%}{{- var.image | img_url: '150x150' -}}|{%- endfor -%}"
+                                >Quick Add +</button>
+                               
+                            </div>
+                         </div>
+                      </div>
+                        {% endcomment %}
+                   </div>
+                   <div class="swiper-pagination addons-swiper-pagination"></div>
+                </div>
+                {% comment %}
+                {% include 'product-modal-minicart', productData: product1 %}
+                {% include 'product-modal-minicart', productData: product2 %}
+                {% endcomment %}
+             </div>
+            </div> 
+          </div> 
+         
+          {% comment %} Footer {% endcomment %}
+         
+        </div>
+      </div>
+      <div class="cart-tab-content my-wishlist" id="tab-mywishlist">
+        <div class="inner-wrapper">
+          <button class="icon-close js__cart-close" id="js__cart-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <g clip-path="url(#clip0_4342_1083)">
+              <path d="M0.547791 0.777832L13.1168 13.4479" stroke="#84827E" stroke-linecap="round"/>
+              <path d="M0.884399 13.4478L13.4534 0.777621" stroke="#84827E" stroke-linecap="round"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_4342_1083">
+              <rect width="14" height="14" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+            </button>
+          <script>
+            // Executed after SWYM has loaded all necessary resources.
+            function onSwymLoadCallback(swat) {
+              const userContainer = document.getElementById("userListContainer");
+              const guestContainer = document.getElementById("wishlistContainer");
+              var count = 0;
+         
+
+
+              // Function to handle list rendering when not logged in
+              async function renderNonLoggedInLists(lists) {
+                guestContainer.innerHTML = "";
+                for(const list of lists) {
+                  const listHeader = document.createElement("div");
+                  listHeader.innerHTML = `
+                    <span>${list.lname}</span>
+                    <a href="#" class="delete-list" onclick="deleteList('${list.lid}', this); return false;">Delete</a>
+                  `;
+            
+                  const listContent = document.createElement("ul");
+                  count=0;
+                  if (list.listcontents.length > 0) {
+                    
+                    for(const item of list.listcontents) {
+                      var isAvailable=false;
+                      var productHandle2=item.du.split("/");
+                      var productHandle=productHandle2[productHandle2.length - 1];
+                      var addToCart="";
+                      var price=0;
+                      // Use fetch to retrieve product JSON data
+                      fetch(`/products/${productHandle}.js`)
+                        .then(response => response.json())
+                        .then(product => {
+                          addToCart="";
+                          // Log or use the product data as needed
+                          console.log('Product Data:', product);
+                          price=product.price;
+                         if(product.available == true)
+                         {
+                          isAvailable=true;
+
+                         }
+                         product.variants.forEach(variant => {
+                          if(variant.id)
+                          if(variant.available == true)
+                            if(addToCart =="")
+                            addToCart=`<button class="js__wishlist-add-to-cart" data-variant-id="${variant.id}">Add to Cart</button>`;
+                            price=variant.price;
+                        });
+                      console.log("product isAvailable"+isAvailable);
+                      var formattedPrice = formatter.format(price / 100);
+                    //  const isAvailable = await checkStock(item.dt);
+                    const itemElement = document.createElement("li");
+                    itemElement.classList.add("wishlist-item");
+                    itemElement.innerHTML = `
+                      <a href ="${item.du}">
+                      <div class="image"><img src="${item.iu}" alt="${item.dt}" >
+                        ${addToCart}
+                      </div>
+                      <span class="title"> ${item.dt}</span>
+                      <span class="price">  ${formattedPrice}</span>
+                      <button class="remove-item"  onclick="removeFromList('${list.lid}', '${item.epi}', '${item.empi}', '${item.du}', 'guest',this); return false;"></button>
+                      </a>
+                     
+                      `;
+                    listContent.appendChild(itemElement);
+                     
+                    })
+                    count++;
+                    };
+                  } else {
+                    listContent.innerHTML = `<li class="full">There are no items in this list</li>`;
+                  }
+                  
+                  $(".js__wishlist-items").html(count)
+            
+                //  guestContainer.appendChild(listHeader);
+                  guestContainer.appendChild(listContent);
+                };
+              }
+            
+              // Function to handle user-specific list rendering when logged in
+              function renderUserLists(data) {
+                userContainer.innerHTML = "";
+            
+                if (data.status === "success" && data.data.length > 0) {
+                  data.data.forEach(userList => {
+                    const userListHeader = document.createElement("div");
+                    userListHeader.innerHTML = `
+                      <span>${userList.lname}</span>
+                      <a href="#" class="delete-list" onclick="deleteList('${userList.lid}', this); return false;">Delete</a>
+                    `;
+            
+                    const userListContent = document.createElement("ul");
+              
+                    let listConfig = { "lid": userList.lid };
+                    count=0;
+                    swat.fetchListCtx(listConfig, async function(listContents) {
+                      if (listContents.length > 0) {
+                        for (const item of listContents) {
+                          var isAvailable=false;
+                          var productHandle2=item.du.split("/");
+                          var productHandle=productHandle2[productHandle2.length - 1];
+                          var addToCart="";
+                          var price=0;
+                          // Use fetch to retrieve product JSON data
+                          fetch(`/products/${productHandle}.js`)
+                          .then(response => response.json())
+                          .then(product => {
+                            addToCart="";
+                            // Log or use the product data as needed
+                            console.log('Product Data:', product);
+                            price=product.price;
+                           if(product.available == true)
+                           {
+                            isAvailable=true;
+  
+                           }
+                           product.variants.forEach(variant => {
+                            if(variant.id)
+                            if(variant.available == true)
+                              if(addToCart =="")
+                              addToCart=`<button class="js__wishlist-add-to-cart" data-variant-id="${variant.id}">Add to Cart</button>`;
+                              price=variant.price;
+                          });
+                        console.log("product isAvailable"+isAvailable);
+                        var formattedPrice = formatter.format(price / 100);
+                        //  const isAvailable = await checkStock(item.dt);
+                          const itemElement = document.createElement("li");
+                          itemElement.classList.add("wishlist-item");
+                          itemElement.innerHTML = `
+                            <a href ="${item.du}">
+                              <div class="image"><img src="${item.iu}" alt="${item.dt}" >
+                               {% comment %} <button onclick="addToCart('${item.epi}', 1)">Add to Cart</button> {% endcomment %}
+                                   ${addToCart}
+                              </div>
+                              <span class="title"> ${item.dt}</span>
+                              <span class="price">  ${formattedPrice}</span>
+                              <button  class="remove-item"  onclick="removeFromList('${userList.lid}', '${item.epi}', '${item.empi}', '${item.du}', 'user', this); return false;"></button>
+                            </a>
+                            {% comment %} <button onclick="addToCart('${item.epi}', 1)">Add to Cart</button> {% endcomment %}
+                            `;
+                          userListContent.appendChild(itemElement);
+                         
+                        })
+                        count++;
+                        };
+                      } else {
+                        userListContent.innerHTML = `<li class="full">There are no items in this list</li>`;
+                      }
+                      $(".js__wishlist-items").html(count)
+                    }, function(error) {
+                      console.log("Error fetching List Contents", error);
+                    });
+            
+              
+                   // userContainer.appendChild(userListHeader);
+                    userContainer.appendChild(userListContent);
+                  });
+                } else {
+                  userContainer.innerHTML = "<p>No user lists available.</p>";
+                }
+              }
+              let onUserListsError = function(error) {
+                document.getElementById("userListContainer").innerHTML = "<p>You are not logged in.</p>";
+                console.log("Error while fetching user lists", error);
+              };
+            // Function to add to cart
+           /* window.addToCart = function(variantId, quantity) {
+              fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: variantId, quantity: quantity })
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log("Added to cart:", data);
+              })
+              .catch(error => {
+                console.error("Error adding to cart:", error);
+              });
+            }*/
+              
+            
+              // Define list deletion function with immediate DOM removal
+              window.deleteList = function(lid, element) {
+                const listElement = element.closest(".accordion-header");
+                listElement.nextElementSibling.remove();
+                listElement.remove();
+            
+                let onDeleteSuccess = function() {
+                  swat.fetchLists({ callbackFn: renderNonLoggedInLists, errorFn: onError });
+                };
+                let onDeleteError = function(error) {
+                  console.log(`Error while deleting the List, ${lid}`, error);
+                };
+            
+                swat.deleteList(lid, onDeleteSuccess, onDeleteError);
+              };
+            
+              // Function to remove item from list with immediate DOM removal
+              window.removeFromList = function(lid, epi, empi, du, userType, element) {
+                const product = { epi, empi, du };
+                const itemElement = element.closest(".wishlist-item");
+
+                let onSuccess = function() {
+                  // Only decrement count and update DOM after successful deletion
+                  itemElement.remove();
+                  {% comment %} count = 10; {% endcomment %}
+                  $(".js__wishlist-items").html(count);
+              
+                  if (count === 0) {
+                    if (userType === "user") {
+                      userListContainer.innerHTML = "<ul><li class='full'>There are no items in this list</li></ul>";
+                    } else {
+                      wishlistContainer.innerHTML = "<ul><li class='full'>There are no items in this list</li></ul>";
+                    }
+                  }
+
+                     // Refetch the lists to ensure accurate state in case other items were added/removed
+                  swat.fetchLists({ callbackFn: renderNonLoggedInLists, errorFn: onError });
+                  swat.wishlist.fetchUserLists(renderUserLists, onUserListsError);
+                };
+
+                let onError = function(error) {
+                  console.log("Error while deleting the Product", error);
+                  alert("Error removing item from wishlist. Please try again.");
+                };
+            
+                swat.deleteFromList(lid, product, onSuccess, onError);
+              };
+            
+              // Error handler for list fetching
+              let onError = function(error) {
+                console.log("Error while fetching all Lists", error);
+              };
+              
+            
+              // Fetch user-specific lists if logged in, otherwise show general lists
+              function fetchListsBasedOnUserStatus() {
+              {% if customer %}
+                swat.wishlist.fetchUserLists(renderUserLists, onError);
+              {% else %}
+                swat.fetchLists({ callbackFn: renderNonLoggedInLists, errorFn: onError });
+              {% endif %}
+            }
+          
+           fetchListsBasedOnUserStatus();
+
+           const cartIcon = document.querySelector(".js__cart-expand");
+           if (cartIcon) {
+            cartIcon.addEventListener("click", function(){
+            fetchListsBasedOnUserStatus();
+            });
+          }
+        }
+            // Load SWYM callback if not already present
+            if (!window.SwymCallbacks) {
+              window.SwymCallbacks = [];
+            }
+            window.SwymCallbacks.push(onSwymLoadCallback);
+            </script>
+
+            <!-- User-specific lists section -->
+         
+             {% if customer %}
+              <div class="user-list-page">
+                <p>Ready to get started?</p>
+                <span class="items "><span class="js__wishlist-items"></span> Items</span>
+                <div id="userListContainer"><p>Loading</p></div>
+              </div>
+    {%- else -%}
+      <!-- Main wishlist section -->
+      <div class="wishlist-page">
+        <p>Ready to get started?</p>
+        <span class="items "><span class="js__wishlist-items">0</span> Items</span>
+        <div id="wishlistContainer"><p>Loading</p></div>
+      </div>
+    {%- endif -%}
+         
+ 
+          </div>
+          
+      </div>
+      <div class="cart-tab-content my-order" id="tab-myorders">
+        <div class="inner-wrapper">
+          <button class="icon-close js__cart-close" id="js__cart-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <g clip-path="url(#clip0_4342_1083)">
+              <path d="M0.547791 0.777832L13.1168 13.4479" stroke="#84827E" stroke-linecap="round"/>
+              <path d="M0.884399 13.4478L13.4534 0.777621" stroke="#84827E" stroke-linecap="round"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_4342_1083">
+              <rect width="14" height="14" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+            </button>
+        <p class="name">Your orders, {{customer.name}}</p>
+      <ul class="accordian js__accordian">
+        <li class="active">
+          <p>My Order</p>
+          <div class="content">
+
+            {% paginate customer.orders  %}
+              {% if customer.orders.size != 0 %}
+                {% for order in customer.orders %}
+                  <div class="order-item" data-order-date="{{ order.created_at }}">
+                  <ul class="order-info">
+                    <li><b>Date</b>
+                    <span>{{ order.created_at | date: '%Y/%m/%d' }}</span></li>
+                    <li><b>Order Number</b>
+                    <span>{{ order.name }}</li>
+                    <li><b>Order Total</b>
+                    <span> {{- order.total_price | money }}</span></li>
+                    </ul>
+                    <ul class="item-list">
+                  {% for line_item in order.line_items %}
+                  
+                    <li>
+                      <div class="image">
+                    <img
+                      data-src="{{  line_item.product.images[0] | img_url: '558x558' }}"
+                      src="{{  line_item.product.images[0] | img_url: '558x558' }}"
+                      alt="{{ line_item.product.alt | escape }}"
+                      loading="lazy"
+                    >
+                      </div>
+                      <span class="title"> {{ line_item.title  }}</span>
+                      </li>
+                    
+                  {% endfor %}
+                  </ul>
+                  <a class="btn btn--secondary" href="{{ order.customer_url }}">Order Details</a>
+                </div>
+                  {% endfor %}
+                
+                {%- else -%}
+                <span>No Orders</span>
+              {%- endif -%}
+            {% endpaginate %}
+            <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const orders = document.querySelectorAll('.order-item');
+                const ninetyDaysAgo = new Date();
+                ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
+              
+                orders.forEach(order => {
+                  const orderDate = new Date(order.getAttribute('data-order-date'));
+                  if (orderDate < ninetyDaysAgo) {
+                    order.style.display = 'none';
+                  }
+                });
+              });
+            </script>
+          </div>
+        </li>
+      </ul>
+      </div>
+      </div>
+    </div>
+    <div class="cart-sidebar__footer js__top-cart-form-actions">
+      <div class="inner-wrapper">
+      <div class="cart-total">
+        <div class="flex-space-between total-discount" style="display:none">
+          <span>You Saved</span><span class="js__cart-total-discount"></span>
+        </div>
+         {% comment %} 
+        <div class="flex-space-between js__cartSubtotalDiscountWraper  total-discount">
+          <span>You Saved</span><span class="js__cart-total-saved"></span>
+        </div>
+        {% endcomment %}
+        <div class="flex-space-between js__free-shipping-message hide">
+          <p>Taxes & Shipping</p>
+          <p>Calculated at checkout</p>
+        </div>
+        <div class=" cart-subtotal flex-space-between">
+          <span>subtotal (<span class="js__ajax-cart-count cart-count"> {{ cart.item_count }}</span> Items)</span>
+          <span class="subtotal js__ajax-cart-total"></span>
+        </div>
+        
+        {% comment %}
+          <div class="flex-space-between js__free-shipping-message shiipin-msg hide">
+            <span>Shipping</span>
+            <b class="">Free!</b>
+          </div>
+        {% endcomment %}
+        
+      </div>
+
+
+      <!-- Footer Actions -->
+      <div class="js__top-cart-form-actions width-100">
+        <form action="/cart" method="post" class="">
+          <button class="btn--secondary width-100" type="submit" id="checkout" name="checkout">CHECKOUT</button>
+          <div class="cart__dynamic-checkout-buttons additional-checkout-buttons--vertical">
+            {{ content_for_additional_checkout_buttons }}
+          </div>
+          
+        </form>
+        {% comment %} 
+        <button class="btn--primary width-100" type="submit" id="checkout" name="checkout">Buy With 
+          <img class="icon-pay"src="{{'apple-pay-logo.png' | asset_url }}" alt="buy with apple pay">
+       
+        </button>
+       <a href="/cart" class="btn-black-border width-100" title="View Cart">VIEW MY CART</a> {% endcomment %}
+       
+      </div>
+
+      {% comment %} Footer Info {% endcomment %}
+     
+       <div class="bottom-info-list">
+        <ul class="flex">
+          <li>
+            
+            <img class="lazyload" data-src="{{ settings.infoimage1 | img_url: 'master' }}" alt="{{settings.info1}}">
+            {% comment %} <img src="{{ 'icon-money-back.svg'| asset_url  }}"> {% endcomment %}
+              <span>{{ settings.info1 }}</span>
+              
+          </li>
+          <li>
+           
+            <img class="lazyload" data-src="{{ settings.infoimage2 | img_url: 'master' }}" alt="{{settings.info2}}">
+            {% comment %} <img src="{{ 'icon-free-car.svg'| asset_url  }}">   {% endcomment %}
+            <span>{{ settings.info2 }}</span>
+              
+          </li>
+        </ul>
+       </div>
+      </div>
+      
+    </div>
+    {% include 'product-modal-minicart-simple' %}
+  </div>
+{% endif %}
+<script>
+  var cartAjaxItems = [
+    {% if cart.item_count > 1 %}
+  {% for item in cart.items %}
+  {
+    "id": "{{ item.id }}",
+      "addons": "{{ item.product.metafields.addon.product_handle}}"
+  } {% unless forloop.last %}, {% endunless %}
+  {% endfor %}
+  {% endif %}
+  ];
+
+
+</script>
+
+<div class="js__minicart-rec-items hide">
+  {% if settings.product_1 != blank %}
+    {% assign productRecommed = all_products[settings.product_1] %}
+    {% if productRecommed.metafields.product.image != blank -%}
+      {% assign productRecImage = productRecommed.metafields.product.image | first %}
+      {% assign productRecommedImage = productRecImage.cloudinary_src %}
+        {%- else -%}
+          {% assign productRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+        {%- endif -%}
+        {% assign productPopupRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+       
+  {%- assign productRecVariant = productRecommed.selected_or_first_available_variant -%}
+  {%  assign productRecommedBenefits = "" %}
+  {% for header in productRecommed.metafields['info-small-tabs'].title %}
+    {% assign title = productRecommed.metafields['info-small-tabs'].title[forloop.index0] %}
+    {% assign titleid = productRecommed.metafields['info-small-tabs'].title[forloop.index0]
+      | downcase
+      | remove: ' '
+    %}
+    
+    {% if titleid == 'benefits' %}
+   
+         {%  assign productRecommedBenefits = productRecommed.metafields['info-small-tabs'].description[forloop.index0] | default: ""  %}
+    
+       
+    {% endif %}
+  {% endfor %}
+    
+ 
+    <div data-id="{{productRecommed.id}}" class="swiper-slide slider addons-slide addons-slide-{{ productRecVariant.id }}"  data-attr-variantid="{{ productRecVariant.id }}"><div class="image-section"><a href="{{productRecommed.url}}" title="{{productRecommed.title}}"> <img class="lazyload"  src="{{productRecommedImage}}"   >  </a>    </div> <div class="content">   <p>   <a href="{{productRecommed.url }}" title="{{productRecommed.title}}">{{productRecommed.title}}</a>  </p>  <p class="product-card__price">    <span>{{ productRecVariant.price | money }}</span> <s style="display:none">{{ productRecVariant.compare_at_price | money }}</s>  </p>  <div class="add-link"> <button  class="freq-add js__quick-view-mini-cart-click"   title="{{ productRecommed.title }}"      href="javascript:;"   title="Shop {{ productRecommed.title }}" data-id="mini-cart-'+valueRecommedProduct.product_id+'" data-attr-variantid="{{ productRecVariant.id }}" data-attr-productid="{{ productRecommed.id }}" data-available="{{ productRecommed.available }}" data-image="{{ productPopupRecommedImage }}"  >Quick Add +</button> <div class="js__benefits" style="display:none">{{productRecommedBenefits}}</div>  </div> </div> </div>
+ 
+  {% endif %}
+
+  {% if settings.product_2 != blank %}
+    {% assign productRecommed = all_products[settings.product_2] %}
+    {% if productRecommed.metafields.product.image != blank -%}
+      {% assign productRecImage = productRecommed.metafields.product.image | first %}
+      {% assign productRecommedImage = productRecImage.cloudinary_src %}
+        {%- else -%}
+          {% assign productRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+        {%- endif -%}
+        {% assign productPopupRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+       
+  {%- assign productRecVariant = productRecommed.selected_or_first_available_variant -%}
+  {%  assign productRecommedBenefits = "" %}
+  {% for header in productRecommed.metafields['info-small-tabs'].title %}
+    {% assign title = productRecommed.metafields['info-small-tabs'].title[forloop.index0] %}
+    {% assign titleid = productRecommed.metafields['info-small-tabs'].title[forloop.index0]
+      | downcase
+      | remove: ' '
+    %}
+    
+    {% if titleid == 'benefits' %}
+   
+         {%  assign productRecommedBenefits = productRecommed.metafields['info-small-tabs'].description[forloop.index0] | default: ""  %}
+    
+       
+    {% endif %}
+  {% endfor %}
+    
+ 
+    <div data-id="{{productRecommed.id}}" class="swiper-slide slider addons-slide addons-slide-{{ productRecVariant.id }}"  data-attr-variantid="{{ productRecVariant.id }}"><div class="image-section"><a href="{{productRecommed.url}}" title="{{productRecommed.title}}"> <img class="lazyload"  src="{{productRecommedImage}}"   >  </a>    </div> <div class="content">   <p>   <a href="{{productRecommed.url }}" title="{{productRecommed.title}}">{{productRecommed.title}}</a>  </p>  <p class="product-card__price">    <span>{{ productRecVariant.price | money }}</span> <s style="display:none">{{ productRecVariant.compare_at_price | money }}</s>  </p>  <div class="add-link"> <button  class="freq-add js__quick-view-mini-cart-click"   title="{{ productRecommed.title }}"      href="javascript:;"   title="Shop {{ productRecommed.title }}" data-id="mini-cart-'+valueRecommedProduct.product_id+'" data-attr-variantid="{{ productRecVariant.id }}" data-attr-productid="{{ productRecommed.id }}" data-available="{{ productRecommed.available }}" data-image="{{ productPopupRecommedImage }}"  >Quick Add +</button> <div class="js__benefits" style="display:none">{{productRecommedBenefits}}</div>  </div> </div> </div>
+ 
+  {% endif %}
+
+  {% if settings.product_3 != blank %}
+    {% assign productRecommed = all_products[settings.product_3] %}
+    {% if productRecommed.metafields.product.image != blank -%}
+      {% assign productRecImage = productRecommed.metafields.product.image | first %}
+      {% assign productRecommedImage = productRecImage.cloudinary_src %}
+        {%- else -%}
+          {% assign productRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+        {%- endif -%}
+        {% assign productPopupRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+       
+  {%- assign productRecVariant = productRecommed.selected_or_first_available_variant -%}
+  {%  assign productRecommedBenefits = "" %}
+  {% for header in productRecommed.metafields['info-small-tabs'].title %}
+    {% assign title = productRecommed.metafields['info-small-tabs'].title[forloop.index0] %}
+    {% assign titleid = productRecommed.metafields['info-small-tabs'].title[forloop.index0]
+      | downcase
+      | remove: ' '
+    %}
+    
+    {% if titleid == 'benefits' %}
+   
+         {%  assign productRecommedBenefits = productRecommed.metafields['info-small-tabs'].description[forloop.index0] | default: ""  %}
+    
+       
+    {% endif %}
+  {% endfor %}
+    
+ 
+    <div data-id="{{productRecommed.id}}" class="swiper-slide slider addons-slide addons-slide-{{ productRecVariant.id }}"  data-attr-variantid="{{ productRecVariant.id }}"><div class="image-section"><a href="{{productRecommed.url}}" title="{{productRecommed.title}}"> <img class="lazyload"  src="{{productRecommedImage}}"   >  </a>    </div> <div class="content">   <p>   <a href="{{productRecommed.url }}" title="{{productRecommed.title}}">{{productRecommed.title}}</a>  </p>  <p class="product-card__price">    <span>{{ productRecVariant.price | money }}</span> <s style="display:none">{{ productRecVariant.compare_at_price | money }}</s>  </p>  <div class="add-link"> <button  class="freq-add js__quick-view-mini-cart-click"   title="{{ productRecommed.title }}"      href="javascript:;"   title="Shop {{ productRecommed.title }}" data-id="mini-cart-'+valueRecommedProduct.product_id+'" data-attr-variantid="{{ productRecVariant.id }}" data-attr-productid="{{ productRecommed.id }}" data-available="{{ productRecommed.available }}" data-image="{{ productPopupRecommedImage }}"  >Quick Add +</button> <div class="js__benefits" style="display:none">{{productRecommedBenefits}}</div>  </div> </div> </div>
+ 
+  {% endif %}
+
+  {% if settings.product_4 != blank %}
+    {% assign productRecommed = all_products[settings.product_4] %}
+    {% if productRecommed.metafields.product.image != blank -%}
+      {% assign productRecImage = productRecommed.metafields.product.image | first %}
+      {% assign productRecommedImage = productRecImage.cloudinary_src %}
+        {%- else -%}
+          {% assign productRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+        {%- endif -%}
+        {% assign productPopupRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+       
+  {%- assign productRecVariant = productRecommed.selected_or_first_available_variant -%}
+  {%  assign productRecommedBenefits = "" %}
+  {% for header in productRecommed.metafields['info-small-tabs'].title %}
+    {% assign title = productRecommed.metafields['info-small-tabs'].title[forloop.index0] %}
+    {% assign titleid = productRecommed.metafields['info-small-tabs'].title[forloop.index0]
+      | downcase
+      | remove: ' '
+    %}
+    
+    {% if titleid == 'benefits' %}
+   
+         {%  assign productRecommedBenefits = productRecommed.metafields['info-small-tabs'].description[forloop.index0] | default: ""  %}
+    
+       
+    {% endif %}
+  {% endfor %}
+    
+ 
+    <div data-id="{{productRecommed.id}}" class="swiper-slide slider addons-slide addons-slide-{{ productRecVariant.id }}"  data-attr-variantid="{{ productRecVariant.id }}"><div class="image-section"><a href="{{productRecommed.url}}" title="{{productRecommed.title}}"> <img class="lazyload"  src="{{productRecommedImage}}"   >  </a>    </div> <div class="content">   <p>   <a href="{{productRecommed.url }}" title="{{productRecommed.title}}">{{productRecommed.title}}</a>  </p>  <p class="product-card__price">    <span>{{ productRecVariant.price | money }}</span> <s style="display:none">{{ productRecVariant.compare_at_price | money }}</s>  </p>  <div class="add-link"> <button  class="freq-add js__quick-view-mini-cart-click"   title="{{ productRecommed.title }}"      href="javascript:;"   title="Shop {{ productRecommed.title }}" data-id="mini-cart-'+valueRecommedProduct.product_id+'" data-attr-variantid="{{ productRecVariant.id }}" data-attr-productid="{{ productRecommed.id }}" data-available="{{ productRecommed.available }}" data-image="{{ productPopupRecommedImage }}"  >Quick Add +</button> <div class="js__benefits" style="display:none">{{productRecommedBenefits}}</div>  </div> </div> </div>
+ 
+  {% endif %}
+</div>

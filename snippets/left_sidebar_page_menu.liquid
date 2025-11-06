@@ -1,0 +1,39 @@
+{% if section.settings.title != blank %}
+  <div class="left-sidebar">
+    <div class="container-260">
+      <div class="title">
+        <span>{{ section.settings.title }}</span>
+      </div>
+      {% assign pageMenu = linklists[section.settings.page_menu] %}
+      {% if pageMenu.links != blank %}
+        <ul class="pageLinks">
+          {% for link in pageMenu.links %}
+            <li>
+              <a
+                href="{{ link.url}}"
+                title="{{ link.title | escape }}"
+                {%- if link.active %}
+                  aria-current="page"
+                {% endif -%}
+                class="page-link {%- if link.active %} current-page{% endif -%}"
+              >
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% if section.settings.show_info == true %}
+        <div class="more-info full-format">
+          {{ section.settings.more_info }}
+        </div>
+      {% endif %}
+      {% if section.settings.show_socialIcons == true %}
+        <div class="social-icons-section">
+          <span>Connect</span>
+          {% render 'social-icons' %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

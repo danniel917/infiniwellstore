@@ -1,0 +1,180 @@
+<div class="contact-us">
+  <div class="container-1340 flex">
+    {% render 'left-sidebar' %}
+      <div class="right-sidebar">
+
+ <div class="inner-section flex" style="margin-top: 40px;">
+        <div class="left-section">
+          <ul class="ipad-none">
+            {% if settings.chattitle != blank %}
+              <li class="chat">
+                <h2 class="h3">{{ settings.chattitle }}</h2>
+
+                {% if settings.chatdescription != blank %}
+                  <div class="full-format small">
+                    {{ settings.chatdescription }}
+                  </div>
+                {% endif %}
+                {% if settings.chatText != blank or settings.chatLink != blank %}
+                  <a
+                    href="{{settings.chatLink}}"
+                    class="btn--primary"
+                    title="{{settings.chatText}}">
+                    {{- settings.chatText -}}
+                  </a>
+                {% endif %}
+              </li>
+            {% endif %}
+            {% if settings.phonetitle != blank %}
+              <li class="phone">
+                <h2 class="h3">{{ settings.phonetitle }}</h2>
+                {% if settings.contactdescription != blank %}
+                  <div class="full-format small">
+                    {{ settings.contactdescription }}
+                  </div>
+                {% endif %}
+              </li>
+            {% endif %}
+            {% if settings.emailtitle != blank %}
+              <li class="email">
+                <h2 class="h3">{{ settings.emailtitle }}</h2>
+
+                {% if settings.emailAddressdesc != blank %}
+                  <div class="full-format small">
+                    {{ settings.emailAddressdesc }}
+                  </div>
+                {% endif %}
+              </li>
+            {% endif %}
+          </ul>
+          <div class="contact-section ipad-block">
+            <ul>
+              {% if settings.chattitle != blank %}
+                <li>
+                  {% render 'icon-contact' %}
+                  <span>{{ settings.chattitle }}</span>
+                  <a href="tel:{{settings.chatnumber}}" title="{{ settings.chatnumber }}">{{ settings.chatnumber }}</a>
+                </li>
+              {% endif %}
+              {% if settings.texttitle != blank %}
+                <li>
+                  {% render 'icon-message' %}
+                  <span>{{ settings.texttitle }}</span>
+                  <a href="tel:{{ settings.textnumber }}" title="{{ settings.textnumber }}">
+                    {{- settings.textnumber -}}
+                  </a>
+                </li>
+              {% endif %}
+              {% if settings.phonemobtitle != blank %}
+                <li>
+                  {% render 'icon-phone' %}
+                  <span>{{ settings.phonemobtitle }}</span>
+                  <a href="tel:{{ settings.number }}" title="{{ settings.number }}">{{ settings.number }}</a>
+                </li>
+              {% endif %}
+              {% if settings.emailtitle != blank %}
+                <li>
+                  {% render 'icon-message' %}
+                  <span>{{ settings.emailtitle }}</span>
+                  <a href="mailto:{{settings.emailAddress}}" title="mail-{{settings.emailAddress}}">
+                    {{ settings.emailAddress -}}
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="right-section">
+          <ul>
+            {% if settings.officeadd != blank or settings.addtitle != blank %}
+              <li class="address">
+                <h2 class="h3">{{ settings.addtitle }}</h2>
+                <div class="description full-format">
+                  {{ settings.officeadd }}
+                </div>
+              </li>
+            {% endif %}
+            {% if settings.hrtitle != blank %}
+              <li class="hour">
+                <h2 class="h3">{{ settings.hrtitle }}</h2>
+
+                <div class="time">
+                  <p>
+                    <span>{{ settings.weekdays }}</span>
+                    {{ settings.weekdayshr }}</p>
+                  <p>
+                    <span>{{ settings.weekend }}</span>
+                    {{ settings.weekendshr }}</p>
+                </div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+        
+      {% comment %} Gorgias Form {% endcomment %}
+      <script
+        defer
+        src="https://help-center.gorgias.help/api/help-centers/loader.js?v=2"
+        data-gorgias-loader-help-center
+        data-gorgias-help-center-uid="gpvzocj5"></script>
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45647029.66614474!2d-129.94270855!3d46.423669000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88425ef3e42ec7d9%3A0xf2ab57e5f25af180!2sInfiniWell!5e1!3m2!1sen!2sus!4v1744206399995!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" style="margin-bottom:40px;" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  
+      {% if section.settings.storeTitle != blank %}
+        <div class="middle-section hide">
+          <h2 class="h3">{{ section.settings.storeTitle }}</h2>
+          <div class="box flex">
+            <h3>APP PLACEHOLDER</h3>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Cantact Us",
+    "settings": [
+      {
+        "type": "header",
+        "content": "SideBar Info"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Overwrite Title",
+        "info": "By default it will take Page Title"
+      },
+      {
+        "type": "text",
+        "id": "title2",
+        "label": "Overwrite Title (Grey)",
+        "info": "By default it will take Page Title"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      }, {
+        "type": "link_list",
+        "id": "page_Menu",
+        "label": "Menu"
+      }, {
+        "type": "header",
+        "content": "Store Info"
+      }, {
+        "type": "text",
+        "id": "storeTitle",
+        "label": "Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Cantact Us"
+      }
+    ]
+  }
+{% endschema %}

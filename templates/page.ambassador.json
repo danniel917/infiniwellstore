@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "innerBanner": {
+      "type": "inner-hero-section",
+      "settings": {
+        "image": "shopify://shop_images/Banner_-_Desktop.jpg",
+        "mobileImage": "shopify://shop_images/Banner_-_Mobile.jpg",
+        "title": "Virtual Dispensary",
+        "description": "",
+        "buttonText1": "Account Login",
+        "buttonLink1": "https://tmh.refersion.com/affiliate/login",
+        "buttonText2": "Apply Now",
+        "buttonLink2": "https://tmh.refersion.com/affiliate/registration",
+        "content_alignment": "center",
+        "smallHeight": true,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "1c3cfb64-6a28-416e-9d87-83e2ed4fb8ef": {
+      "type": "full-width-content",
+      "settings": {
+        "title1": "Looking To Open",
+        "title2": "A Virtual Dispensary?",
+        "description": "<p>InfiniWell is now taking applications to open a virtual dispensary! We started InfiniWell Virtual Dispensaries to help physicians take their passion for health and wellness, and spread their knowledge and passion to their audiences.</p>",
+        "buttonText": "Apply Now",
+        "buttonLink": "https://tmh.refersion.com/affiliate/registration",
+        "paddingtop": 90,
+        "paddingtopmobile": 80,
+        "paddingbottom": 0,
+        "paddingbottommobile": 0
+      }
+    },
+    "f2880a02-fc08-4f4e-bb7f-1b4c30f37b30": {
+      "type": "three-columns-steps",
+      "blocks": {
+        "61fde6ae-3b35-435e-bc0a-7a0c4a28ed23": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Apply.jpg",
+            "title": "Apply In Seconds",
+            "description": "<p>It's fast and easy to apply to open an InfiniWell Virtual Dispensary.</p>"
+          }
+        },
+        "239ca240-1f6e-4b00-afa9-62e35c2fa7b7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Approval.jpg",
+            "title": "GET APPROVED",
+            "description": "<p>Your application will be reviewed within 48 hours.</p>"
+          }
+        },
+        "a3e8de80-0fa5-4cc8-8d8c-f1c6f87d6242": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Earn.jpg",
+            "title": "SHARE & EARN COMMISSIONS",
+            "description": "<p>Share your passion for health & wellness and get paid 30% of all sales you make.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "61fde6ae-3b35-435e-bc0a-7a0c4a28ed23",
+        "239ca240-1f6e-4b00-afa9-62e35c2fa7b7",
+        "a3e8de80-0fa5-4cc8-8d8c-f1c6f87d6242"
+      ],
+      "settings": {
+        "title1": "Get Started",
+        "title2": "Today",
+        "buttonText": "Apply Now",
+        "buttonLink": "https://tmh.refersion.com/affiliate/registration"
+      }
+    },
+    "aa8e333f-884a-44fe-98d1-36ad601de602": {
+      "type": "full-width-content",
+      "settings": {
+        "title1": "Who",
+        "title2": "We ARE",
+        "description": "<p>InfiniWell is a longevity focused supplement company with a portfolio of products that help people optimize all aspects of their health. We only offer products with ingredients that have proven efficacy in clinical studies to aid in optimizing a specific health outcome. InfiniWell is a company that is always excited about the latest innovations in the supplement space, and we're looking for physicians that share that same passion for wellness.  </p>",
+        "buttonText": "",
+        "buttonLink": "",
+        "paddingtop": 90,
+        "paddingtopmobile": 80,
+        "paddingbottom": 0,
+        "paddingbottommobile": 0
+      }
+    },
+    "f18807a1-4ce8-465c-a9a3-d9de75b93a9c": {
+      "type": "half-conent-half-list",
+      "blocks": {
+        "566d598e-68f5-4831-8c89-095c3516bf56": {
+          "type": "list",
+          "settings": {
+            "list": "Get 30% of all sales made through your custom link"
+          }
+        },
+        "e4157263-a45f-423c-aa73-c20026b83a20": {
+          "type": "list",
+          "settings": {
+            "list": "30 day cookie tracking ensures you're credited for all sales"
+          }
+        },
+        "3bda8088-3d1a-4d1a-b361-a9ebb687977d": {
+          "type": "list",
+          "settings": {
+            "list": "Your links can be set to run to any page on our website"
+          }
+        },
+        "65196e62-eed3-48f7-97fc-d019ef6da9e1": {
+          "type": "list",
+          "settings": {
+            "list": "Commissions are paid out monthly"
+          }
+        },
+        "a2c5de59-7c77-42ab-a9e6-f2f1b49f3388": {
+          "type": "list",
+          "settings": {
+            "list": "InfiniCare account support"
+          }
+        },
+        "bb5f2d95-6dce-4ea3-9ab7-868996c9b521": {
+          "type": "list",
+          "disabled": true,
+          "settings": {
+            "list": "Nunc congue nisi vitae suscipit tellus maecenas."
+          }
+        }
+      },
+      "block_order": [
+        "566d598e-68f5-4831-8c89-095c3516bf56",
+        "e4157263-a45f-423c-aa73-c20026b83a20",
+        "3bda8088-3d1a-4d1a-b361-a9ebb687977d",
+        "65196e62-eed3-48f7-97fc-d019ef6da9e1",
+        "a2c5de59-7c77-42ab-a9e6-f2f1b49f3388",
+        "bb5f2d95-6dce-4ea3-9ab7-868996c9b521"
+      ],
+      "settings": {
+        "title1": "WHY YOU’LL",
+        "title2": "LOVE IT",
+        "description": "<p>The InfiniWell Virtual Dispensary program was created to provide all the tools necessary to let creators spend more time reaching and engaging with their audiences about health and wellness. InfiniWell offers complete support, as well as resources to make getting started easy. </p>",
+        "buttonText": "Apply Now",
+        "buttonLink": "https://tmh.refersion.com/affiliate/registration"
+      }
+    },
+    "e6c2d757-f5d2-4499-b75a-48e1a693783c": {
+      "type": "half-image-half-content",
+      "blocks": {
+        "df6ce03b-32f1-40c0-aebe-64d7a1422e76": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title1": "Resources",
+            "title2": "dignissim enim",
+            "description": "<p>Lectus sit amet est placerat. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Quam vulputate dignissim suspendisse in est ante in. Arcu dui vivamus arcu felis bibendum ut.</p><ul><li>Lectus sit amet est placerat.</li><li>Nunc congue nisi vitae suscipit </li><li>Quam vulputate dignissim suspendisse.</li><li>Arcu dui vivamus arcu felis bibendum ut.</li></ul>",
+            "buttonText": "Sign Up",
+            "buttonLink": "",
+            "fontSize": false,
+            "center": false
+          }
+        }
+      },
+      "block_order": [
+        "df6ce03b-32f1-40c0-aebe-64d7a1422e76"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg": false
+      }
+    }
+  },
+  "order": [
+    "innerBanner",
+    "1c3cfb64-6a28-416e-9d87-83e2ed4fb8ef",
+    "f2880a02-fc08-4f4e-bb7f-1b4c30f37b30",
+    "aa8e333f-884a-44fe-98d1-36ad601de602",
+    "f18807a1-4ce8-465c-a9a3-d9de75b93a9c",
+    "e6c2d757-f5d2-4499-b75a-48e1a693783c"
+  ]
+}

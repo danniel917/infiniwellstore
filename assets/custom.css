@@ -1,0 +1,61 @@
+.product-card .oke-sr-count * {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    color: #787978;
+    letter-spacing: normal;
+}
+
+.product-card .sub-title {
+  display: block;
+  width: 100%;
+}
+
+.swiper-wrapper p a {
+  font-weight: 700;
+}
+
+.my-wishlist p {
+  color: #84827e;
+  text-align: center;
+  font-size: 15px;
+  display: block;
+  width: 100%;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 10px;
+  letter-spacing: .264px;
+}
+
+.freq-product-list .swiper-slide .content p a {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: .01px;
+  color: #84827e;
+  min-height: 30px;
+  max-height: 30px;
+  overflow: hidden;
+}
+
+.modal-quick-view-mini-cart .product__info > p {
+    color: #84827e !important;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+p#shopify-pc__banner__body-title {
+  color: hsl(0deg, 0%, 0%, 100%);
+  font-family: inherit;
+  font-size: 120%;
+  margin: 0 0 .5em 0;
+  padding: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .23px;
+}

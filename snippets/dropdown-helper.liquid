@@ -1,0 +1,83 @@
+<script>
+  console.log('Dropdown helper is being loaded');
+  // Get all elements that can be clicked
+  const clickableElements = document.querySelectorAll('.dropdown-header');
+  // Add click event listener to each clickable element
+  clickableElements.forEach(element => {
+    element.addEventListener('click', () => {
+      // Get the parent element
+      const parentElement = element.parentElement;
+      // Toggle the "expanded" class on the parent element
+      parentElement.classList.toggle('expanded');
+    });
+  });
+</script>
+
+<style>
+  .collapsible-container {
+    padding-inline: calc(100vw*308/1440);
+    margin-top: calc(100vw*63/1440);
+    margin-bottom: calc(100vw*63/1440);
+  }
+  .collapsible-container li {
+    list-style: inside;
+  }
+  .container-description {
+    padding-inline: calc(100vw*308/1440);
+    margin-top: calc(100vw*20/1440);
+    margin-bottom: calc(100vw*40/1440);
+  }
+  .dropdown-content {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    margin-top: calc(100vw*10/1440);
+    white-space: pre-line;
+  }
+  .dropdown-content, .dropdown-content p {
+    letter-spacing: 0px;
+    font-size: calc(100vw*18/1440) !important;
+    line-height: calc(100vw*25/1440);
+    margin-bottom: 0;
+  }
+  .dropdown-content a {
+    letter-spacing: 0px;
+    font-size: calc(100vw*18/1440) !important;
+    line-height: calc(100vw*25/1440);
+    margin-bottom: 0;
+    color: #6b86ab;
+    text-decoration: underline;
+  }
+  .collapsible.expanded .dropdown-content {
+    max-height: 1500px;
+    transition: max-height 0.3s ease-in;
+  }
+  .collapsible svg {
+    display: none;
+  }
+  .collapsible.expanded svg.expanded {
+    display: block;
+  }
+  .collapsible:not(.expanded) svg.collapsed {
+    display: block;
+  }
+  .dropdown-header {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 10px;
+    align-items: center;
+    margin-top: 20px
+  }
+  .dropdown-header h2 {
+    font-weight: 500;
+    color: #1a1f29;
+    font-size: calc(100vw*18/1440);
+    line-height: calc(100vw*25/1440);
+    letter-spacing: 0;
+    max-width: calc(100vw*491/1440);
+    margin-bottom: calc(100vw*25/1440);
+    margin-top: calc(100vw*25/1440);
+  }
+</style>

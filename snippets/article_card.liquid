@@ -1,0 +1,139 @@
+{% include 'article_img-script' %}
+
+<div class="article-card">
+  <div class="inner-section flex">
+    
+    {%- assign img_url = articleRelated.image | img_url: 'master' -%}
+    {% if articleRelated.image != blank %}
+      <a
+        href="{{ articleRelated.url }}"
+        aria-label="Read More About {{ articleRelated.title }}"
+        title="Read More About {{ articleRelated.title }}"
+        data-image-loading-animation
+
+        class="image-section custom-article-image-{{ articleRelated.id }}"
+      >
+        <img
+          class="lazyload"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 540, 720, 905, 1090, 1296, 1512, 1728, 2048]"
+          data-aspectratio="{{ articleRelated.image.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ articleRelated.title }}"
+          loading="lazy"
+        >
+      </a>
+    {% endif %}
+    <noscript>
+      <p>
+        <a href="{{ articleRelated.url }}" title="{{ articleRelated.title }}">
+          {{ article | img_url: '455x300', scale: 2 | img_tag: articleRelated.title }}
+        </a>
+      </p>
+    </noscript>
+
+    <div class="content">
+      {%- if show_tags -%}
+        <ul class="tags-wrapper">
+          {% assign split_1 = articleRelated.url | split: '/blogs/' %}
+          {% assign split_2 = split_1[1] | split: '/' %}
+          {% assign blog_handle = split_2[0] | strip %}
+          {% assign article_blog = blogs[blog_handle] %}
+
+          {% for tag in articleRelated.tags %}
+            <li class="tags">
+              <a href="{{article_blog.url}}/tagged/{{ tag | handleize }}" title="{{tag}}" class="tag">{{ tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {%- if show_tags_with_limits -%}
+        <ul class="tags-wrapper">
+          {% assign split_1 = articleRelated.url | split: '/blogs/' %}
+          {% assign split_2 = split_1[1] | split: '/' %}
+          {% assign blog_handle = split_2[0] | strip %}
+          {% assign article_blog = blogs[blog_handle] %}
+
+          {% for tag in articleRelated.tags limit: 2 %}
+            <li class="tags">
+              <a href="{{article_blog.url}}/tagged/{{ tag | handleize }}" title="{{tag}}" class="tag">{{ tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <h3>
+        <a
+          aria-label="Read More About {{ articleRelated.title }}"
+          title="Read More About {{ articleRelated.title }}"
+          href="{{ articleRelated.url }}"
+        >
+          {{ articleRelated.title | strip_html | truncate: 73 }}
+        </a>
+      </h3>
+      {% comment %}
+        {%- if show_time -%}
+          <time>{{ articleRelated.published_at | date: '%d/%m/%Y' }}</time>
+        {% endif %}
+      {% endcomment %}
+
+      {%- if show_description -%}
+        <div class="full-format small">
+          <p>
+            {%- if articleRelated.excerpt.size > 0 -%}
+              {{ articleRelated.excerpt }}
+            {%- else -%}
+              {{ articleRelated.content | strip_html | truncate: 500 }}
+            {%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
+      {%- if show_shortdescription -%}
+        <div class="description">
+          <p>
+            {%- if articleRelated.excerpt.size > 0 -%}
+              {{ articleRelated.excerpt }}
+            {%- else -%}
+              {{ articleRelated.content | strip_html | truncate: 160 }}
+            {%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
+      {%- if show_moreshortdescription -%}
+        <div class="description">
+          <p>
+            {%- if articleRelated.excerpt.size > 0 -%}
+              {{ articleRelated.excerpt }}
+            {%- else -%}
+              {{ articleRelated.content | strip_html | truncate: 60 }}
+            {%- endif -%}
+          </p>
+        </div>
+      {%- endif -%}
+      <div class="article-read-section">
+      {% assign words_per_minute = 200 %} {% assign content_words = articleRelated.content | strip_html | split: ' ' | size %} {% assign read_time = content_words | divided_by: words_per_minute | ceil %} <span class="estimated-read-time">{{ read_time }} min read</span>
+      {%- if show_readMore -%}
+        {% if articleRelated.metafields.accentuate.read_more_button_text != blank %}
+          <a
+            href="{{ articleRelated.url }}"
+            class="link--primary"
+            aria-label="Read More About {{ articleRelated.title }}"
+            title="Read More About {{ articleRelated.title }}"
+          >
+            {{- articleRelated.metafields.accentuate.read_more_button_text -}}
+            <span class="sr-only"> About {{ articleRelated.title }}</span>
+          </a>
+        {% else %}
+          <a
+            href="{{ articleRelated.url }}"
+            class="link--primary"
+            aria-label="Read More About {{ articleRelated.title }}"
+            title="Read More About {{ articleRelated.title }}"
+            >Read More<span class="sr-only"> About {{ articleRelated.title }}</span></a
+          >
+        {%- endif -%}
+      {% endif %}
+    </div>
+    </div>
+  </div>
+</div>

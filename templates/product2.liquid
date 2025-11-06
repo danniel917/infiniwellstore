@@ -1,0 +1,507 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% if product.tags contains 'hide' or product.tags contains 'Hide' %}
+  <script>
+    window.location.href = '/collections/all';
+  </script>
+{% endif %}
+
+{% section 'product' %}
+{% assign itemCount = 0 %}
+{% comment %} Ingredients slider Section {% endcomment %}
+{% if product.metafields.ingredients_info_section.title_black != blank %}
+  <div class="three-column-card-slider pdp">
+    <h2 class="h1">
+      {{ product.metafields.ingredients_info_section.title_black }}
+      {% if product.metafields.ingredients_info_section.title_gray != blank %}
+        <span class="color-grey h1">{{ product.metafields.ingredients_info_section.title_gray }}</span>
+      {% endif %}
+    </h2>
+
+    {% for value in product.metafields.ingredients_info_section_card.title %}
+      {% assign itemCount = itemCount | plus: 1 %}
+    {% endfor %}
+
+    <div class="slider  {% if itemCount > 1 %} splide js_three-column-card-slider  {% endif %}">
+      <div class="splide__track">
+        <div class="splide__list">
+          {% for value in product.metafields.ingredients_info_section_card.title %}
+            {% assign title = product.metafields.ingredients_info_section_card.title[forloop.index0] %}
+            {% assign link = product.metafields.ingredients_info_section_card.card_link[forloop.index0] %}
+            {% assign image = product.metafields.ingredients_info_section.image[forloop.index0] | first %}
+            {% assign list = product.metafields.ingredients_info_section_card.list_content[forloop.index0] %}
+
+            <div class="splide__slide">
+              {% if link != blank %}
+                <a
+                  href="{{ link }}"
+                  title="Read More About {{ title }}"
+                  aria-label="Read More About {{ title }}"
+                  class="full-link"
+                >
+              {% endif %}
+              <div class="ingredient-section">
+                <div class="inner-section">
+                  <div class="ingredient-front">
+                    {% if image != blank %}
+                      <div class="image-section">
+                        <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="ingredient-back">
+                    <h3>{{ title }}</h3>
+
+                    {% if list != blank %}
+                      {{ list }}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% if link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% comment %} Tab Section {% endcomment %}
+{% if product.metafields.overview_tab_section.heading_black != blank
+  or product.metafields.nutrition_tab_section.table_title != blank
+  or product.metafields.nutrition_tab_section.table != blank
+  or product.metafields.resources_tab_section.heading_black != blank
+  or product.metafields.about_exactpax.heading != blank
+%}
+  <section
+    class="pdp-tab-section"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+  >
+    <div class="container-1326">
+      <div class="tab-section-wrapper white">
+        <div class="tab-head none-980">
+          <ul class="pdp-tab-head flex">
+            {% if product.metafields.overview_tab_section.heading_black != blank %}
+              <li>
+                <a class="tab-link active" id="tab-link-overview" data-attr="overview"> OVERVIEW </a>
+              </li>
+            {% endif %}
+            {% if product.metafields.nutrition_tab_section.table_title != blank
+              or product.metafields.nutrition_tab_section.table != blank
+            %}
+              <li>
+                <a class="tab-link   tab-link-nutrition" id="tab-link-nutrition" data-attr="nutrition">Nutrition</a>
+              </li>
+            {% endif %}
+            {% if product.metafields.resources_tab_section.heading_black != blank %}
+              <li>
+                <a class="tab-link  " id="tab-link-resources" data-attr="resource">Physician RESOURCE</a>
+              </li>
+            {% endif %}
+            {% if product.metafields.about_exactpax.heading != blank %}
+              <li>
+                <a class="tab-link " id="tab-link-exactpax" data-attr="exactpax">ABOUT EXACTPAX</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="main-tab-content">
+          {% if product.metafields.overview_tab_section.heading_black != blank %}
+            <div class="tab-content js-tab-content active" id="overview" data-attr="tab-link-overview">
+              <a class="accordion-link js___accordion" id="tab-link-overview" data-attr="overview">overview</a>
+              <div class="inner-content accordion-con overview-content-wrapper">
+                <h2 class="h2">
+                  {{ product.metafields.overview_tab_section.heading_black }}
+                  {% if product.metafields.overview_tab_section.heading_gray != blank %}
+                    <span class="color-grey h2">{{ product.metafields.overview_tab_section.heading_gray }}</span>
+                  {% endif %}
+                </h2>
+                <div class="overview-content">
+                  <ul>
+                    {% for value in product.metafields.overview_tab_section.title %}
+                      {% assign title = product.metafields.overview_tab_section.title[forloop.index0] %}
+                      {% assign description = product.metafields.overview_tab_section.description[forloop.index0] %}
+                      <li>
+                        <h3 class="h5">{{ title }}</h3>
+                        <div class="description">
+                          {{ description }}
+                        </div>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.nutrition_tab_section.table_title != blank
+            or product.metafields.nutrition_tab_section.table != blank
+          %}
+            <div class="tab-content js-tab-content" id="nutrition" data-attr="tab-link-nutrition">
+              <a
+                class="accordion-link tab-link-nutrition js___accordion "
+                id="tab-link-nutrition"
+                data-attr="nutrition"
+              >
+                Nutrition
+              </a>
+
+              <div class="inner-content nutrition-content-wrapper accordion-con">
+                {% comment %}
+                  <h2 class="h2">
+                    {{ product.metafields.nutrition_tab_section.heading_black }}
+                    {% if product.metafields.nutrition_tab_section.heading_gray != blank %}
+                      <span class="color-grey h2">{{ product.metafields.nutrition_tab_section.heading_gray }}</span>
+                    {% endif %}
+                  </h2>
+                {% endcomment %}
+                <div class="nutrition-content">
+                  {% for value in product.metafields.nutrition_tab_section.table_title %}
+                    {% assign title = product.metafields.nutrition_tab_section.table_title[forloop.index0] %}
+                    {% assign table = product.metafields.nutrition_tab_section.table[forloop.index0] %}
+                    {% assign image = product.metafields.nutrition_tab_section.image[forloop.index0] | first %}
+                    {% assign description = product.metafields.nutrition_tab_section.bottom_description[forloop.index0] %}
+                    <div class="pdp-half-image-half-table flex">
+                      <div class="image-section">
+                        <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
+                      </div>
+                      <div class="content">
+                        <span class="table-title">{{ title }}</span>
+                        <div class="table">
+                          {{ table }}
+                        </div>
+                        <div class="description">
+                          {{ description }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if product.metafields.resources_tab_section.heading_black != blank %}
+            <div class="tab-content js-tab-content" id="resource" data-attr="tab-link-resource">
+              <a class="accordion-link js___accordion " id="tab-link-resource" data-attr="resource"
+                >Physician Resource</a
+              >
+              <div class="inner-content accordion-con resources">
+                <h2 class="h2">
+                  {{ product.metafields.resources_tab_section.heading_black }}
+                  {% if product.metafields.resources_tab_section.heading_gray != blank %}
+                    <span class="color-grey h2">{{ product.metafields.resources_tab_section.heading_gray }}</span>
+                  {% endif %}
+                </h2>
+                {% assign image = product.metafields.resources_tab_section.graphic_image | first %}
+                <div class="resource-content flex">
+                  <div class="left-section">
+                    {% if image != blank %}
+                      <div class="image-section">
+                        <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
+                      </div>
+                    {% endif %}
+                    {% if product.metafields.resources_tab_section.graphic_image_description != blank %}
+                      <div class="image-des">
+                        {{ product.metafields.resources_tab_section.graphic_image_description }}
+                      </div>
+                    {% endif %}
+                  </div>
+                  {% if product.metafields.resources_tab_section.block_content_title != blank %}
+                    <div class="right-section">
+                      <h3>{{ product.metafields.resources_tab_section.block_content_title }}</h3>
+                      {% if product.metafields.resources_tab_section.block_title != blank %}
+                        <div class="middle-section-block flex-wrap">
+                          <ul class="flex-wrap">
+                            {% for value in product.metafields.resources_tab_section.block_title %}
+                              {% assign title = product.metafields.resources_tab_section.block_title[forloop.index0] %}
+                              {% assign description = product.metafields.resources_tab_section.block_description[forloop.index0] %}
+                              <li>
+                                <h4 class="h5">{{ title }}</h4>
+                                <div class="description">
+                                  {{ description }}
+                                </div>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                      <div class="bottom-linkfirst">
+                        {{ product.metafields.resources_tab_section.bottom_link_first }}
+                      </div>
+                      <div class="bottom-linksecond">
+                        {{ product.metafields.resources_tab_section.bottom_link_first }}
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if product.metafields.about_exactpax.heading != blank %}
+            <div class="tab-content js-tab-content" id="exactpax" data-attr="tab-link-exactpax">
+              <a class="accordion-link js___accordion" id="tab-link-exactpax" data-attr="exactpax"> About Exactpax </a>
+              <div class="inner-content accordion-con">
+                <h2 class="h2">
+                  {{ product.metafields.about_exactpax.heading }}
+                  {% if product.metafields.about_exactpax.heading_gray != blank %}
+                    <span class="color-grey h2">{{ product.metafields.about_exactpax.heading_gray }}</span>
+                  {% endif %}
+                </h2>
+                <div class="pdp-half-image-half-content-outer">
+                  {% for value in product.metafields.about_exactpax.title %}
+                    {% assign title = product.metafields.about_exactpax.title[forloop.index0] %}
+                    {% assign subTitle = product.metafields.about_exactpax.sub_title[forloop.index0] %}
+                    {% assign image = product.metafields.about_exactpax.image[forloop.index0] | first %}
+                    {% assign description = product.metafields.about_exactpax.description[forloop.index0] %}
+                    {% assign linkText1 = product.metafields.about_exactpax.link_text_first[forloop.index0] %}
+                    {% assign listUrl1 = product.metafields.about_exactpax.link_url_first[forloop.index0] %}
+                    {% assign linkText2 = product.metafields.about_exactpax.link_text_second[forloop.index0] %}
+                    {% assign listUrl2 = product.metafields.about_exactpax.link_url_second[forloop.index0] %}
+                    <div class="pdp-half-image-half-content flex">
+                      {% if image != blank %}
+                        <div class="image-section">
+                          <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
+                        </div>
+                      {% endif %}
+                      {% if title != blank %}
+                        <div class="content">
+                          <h3>{{ title }}</h3>
+                          {% if subTitle != blank %}
+                            <span class="subtitle">{{ subTitle }}</span>
+                          {% endif %}
+                          {% if description != blank %}
+                            <div class="description">
+                              {{ description }}
+                            </div>
+                          {% endif %}
+                          {% if linkText1 != blank %}
+                            <div class="links flex">
+                              <a href="{{linkurl1 }}" class="link--primary" title="{{linkText1 }}">{{ linkText1 }}</a>
+                              <a href="{{linkurl2 }}" class="link--primary" title="{{linkText2 }}">{{ linkText2 }}</a>
+                            </div>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+<!-- reviews -->
+
+<div
+  class="container-980 product-reviews-widget"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+>
+  <h2 class="text-center">Reviews {{ product.title }}</h2>
+  {% render 'okendo-reviews-widget', product: product %}
+</div>
+<!-- Product Recommendations -->
+{% assign metafieldsHandleForProducts = product.metafields.product_recommendations.product_handle %}
+{% if metafieldsHandleForProducts != blank %}
+  <div
+    class="pdp-recommendations four-column-product-slider"
+    data-aos="fade-up"
+    data-aos-duration="2000"
+  >
+    <div class="top-section flex">
+      <h2 class="h1">
+        {% if product.metafields.product_recommendations.title != blank %}
+          {{ product.metafields.product_recommendations.title }}
+          {% if product.metafields.product_recommendations.title_gray != blank %}
+            <span class="color-grey h1">{{ product.metafields.product_recommendations.title_gray }}</span>
+          {% endif %}
+        {% else %}
+          You MAY <span class="color-grey h1">ALSO LIKE</span>
+        {% endif %}
+      </h2>
+
+      {% if product.metafields.product_recommendations.button_text != blank
+        and product.metafields.product_recommendations.button_link != blank
+      %}
+        <a
+          href="{{ product.metafields.product_recommendations.button_link }}"
+          title="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+          aria-label="Read More About {{ product.metafields.product_recommendations.button_text  }}"
+          class="btn--primary"
+        >
+          {{ product.metafields.product_recommendations.button_text }}
+        </a>
+        <a
+          href="{{ product.metafields.product_recommendations.button_link }}"
+          title="Read More About {{ product.metafields.product_recommendations.button_text }}"
+          aria-label="Read More About {{ product.metafields.product_recommendations.button_text}}"
+          class="link--primary"
+        >
+          {{- product.metafields.product_recommendations.button_text -}}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="inner">
+      <div class="product-recommendations-list slider js__product-slider">
+        <div class="swiper-wrapper">
+          {% assign productHandles = metafieldsHandleForProducts | split: '|' %}
+
+          {% for productRec in productHandles %}
+            {% assign productRelated = all_products[productRec] %}
+
+            <div class="product-card swiper-slide slide ">
+              {% include 'product_Card'  with  productRelated: productRelated , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: true, show_secondary_button: true %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-prev-product-slider">
+          {% include 'icon-arrow-slide' %}
+        </div>
+        <div class="swiper-button-next-product-slider">
+          {% include 'icon-arrow-slide' %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% assign productHandles = metafieldsHandleForProducts | split: '|' %}
+
+  {% for productRec in productHandles %}
+    {% assign productRelated = all_products[productRec] %}
+    {% include 'product-modal', productData: productRelated %}
+  {% endfor %}
+{% else %}
+  {% section 'product-recommendations' %}
+{% endif %}
+
+{% comment %} Bottom Full width Image Content Section {% endcomment %}
+{% if product.metafields.full_width_image_section.title != blank %}
+  <div class="pdp-full-width-image-section">
+    {% assign bgImage = product.metafields.full_width_image_section.background_image_desktop | first %}
+    {% assign bgImageMobille = product.metafields.full_width_image_section.background_image_mobile | first %}
+    {% if bgImage != blank %}
+      <div class="image-section">
+        <picture>
+          <source
+            media="(max-width: 480px)"
+            srcset="{% if bgImageMobille != blank %}{{ bgImageMobille.cloudinary_src }} {%else %} {{ bgImage.cloudinary_src }} {% endif %}"
+          >
+          <img src="{{ bgImage.cloudinary_src}}" alt="{{bgImage.alt }}">
+        </picture>
+      </div>
+    {% endif %}
+    <div
+      class="container-1340 left--align"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      <div class="content">
+        <h2 class="h1">
+          {{ product.metafields.full_width_image_section.title }}
+        </h2>
+
+        {% if product.metafields.full_width_image_section.description != blank %}
+          {{ product.metafields.full_width_image_section.description }}
+        {% endif %}
+        {% if product.metafields.full_width_image_section.button_text != blank
+          and product.metafields.accentuate.button_link != blank
+        %}
+          <div class="buttons">
+            <a
+              href="{{ product.metafields.accentuate.button_link }}"
+              title="Read More About {{ product.metafields.full_width_image_section.button_text }}"
+              aria-label="Read More About {{ product.metafields.full_width_image_section.button_text}}"
+              class="btn--secondary"
+            >
+              {{- product.metafields.full_width_image_section.button_text -}}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+<!-- Splide JS and CSS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"
+></script>
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
+<script>
+  var threeColumnCardSlider ;
+      {% if itemCount > 2 %}
+      document.addEventListener('DOMContentLoaded', function () {
+        new Splide('.js_three-column-card-slider', {
+          type: 'loop',
+          drag: 'free',
+          focus: 'center',
+          arrows: false,
+          pagination: false,
+          autoScroll: {
+            speed: 0.5,
+          },
+        }).mount(window.splide.Extensions);
+      });
+    {% else %}
+    {% if itemCount > 1 %}
+      if ($(window).width() < 769) {
+        $('.js_three-column-card-slider').addClass("splide");
+      document.addEventListener('DOMContentLoaded', function () {
+      threeColumnCardSlider = new Splide('.js_three-column-card-slider', {
+        type: 'loop',
+        drag: 'free',
+        focus: 'center',
+        arrows: false,
+        pagination: false,
+        autoScroll: {
+          speed: 0.5,
+        },
+      }).mount(window.splide.Extensions);
+    });
+  }
+  else
+    {
+      $('.js_three-column-card-slider').removeClass("splide");
+      threeColumnCardSlider.destroy(true)
+    }
+
+
+  $(window).on('resize', function(){
+    if ($(window).width() < 769) {
+      $('.js_three-column-card-slider').addClass("splide");
+      threeColumnCardSlider = new Splide('.js_three-column-card-slider', {
+        type: 'loop',
+          drag: 'free',
+          focus: 'center',
+          arrows: false,
+          pagination: false,
+          autoScroll: {
+            speed: 0.5,
+          },
+        }).mount(window.splide.Extensions);
+    }
+    else
+    {
+      $('.js_three-column-card-slider').removeClass("splide");
+      threeColumnCardSlider.destroy(true)
+    }
+    });
+
+
+    {% endif %}
+
+    {% endif %}
+</script>

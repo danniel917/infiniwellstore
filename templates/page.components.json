@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "innerBanner": {
+      "type": "inner-hero-section",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/wellness-innovations_2x_4508b7d3-6f5e-418f-a24a-09af635d8caa.webp",
+        "mobileImage": "shopify:\/\/shop_images\/wellness-innovations_2x_4508b7d3-6f5e-418f-a24a-09af635d8caa.webp",
+        "title": "Wellness Innovations. Infinite possibilites",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.<\/p>",
+        "buttonText1": "",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "left",
+        "smallHeight": false,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": true
+      }
+    }
+  },
+  "order": [
+    "innerBanner"
+  ]
+}

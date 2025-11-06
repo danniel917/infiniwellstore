@@ -1,0 +1,74 @@
+{% if section.settings.title != blank %}
+    <div
+        class="review-section-mobile"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+       
+        <div class="rating">
+            {%if section.settings.ratingImage != blank%}
+                <div class="image-section">
+                        {{
+                            section.settings.ratingImage
+                        | image_url: width: 144
+                        | image_tag:
+                          loading: 'lazy',
+                          width: section.settings.ratingImage.width,
+                          height: section.settings.ratingImage.height
+                      }}
+            </div>
+        {%- endif -%}
+        {% if section.settings.RatingText != blank %}
+            <span class="rating-text">{{ section.settings.RatingText }}</span>
+          {% endif %}
+        </div>
+
+        {% if section.settings.title != blank %}
+            <h2 class="title">{{ block.settings.title }}</h2>
+        {% endif %}
+
+        <div class="percentage">
+             {% if section.settings.subtitle != blank %}
+                <span>{{ section.settings.subtitle }}</span>
+            {% endif %}
+             {% if section.settings.description != blank %}
+                <div class="description">
+                    {{ section.settings.description }}
+                </div>
+            {% endif %}
+       </div>    
+    </div>  
+    {%- endif -%}
+{% schema %}
+{
+  "name":  "Review Section Mobile",
+      "settings": [
+        {
+            "type": "image_picker",
+            "id": "ratingImage",
+            "label": "Rating Star Image"
+        },
+        {
+            "type": "text",
+            "id": "RatingText",
+            "label": "Rating Text"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Percentage Text"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        }
+        
+  ]
+}
+{% endschema %}

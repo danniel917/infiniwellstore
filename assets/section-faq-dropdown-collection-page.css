@@ -1,0 +1,53 @@
+.learn-more-sec ul.accordian.js__accordian {
+    margin-top: 0;
+}
+
+.collection-faq-section .content {
+  line-height: normal;
+}
+.collection-faq-section .content li {
+  margin-top: 15px;
+}
+.collection-faq-section .content h3 {
+  margin-top: 15px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+section.pdp-tab-small.collection-faq-section {
+  padding-inline: 10px;
+  margin-bottom: 60px;
+}
+.text-description {
+  text-align: center;
+}
+.collection-faq-section p {
+  margin-bottom: 10px;
+}
+.template-collection ul.accordian.js__accordian .content a {
+    text-decoration: underline !important;
+}
+@media only screen and (max-width: 980px) {
+  .collection-faq-section .pdp-tab-small__wrapper ul.accordian li .h5:after {
+    right: -15px;
+  }
+  .collection-faq-section .pdp-tab-small__wrapper ul.accordian li {
+    padding-right: 35px;
+  }
+  .learn-more-sec .metafield-rich_text_field {
+  max-width: 90%;
+}
+}
+@media only screen and (min-width: 980px) {
+  .collection-faq-section .pdp-tab-small__wrapper {
+    border: 2px solid #d9d9d9;
+    border-radius: 20px;
+  }
+  .text-description,
+  section.pdp-tab-small.collection-faq-section {
+    margin-inline: auto;
+    max-width: 60%;
+  }
+}
+.learn-more-sec .accordian .content a {
+    text-decoration: underline !important;
+}

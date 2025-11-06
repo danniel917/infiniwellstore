@@ -1,0 +1,231 @@
+<div
+  id="modal-mini-cart-{{ productData.id }}"
+  class="modal-quick-view-mini-cart 2222 modal modal-{{ productData.id }}"
+  style="display: none"
+  data-recharge="{% if productData.selling_plan_groups[0].selling_plans %}true{%else%}false{%endif%}"
+>
+  <!-- Modal content -->
+
+  <div class="modal-content">
+    <button class="close js__quick-view-popup-close">{% render 'icon-mobile-menu-close' %}</button>
+
+  
+    
+    <div class="">
+      <div class="image-section">
+        <img
+         
+          data-src="{{  productData.images[0] | img_url: '558x558' }}"
+          src="{{  productData.images[0] | img_url: '558x558' }}"
+          alt="{{ productData.featured_image.alt | escape }}"
+          loading="lazy"
+        >
+        
+      </div>
+      <div class="product__info">
+        <!-- Hide in Small Screen Devices -->
+
+        <h2 class="h3  js__popup-product-name">
+          {% if productData.metafields.product.display_name != blank %}
+            {{ productData.metafields.product.display_name }}
+          {% else %}
+            {{ productData.title }}
+          {% endif %}
+        </h2>
+        
+        <div class="price flex">
+          
+         
+            {% if productData.variants.size > 1 %}
+               <span> {{ productData.price_min | money }} </span>
+            {% else %}
+              <span> {{ productData.price | money }}</span>
+              {% if productData.compare_at_price_min > productData.price %}
+                <s>
+                  {{ productData.compare_at_price_min | money }}
+                </s>
+              {% endif %}
+            {% endif %}
+          
+         
+        </div>
+       
+          {% for header in productData.metafields['info-small-tabs'].title %}
+            {% assign title = productData.metafields['info-small-tabs'].title[forloop.index0] %}
+            {% assign titleid = productData.metafields['info-small-tabs'].title[forloop.index0]
+              | downcase
+              | remove: ' '
+            %}
+            
+            {% if titleid == 'benefits' %}
+              <div class="benefits-section">
+            <span class="benefits-title">{{ title }}</span>
+                {{ productData.metafields['info-small-tabs'].description[forloop.index0] }}
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          <div class="add-to-cart-section">
+            {% if productData.available %}
+              {%- assign productData_current_variant = productData.selected_or_first_available_variant -%}
+              <button title="Add" data-attr-variantid="{{productData_current_variant.id}}" data-product-id="{{ productData.id }}" class="btn--primary js__addon-add-to-cart ">
+                Add
+                </button>
+            
+            {% else %} 
+              <button class="btn--primary " disabled="disabled"> Out Of Stock </button>
+            {% endif %}
+            </div>
+      <div class="hide">
+        {% comment %} Variants Information {% endcomment %}
+
+        {% if productData.variants != blank %}
+          {% unless productData.has_only_default_variant %}
+            <div class="pdp__variants">
+              {% comment %} Custom {% endcomment %}
+              {% for option in productData.options_with_values %}
+                <div class="variant-option" rc-option{{ forloop.index }}-selector data-type="TYPE">
+                  <div class="label">
+                    Select {{ option.name -}}
+                    <span class="hide selected"></span>
+                  </div>
+
+                  <ul
+                    data-index="{{ forloop.index }}"
+                    class="variant-option-radio js__popup-variant-select js__popup-variant-select-{{ productData.id }} js__popup-variant-select{{ forloop.index }}"
+                  >
+                    {% for value in option.values %}
+                      <li
+                        class="box btn--tertiary"
+                        data-option="{{ forloop.index }}"
+                        data-id="{{productData.id}}"
+                        data-value="{{ value }}"
+                      >
+                        {{ value }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+
+              {% comment %} SM {% endcomment %}
+
+              {% for variant in productData.variants %}
+                <div class="variant form__group form__group--radio hide">
+                  <label
+                    class="pdp-option__select{% if forloop.first == true %} active{% endif %}"
+                    data-variant_id="{{ variant.id }}"
+                  >
+                    <input
+                      {% if forloop.first == true %}
+                        checked
+                      {% endif %}
+                      name="radio--{{ productData.id }}"
+                      type="radio"
+                    >
+                    <span class="checkmark"></span>
+                    <span class="variant__info">
+                      {{ variant.title }} - {{ variant.price | money }}
+
+                      {% assign basePrice = productData.price_min %}
+                      {% assign varNumber = variant.title | abs %}
+
+                      {% assign normalPrice = basePrice | times: varNumber %}
+                      {% assign savedPrice = normalPrice | minus: variant.price %}
+
+                      {% if savedPrice != 0 and product.variants.size > 1 %}
+                        <span class="saved"> (Save {{ savedPrice | money }}) </span>
+                      {% endif %}
+                    </span>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+        {% endif %}
+
+        
+          
+        
+        {% if productData.available and productData.selling_plan_groups[0].selling_plans %}
+          <div class="pdp__recharge">
+            <div class="variant form__group form__group--radio popup-subscribe-option-{{ productData.id }}">
+              <label class="d-flex align-center pdp-option__select ">
+                <input value="rc-yes" name="recharge--{{ productData.id }}" type="radio">
+                <span class="checkmark"></span>
+                <span class="variant__info d-flex justify-between">
+                  <span>Subscribe <span sm-rc-discount-ammount></span></span>
+                  <div><span sm-rc-variant-subscribe-price></span> <s sm-rc-variant-one-time-price></s></div>
+                </span>
+              </label>
+            </div>
+            <div class="variant form__group form__group--radio active">
+              <label class="d-flex align-center pdp-option__select" data-plan_id="false">
+                <input checked name="recharge--{{ productData.id }}" type="radio">
+                <span class="checkmark"></span>
+                <span class="variant__info d-flex justify-between">
+                  <span>One-time Purchase</span>
+                  <div sm-rc-variant-one-time-price></div>
+                </span>
+              </label>
+            </div>
+
+            <div class="form__group form__group--rc hide">
+              <select class="frequency-select">
+                {% for plan in productData.selling_plan_groups[0].selling_plans %}
+                  <option value="{{ plan.id }}">{{ plan.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if productData.available %}
+          <div class="pdp__actions flex">
+            <div class="btn-quantity-outer flex">
+              <div class="action action--qty">
+                <div class="qty js__popup-quantity quantity-outer">
+                  <button class="minus-qty js-plus-minus-qty" data-type="minus">{% render 'icon-minus' %}</button>
+                  <input
+                    type="text"
+                    sm-rc-quantity-selector
+                    class="quantity-selector qty-val"
+                    value="1"
+                    id="Quantity"
+                    name="quantity"
+                  >
+                  <button class="plus-qty js-plus-minus-qty" data-type="plus">{% render 'icon-plus' %}</button>
+                </div>
+              </div>
+              <div class="action action--atc">
+                <button sm-rc-add-to-cart class="btn--primary js__popup-addtocart">
+                  <span class="oos-text"> Out Of Stock </span>
+                  <span class="is-text">Add To Cart</span>
+                </button>
+              </div>
+            </div>
+            <a href="{{productData.url }}" class="link--primary">Learn More <span class="sr-only"> About {{ productData.title }}</span></a>
+          </div>
+
+        {% else %}
+          <div class="pdp__actions flex">
+            <div class="action action--atc">
+              <button disabled class="btn--primary btn btn--green btn--atc">Out Of Stock</button>
+            </div>
+            <a href="{{productData.url }}" class="link--primary">Learn More <span class="sr-only"> About {{ productData.title }}</span></a>
+          </div>
+        {% endif %}
+        </div>
+        {% comment %} Product information ends {% endcomment %}
+      </div>
+      {% comment %} Actions {% endcomment %}
+      <div class="hide popup-footer">
+        {% comment %} Recharge {% endcomment %}
+
+        {% comment %} Tabs {% endcomment %}
+
+        {% render 'sm-rc-widget-modal', _product: productData %}
+      </div>
+    </div>
+  </div>
+</div>

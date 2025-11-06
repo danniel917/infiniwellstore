@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_gDBkfE": {
+      "type": "product",
+      "blocks": {
+        "recharge_subscriptions_subscription_widget_GNm6Ba": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "recharge_subscriptions_subscription_widget_v2_cgJg3L": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "recharge_subscriptions_subscription_widget_GNm6Ba",
+        "recharge_subscriptions_subscription_widget_v2_cgJg3L"
+      ],
+      "settings": {
+        "product_quantity_enable": false,
+        "enable_payment_button": true,
+        "onetimeText": "or set up interest-free payments with Shop Pay",
+        "subscribeText": "Delivery every 30 Days. Cancel anytime."
+      }
+    },
+    "pdp_ingredients_slider_kfGJJH": {
+      "type": "pdp-Ingredients-slider",
+      "settings": {}
+    },
+    "pdp_tab_section_QxyRcd": {
+      "type": "pdp-tab-section",
+      "settings": {}
+    },
+    "pdp_reviews_9MHAWi": {
+      "type": "pdp-reviews",
+      "settings": {}
+    },
+    "product_recommendations_96y7Ew": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": ""
+      }
+    },
+    "related_products_Jg4r6B": {
+      "type": "related-products",
+      "settings": {}
+    },
+    "product_faq_y9BRKL": {
+      "type": "product-faq",
+      "custom_css": [
+        "@media (max-width: 768px) {h2 {text-align: left; max-width: 90%; margin: 0 auto; } p {text-align: left; }}"
+      ],
+      "settings": {
+        "use_product_metafield": true
+      }
+    }
+  },
+  "order": [
+    "product_gDBkfE",
+    "pdp_ingredients_slider_kfGJJH",
+    "pdp_tab_section_QxyRcd",
+    "pdp_reviews_9MHAWi",
+    "product_recommendations_96y7Ew",
+    "related_products_Jg4r6B",
+    "product_faq_y9BRKL"
+  ]
+}

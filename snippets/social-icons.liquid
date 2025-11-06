@@ -1,0 +1,50 @@
+<ul>
+  {% if settings.social_facebook_link != blank %}
+    <li>
+      <a href="{{settings.social_facebook_link}}" target="_blank" title="Facebook">
+        {% render 'icon-social-facebook-white' %}
+        <span>Facebook</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_twitter_link != blank %}
+    <li>
+      <a href="{{settings.social_twitter_link}}" target="_blank" title="Twitter">
+        {% render 'icon-social-twitter-white' %}
+        <span>Twitter</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_instagram_link != blank %}
+    <li>
+      <a href="{{settings.social_instagram_link}}" target="_blank" title="Instagram">
+        {% render 'icon-social-instagram-white' %}
+        <span>Instagram</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_tiktok_link != blank %}
+    <li>
+      <a href="{{settings.social_tiktok_link}}" target="_blank" title="Tiktok">
+        {% render 'icon-social-tiktok-white' %}
+        <span>Tiktok</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_youtube_link != blank %}
+    <li>
+      <a href="{{settings.social_youtube_link}}" target="_blank" title="Youtube">
+        {% render 'icon-social-youtube-white' %}
+        <span>Youtube</span>
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_linkedin_link != blank %}
+    <li>
+      <a href="{{settings.social_linkedin_link}}" target="_blank" title="Linkedin">
+        {% render 'icon-social-linkedin-white' %}
+        <span>Linkedin</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>

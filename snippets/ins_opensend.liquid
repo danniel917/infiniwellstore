@@ -1,0 +1,22 @@
+<script
+      type='text/javascript'
+      src='https://s.opensend.com/os.min.js'
+      osid='0E53DC66' async>
+      </script>
+
+<!-- runs only when the user is on product page -->
+{% if template.name == 'product' %}
+   	<script type="text/javascript">
+var _opensend = _opensend || [];
+window.onload = function() {
+  _opensend.push(['track', 'product_viewed', {product_url: "{{ shop.secure_url }}{{ product.url }}"}]);
+};
+</script>
+{% endif %}
+
+
+
+
+   
+
+

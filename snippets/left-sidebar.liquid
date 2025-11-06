@@ -1,0 +1,39 @@
+{% if section.settings.description != blank or section.settings.page_Menu != blank %}
+  <div
+    class="left-sidebar"
+  >
+    {% if section.settings.title != blank %}
+      <h1
+        class="h2"
+      >
+        {{ section.settings.title }}
+        {% if section.settings.title2 != blank %}
+          <span class="color-grey h2">{{ section.settings.title2 }}</span>
+        {% endif %}
+      </h1>
+    {% endif %}
+    <div class="full-format description small">
+      {{ section.settings.description }}
+    </div>
+    {% assign pageMenu = linklists[section.settings.page_Menu] %}
+    {% if pageMenu.links != blank %}
+      <ul class="pageLinks">
+        {% for link in pageMenu.links %}
+          <li>
+            <a
+              class="link--primary"
+              href="{{ link.url }}"
+              title="{{ link.title | escape }}"
+              {%- if link.active %}
+                aria-current="page"
+              {% endif -%}
+              class="page-link {%- if link.active %} current-page{% endif -%}"
+            >
+              {{- link.title | escape -}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endif %}

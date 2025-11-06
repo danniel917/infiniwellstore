@@ -1,0 +1,186 @@
+{%- assign limit = 5 -%}
+{% paginate collection.products by limit %}
+  <div class="collection" data-section-id="{{ section.id }}" data-section-type="collection-template">
+    <div class="inner-hero-section  white-bg ">
+      <div class="inner">
+        <div class="container-1340 ">
+          <p class="pre-title blue">Shop Now</p>
+
+          <h1 class="text-center">
+            {{ collection.title }}
+          </h1>
+          <div class="collection-filter-section flex">
+            <div class="item--count">
+              {% if paginate.current_page == paginate.pages %}
+                {% assign currentOffset = paginate.current_offset %}
+                {% assign items = paginate.items %}
+                {% assign lastPageItem = items | to_i | minus: currentOffset | to_i %}
+
+                Showing {{ lastPageItem }} of {{ collection.products_count }} items
+              {% else %}
+                Showing {{ limit }} of {{ collection.products_count }} items
+              {% endif %}
+            </div>
+            {% if section.settings.sort_enable %}
+              <div class="sort-by">
+                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                <label class="filters-toolbar__label select-label" for="SortBy">
+                  {{- 'collections.sorting.title' | t -}}
+                </label>
+
+                <select
+                  name="sort_by"
+                  id="SortBy"
+                  class="filters-toolbar__input hidden custom-dropdown-select"
+                  aria-describedby="a11y-refresh-page-message a11y-selection-message"
+                  data-default-sortby="{{ collection.default_sort_by }}"
+                  data-select-input
+                >
+                  {%- for option in collection.sort_options -%}
+                    <option
+                      value="{{ option.value }}"
+                      {% if option.value == sort_by %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ option.name }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% include 'graphic-bottom-white' %}
+    </div>
+
+    <div
+      class="collection-section"
+      id="CollectionSection"
+      data-section-id="{{ section.id }}"
+      data-section-type="collection-template"
+      data-sort-enabled="{{ section.settings.sort_enable }}"
+    >
+      <div class="container-1380 flex">
+        <ul class="collection__product-list flex">
+          {% for productRelated in collection.products %}
+{% if productRelated.handle contains "docapp-free-gift-" %}{% continue %}{% endif %}
+
+            <li class="product-card">
+              {% include 'product_Card'  with  productRelated: productRelated , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: true, show_secondary_button: true %}
+            </li>
+          {% else %}
+            {% comment %}
+              Add default products to help with onboarding for collections/all only.
+              The onboarding styles and products are only loaded if the
+              store has no products.
+            {% endcomment %}
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+              <li class="grid__item product-card 22">
+                <div class="grid grid--uniform">
+                  {% for i in (1..limit) %}
+                    <div class="grid__item">
+                      <div class="grid-view-item">
+                        <a href="#" class="grid-view-item__link">
+                          <div class="grid-view-item__image">
+                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                          </div>
+                          <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                          <div class="grid-view-item__meta">
+                            <span class="product-price__price">$19.99</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </li>
+            {% else %}
+              {%- assign is_empty_collection = true -%}
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        {% if is_empty_collection %}
+          <div class="grid__item small--text-center">
+            <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+          </div>
+        {% endif %}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="container-1380">
+          {% include 'pagination', paginate: paginate %}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": {
+    "en": "Collection pages"
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subTitle",
+      "label": "SubTitle for Collection All"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image for Collection All"
+    },
+    {
+      "type": "range",
+      "id": "grid",
+      "label": {
+        "en": "Products per row (grid only)"
+      },
+      "default": 4,
+      "min": 2,
+      "max": 5,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": {
+        "en": "Rows per page (grid only)"
+      },
+      "default": 2,
+      "min": 2,
+      "max": 8,
+      "step": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": {
+        "en": "Show product vendors"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_enable",
+      "label": {
+        "en": "Enable sorting"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "tags_enable",
+      "label": {
+        "en": "Enable tag filtering"
+      },
+      "default": true
+    }
+  ]
+}
+{% endschema %}

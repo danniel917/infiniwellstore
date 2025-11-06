@@ -1,0 +1,498 @@
+<!-- Header -->
+<header>
+    <div class="main-header js__main-header">
+        <div class="container-1324 flex-align-center">
+            <ul class="block-980 mobile-left-icons">
+                 <!-- To be visible from ipad-->
+                 <li class="mobile-hamburger block-980">
+                    <button id="hamburger" type="button">
+                        <span class="hamburger">{% include 'icon-hamburger' %}</span>
+                        <span class="close">{% include 'icon-mobile-menu-close' %}</span>
+                    </button>
+                </li>
+                <li class="search-li mobile-search-icon">
+                   
+                    <a href="javascript:;" class="js__search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M21.3217 20.6798L16.0398 15.1458C15.9508 15.0598 15.8333 15.0137 15.7123 15.0171H15.262C16.6948 13.3869 17.5545 11.2837 17.5545 8.92423C17.5545 4.03367 13.7075 0 9.03862 0C4.33091 0 0.523806 4.03367 0.523806 8.92423C0.522978 10.0964 0.742682 11.2573 1.17035 12.3404C1.59802 13.4235 2.22526 14.4077 3.0162 15.2365C3.80714 16.0654 4.74625 16.7227 5.77981 17.1709C6.81338 17.6191 7.92112 17.8493 9.03967 17.8485C11.2513 17.8485 13.2981 16.9476 14.8128 15.489V15.918C14.8128 16.0896 14.8537 16.2183 14.9356 16.3041L20.2175 21.8392C20.2616 21.8899 20.3154 21.9303 20.3753 21.958C20.4352 21.9857 20.5 22 20.5654 22C20.6309 22 20.6957 21.9857 20.7556 21.958C20.8155 21.9303 20.8692 21.8899 20.9134 21.8392L21.3228 21.4102C21.3711 21.3639 21.4097 21.3076 21.4361 21.2448C21.4625 21.1821 21.4762 21.1142 21.4762 21.0456C21.4762 20.977 21.4625 20.9091 21.4361 20.8463C21.4097 20.7835 21.3711 20.7272 21.3228 20.6809L21.3217 20.6798ZM9.03862 16.4768C8.09082 16.4825 7.15135 16.291 6.27464 15.9135C5.39792 15.5361 4.60139 14.98 3.93118 14.2777C3.26097 13.5753 2.73039 12.7406 2.37018 11.8219C2.00998 10.9031 1.8273 9.91859 1.83273 8.92533C1.83065 7.93305 2.01562 6.95011 2.37702 6.03294C2.73841 5.11578 3.26911 4.28245 3.93866 3.5808C4.6082 2.87915 5.4034 2.323 6.27859 1.94428C7.15379 1.56555 8.09175 1.37171 9.03862 1.37389C13.0105 1.37389 16.2445 4.76406 16.2445 8.92533C16.2466 9.91761 16.0616 10.9005 15.7002 11.8177C15.3388 12.7349 14.8081 13.5682 14.1386 14.2698C13.469 14.9715 12.6739 15.5276 11.7987 15.9064C10.9235 16.2851 9.9855 16.4789 9.03862 16.4768Z" fill="#84827E"/>
+                          </svg>
+                          
+                    </a>
+                    
+                    {% comment %} <div class="header-search-section js__header-search-section">
+                        <div class="container-696">
+                        <a href="javascript:;" class=" toggle-icon">  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M21.3217 20.6798L16.0398 15.1458C15.9508 15.0598 15.8333 15.0137 15.7123 15.0171H15.262C16.6948 13.3869 17.5545 11.2837 17.5545 8.92423C17.5545 4.03367 13.7075 0 9.03862 0C4.33091 0 0.523806 4.03367 0.523806 8.92423C0.522978 10.0964 0.742682 11.2573 1.17035 12.3404C1.59802 13.4235 2.22526 14.4077 3.0162 15.2365C3.80714 16.0654 4.74625 16.7227 5.77981 17.1709C6.81338 17.6191 7.92112 17.8493 9.03967 17.8485C11.2513 17.8485 13.2981 16.9476 14.8128 15.489V15.918C14.8128 16.0896 14.8537 16.2183 14.9356 16.3041L20.2175 21.8392C20.2616 21.8899 20.3154 21.9303 20.3753 21.958C20.4352 21.9857 20.5 22 20.5654 22C20.6309 22 20.6957 21.9857 20.7556 21.958C20.8155 21.9303 20.8692 21.8899 20.9134 21.8392L21.3228 21.4102C21.3711 21.3639 21.4097 21.3076 21.4361 21.2448C21.4625 21.1821 21.4762 21.1142 21.4762 21.0456C21.4762 20.977 21.4625 20.9091 21.4361 20.8463C21.4097 20.7835 21.3711 20.7272 21.3228 20.6809L21.3217 20.6798ZM9.03862 16.4768C8.09082 16.4825 7.15135 16.291 6.27464 15.9135C5.39792 15.5361 4.60139 14.98 3.93118 14.2777C3.26097 13.5753 2.73039 12.7406 2.37018 11.8219C2.00998 10.9031 1.8273 9.91859 1.83273 8.92533C1.83065 7.93305 2.01562 6.95011 2.37702 6.03294C2.73841 5.11578 3.26911 4.28245 3.93866 3.5808C4.6082 2.87915 5.4034 2.323 6.27859 1.94428C7.15379 1.56555 8.09175 1.37171 9.03862 1.37389C13.0105 1.37389 16.2445 4.76406 16.2445 8.92533C16.2466 9.91761 16.0616 10.9005 15.7002 11.8177C15.3388 12.7349 14.8081 13.5682 14.1386 14.2698C13.469 14.9715 12.6739 15.5276 11.7987 15.9064C10.9235 16.2851 9.9855 16.4789 9.03862 16.4768Z" fill="#84827E"/>
+                          </svg></a>
+
+                        <form method="get" action="/search" class="flex-align-center relative" data-form-type="">
+                            <input type="hidden" name="type" value="product">
+
+                            <input class="search" type="search" placeholder="Search Products" aria-label="Search" name="q">
+                            {% comment %}
+                            <input type="submit" aria-label="Submit" class="submit btn--primary" value="Search" />
+                             {% endcomment %}
+                        </form>
+
+                    </div>
+                     <a href="javascript:;" class="close-search js__search">{% include 'icon-mobile-menu-close' %}</a>
+                    </div> {% endcomment %}
+                    {%  render 'iw-search' %}
+               
+                </li> 
+                {% comment %}
+                <li class="mobile-search-icon">
+                    <a href="/search?">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M21.3217 20.6798L16.0398 15.1458C15.9508 15.0598 15.8333 15.0137 15.7123 15.0171H15.262C16.6948 13.3869 17.5545 11.2837 17.5545 8.92423C17.5545 4.03367 13.7075 0 9.03862 0C4.33091 0 0.523806 4.03367 0.523806 8.92423C0.522978 10.0964 0.742682 11.2573 1.17035 12.3404C1.59802 13.4235 2.22526 14.4077 3.0162 15.2365C3.80714 16.0654 4.74625 16.7227 5.77981 17.1709C6.81338 17.6191 7.92112 17.8493 9.03967 17.8485C11.2513 17.8485 13.2981 16.9476 14.8128 15.489V15.918C14.8128 16.0896 14.8537 16.2183 14.9356 16.3041L20.2175 21.8392C20.2616 21.8899 20.3154 21.9303 20.3753 21.958C20.4352 21.9857 20.5 22 20.5654 22C20.6309 22 20.6957 21.9857 20.7556 21.958C20.8155 21.9303 20.8692 21.8899 20.9134 21.8392L21.3228 21.4102C21.3711 21.3639 21.4097 21.3076 21.4361 21.2448C21.4625 21.1821 21.4762 21.1142 21.4762 21.0456C21.4762 20.977 21.4625 20.9091 21.4361 20.8463C21.4097 20.7835 21.3711 20.7272 21.3228 20.6809L21.3217 20.6798ZM9.03862 16.4768C8.09082 16.4825 7.15135 16.291 6.27464 15.9135C5.39792 15.5361 4.60139 14.98 3.93118 14.2777C3.26097 13.5753 2.73039 12.7406 2.37018 11.8219C2.00998 10.9031 1.8273 9.91859 1.83273 8.92533C1.83065 7.93305 2.01562 6.95011 2.37702 6.03294C2.73841 5.11578 3.26911 4.28245 3.93866 3.5808C4.6082 2.87915 5.4034 2.323 6.27859 1.94428C7.15379 1.56555 8.09175 1.37171 9.03862 1.37389C13.0105 1.37389 16.2445 4.76406 16.2445 8.92533C16.2466 9.91761 16.0616 10.9005 15.7002 11.8177C15.3388 12.7349 14.8081 13.5682 14.1386 14.2698C13.469 14.9715 12.6739 15.5276 11.7987 15.9064C10.9235 16.2851 9.9855 16.4789 9.03862 16.4768Z" fill="#84827E"/>
+                          </svg>
+                          
+                    </a>
+                </li>
+                   {% endcomment %}
+            </ul>
+                <div class="header-logo relative none-980">
+                    <a href="{{ routes.root_url }}" itemprop="url" alt="{{shop.name}}">
+                        {% if section.settings.logo != blank %}
+                        <img src="{{section.settings.logo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo"
+                            loading="lazy">
+                            <img src="{{section.settings.whiteLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo"
+                                loading="lazy">
+                                
+                        {%else%}
+                        {{shop.name}}
+                        {%endif%}
+                    </a>
+                </div>
+                <div class="header-logo relative block-980">
+                    <a href="{{ routes.root_url }}" itemprop="url" alt="{{shop.name}}">
+                        {% if section.settings.mobileLogo != blank %}
+                        <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo"
+                            loading="lazy">
+                            <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo"
+                                loading="lazy">
+                                
+                        {%else%}
+                        {{shop.name}}
+                        {%endif%}
+                    </a>
+                </div>
+                <div class="middle-menu flex-align-center">
+                    <!-- Main Nav -->
+                    <div class="navbar-collapse" id="navbarNavDropdown">
+                        {% assign mainMenu = linklists[section.settings.nav_menu]%}
+                        {% assign MobilemainMenu = linklists[section.settings.nav_mobilemenu]%}
+                        {% assign MobilebottomMenu = linklists[section.settings.nav_mobilebottom]%}
+                        {% comment %} {% assign bottoMenu = linklists[section.settings.bottommobileMenu]%} {% endcomment %}
+                        
+                        {% comment %} <div class=" search-li block-980">
+                            <div class="header-search-section js__header-search-section">
+                                <div class="container-696">
+                                <a href="javascript:;" class="js__search toggle-icon" title="icon-search"> {% include 'icon-search' %}</a>
+        
+                                <form method="get" action="/search" class="flex-align-center relative" data-form-type="">
+                                    <input type="hidden" name="type" value="product">
+        
+                                    <input class="search" type="search" placeholder="Search Products" aria-label="Search" name="q">
+                                    
+                                    
+                                </form>
+                            </div>
+                            
+                            </div>
+                       
+                        </div>  {% endcomment %}
+                        <nav class="main-menu">
+                            {% include 'site-nav_main' with mainMenu %}
+                            {% include 'site-nav_mainmobile' with MobilemainMenu %}
+                            
+                                <div class="bottom-two-column-image-card block-980">
+                                    <ul class="flex">
+                                        {% for block in section.blocks %}
+                                            {%- case block.type -%}
+                                            {%- when 'card' -%}
+                                                <li class="image-cards">
+                                                    <a href="{{ block.settings.mobile-imageLink }}" title="{{ block.settings.title }}">
+                                                        <div class="image-section">
+                                                            {% comment %} <img src="{{ block.settings.mobile-image }}" alt="{{ block.settings.title }}"> {% endcomment %}
+                                                            {{ block.settings.mobile-image | image_url: width: 1262 | image_tag: loading: 'lazy', widths: '1262x1000' }}
+                                                        </div>
+                                                        <div class="content">
+                                                            <span>{{ block.settings.title }}</span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                    
+                                        {% endcase %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+{% comment %} Bottom link {% endcomment %}
+                                <div class="mobile-bottomlink block-980">
+                                    <div class="inner-wrapper">
+                                        <ul class="flex">
+                                            {% for link in MobilebottomMenu.links %}
+                                                
+                                                
+                                                    
+                                                    <li
+                                                        class="mobile-top-nav-link"
+                                                        aria-haspopup="true"
+                                                        itemprop="itemListElement"
+                                                    >
+                                                        <a href="{{ link.url }}" title=" {{ link.title | escape }}"> {{ link.title | escape }}</a>
+                                                    </li>
+                                                
+                                                
+                                            {% endfor %}
+                                        </ul>
+                                        <div class="social-icons">
+                                        {% include 'social-icons' %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% comment %} {%if section.settings.bottommobileMenu != blank%}
+                             <ul class="bottom-links block-980">
+                                {% comment %} <li>
+                                    <a href="/account/login" title="Log In" class="user">
+                                        My Account
+                                    </a>
+                                </li> {% endcomment %}
+                                {% for link in bottoMenu.links %}
+                                
+                                <li class="{% if link.levels == 1 %}has-sub-nav{%endif%}">
+                                    
+                                    {% if link.levels == 1 %}
+                                        <p class="accordion-toggle"> {{ link.title | escape }}</p>
+                                        {%else%}
+                                        <a href="{{ link.url }}" title="{{ link.title | escape }}">
+                                            {{ link.title | escape }}
+                                            </a>
+                                    {%endif%}
+                                    {% if link.levels == 1 %}
+                                        <div class="sub-nav accordion-content">
+                                            <ul class="sub-nav-links">    
+                                                {% for childlink in link.links %}
+                                                <li>
+                                                    <a href="{{ childlink.url }}" title="{{ link.title | escape }}">
+                                                        {{ childlink.title | escape }}
+                                                    </a>
+                                                    
+                                                </li>    
+                                                {%endfor%}
+                                            </ul>
+                                        </div>
+                                    {%endif%}
+                                </li>
+                                
+                                {%endfor%}
+                            </ul> 
+                            {%endif%} {% endcomment %}
+                        </nav>
+                    </div>
+                </div>
+         
+           
+                
+               
+               
+                <!-- Logo -->
+                <!-- Account, Cart -->
+                <ul class="right-nav flex-align-center">
+                    <li class="none-980"> 
+                        <a href="#swym-wishlist" class="swym-wishlist user" title="wishlist">
+                            {% include "icon-star" %}
+                        </a>
+                    </li>
+                    <li class="has-sub-nav has-sub-nav-account">
+                        {% if customer %}
+                        <a href="/account" title="My Account" class="user site-nav__link">
+                            {% include "icon-account" %}
+                            {%else%}
+                            <a href="/account/login" title="Log In" class="user site-nav__link">
+                                {% include
+                                "icon-account" %}
+                                {%endif%}
+                            </a>
+                            <div class="sub-nav accordion-content">
+                                <ul class="sub-nav-links">
+                                    {% assign LoginMenu = linklists[section.settings.loginMenu]%}
+                                    {% for link in LoginMenu.links %}
+                                    <li>
+                                        <a href="{{ link.url }}" title="{{ link.title | escape }}">
+                                            {{ link.title | escape }}
+                                        </a>
+                                        {%if link.levels == 1%}
+                                        <ul class="inner-sub-nav">
+                                            {% for childlink in link.links %}
+                                            <li>
+                                                <a href="{{ childlink.url }}" title="{{ link.title | escape }}">
+                                                    {{ childlink.title | escape }}
+                                                </a>
+                                            </li>    
+                                            {%endfor%}
+                                        </ul>
+                                        {%endif%}
+                                    </li>    
+                                    {%endfor%}
+                                </ul>
+                            </div>
+                    </li>
+                    
+                    <li class=" search-li none-980">
+                        <a href="javascript:;" class="js__search search-icon" title="Search">{% include 'icon-search' %}
+                        </a>
+    
+                        
+                        {% comment %} <div class="header-search-section js__header-search-section">
+                            <div class="container-696">
+                            <a href="javascript:;" class=" toggle-icon"> {% include 'icon-search' %}</a>
+    
+                            <form method="get" action="/search" class="flex-align-center relative" data-form-type="">
+                                <input type="hidden" name="type" value="product">
+    
+                                <input class="search" type="search" placeholder="Search Products" aria-label="Search" name="q">
+                                <input type="submit" aria-label="Submit" class="submit btn--primary" value="Search" />
+                                
+                            </form>
+                        </div>
+                        
+                        </div> {% endcomment %}
+
+                        {% render 'iw-search' %}
+                   
+                    </li> 
+                
+                    
+                    <li>
+                        <button class="js__cart-expand js__update-cart-icon cart" title="cart">{% include
+                            "icon-cart" %}
+                            <span class="js__ajax-cart-count cart-count">
+                                {{ cart.item_count }}</span>
+                        </button>
+                        {% comment %} <a class="js__cart-expand js__update-cart-icon cart" href="javascript:;" title="cart">{% include
+                        "icon-cart" %}
+                            <span class="js__ajax-cart-count cart-count">
+                                {{ cart.item_count }}</span>
+                        </a> {% endcomment %}
+                    </li>
+                </ul>
+            
+        </div>
+        <div class="five-column-text-categories block-980">
+            {% assign mobiletopMenu = linklists[section.settings.nav_mobiletop]%}
+            <ul class="flex">
+                {% for link in mobiletopMenu.links %}
+                    
+                   
+                        
+                        <li
+                            class="mobile-top-nav-link"
+                            aria-haspopup="true"
+                            itemprop="itemListElement"
+                        >
+                           <a href="{{ link.url }}" title=" {{ link.title | escape }}"> {{ link.title | escape }}</a>
+                        </li>
+                    
+                   
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- Mini Cart -->
+    <div id="cart_overlay"></div>
+   {% include "cart_drawer" %} 
+
+   {% comment %} Static Text Categories {% endcomment %}
+</header>
+<div>
+    <div class="instant-search__trending-products-modal">
+        {% for product in settings.trending_products limit: settings.search_products_to_show %}
+            {% render 'product-modal', productData: product %}
+        {% endfor %}
+    </div>
+    <div class="iw-predictive-search__products-modal"></div>
+</div>
+{% schema %}
+{
+"name": {
+"en": "Header"
+},
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": {
+"en": "Logo"
+},
+"info": {
+"en": "188 x 40px Recommended"
+}
+},
+{
+"type": "image_picker",
+"id": "whiteLogo",
+"label": {
+"en": "White Logo"
+}
+},
+{
+"type": "image_picker",
+"id": "mobileLogo",
+"label": "Mobile Logo"
+},
+{
+"type": "link_list",
+"id": "nav_menu",
+"label": "Main Menu"
+},
+{
+"type": "link_list",
+"id": "loginMenu",
+"label": "Login Menu"
+},
+{
+"type": "link_list",
+"id": "bottommobileMenu",
+"label": "Mobile Bottom Menu"
+},
+{
+"type": "link_list",
+"id": "nav_mobilemenu",
+"label": "Mobile Main Menu"
+},
+{
+"type": "link_list",
+"id": "nav_mobiletop",
+"label": "Mobile Top Menu"
+},
+{
+"type": "link_list",
+"id": "nav_mobilebottom",
+"label": "Mobile Bottom Menu"
+},
+{
+"type": "header",
+"content": "Practitioner Mobile Image/Video"
+},
+{
+"type": "image_picker",
+"id": "practimage",
+"label": "Practitioner Image (Mobile)"
+},
+{
+"type": "url",
+"id": "practVideoLink",
+"label": "Practitioner Video Link (Mobile)"
+},
+{
+"type": "url",
+"id": "practVideoLinkdesktop",
+"label": "Practitioner Video Link (Desktop)"
+},
+],
+"blocks": [
+    {
+      "type": "block",
+      "name": "Featured Product",
+      "settings": [
+        {
+            "type": "text",
+            "id": "category",
+            "label": "Menu Title"
+          },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+            "type": "url",
+            "id": "video",
+            "label": "Video Link"
+          },
+        {
+            "type": "text",
+            "id": "linkText",
+            "label": "Link Text"
+          },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+            "type": "select",
+            "id": "content_alignment",
+            "options": [
+              { "value": "right", "label": "Right" },
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" }
+            ],
+            "label": "Content Alignment",
+            "info": "By default it is right aligned."
+          },
+          {
+        "type":"color",
+        "id":"contentColor",
+        "label":"Content Color"
+        }
+      ]
+    },
+    {
+        "type": "icons",
+        "name": "Product links Icons",
+        "settings": [
+            {
+                "type": "text",
+                "id": "menuTitle",
+                "label": "Menu Title",
+                "info":"Products Menu Shop By Health Goal Sub Menu Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "icon",
+                "label": "Links Icons",
+                "info":"Products Menu Shop By Health Goal Sub Menu Icons"
+              }
+            
+            
+          ]
+    },
+    {
+        "type": "card",
+        "name": "Mobile Featured Cards",
+        "limit":2,
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "info":"Image Card Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "mobile-image",
+                "label": "Mobile menu Card Image",
+                "info":"Mobile Menu Image card"
+              },
+              {
+                "type": "url",
+                "id": "mobile-imageLink",
+                "label": "Mobile Menu Card Image Link",
+                "info":"Mobile Menu Image Card Link"
+              }
+            
+            
+          ]
+    },
+   
+   
+  ]
+}
+{% endschema %}

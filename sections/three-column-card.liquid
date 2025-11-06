@@ -1,0 +1,163 @@
+{%- style -%}
+{% comment %}
+  .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.paddingtop | round: 0 }}px !important;
+      padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding{
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px !important;
+      padding-bottom: {{ section.settings.paddingbottommobile | round: 0 }}px !important;
+    }
+  }
+    {% endcomment %}
+{%- endstyle -%}
+{% if section.blocks.size > 0 %}
+  <div class="three-column-card">
+    {% if section.settings.title1 != blank %}
+      <div class="top-section">
+        <div class="container-1300">
+          <div class="content">
+            {% if section.settings.title1 != blank %}
+              <h2 class="h1">
+                {{ section.settings.title1 }}
+                {% if section.settings.title2 != blank %}
+                  <span class="color-grey h1">{{ section.settings.title2 }}</span>
+                {% endif %}
+              </h2>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              {{ section.settings.description }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <div class="container-1440">
+      <div class="outer-section flex-wrap section-{{ section.id }}-padding">
+        {%- for block in section.blocks -%}
+          {% if block.settings.image != blank %}
+            <div class="ingredient-section">
+              <div class="inner-section">
+                <div class="ingredient-front">
+                  <div class="image-section">
+                    {{ block.settings.image | image_url: width: 932 | image_tag: loading: 'lazy', widths: '932x900' }}
+                  </div>
+                </div>
+                <div class="ingredient-back" style="background:{{block.settings.bg_color}};">
+                  {% if block.settings.title != blank %}
+                    <h3>{{ block.settings.title }}</h3>
+                  {% endif %}
+
+                  {% if block.settings.table != blank %}
+                    {{ block.settings.table }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Three Columns Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "paddingtop",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding top (Mobile)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingbottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "card",
+      "limit": 48,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "932 x 900px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "table",
+          "label": "Table"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three Columns Cards"
+    }
+  ]
+}
+{% endschema %}

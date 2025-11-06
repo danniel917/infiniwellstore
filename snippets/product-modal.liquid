@@ -1,0 +1,299 @@
+<div
+  id="modal-{{ productData.id }}"
+  class="modal-quick-view 2222 modal modal-{{ productData.id }}"
+  style="display: none"
+  data-recharge="{% if productData.selling_plan_groups[0].selling_plans %}true{%else%}false{%endif%}"
+>
+  <!-- Modal content -->
+
+  <div class="modal-content collection-popup">
+    <button class="close js__quick-view-popup-close">{% render 'icon-mobile-menu-close' %}</button>
+
+    <button
+      data-with-epi="true"
+      id="swym-button-product_{{ productData.id }}"
+      class="swym-button swym-button-quickview wishlist swym-button product_{{ productData.id }}"
+      data-swaction="addToWishlist"
+      data-product-id="{{ productData.id }}"
+      data-variant-id="{{ productData.variants[0].id }}"
+      data-product-url="{{ shop.url }}{{ productData.url }}"
+    >
+      {% render 'icon-star' -%}
+      {%- render 'icon-star-filled' %}
+    </button>
+    {% comment %}
+         <button
+        data-with-epi="true"
+        class="js__swym-button-quickview"
+
+        data-product-id="{{ productData.id }}"
+        data-variant-id="{{ productData.variants[0].id }}"
+        data-product-url="{{ shop.url }}{{ productData.url }}"
+      >
+        {% render 'icon-heart' -%}
+        {%- render 'icon-heart-filled' %}
+      </button>
+    {% endcomment %}
+    <div class="product flex">
+      <div class="product__media-outer">
+        <div class="product__media active js-pdp-media">
+          <div class="js__popup-collection-slider js__popup-collection-slider-{{ productData.id }} pdp-slider ">
+            <div class="swiper-wrapper "></div>
+          </div>
+
+          <div class="popup-slider-thumbnail-outer hide">
+            <div
+              class="js__popup-collection-slider-thumbnail js__popup-collection-slider-thumbnail-{{ productData.id }} popup-slider-thumbnail "
+            >
+              <div class="swiper-wrapper "></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product__information">
+        <!-- Hide in Small Screen Devices -->
+
+        <p class="h3  js__popup-product-name">
+          {% if productData.metafields.product.display_name != blank %}
+            {{ productData.metafields.product.display_name }}
+          {% else %}
+            {{ productData.title }}
+          {% endif %}
+        </p>
+        <!-- Product Short Description -->
+        {% if productData.metafields.product.short_description != blank %}
+          <div class="description">
+            <p>
+              {{ productData.metafields.product.short_description }}
+            </p>
+          </div>
+        {% endif %}
+        <div class="flex-column price__wrapper ">
+          {% comment %} Price {% endcomment %}
+          <a href="{{productData.url }}">
+            <div data-oke-star-rating data-oke-reviews-product-id="shopify-{{ productData.id }}">{{ productData.metafields.okendo.StarRatingSnippet }}</div>
+          </a>
+        </div>
+
+        {% comment %} Variants Information {% endcomment %}
+
+        {% if productData.variants != blank %}
+          {% unless productData.has_only_default_variant %}
+            <div class="pdp__variants">
+              {% comment %} Custom {% endcomment %}
+              {% for option in productData.options_with_values %}
+                <div class="variant-option" rc-option{{ forloop.index }}-selector data-type="TYPE">
+                  <div class="label">
+                    Select {{ option.name -}}
+                    <span class="hide selected"></span>
+                  </div>
+
+                  <ul
+                    data-index="{{ forloop.index }}"
+                    class="variant-option-radio js__popup-variant-select js__popup-variant-select-{{ productData.id }} js__popup-variant-select{{ forloop.index }}"
+                  >
+                    {% for value in option.values %}
+                      <li
+                        class="box btn--tertiary"
+                        data-option="{{ forloop.index }}"
+                        data-id="{{productData.id}}"
+                        data-value="{{ value }}"
+                      >
+                        {{ value }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+
+              {% comment %} SM {% endcomment %}
+
+              {% for variant in productData.variants %}
+                <div class="variant form__group form__group--radio hide">
+                  <label
+                    class="pdp-option__select{% if forloop.first == true %} active{% endif %}"
+                    data-variant_id="{{ variant.id }}"
+                  >
+                    <input
+                      {% if forloop.first == true %}
+                        checked
+                      {% endif %}
+                      name="radio--{{ productData.id }}"
+                      type="radio"
+                    >
+                    <span class="checkmark"></span>
+                    <span class="variant__info">
+                      {{ variant.title }} - {{ variant.price | money }}
+
+                      {% assign basePrice = productData.price_min %}
+                      {% assign varNumber = variant.title | abs %}
+
+                      {% assign normalPrice = basePrice | times: varNumber %}
+                      {% assign savedPrice = normalPrice | minus: variant.price %}
+
+                      {% if savedPrice != 0 and product.variants.size > 1 %}
+                        <span class="saved"> (Save {{ savedPrice | money }}) </span>
+                      {% endif %}
+                    </span>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          {% endunless %}
+        {% endif %}
+
+        <section class="pdp-tab-small">
+          <div class="pdp-tab-small__wrapper">
+            <div class="pdp-tab-small__wrapper__head-outer">
+              <div class="pdp-tab-small__wrapper__head">
+                <ul class="pdp-tab-link-{{ productData.id }}">
+                  {% for value in productData.metafields['info-small-tabs'].title %}
+                    {% assign title = productData.metafields['info-small-tabs'].title[forloop.index0] %}
+
+                    <li class="js__tab-small">
+                      <a
+                        class="pdp-tab-link"
+                        data-attr="{{title |  downcase | remove: ' '}}-{{ productData.id }}"
+                        id="tab-{{title |  downcase | remove: ' '}}-{{ productData.id }}"
+                      >
+                        {{- title -}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {% comment %}
+                    <a class="tab-link  active" id="tab-small-link-benefits" data-attr="benefits"> benefits
+                    </a>
+                  {% endcomment %}
+                </ul>
+              </div>
+            </div>
+            <div class="pdp-tab-small__wrapper__content ">
+              {% for header in productData.metafields['info-small-tabs'].title %}
+                {% assign title = productData.metafields['info-small-tabs'].title[forloop.index0] %}
+                {% assign titleid = productData.metafields['info-small-tabs'].title[forloop.index0]
+                  | downcase
+                  | remove: ' '
+                %}
+                {% if titleid == 'howtouse' %}
+                  <div
+                    class="pdp-tab-content content how-to-use-tab"
+                    id="{{title |  downcase | remove: ' '}}-{{ productData.id }}"
+                  >
+                    {% for value in productData.metafields.how_to_use.title -%}
+                      {% assign title = productData.metafields.how_to_use.title[forloop.index0] %}
+                      {% assign description = productData.metafields.how_to_use.description[forloop.index0] %}
+                      {% assign icon = productData.metafields.how_to_use.icon[forloop.index0] | first %}
+                      <div class="inner-content">
+                        <div class="title">
+                          <img src="{{ icon.cloudinary_src}}" alt="{{icon.alt }}">
+                          <span class="h5">{{ title }}</span>
+                        </div>
+                        <div class="description">{{ description }}</div>
+                      </div>
+                    {%- endfor %}
+                  </div>
+                {% else %}
+                  <div class="pdp-tab-content content" id="{{title |  downcase | remove: ' '}}-{{ productData.id }}">
+                    {{ productData.metafields['info-small-tabs'].description[forloop.index0] }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </section>
+        {% if productData.available and productData.selling_plan_groups[0].selling_plans %}
+          <div class="pdp__recharge">
+            <div class="variant form__group form__group--radio popup-subscribe-option-{{ productData.id }}">
+              <label class="d-flex align-center pdp-option__select ">
+                <input value="rc-yes" name="recharge--{{ productData.id }}" type="radio">
+                <span class="checkmark"></span>
+                <span class="variant__info d-flex justify-between">
+                  <span>Subscribe <span sm-rc-discount-ammount></span></span>
+                  <div><span sm-rc-variant-subscribe-price></span> <s sm-rc-variant-one-time-price></s></div>
+                  <select class="hide scustom-dropdown-select js__custom-dropdown-select js__custom-dropdown-select-{{ productData.id }}" data-id="{{ productData.id }}" >
+                    
+                    {% for plan_group in productData.selling_plan_groups %}
+                      {% for selling_plan in plan_group.selling_plans %}
+                      <option
+                        value="{{ selling_plan.id }}"
+                        data-title="{{ selling_plan.name }}"
+                        
+                        data-discount="{{ selling_plan.price_adjustments[0].value }}"
+                      >
+                        {{ selling_plan.name }}
+                      </option>
+                    {% endfor %}
+                    {% endfor %}
+                  </select>
+                </span>
+              </label>
+            </div>
+            <div class="variant form__group form__group--radio active">
+              <label class="d-flex align-center pdp-option__select" data-plan_id="false">
+                <input checked name="recharge--{{ productData.id }}" type="radio">
+                <span class="checkmark"></span>
+                <span class="variant__info d-flex justify-between">
+                  <span>One-time Purchase</span>
+                  <div sm-rc-variant-one-time-price></div>
+                </span>
+              </label>
+            </div>
+
+            <div class="form__group form__group--rc hide">
+              <select class="frequency-select">
+                {% for plan in productData.selling_plan_groups[0].selling_plans %}
+                  <option value="{{ plan.id }}">{{ plan.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if productData.available %}
+          <div class="pdp__actions flex">
+            <div class="btn-quantity-outer flex">
+              <div class="action action--qty">
+                <div class="qty js__popup-quantity quantity-outer">
+                  <button class="minus-qty js-plus-minus-qty" data-type="minus">{% render 'icon-minus' %}</button>
+                  <input
+                    type="text"
+                    sm-rc-quantity-selector
+                    class="quantity-selector qty-val"
+                    value="1"
+                    id="Quantity"
+                    name="quantity"
+                  >
+                  <button class="plus-qty js-plus-minus-qty" data-type="plus">{% render 'icon-plus' %}</button>
+                </div>
+              </div>
+              <div class="action action--atc">
+                <button sm-rc-add-to-cart class="btn--primary js__popup-addtocart" data-id="{{ productData.id }}">
+                  <span class="oos-text"> Out Of Stock </span>
+                  <span class="is-text">Add To Cart</span>
+                </button>
+              </div>
+            </div>
+            <a href="{{productData.url }}" class="link--primary">Learn More <span class="sr-only"> About {{ productData.title }}</span></a>
+          </div>
+
+        {% else %}
+          <div class="pdp__actions flex">
+            <div class="action action--atc">
+              <button disabled class="btn--primary btn btn--green btn--atc">Out Of Stock</button>
+            </div>
+            <a href="{{productData.url }}" class="link--primary">Learn More <span class="sr-only"> About {{ productData.title }}</span></a>
+          </div>
+        {% endif %}
+        {% comment %} Product information ends {% endcomment %}
+      </div>
+      {% comment %} Actions {% endcomment %}
+      <div class="hide popup-footer">
+        {% comment %} Recharge {% endcomment %}
+
+        {% comment %} Tabs {% endcomment %}
+
+        {% render 'sm-rc-widget-modal', _product: productData %}
+      </div>
+    </div>
+  </div>
+</div>

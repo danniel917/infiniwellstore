@@ -1,0 +1,733 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "HeroBanner": {
+      "type": "home-hero-banner",
+      "blocks": {
+        "b73a50eb-84b3-45af-9f38-30617f281301": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "backgroundImage": "shopify://shop_images/Desktop_-_NEW_74f26ff8-73eb-4c7e-ad82-4f262e1f1005.jpg",
+            "video": "",
+            "videobanner": false,
+            "contentImage": "shopify://shop_images/Copy_9fc4be8c-2a0b-4a89-8e55-3457e45856e6.png",
+            "contentImageWidth": 470,
+            "contentImageHeight": 550,
+            "pretitle": "The InfiniWell Difference",
+            "title": "The Only Professional BPC-157 Brand",
+            "fontSizeTitle": 30,
+            "fontSizeTitleMobile": 25,
+            "subtitle": "",
+            "description": "",
+            "buttonText": "Shop BPC →",
+            "buttonLink": "shopify://collections/bpc-products",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": true,
+            "gradiendCss": "",
+            "content_alignment": "right",
+            "content_alignment_vertical": "center",
+            "content_width": 500,
+            "color_scheme": "#1A1F2A",
+            "button_style": "solid",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        },
+        "d96d2ebe-b86c-4725-886e-21c6b9472a39": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "backgroundImage": "shopify://shop_images/CM-Desktop-Slide.gif",
+            "video": "",
+            "videobanner": false,
+            "contentImageWidth": 400,
+            "contentImageHeight": 400,
+            "pretitle": "Cyber Monday Sale",
+            "title": "30% off sitewide",
+            "fontSizeTitle": 52,
+            "fontSizeTitleMobile": 30,
+            "subtitle": "",
+            "description": "<p>Use Code: CM30 </p>",
+            "buttonText": "Shop InfiniWell →",
+            "buttonLink": "shopify://collections/all-products",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": true,
+            "gradiendCss": "",
+            "content_alignment": "right",
+            "content_alignment_vertical": "center",
+            "content_width": 500,
+            "color_scheme": "#1A1F2A",
+            "button_style": "solid",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        },
+        "slide_PcfEAq": {
+          "type": "slide",
+          "settings": {
+            "backgroundImage": "shopify://shop_images/Desktop_-_NEW_1d2d2b38-09be-46fa-9d7b-8b2e93d6a531.jpg",
+            "video": "",
+            "videobanner": false,
+            "contentImage": "shopify://shop_images/Copy_2.png",
+            "contentImageWidth": 470,
+            "contentImageHeight": 320,
+            "pretitle": "",
+            "title": "",
+            "fontSizeTitle": 40,
+            "fontSizeTitleMobile": 25,
+            "subtitle": "",
+            "description": "",
+            "buttonText": "Available Now",
+            "buttonLink": "shopify://collections/all-products",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": false,
+            "gradiendCss": "",
+            "content_alignment": "center",
+            "content_alignment_vertical": "center",
+            "content_width": 500,
+            "color_scheme": "#1A1F2A",
+            "button_style": "outline",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        },
+        "b1c4ec73-ff39-42b2-a07e-8cb1425f5b23": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "backgroundImage": "shopify://shop_images/Desktop_-_NEW_a09fc119-e56d-4074-925f-1c7327897bf3.jpg",
+            "video": "",
+            "videobanner": false,
+            "productImage": "shopify://shop_images/BPC-157_91961196-1e50-4cca-8682-63efda951876.png",
+            "contentImage": "shopify://shop_images/Copy.gif",
+            "contentImageWidth": 500,
+            "contentImageHeight": 250,
+            "pretitle": "",
+            "title": "",
+            "fontSizeTitle": 40,
+            "fontSizeTitleMobile": 25,
+            "subtitle": "",
+            "description": "",
+            "buttonText": "Shop BPC",
+            "buttonLink": "shopify://collections/bpc-products",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": true,
+            "gradiendCss": "",
+            "content_alignment": "center",
+            "content_alignment_vertical": "center",
+            "content_width": 500,
+            "color_scheme": "#1A1F2A",
+            "button_style": "solid",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        },
+        "slide_J4PAjy": {
+          "type": "slide",
+          "settings": {
+            "backgroundImage": "shopify://shop_images/Group_96_1.jpg",
+            "video": "",
+            "videobanner": false,
+            "contentImageWidth": 500,
+            "contentImageHeight": 250,
+            "pretitle": "",
+            "title": "",
+            "fontSizeTitle": 40,
+            "fontSizeTitleMobile": 25,
+            "subtitle": "",
+            "description": "",
+            "buttonText": "",
+            "buttonLink": "shopify://products/bpc-157-delayed-pro",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": false,
+            "gradiendCss": "",
+            "content_alignment": "left",
+            "content_alignment_vertical": "center",
+            "content_width": 550,
+            "color_scheme": "#1A1F2A",
+            "button_style": "solid",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        }
+      },
+      "block_order": [
+        "b73a50eb-84b3-45af-9f38-30617f281301",
+        "d96d2ebe-b86c-4725-886e-21c6b9472a39",
+        "slide_PcfEAq",
+        "b1c4ec73-ff39-42b2-a07e-8cb1425f5b23",
+        "slide_J4PAjy"
+      ],
+      "custom_css": [],
+      "settings": {}
+    },
+    "home_hero_banner_mobile_Re6PYg": {
+      "type": "home-hero-banner-mobile",
+      "blocks": {
+        "slide_QAxnLy": {
+          "type": "slide",
+          "settings": {
+            "backgroundimage": "shopify://shop_images/Mobile-NEW_1.jpg",
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://collections/all-products"
+          }
+        },
+        "slide_nBm7Yy": {
+          "type": "slide",
+          "settings": {
+            "backgroundimage": "shopify://shop_images/Group_102_1.jpg",
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://collections/bpc-products"
+          }
+        },
+        "slide_cXU3yV": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "backgroundimage": "shopify://shop_images/Mobile-Slide-2-Resize_3424686b-d8a2-4c51-8b27-93e191b2c978.jpg",
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://collections/all-products"
+          }
+        }
+      },
+      "block_order": [
+        "slide_QAxnLy",
+        "slide_nBm7Yy",
+        "slide_cXU3yV"
+      ],
+      "settings": {}
+    },
+    "product_slider_mobile_Jg6WTC": {
+      "type": "product-slider-mobile",
+      "blocks": {
+        "product_r8bhGL": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/PTD-Slide-1.jpg",
+            "link": "shopify://collections/cosmetic"
+          }
+        },
+        "product_dwWDwp": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/ABC-Slide-2_c61231ef-79c7-495e-9e3d-1c4bcba861d1.jpg",
+            "link": "shopify://products/abc"
+          }
+        },
+        "product_3BMQYw": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/BPC-Slide-3_14b523d5-0414-4e58-8b07-0cb8840cf50d.jpg",
+            "link": "shopify://collections/joint-and-muscle-support"
+          }
+        }
+      },
+      "block_order": [
+        "product_r8bhGL",
+        "product_dwWDwp",
+        "product_3BMQYw"
+      ],
+      "settings": {}
+    },
+    "a5fc16d8-e399-4c8f-9c74-8770fbf8f451": {
+      "type": "logo-slider",
+      "blocks": {
+        "f1929bd2-a32f-49f1-a1fb-a889b2c48bb4": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Union.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "b167e7bc-69ee-4796-ac02-c13f316ac9a3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-shape.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "1ef14419-3a20-488f-834f-925a971460db": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-allure.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "c58875f7-6306-49fc-b092-d74ef6eea8a9": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Union.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "e002d451-6d17-4080-819c-e9a9520a59a1": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-allure.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "aeabd05f-5683-4ddb-88bc-0a9238762b48": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-shape.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "c59d6289-0aef-400e-826c-ab220b16b52d": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Union.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "3bcce5e8-c184-4a14-a19c-02371610a477": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-shape.png",
+            "link": "",
+            "title": ""
+          }
+        },
+        "39be9ca7-6b57-4ce6-aefb-e34f90db706e": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-allure.png",
+            "link": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "f1929bd2-a32f-49f1-a1fb-a889b2c48bb4",
+        "b167e7bc-69ee-4796-ac02-c13f316ac9a3",
+        "1ef14419-3a20-488f-834f-925a971460db",
+        "c58875f7-6306-49fc-b092-d74ef6eea8a9",
+        "e002d451-6d17-4080-819c-e9a9520a59a1",
+        "aeabd05f-5683-4ddb-88bc-0a9238762b48",
+        "c59d6289-0aef-400e-826c-ab220b16b52d",
+        "3bcce5e8-c184-4a14-a19c-02371610a477",
+        "39be9ca7-6b57-4ce6-aefb-e34f90db706e"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "b7c0adba-211b-4155-a21a-02766b639e02": {
+      "type": "four-column-product-slider",
+      "blocks": {
+        "83446b71-e616-45e6-9b6e-1050670cdc04": {
+          "type": "product",
+          "settings": {
+            "product": "bpc-157-rapid-pro"
+          }
+        },
+        "cb81c0a2-931a-4eb3-b732-162f96537153": {
+          "type": "product",
+          "settings": {
+            "product": "ptd-dbm-methyl-vanillate"
+          }
+        },
+        "1b00a60b-b897-4a9b-8777-b19e24449d30": {
+          "type": "product",
+          "settings": {
+            "product": "dhh-b"
+          }
+        },
+        "product_9BCjf4": {
+          "type": "product",
+          "settings": {
+            "product": "bpc-157-rapid"
+          }
+        },
+        "b44fb766-fbd6-4138-884f-5c713fe0fb82": {
+          "type": "product",
+          "settings": {
+            "product": "duo-cosmetic-ghk-cu-zu-thymulin"
+          }
+        },
+        "70f01440-4d10-4b22-a693-1747f588661f": {
+          "type": "product",
+          "settings": {
+            "product": "control"
+          }
+        },
+        "8f9fdd07-4c56-421d-8007-f2d5e10f5971": {
+          "type": "product",
+          "settings": {
+            "product": "ignight"
+          }
+        }
+      },
+      "block_order": [
+        "83446b71-e616-45e6-9b6e-1050670cdc04",
+        "cb81c0a2-931a-4eb3-b732-162f96537153",
+        "1b00a60b-b897-4a9b-8777-b19e24449d30",
+        "product_9BCjf4",
+        "b44fb766-fbd6-4138-884f-5c713fe0fb82",
+        "70f01440-4d10-4b22-a693-1747f588661f",
+        "8f9fdd07-4c56-421d-8007-f2d5e10f5971"
+      ],
+      "settings": {
+        "title1": "Shop",
+        "title2": "Best Sellers",
+        "buttonText": "Shop All",
+        "buttonLink": "shopify://collections/best-sellers"
+      }
+    },
+    "c4d7ff72-37b2-43b8-b953-296d8e6c34d0": {
+      "type": "four-column-embed",
+      "disabled": true,
+      "settings": {
+        "title1": "Outcomes",
+        "title2": "Speak Volumes",
+        "preTitle": "",
+        "title": "",
+        "description": "",
+        "buttonText": "",
+        "buttonLink": ""
+      }
+    },
+    "5b4880df-73ec-486d-a4d9-4b56678a1549": {
+      "type": "animatedIcons",
+      "blocks": {
+        "a167cf88-15a7-4926-9893-a31951cf4076": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Aging-Gradient_2924794f-4703-44be-9775-8384f9d5e5b7.png",
+            "title": "Aging & Longevity",
+            "animation": "aging",
+            "link": "shopify://collections/aging-and-longevity-support"
+          }
+        },
+        "148d9aac-8e20-4294-ac95-e083f5e0cecd": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Cardio-Gradient.png",
+            "title": "Cardio Metabolic",
+            "animation": "cardio",
+            "link": "shopify://collections/cardio-metabolic-support"
+          }
+        },
+        "039245bd-77d4-427a-92de-2df4ef787a3b": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Cosmetic-Gradient.png",
+            "title": "Skin & Hair",
+            "animation": "cosmetic",
+            "link": "shopify://collections/cosmetic"
+          }
+        },
+        "24720a81-001b-462b-83bf-45c136d136e2": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Energy-Gradient.png",
+            "title": "Energy & Hormone",
+            "animation": "energy",
+            "link": "shopify://collections/energy-and-hormone-support"
+          }
+        },
+        "a80f01d8-4938-4e38-83b5-f34ae8650d09": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-GutHealth-Gradient.png",
+            "title": "Gastrointestinal",
+            "animation": "gut",
+            "link": "shopify://collections/gut-health"
+          }
+        },
+        "7a7dafa9-cdc9-411f-9d5c-383f95f6a3f0": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Immunity-Gradient.png",
+            "title": "Immunity",
+            "animation": "immunity",
+            "link": "shopify://collections/immunity-and-detoxification"
+          }
+        },
+        "8f3168bc-4808-4648-b6b8-684dbf6e497b": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-JontHealth-Gradient.png",
+            "title": "Joint & Muscle",
+            "animation": "joint",
+            "link": "shopify://collections/joint-and-muscle-support"
+          }
+        },
+        "c31e7db9-3edb-448d-9343-e8a9f723e35b": {
+          "type": "image",
+          "settings": {
+            "logo": "shopify://shop_images/IW-Sleep-Gradient.png",
+            "title": "Sleep & Mood",
+            "animation": "sleep",
+            "link": "shopify://collections/sleep-and-mood"
+          }
+        }
+      },
+      "block_order": [
+        "a167cf88-15a7-4926-9893-a31951cf4076",
+        "148d9aac-8e20-4294-ac95-e083f5e0cecd",
+        "039245bd-77d4-427a-92de-2df4ef787a3b",
+        "24720a81-001b-462b-83bf-45c136d136e2",
+        "a80f01d8-4938-4e38-83b5-f34ae8650d09",
+        "7a7dafa9-cdc9-411f-9d5c-383f95f6a3f0",
+        "8f3168bc-4808-4648-b6b8-684dbf6e497b",
+        "c31e7db9-3edb-448d-9343-e8a9f723e35b"
+      ],
+      "settings": {
+        "title1": "Shop By",
+        "title2": "Health Benefit",
+        "buttonText": "All Health Concerns",
+        "buttonLink": "shopify://collections/all-products"
+      }
+    },
+    "00a41cab-e697-463c-895f-0f913877cd03": {
+      "type": "three-column-card-slider",
+      "blocks": {
+        "29bce682-bee3-4684-b497-6220728adbef": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/bpc-2025.jpg",
+            "title": "BPC-157",
+            "table": "<ul><li>Found In</li><li>Human Digestive System</li><li>Source</li><li>Pentadeca Short Chain Amino Acids</li><li>Benefits</li><li>Joint, Digestive Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=bpc-157\"><span style=\"text-decoration:underline\">181</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/bpc-157-rapid-pro\" title=\"BPC-157 RAPID PRO - 500MCG\">BPC-157 Rapid Pro</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery</a></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        },
+        "c4f88c5c-660d-4b16-bf9a-a45101a3617f": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/NAD3.jpg",
+            "title": "NAD3® Proprietary Blend",
+            "table": "<ul><li>Found In</li><li>Wasabi, Tea  </li><li>Source</li><li>Wasabia japonica, Theacrine, Cuprous Niacin  </li><li>Benefits</li><li>Energy, Heart, Brain Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=wasabi+extract\"><span style=\"text-decoration:underline\">52</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        },
+        "66d00df8-0f25-4287-afbd-4bd418772cfa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pterostilbene_deb0690a-7e2c-4116-b1ed-f05cd10319b0.jpg",
+            "title": "Pterostilbene",
+            "table": "<ul><li>Found In</li><li>Almonds, Blueberries, Grapes, Cranberries</li><li>Source</li><li>Pterocarpus marsupium</li><li>Benefits</li><li>Antioxidant, Brain, Metabolism, Heart Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=pterostilbene\"><span style=\"text-decoration:underline\">856</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/senescent-regulator\" title=\"SENESCENT REGULATOR\">Senescent Regulator</a>, <a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        },
+        "a633809e-abe6-4bff-aad0-167a7b4f68eb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Spermidine.jpg",
+            "title": "Spermidine",
+            "table": "<ul><li>Found In   </li><li>Wheatgerm, Soya beans, Mushrooms, Mature Cheeses  </li><li>Source   </li><li>Combination of 14-Butanediamine and SAMe  </li><li>Benefits   </li><li>Energy, Heart, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=spermidine\"><span style=\"text-decoration:underline\">14,420</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        },
+        "d9134c38-7048-4014-890d-58fd064ed08d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VasoDrive_05252543-2048-4ddd-9a91-ca327648011d.jpg",
+            "title": "VASODRIVE-AP®",
+            "table": "<ul><li>Found In</li><li>Dairy Products  </li><li>Source</li><li>(Isoleucyl-prolyl-proline and Valyl-prolyl-proline)</li><li>Benefits</li><li>Blood Pressure, Heart Health, Libido</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=lactotripeptide\"><span style=\"text-decoration:underline\">44</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        },
+        "04f6e26a-6873-42c6-82ae-f3b0e5ca1bd6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DHHB.jpg",
+            "title": "DHH-B",
+            "table": "<ul><li>Found In</li><li>Magnolia Extract  </li><li>Source</li><li>Dihydrohonokiol-B  </li><li>Benefits</li><li>Stress, Sleep, Brain Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=honokiol\"><span style=\"text-decoration:underline\">1,186</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dhh-b\" title=\"DHH-B\">DHH-B</a>, <a href=\"/products/dhh-b-max\" title=\"DHH-B MAX\">DHH-B Max</a>, <a href=\"/products/calm\" title=\"CALM\">Calm</a><br/></li></ul>",
+            "bg_color": "#ffffff",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "29bce682-bee3-4684-b497-6220728adbef",
+        "c4f88c5c-660d-4b16-bf9a-a45101a3617f",
+        "66d00df8-0f25-4287-afbd-4bd418772cfa",
+        "a633809e-abe6-4bff-aad0-167a7b4f68eb",
+        "d9134c38-7048-4014-890d-58fd064ed08d",
+        "04f6e26a-6873-42c6-82ae-f3b0e5ca1bd6"
+      ],
+      "settings": {
+        "title1": "New Tools",
+        "title2": "For Longevity"
+      }
+    },
+    "db495d0d-bf14-44f7-a6e0-29d363d36792": {
+      "type": "full-width-image-and-content",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_b39929a3-a670-45a9-869e-1842b1b03511.png",
+        "mobileImage": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_b39929a3-a670-45a9-869e-1842b1b03511.png",
+        "video": "",
+        "videobanner": false,
+        "title1": "WE’RE ON A MISSION TO",
+        "title2": "MAKE AGING OPTIONAL",
+        "description": "",
+        "buttonText": "Learn More",
+        "buttonLink": "shopify://pages/about-science",
+        "content_alignment": "center",
+        "paddingtop": 94,
+        "paddingtopmobile": 60,
+        "paddingbottom": 80,
+        "paddingbottomMobile": 70,
+        "bg": false,
+        "color": true
+      }
+    },
+    "42461fe4-e893-4c18-8cee-089f1a955346": {
+      "type": "half-image-half-content-v2",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/dna_430x_fdaf7457-f7a1-41eb-8548-d0eefdbeca1b.webp",
+        "preTitle": "Lorem ipsum dolor sit amet",
+        "title1": "Wellness innovations",
+        "title2": "infinite possibilities.",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>",
+        "buttonText": "Learn More",
+        "buttonLink": ""
+      }
+    },
+    "0ae42be9-5c8b-4d4c-a76b-d7ad7f911522": {
+      "type": "two-column-blog-slider",
+      "blocks": {
+        "e730369e-708a-4ccd-8555-76c645e2909d": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/cultivating-longevity-through-optimized-digestion-unraveling-the-role-of-butyrate-in-cellular-health-and-aging",
+            "link": "",
+            "buttonText": "10 Min Read",
+            "buttonLink": ""
+          }
+        },
+        "218da34c-6586-4e59-88a7-a1882b084d65": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/harnessing-key-nutrients-and-topical-marvels-for-radiant-aging-inside-and-out",
+            "link": "",
+            "buttonText": "10 Min Read",
+            "buttonLink": "shopify://blogs/news/lorem-ipsum-dolor-amet-consectetur-adipiscing-voluptate-velit"
+          }
+        },
+        "9bd3d0f4-0c51-43ab-a478-295b9459e652": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/l-ergothioneine-the-mitochondrial-marvel",
+            "link": "",
+            "buttonText": "5 Min Read",
+            "buttonLink": "shopify://blogs/news/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod"
+          }
+        },
+        "55b86c55-9a71-48a6-b8c9-c0d7920c5f40": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/longevity-101-pt-1",
+            "link": "",
+            "buttonText": "5 Min Read",
+            "buttonLink": ""
+          }
+        },
+        "6b8a346b-9a0e-4bd7-bec1-059f0f5912f1": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/rejuvenating-through-the-night-unveiling-the-glymphatic-system-shoden-ashwagandha-and-the-dynamic-interplay-of-sleep-and-aging",
+            "link": "",
+            "buttonText": "5 Min Read",
+            "buttonLink": ""
+          }
+        },
+        "d4f4a393-fa8f-4fa5-a0e4-2f7638945689": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/an-intro-to-cardio-prime",
+            "link": "shopify://blogs/iw-blog/an-intro-to-cardio-prime",
+            "buttonText": "5 Min Read",
+            "buttonLink": ""
+          }
+        }
+      },
+      "block_order": [
+        "e730369e-708a-4ccd-8555-76c645e2909d",
+        "218da34c-6586-4e59-88a7-a1882b084d65",
+        "9bd3d0f4-0c51-43ab-a478-295b9459e652",
+        "55b86c55-9a71-48a6-b8c9-c0d7920c5f40",
+        "6b8a346b-9a0e-4bd7-bec1-059f0f5912f1",
+        "d4f4a393-fa8f-4fa5-a0e4-2f7638945689"
+      ],
+      "settings": {
+        "title1": "Insights",
+        "title2": "",
+        "buttonText": "View All",
+        "buttonLink": "shopify://blogs/iw-blog"
+      }
+    }
+  },
+  "order": [
+    "HeroBanner",
+    "home_hero_banner_mobile_Re6PYg",
+    "product_slider_mobile_Jg6WTC",
+    "a5fc16d8-e399-4c8f-9c74-8770fbf8f451",
+    "b7c0adba-211b-4155-a21a-02766b639e02",
+    "c4d7ff72-37b2-43b8-b953-296d8e6c34d0",
+    "5b4880df-73ec-486d-a4d9-4b56678a1549",
+    "00a41cab-e697-463c-895f-0f913877cd03",
+    "db495d0d-bf14-44f7-a6e0-29d363d36792",
+    "42461fe4-e893-4c18-8cee-089f1a955346",
+    "0ae42be9-5c8b-4d4c-a76b-d7ad7f911522"
+  ]
+}

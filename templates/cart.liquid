@@ -1,0 +1,240 @@
+<div class="js__show-cart-items-section">
+  <div id="cart" class="cart-section  ">
+    <div class="container-1340 container-section">
+      <div class="title-shipping-section">
+        <h1 class="h2">Cart (<span class="js__ajax-cart-count"></span>)</h1>
+        <div class="shipping-details js__progressbar_visiblity hide">
+          <span class="hide js__free-shipping-limit">{{ settings.freeShippingThresholdValue }} </span>
+          <span class=" title js__free-shipping-message" style="display: none;">{{ settings.freeShippingMsg }}</span>
+          <span class="title js__free-shipping-limit-message"
+            >You are
+            <b
+              ><span
+                class="js__free-shipping-remaning-amount"
+                >$40</span
+              >
+              away</b
+            >
+            from free shipping</span
+          >
+          <ul class="flex ">
+            <li class="dark-bar js__grandtotal-shipping" data-percentage="0"></li>
+            <li>
+              <div class="icon car js__free-shipping__icon">
+                <img src="{{ 'icon-car.webp' | asset_url }}">
+              </div>
+              <span>Free Shipping</span>
+              <div class="free-shipping__progress-bar js__free-shipping__progress-bar"><span></span></div>
+            </li>
+            {% if settings.freeProduct1 != blank %}
+              <li>
+                <div class="icon js__free-gift-1__icon">
+                  <img src="{{ 'icon-gift.webp' | asset_url }}">
+                </div>
+                <span>Free Gift</span>
+                <div class="free-shipping__progress-bar js__free__gift-1__progress-bar"><span></span></div>
+              </li>
+            {% endif %}
+            {% if settings.freeProduct2 != blank %}
+              <li>
+                <div class="icon js__free-gift-2__icon">
+                  <img src="{{ 'icon-gift.webp' | asset_url }}">
+                </div>
+                <span>Free Gift</span>
+                <div class="free-shipping__progress-bar js__free__gift-2__progress-bar"><span></span></div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <form action="/cart" method="post">
+        <div class="free-shipping js__progressbar_visiblity hide" style="display:none !important">
+          <!-- Free Shipping Values from Schema -->
+          <span class="hide js__free-shipping-limit">{{ settings.freeShippingThresholdValue }} </span>
+          <!-- Free Shipping Message (When the value is reached) -->
+          <p>
+            <span class="js__free-shipping-message" style="display: none;">{{ settings.freeShippingMsg }}</span
+            ><span
+              class="js__free-shipping-limit-message"
+              style="display: none;"
+            >
+              You are
+              <strong
+                class="js__free-shipping-remaning-amount"
+                >$25.00</strong
+              >
+              away from free shipping.</span
+            >
+          </p>
+          <div class="free-shipping__progress-bar js__free-shipping__progress-bar"><span></span></div>
+        </div>
+
+        <div class="inner flex">
+          <div class="wrapper">
+            <div class="header flex">
+              <div class="table-head">
+                <span>Product</span>
+              </div>
+              <div class="table-head">
+                <span>Price</span>
+              </div>
+              <div class="table-head text-center">
+                <span>QUANTITY</span>
+              </div>
+              <div class="table-head text-center recharge">
+                <span>Subscribe</span>
+              </div>
+
+              <div class="table-head">
+                <span> Total</span>
+              </div>
+            </div>
+            <div class="cart-list"></div>
+            <!-- Frequently Bought Together Product List -->
+            {% render 'gift-product-cart' %}
+          </div>
+          <!-- START TOTAL -->
+          <div class="wrapper-total">
+            <span class="head uppercase">Overview</span>
+            <div class="total">
+              <textarea
+                id="note"
+                name="note"
+                class="form-control hide"
+                placeholder="Add a note to your order..."
+              >{{ cart.note }}</textarea>
+              <div class="cart-total">
+                <div class="flex js__cartSubtotalDiscountWraperee hide">
+                  <b>Subtotal</b>
+                  <span class="js__cart-sub-total"></span>
+                </div>
+                <div class="flex js__cartSubtotalDiscountWraper hide">
+                  <b>You Saved</b><span class="js__cart-total-saved">-</span>
+                </div>
+                <div class="flex">
+                  <b>Shipping</b>
+                  <span>Free!</span>
+                </div>
+              </div>
+              <div class="tax">
+                <span>Taxes and shipping calculated at checkout</span>
+              </div>
+              {% if settings.specialTitle != blank %}
+                <div class="cart-info">
+                  <b>{{ settings.specialTitle }}</b>
+                  {{ settings.specialDescription }}
+                </div>
+              {% endif %}
+
+              <div class="order-total flex ">
+                <b>order total</b>
+                <span class="js__cart-total"
+                  ><span>
+                    {{ cart.total_price | mone }}
+                  </span></span
+                >
+              </div>
+
+              <div class="btn-wrapper">
+               
+                <button class="btn--primary" type="submit" id="checkout" name="checkout">Checkout Now</button>
+                <a class="link--primary" href="/collections/all-products" title="Continue Shopping">Continue Shopping</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Empty Cart -->
+<div style="display: none;" class="empty-cart-section">
+  <style>
+    #cart_overlay.active {
+      display: none;
+    }
+  </style>
+
+  <div class="cart-section">
+    <div class="container-1340">
+      <h2 class="h2 text-center">
+        YOUR CART IS EMPTY<br>
+        <span>LEt’s Change ThaT</span>
+      </h2>
+      <a href="/collections/all-products" title="Continue Shopping" class="btn--primary ">Continue Shopping</a>
+    </div>
+  </div>
+</div>
+
+{% comment %} Compatible Products {% endcomment %}
+{% if settings.title != blank %}
+  <div class="four-column-product-slider cart">
+    <div class="top-section">
+      <h2 class="h2 text-center">You MAY <span class="color-grey h2">ALSO LIKE</span></h2>
+    </div>
+    <div class="inner">
+      <div class="slider js__product-slider">
+        <div class="swiper-wrapper">
+          {% if settings.product1 != blank %}
+            {% assign productone = settings.product1 %}
+            <div class="swiper-slide slide product-card">
+              {% include 'product_Card' with productRelated: productone , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+            </div>
+          {% endif %}
+          {% if settings.product2 != blank %}
+            {% assign producttwo = settings.product2 %}
+            <div class="swiper-slide slide product-card">
+              {% include 'product_Card' with productRelated: producttwo , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+            </div>
+          {% endif %}
+          {% if settings.product3 != blank %}
+            {% assign productthree = settings.product3 %}
+            <div class="swiper-slide slide product-card">
+              {% include 'product_Card' with productRelated: productthree , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+            </div>
+          {% endif %}
+          {% if settings.product4 != blank %}
+            {% assign productfour = settings.product4 %}
+            <div class=" swiper-slide slide product-card">
+              {% include 'product_Card' with productRelated: productfour , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="swiper-button-prev-product-slider">
+          {% include 'icon-arrow-slide' %}
+        </div>
+        <div class="swiper-button-next-product-slider">
+          {% include 'icon-arrow-slide' %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if settings.product1 != blank %}
+  {% assign productone = settings.product1 %}
+  {% render 'product-modal', productData: productone %}
+{% endif %}
+{% if settings.product2 != blank %}
+  {% assign producttwo = settings.product2 %}
+  {% render 'product-modal', productData: producttwo %}
+{% endif %}
+{% if settings.product3 != blank %}
+  {% assign productthree = settings.product3 %}
+  {% render 'product-modal', productData: productthree %}
+{% endif %}
+{% if settings.product4 != blank %}
+  {% assign productfour = settings.product4 %}
+  {% render 'product-modal', productData: productfour %}
+{% endif %}
+
+<style>
+  .scroll-to-top {
+    display: none !important;
+  }
+
+  .forMiniCart {
+    display: none !important;
+  }
+</style>

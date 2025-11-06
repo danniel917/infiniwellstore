@@ -1,0 +1,290 @@
+<style>
+  header .first-link {
+    border-radius: 10px 80px 80px 10px;
+    position: relative;
+    background: linear-gradient(to right, #faf8f6 20%, #84827E 100%);
+    border: none;
+    padding: 1px !important;
+  }
+
+  header .first-link .flex-block {
+    background-color: #faf8f6;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 10px 80px 80px 10px;
+  }
+  header .first-link p:before {
+    right: -22px !important;
+  }
+
+  .five-column-text-categories ul {
+    padding: 12px 5px 12px 10px;
+}
+
+  .five-column-text-categories ul li:first-child {
+    margin-left: 2.5px;
+}
+
+  @media only screen and (max-width: 980px) {
+    #shopify-section-header header .main-header .container-1324 {
+        height: 100%;
+        padding: 8px 20px 10px 12.5px;
+    }
+    header .main-menu .main-nav-list li:first-child {        
+        margin-left: -1px;
+    }
+    .mobile-menu-main {
+        padding: 0 12px !important;
+    }
+    header .main-menu .first-link .first-link-media {
+        border-radius: 7px 40px 40px 6px !important;
+    }
+}
+</style>
+<ul
+  class="flex-justify-center main-nav-list block-980 mobile-menu-main"
+ 
+>
+  {% for link in MobilemainMenu.links %}
+    {% if link.links != blank %}
+      <!-- If first child menus are there -->
+      {% assign parent_index = forloop.index %}
+      {% assign linkTitle = link.title | downcase | remove: ' ' %}
+
+      <li
+        class="{% if linkTitle contains 'practitioner' %}link-practitioner-mobile{% endif %} {% if link.levels ==  2 %}has-big-nav{%else%}has-sub-nav{%endif%}"
+        aria-haspopup="true"
+       
+      >
+        {% comment %} href=" {{ link.url}}" {% endcomment %}
+        {% assign _object = link.object %}
+        {% if _object.metafields.accentuate.mobile_image != blank %}
+          <div class="mobile-menu-image">
+            {% assign pageImage = _object.metafields.accentuate.mobile_image | first %}
+            <img class="lazyload" src="{{ pageImage.cloudinary_src}}" class="none-980">
+          </div>
+        {% endif %}
+
+        {% if link.title == 'practitioner' %}
+          <div
+            class="site-nav__link accordion-toggle block-980 first-link"
+            data-meganav-type="parent"
+            tabindex="0"
+            itemprop="name"
+          >
+            <div class="flex-block">
+              {% if section.settings.practVideoLink != blank %}
+                <div class="first-link-media">
+                  <video autoplay loop muted playsinline>
+                    <source src="{{ section.settings.practVideoLink }}" type="video/mp4">
+                  </video>
+                </div>
+              {% else %}
+                <div class="first-link-media">
+                  <img src="{{ section.settings.practimage | image_url: width: 48 }}" class="first-link-img">
+                </div>
+              {% endif %}
+  
+              <p>{{ link.title | escape }}</p>
+            </div>
+          </div>
+        {% else %}
+          <p
+            class="site-nav__link accordion-toggle block-980"
+            data-meganav-type="parent"
+            tabindex="0"
+            itemprop="name"
+
+            {% unless request.page_type == 'index' %}
+              {%- if link.active %}aria-current="page" {% endif -%}
+            {% endunless %}
+          >
+            {{ link.title | escape }}
+          </p>
+        {% endif %}
+        <meta itemprop="position" content="1">
+        {% comment %} BIG NAV {% endcomment %}
+
+        {% if link.levels == 2 %}
+          <div class="big-nav accordion-content">
+            <div class="container-1360">
+              <div class="flex">
+                {% if linkTitle contains 'products' %}
+                  <div class="big-nav-menu flex product-icon-links">
+                    {% for childlink in link.links %}
+                      {% if childlink.links != blank %}
+                        {% assign childlinkTitle = childlink.title | downcase | remove: ' ' %}
+
+                        <div
+                          class="big-nav-links icon-link"
+                         
+                        >
+                          <a
+                            href="{{childlink.url}}"
+                            title=" {{ childlink.title | escape }}"
+                            class="none-980 sub-link pre-title border"
+
+                            aria-controls="MenuParent-{{ child_index }}"
+                            aria-expanded="false"
+                            itemprop="item"
+                          >
+                            <div>{{ childlink.title }}</div>
+                          </a>
+                          <p
+                            class="accordion-toggle-inner block-980"
+                            itemprop="name"
+                          >
+                            {{ childlink.title | escape }}
+                          </p>
+                          <meta itemprop="position" content="2">
+
+                          <ul class="accordion-content-inner product-inner">
+                            {% for subChildlink in childlink.links %}
+                              {% assign subChildlinkTitle = subChildlink.title | downcase | remove: ' ' %}
+                              <li
+                                class="flex"
+                               
+                              >
+                                {% assign _object = subChildlink.object %}
+
+                                {% if childlinkTitle contains 'shopbyhealth' %}
+                                  {% if _object.metafields.menu.icons != blank %}
+                                    {% assign pageImage = _object.metafields.menu.icons | first %}
+                                    <img class="lazyload" src="{{ pageImage.cloudinary_src}}" class="none-980">
+                                  {% endif %}
+                                  <a
+                                    href="{{ _object.url }}"
+
+                                    data-meganav-type="parent"
+                                    aria-controls="MenuParent-{{ parent_index }}"
+                                    aria-expanded="false"
+                                    {% unless request.page_type == 'index' %}
+                                      {%- if subChildlink.active %}aria-current="page" {% endif -%}
+                                    {% endunless %}
+                                    itemprop="item"
+                                  >
+                                    <div
+                                      itemprop="name"
+                                    >
+                                      {{ subChildlink.title | escape }}
+                                    </div>
+                                  </a>
+                                  <meta itemprop="position" content="3">
+                                {% else %}
+                                  <a
+                                    href="{{ subChildlink.url }}"
+                                    data-meganav-type="parent"
+                                    aria-controls="MenuParent-{{ parent_index }}"
+                                    aria-expanded="false"
+                                    {% unless request.page_type == 'index' %}
+                                      {%- if subChildlink.active %}aria-current="page" {% endif -%}
+                                    {% endunless %}
+                                    itemprop="item"
+                                  >
+                                    <div
+                                      itemprop="name"
+                                    >
+                                      {{ subChildlink.title | escape }}
+                                    </div>
+                                  </a>
+                                  <meta itemprop="position" content="3">
+                                {% endif %}
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% else %}
+                  <div class="big-nav-menu flex">
+                    {% for childlink in link.links %}
+                      {% if childlink.links != blank %}
+                        {% assign childlinkTitle = childlink.title | downcase | remove: ' ' %}
+
+                        <div class="big-nav-links">
+                          <p class="accordion-toggle-inner block-980">
+                            {{ childlink.title | escape }}
+                          </p>
+                          <ul class="accordion-content-inner">
+                            {% for subChildlink in childlink.links %}
+                              <li>
+                                <a
+                                  href="{{ subChildlink.url }}"
+                                  data-meganav-type="parent"
+                                  aria-controls="MenuParent-{{ parent_index }}"
+                                  aria-expanded="false"
+                                  {% unless request.page_type == 'index' %}
+                                    {%- if subChildlink.active %}aria-current="page" {% endif -%}
+                                  {% endunless %}
+                                  itemprop="item"
+                                >
+                                  {{ subChildlink.title | escape }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          {% comment %} SUB NAV {% endcomment %}
+          {% if link.levels == 1 %}
+            {% comment %} {% assign linkTitle = link.title | downcase | remove: ' ' %} {% endcomment %}
+
+            <div class="sub-nav accordion-content">
+              <div class="flex">
+                <ul class="sub-nav-links">
+                  {% for childlink in link.links %}
+                    <li>
+                      <a
+                        href="{{ childlink.url }}"
+                        title="{{ childlink.title | escape }}"
+                        aria-controls="MenuChildren-{{ parent_index }}-{{ child_index }}"
+                        data-meganav-type="parent"
+                        {% unless request.page_type == 'index' %}
+                          {%- if childlink.active %}aria-current="page" {% endif -%}
+                        {% endunless %}
+                        itemprop="item"
+                      >
+                        {{ childlink.title | escape -}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      </li>
+    {% else %}
+      <!-- If NO child menus are there -->
+
+      {% assign linkTitle = link.title | downcase | remove: ' ' %}
+
+      <li class="no-sub-menu {% if linkTitle contains 'getstarted' %}has-big-nav{%else%} {% if linkTitle contains 'support' %} has-sub-nav{%endif%}{%endif%}">
+        <a
+          href=" {{ link.url}}"
+          title="{{ link.title | escape }}"
+          class="{% if linkTitle contains 'support' %}site-nav__link none-980{%endif%}"
+          itemprop="item"
+        >
+          {{ link.title | escape }}
+        </a>
+        <meta itemprop="position" content="{{ forloop.index }}">
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

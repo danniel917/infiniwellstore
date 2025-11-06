@@ -1,0 +1,430 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "innerBanner": {
+      "type": "inner-hero-section",
+      "settings": {
+        "image": "shopify://shop_images/wholesale-hero-desktop_2x_3c3156aa-c9b4-44bc-9233-950c2d5d5c8f.webp",
+        "mobileImage": "shopify://shop_images/wholesale-hero-mobile_2x_a251f50c-23d8-476f-bf44-2c368f9c02e5.webp",
+        "title": "Science is moving faster.",
+        "description": "<h1>We make it easy.</h1>",
+        "buttonText1": "Create Account",
+        "buttonLink1": "https://ie9bk6o7ejm.typeform.com/to/mcc3f4kT?typeform-source=e.issuu.com",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "center",
+        "smallHeight": false,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "9d10456a-d175-499c-9525-b539ebff6a4c": {
+      "type": "full-width-content",
+      "settings": {
+        "title1": "At Infiniwell, we're built for action.",
+        "title2": "",
+        "description": "<p>Founded to fast-track clinical breakthroughs into the hands of those who matter most—physicians and their patients—we're bypassing the red tape and commercial interests that slow progress, so we can slow aging together.</p>",
+        "buttonText": "Professional Product Catalogue",
+        "buttonLink": "https://issuu.com/infiniwell/docs/ebook-oct-16-2024_compressed?fr=xKAE9_zU1NQ",
+        "paddingtop": 90,
+        "paddingtopmobile": 80,
+        "paddingbottom": 0,
+        "paddingbottommobile": 0
+      }
+    },
+    "8b2f4adc-de64-419c-8a79-c05b8cb13d24": {
+      "type": "five-column-icon",
+      "blocks": {
+        "2ad13edc-2b0b-4e3a-a6ab-0004e9e9a1ac": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/icon-cardio.svg",
+            "title": "Innovative"
+          }
+        },
+        "6d24569a-3bf9-4581-b898-ccbecf8865fb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/icon-energy_1.svg",
+            "title": "Researched"
+          }
+        },
+        "fc3a9584-cf82-4d36-b11a-7e044121fca3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/icon-cosmetic_1.svg",
+            "title": "Published"
+          }
+        },
+        "65fedad1-9084-4aaf-a212-def0e27ca3f6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/icon-immunity_1.svg",
+            "title": "Innovative"
+          }
+        },
+        "648f77bc-8acb-4995-9dbe-8a3732750333": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/icon-joint.svg",
+            "title": "Researched"
+          }
+        }
+      },
+      "block_order": [
+        "2ad13edc-2b0b-4e3a-a6ab-0004e9e9a1ac",
+        "6d24569a-3bf9-4581-b898-ccbecf8865fb",
+        "fc3a9584-cf82-4d36-b11a-7e044121fca3",
+        "65fedad1-9084-4aaf-a212-def0e27ca3f6",
+        "648f77bc-8acb-4995-9dbe-8a3732750333"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "2fb05c66-ec2d-4f16-b986-c050f5a41300": {
+      "type": "half-content-half-image-slider",
+      "blocks": {
+        "35682bec-dd4a-4337-afd6-4554a5438379": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IWsimf.png",
+            "pretitle": "",
+            "title": "In a category too often driven by margin and marketing, we’re privately owned and driven by outcomes.",
+            "description": "<p>Independence means we can adopt a nimble approach as dynamic as the frontier research that informs our products.</p><p>It also means outstanding customer service is more than a promise—it's our practice and our business model. Infiniwell’s products are best-in-class because of real-time feedback from practicing physicians. By aligning with physicians we’re able to ensure that every Infiniwell product advances patient well-being above all.</p>",
+            "buttonText": "",
+            "videoLink": ""
+          }
+        }
+      },
+      "block_order": [
+        "35682bec-dd4a-4337-afd6-4554a5438379"
+      ],
+      "settings": {}
+    },
+    "c64fd1fd-5842-4f7d-b930-60b8f103f8b3": {
+      "type": "three-column-video-card",
+      "blocks": {
+        "fda5f7f3-e985-4097-81ce-3a0f490575b0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "58745c77-1a69-4fed-b205-4fb239a1642a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "db64cf23-424e-47c6-aa6c-a32bfec16f2c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "watch now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "8b58fbc4-2aa5-44af-b4de-2984176a55e6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "watch now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "c100a9e1-66fd-42a7-b4e6-d7d6fed09ede": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "d9e8dcd0-d29a-4be9-8e27-b14bb592850e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/half-image-half-content.webp",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "https://www.youtube.com/watch?v=9xwazD5SyVg"
+          }
+        },
+        "a1904e25-13df-4b17-b15d-f632faa3a5ce": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/amb2.png",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "shopify://products/bpc-157"
+          }
+        },
+        "ea075e70-3db2-4131-be5e-a41849b855a0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DHHB.jpg",
+            "title": "Lorem ipsum dolor amet consectetur",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "watch now",
+            "videoLink": ""
+          }
+        },
+        "b78d0aee-34e2-45e7-b7bc-11fb80bf1fe3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/amb3.png",
+            "title": "Lorem ipsum dolor amet consectetur",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "Watch Now",
+            "videoLink": ""
+          }
+        },
+        "0f50e7a7-6750-493f-aa9f-53bcf506d47a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Berberine_ca279c2e-c61a-4a7b-82aa-12b069f15880.jpg",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "Watch Now",
+            "videoLink": "shopify://pages/billing-terms-and-conditions"
+          }
+        },
+        "190dd18c-621a-4101-af66-204398c5e9ae": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VasoDrive_05252543-2048-4ddd-9a91-ca327648011d.jpg",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "watch now",
+            "videoLink": ""
+          }
+        },
+        "44b575a3-492f-4c6d-a704-9f9b8bd58c8d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SporeProbiotics.jpg",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "watch now",
+            "videoLink": ""
+          }
+        },
+        "2e4b5888-2bbb-4d6d-acdf-dcbcf19ebc9e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Selenium.jpg",
+            "title": "Lorem ipsum dolor amet consectetur adipiscing voluptate velit",
+            "description": "<p>Lorem ipsum dolor amet consectetur adipiscing voluptate velit</p>",
+            "buttonText": "watch now",
+            "videoLink": "shopify://pages/ambassador"
+          }
+        }
+      },
+      "block_order": [
+        "fda5f7f3-e985-4097-81ce-3a0f490575b0",
+        "58745c77-1a69-4fed-b205-4fb239a1642a",
+        "db64cf23-424e-47c6-aa6c-a32bfec16f2c",
+        "8b58fbc4-2aa5-44af-b4de-2984176a55e6",
+        "c100a9e1-66fd-42a7-b4e6-d7d6fed09ede",
+        "d9e8dcd0-d29a-4be9-8e27-b14bb592850e",
+        "a1904e25-13df-4b17-b15d-f632faa3a5ce",
+        "ea075e70-3db2-4131-be5e-a41849b855a0",
+        "b78d0aee-34e2-45e7-b7bc-11fb80bf1fe3",
+        "0f50e7a7-6750-493f-aa9f-53bcf506d47a",
+        "190dd18c-621a-4101-af66-204398c5e9ae",
+        "44b575a3-492f-4c6d-a704-9f9b8bd58c8d",
+        "2e4b5888-2bbb-4d6d-acdf-dcbcf19ebc9e"
+      ],
+      "disabled": true,
+      "settings": {
+        "title1": "Helpful Videos",
+        "title2": "Lorem ipsum dolor sit amet"
+      }
+    },
+    "29a51ac3-8330-46cb-aeb4-952f2461acb0": {
+      "type": "listing",
+      "blocks": {
+        "e1bb099e-ef23-41fd-8985-eb285775b214": {
+          "type": "block",
+          "settings": {
+            "title": "Standardized Extract of Valeriana officinalis Improves Overall Sleep Quality in Human Subjects with Sleep Complaints: A Randomized, Double-Blind, Placebo-Controlled, Clinical Study",
+            "description": "<p>Sleep deficit or poor sleep leads to ill-health, whereas sleep deprivation for longer periods of time increases the risk of developing adverse conditions associated with poor quality of life, and high socioeconomic impact. The treatments for sleep disturbances include melatonin and over-the-counter medicines like diphenhydramine and doxylamine, all of which have negative side effects. Valerian (<em>Valeriana officinalis</em>L.) is a traditional herb and the most preferred alternate sleep solution to manage sleep complaints.</p>",
+            "link": "https://link.springer.com/article/10.1007/s12325-023-02708-6"
+          }
+        },
+        "09fd5013-3a82-401b-9380-9840af243586": {
+          "type": "block",
+          "settings": {
+            "title": "A randomized, double blind, placebo controlled study to evaluate the effects of ashwagandha (Withania somnifera) extract on sleep quality in healthy adults",
+            "description": "<p>Non-restorative sleep (NRS) affects 10% people worldwide, leading to poor sleep quality, as well as physical and cognitive fatigue. This is the first human study in which an extract of ashwagandha (Withania somnifera Dunal L.) was evaluated for effects in improving overall sleep quality in subjects with NRS.</p>",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/32540634/"
+          }
+        },
+        "55514aae-fcce-49b4-842c-f61d347284c1": {
+          "type": "block",
+          "settings": {
+            "title": "GlyNAC (Glycine and N-Acetylcysteine) Supplementation in Mice Increases Length of Life by Correcting Glutathione Deficiency, Oxidative Stress, Mitochondrial Dysfunction, Abnormalities in Mitophagy and Nutrient Sensing, and Genomic Damage",
+            "description": "<p>Determinants of length of life are not well understood, and therefore increasing lifespan is a challenge. Cardinal theories of aging suggest that oxidative stress (OxS) and mitochondrial dysfunction contribute to the aging process, but it is unclear if they could also impact lifespan. Glutathione (GSH), the most abundant intracellular antioxidant, protects cells from OxS and is necessary for maintaining mitochondrial health, but GSH levels decline with aging. Based on published human studies where we found that supplementing glycine and N-acetylcysteine (GlyNAC) improved/corrected GSH deficiency, OxS and mitochondrial dysfunction, we hypothesized that GlyNAC supplementation could increase longevity.</p>",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/35268089/"
+          }
+        },
+        "92dd8578-2837-4421-8063-4544fc3df6bc": {
+          "type": "block",
+          "settings": {
+            "title": "Lutein/zeaxanthin isomers regulate neurotrophic factors and synaptic plasticity",
+            "description": "<p>This study was conducted to elucidate the effects of lutein/zeaxanthin isomers (L/Zi) on lipid metabolism, oxidative stress, NF-κB/Nrf2 pathways, and synaptic plasticity proteins.</p>",
+            "link": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8573940/"
+          }
+        },
+        "0479ef51-65ab-4eee-9d24-062a980c18a9": {
+          "type": "block",
+          "settings": {
+            "title": "A Combination of Caffeine, TeaCrine® (Theacrine), and Dynamine® (Methylliberine) Increases Cognitive Performance and Reaction Time Without Interfering With Mood in Adult Male Egamers",
+            "description": "<p>Background Involvement in video game activities and competitive video gaming (esports) is a rapidly growing field. Moreover, there is a marked interest in identifying nutritional supplements to safely improve egamer performance. Methodology We conducted a repeated-measure, randomized crossover study to compare the effects of caffeine (125 mg), caffeine (125 mg) + Dynamine® (75 mg) + TeaCrine® (50 mg) (CDT), and matched placebo across three testing sessions (one week apart) among 50 young male egamers.</p>",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/35103121/"
+          }
+        },
+        "6b5b02c8-c24a-4431-9c94-328c632231a9": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "A Combination of Caffeine, TeaCrine® (Theacrine), and Dynamine® (Methylliberine) Increases Cognitive Performance and Reaction Time Without Interfering With Mood in Adult Male Egamers",
+            "description": "<p>Background Involvement in video game activities and competitive video gaming (esports) is a rapidly growing field. Moreover, there is a marked interest in identifying nutritional supplements to safely improve egamer performance. Methodology We conducted a repeated-measure, randomized crossover study to compare the effects of caffeine (125 mg), caffeine (125 mg) + Dynamine® (75 mg) + TeaCrine® (50 mg) (CDT), and matched placebo across three testing sessions (one week apart) among 50 young male egamers.</p>",
+            "link": ""
+          }
+        },
+        "cae2f946-2511-4bd0-a985-bf0bf78c27ea": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "title": "testing list",
+            "description": "",
+            "link": "shopify://blogs/iw-blog"
+          }
+        }
+      },
+      "block_order": [
+        "e1bb099e-ef23-41fd-8985-eb285775b214",
+        "09fd5013-3a82-401b-9380-9840af243586",
+        "55514aae-fcce-49b4-842c-f61d347284c1",
+        "92dd8578-2837-4421-8063-4544fc3df6bc",
+        "0479ef51-65ab-4eee-9d24-062a980c18a9",
+        "6b5b02c8-c24a-4431-9c94-328c632231a9",
+        "cae2f946-2511-4bd0-a985-bf0bf78c27ea"
+      ],
+      "settings": {
+        "title1": "Recent Clinical",
+        "title2": "Breakthroughs",
+        "description": "<p>InfiniWell is constantly researching the latest findings of clinical research to further develop solutions for practitioners and patients alike. Below are some of the most recent clinical breakthroughs that helped inform our formulary. </p>"
+      }
+    },
+    "3696e9c3-23dc-44a7-b9e1-fa4c7e394a39": {
+      "type": "article-list",
+      "blocks": {
+        "24300e43-f215-4c2e-ab90-7d0df2a6a388": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/longevity-101-pt-1"
+          }
+        },
+        "5aee15a9-8c49-410a-a4fe-1499ecb1e5bb": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/rejuvenating-through-the-night-unveiling-the-glymphatic-system-shoden-ashwagandha-and-the-dynamic-interplay-of-sleep-and-aging"
+          }
+        },
+        "6f8a92ab-0137-4ae6-afba-7b1b4fd45756": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/an-intro-to-cardio-prime"
+          }
+        },
+        "c7c9dbdb-cf8e-46b3-9eb0-e00b0e81ac68": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/l-ergothioneine-the-mitochondrial-marvel"
+          }
+        },
+        "4a60d517-a059-425d-a1f5-892e9fbf8784": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/cultivating-longevity-through-optimized-digestion-unraveling-the-role-of-butyrate-in-cellular-health-and-aging"
+          }
+        },
+        "3ce5e6dd-3ef5-4642-a7d7-a0b0d2fd1ba3": {
+          "type": "block",
+          "settings": {
+            "article": "iw-blog/harnessing-key-nutrients-and-topical-marvels-for-radiant-aging-inside-and-out"
+          }
+        }
+      },
+      "block_order": [
+        "24300e43-f215-4c2e-ab90-7d0df2a6a388",
+        "5aee15a9-8c49-410a-a4fe-1499ecb1e5bb",
+        "6f8a92ab-0137-4ae6-afba-7b1b4fd45756",
+        "c7c9dbdb-cf8e-46b3-9eb0-e00b0e81ac68",
+        "4a60d517-a059-425d-a1f5-892e9fbf8784",
+        "3ce5e6dd-3ef5-4642-a7d7-a0b0d2fd1ba3"
+      ],
+      "settings": {
+        "title1": "Insights",
+        "title2": "",
+        "buttonText": "View More Insights",
+        "buttonLink": "shopify://blogs/iw-blog"
+      }
+    },
+    "5a0ca0d2-a227-4c12-9d74-6ad7106a833e": {
+      "type": "inner-hero-section",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/wellness-innovations_2x_4508b7d3-6f5e-418f-a24a-09af635d8caa.webp",
+        "mobileImage": "shopify://shop_images/science-innner-hero-banner_430x_cc966375-7ecc-440f-a823-3e0ff8e53dbf.webp",
+        "title": "Behind the Science of Meshing for Optimal Health & Performance",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.</p>",
+        "buttonText1": "learn more",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "left",
+        "smallHeight": false,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    }
+  },
+  "order": [
+    "innerBanner",
+    "9d10456a-d175-499c-9525-b539ebff6a4c",
+    "8b2f4adc-de64-419c-8a79-c05b8cb13d24",
+    "2fb05c66-ec2d-4f16-b986-c050f5a41300",
+    "c64fd1fd-5842-4f7d-b930-60b8f103f8b3",
+    "29a51ac3-8330-46cb-aeb4-952f2461acb0",
+    "3696e9c3-23dc-44a7-b9e1-fa4c7e394a39",
+    "5a0ca0d2-a227-4c12-9d74-6ad7106a833e"
+  ]
+}

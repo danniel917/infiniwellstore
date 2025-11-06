@@ -1,0 +1,140 @@
+{% if section.blocks.size > 0 %}
+  <div class="three-column-card-slider">
+    {% if section.settings.title1 != blank %}
+      <h2
+        class="h1"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        {{ section.settings.title1 }}
+        {% if section.settings.title2 != blank %}
+          <span class="color-grey h1">{{ section.settings.title2 }}</span>
+        {% endif %}
+      </h2>
+    {% endif %}
+    <div class="splide slider {% if section.blocks.size > 1 %} js_three-column-card-slider  {% endif %}">
+      <div class="splide__track">
+        <div class="splide__list">
+          {%- for block in section.blocks -%}
+            {% if block.settings.image != blank %}
+              <div class="splide__slide js-integration-slide">
+                {% if block.settings.link != blank %}
+                  <a
+                    href="{{ block.settings.link }}"
+                    title="Read More About {{ block.settings.title }}"
+                    aria-label="Read More About {{ block.settings.title }}"
+                    class="full-link"
+                  >
+                {% endif %}
+                <div class="ingredient-section">
+                  <div class="inner-section">
+                    <div class="ingredient-front">
+                      <div class="image-section">
+                        {{
+                          block.settings.image
+                          | image_url: width: 680
+                          | image_tag: loading: 'lazy', widths: '680x680'
+                        }}
+                      </div>
+                    </div>
+                    <div class="ingredient-back" style="background:{{block.settings.bg_color}};">
+                      {% if block.settings.title != blank %}
+                        <h3>{{ block.settings.title }}</h3>
+                      {% endif %}
+
+                      {% if block.settings.table != blank %}
+                        {{ block.settings.table }}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                {% if block.settings.link != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<!-- Splide JS and CSS -->
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"
+></script>
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('.js_three-column-card-slider', {
+      type: 'loop',
+      drag: 'free',
+      focus: 'center',
+      arrows: false,
+      pagination: false,
+      autoScroll: {
+        speed: 0.5,
+      },
+    }).mount(window.splide.Extensions);
+  });
+</script>
+{% schema %}
+{
+  "name": "Three Column Card Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "680 x 680px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "table",
+          "label": "Table"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#fff"
+        },
+
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three Column Cards Slider"
+    }
+  ]
+}
+{% endschema %}

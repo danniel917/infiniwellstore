@@ -1,0 +1,89 @@
+{% if blog.tags.size > 0 %}
+  <div class="blog-category-dropdown">
+    <div class="dropdown ipad-block">
+      <!-- Select with Tags -->
+      <select
+        class="custom-dropdown-select dropdown-select ipad-block"
+        name="FilterTags"
+        id="FilterTags"
+        data-select-input
+        onchange="window.location.href = '{{ blog.url }}' + this.options[this.selectedIndex].value + ''"
+      >
+        <option value=" ">All Articles</option>
+        {% for tag in blog.all_tags %}
+          <option
+            value="/tagged/{{ tag | handleize }}"
+            {% if current_tags contains tag %}
+              selected="selected"
+            {% endif %}
+          >
+            {{ tag }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="category-accordion  flex ipad-none">
+      <ul class="accordion js__cate-accordian flex-wrap">
+        {% assign full_url = request.host | append: request.path %}
+
+        <li class="{% unless full_url contains '/tagged' %} current{% endunless %}">
+          <a href="{{blog.url}}"> All Articles</a>
+        </li>
+        {% for tag in blog.all_tags limit: 9 %}
+          <li class="{% if current_tags contains tag %} current{%endif%}">
+            <a href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+          </li>
+        {% endfor %}
+        {% comment %}
+          <li class="togglebtn"></li>
+            <h3 class="h5">toggle</h3>
+          </li>
+        {% endcomment %}
+        {% for tag in blog.all_tags %}
+          {% if forloop.index < 10 %}
+            <a class="hide" href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+          {% else %}
+            <li class="rem {% if current_tags contains tag %} current{%endif%}">
+              <a href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+        {% comment %}
+          <li>
+            <h3 class="h5">toggle</h3>
+            <div class="content">
+              {% for tag in blog.all_tags %}
+                {% if forloop.index < 9 %}
+                  <a class="hide" href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+                {% else %}
+                  <a href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </li>
+        {% endcomment %}
+      </ul>
+      {% if blog.tags.size > 9 %}
+        <ul class="js__cate-accordian toggle-button">
+          <li class="togglebtn">
+            <h3 class="h5">toggle</h3>
+          </li>
+        </ul>
+      {% endif %}
+
+      {% comment %}
+        {% if blog.tags.size > 9 %}
+          <ul class="flex-wrap">
+            <li><a href="{{blog.url}}"> All Articles</a></li>
+            {% for tag in blog.all_tags %}
+              <li>
+                <a href="{{ blog.url }}/tagged/{{ tag | handleize }}"> {{ tag }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endcomment %}
+    </div>
+  </div>
+{% endif %}

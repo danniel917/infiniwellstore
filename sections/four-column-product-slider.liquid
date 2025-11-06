@@ -1,0 +1,110 @@
+<div
+  class="four-column-product-slider"
+  data-aos="fade-up"
+  data-aos-duration="2000"
+>
+  <div class="top-section flex">
+    {% if section.settings.title1 != blank %}
+      <h2 class="h1">
+        {{ section.settings.title1 }}
+        {% if section.settings.title2 != blank %}
+          <span class="color-grey h1">{{ section.settings.title2 }}</span>
+        {% endif %}
+      </h2>
+    {% endif %}
+    {% if section.settings.buttonText != blank and section.settings.buttonLink != blank %}
+      <a
+        href="{{ section.settings.buttonLink }}"
+        title="Read More About {{ section.settings.buttonText }}"
+        aria-label="Read More About {{ section.settings.buttonText }}"
+        class="btn--primary"
+      >
+        {{- section.settings.buttonText -}}
+      </a>
+      <a
+        href="{{ section.settings.buttonLink }}"
+        title="Read More About {{ section.settings.buttonText }}"
+        aria-label="Read More About {{ section.settings.buttonText }}"
+        class="link--primary"
+      >
+        {{- section.settings.buttonText -}}
+      </a>
+    {% endif %}
+  </div>
+  <div
+    class="inner"
+  >
+    <div class="slider js__product-slider">
+      <div class="swiper-wrapper">
+        {%- assign collection = collections[section.settings.collection] -%}
+
+        {%- for block in section.blocks -%}
+          {% assign productRelated = all_products[block.settings.product] %}
+          <div class="product-card swiper-slide slide ">
+            {% include 'product_Card'  with  productRelated: productRelated , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev-product-slider">
+        {% include 'icon-arrow-slide-white' %}
+      </div>
+      <div class="swiper-button-next-product-slider">
+        {% include 'icon-arrow-slide' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {% assign productRelated = all_products[block.settings.product] %}
+    {% render 'product-modal', productData: productRelated %}
+  {% endfor %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Four Col Product Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Four Column Product Slider"
+    }
+  ]
+}
+{% endschema %}

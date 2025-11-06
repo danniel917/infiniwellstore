@@ -1,0 +1,66 @@
+{% comment %}
+  Renders a pagination bar
+
+  Accepts:
+  - paginate: {Object} Paginate Liquid object (required)
+
+  Usage:
+  {% include 'pagination', paginate: paginate %}
+{% endcomment %}
+
+<ul class="pagination flex-align-center">
+  {% unless paginate.previous.is_link %}
+    <li aria-hidden="true" class="prev">
+      <button disabled class="disabled">
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="15" cy="15" rx="15" ry="15" fill="#FAF8F6"/>
+          <path d="M17.0429 19.39L12.0767 15.364L17.0429 11.0185" stroke="#1A1B1B" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+  {% else %}
+    <li class="prev">
+      <a href="{{ paginate.previous.url }}" title="prev">
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="15" cy="15" rx="15" ry="15" fill="#ffff"/>
+          <path d="M17.0429 19.39L12.0767 15.364L17.0429 11.0185" stroke="#1A1B1B" stroke-opacity="0.5" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </li>
+  {% endunless %}
+
+  <li class="pagination-text flex-align-center">
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+        <a href="{{ part.url }}" title="{{ part.title }}"
+          ><span class="link">{{ part.title }}</span></a
+        >
+      {% else %}
+        {% if part.title == paginate.current_page %}
+          <span class="item current"> {{ part.title }}</span>
+        {% else %}
+          <span class="item more"> {{ part.title }}</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </li>
+  {% unless paginate.next.is_link %}
+    <li aria-hidden="true" class="next">
+      <button disabled class="disabled">
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="15" cy="15" rx="15" ry="15" fill="#FAF8F6"/>
+          <path d="M13.0767 11.0185L18.043 15.0445L13.0767 19.39" stroke="#1A1B1B" stroke-opacity="0.5" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </li>
+  {% else %}
+    <li class="next">
+      <a href="{{ paginate.next.url }}" title="NEXT">
+        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="15" cy="15" rx="15" ry="15" fill="white"/>
+          <path d="M13.0767 11.0185L18.043 15.0445L13.0767 19.39" stroke="#1A1B1B" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </li>
+  {% endunless %}
+</ul>

@@ -1,0 +1,138 @@
+{% if section.blocks.size > 0 %}
+    <div class="home-hero-mobile js__home-hero-mobile-slider">
+    <div class="swiper-wrapper">
+      
+      {% for block in section.blocks %}
+
+     
+        {% if block.settings.backgroundimage != blank %}
+        <div
+            class="
+              slide swiper-slide">
+              {% if block.settings.buttonLink != blank %}
+                <a
+                  class="full-link " href="{{ block.settings.buttonLink }}"
+                > 
+                </a>
+              {% endif %}
+              <div class="image-section">
+               
+                  <img
+                    src="{{ block.settings.backgroundimage | img_url: '750x920' }}"
+                    alt="{{ block.settings.backgroundimage.alt}}"
+                    loading="lazy"
+                  >
+              </div>
+              <div class="content">
+              {% if block.settings.pretitle != blank %}
+                <span class="tag">{{ block.settings.pretitle }}</span>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h2 class="title">{{ block.settings.title }}</h2>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+                <p>{{ block.settings.subtitle  }}</p>
+              {% endif %}
+              </div>
+              {% if block.settings.image != blank %}
+              <div class="power-button">
+                <img
+                  src="{{ block.settings.image | img_url: '212x212' }}"
+                  alt="{{ block.settings.image.alt}}"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+              {% if block.settings.buttonText != blank %}
+                <a
+                  class="btn--secondary " href="{{ block.settings.buttonLink }}"
+                >
+                  {{- block.settings.buttonText -}}
+                </a>
+              {% endif %}
+        </div>
+    {% endif %}
+  {% endfor %}
+   </div>
+   <div class="swiper-pagination swiper-pagination-home-hero-mobile"></div>
+     </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Home Hero Banner Mobile",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "backgroundimage",
+          "label": "Background Image",
+          "info": {
+            "en": "750 x 920px Recommended"
+          }
+        },
+        
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Middle Image",
+        "info": {
+          "en": "212 x 212px Recommended"
+        }
+      },
+      {
+        "type": "text",
+        "id": "pretitle",
+        "label": "Pre Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Sub Title"
+      },
+      {
+        "type": "text",
+        "id": "buttonText",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "buttonLink",
+        "label": "Button Link"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Hero Banner Mobile"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .home-hero-mobile{
+    display:none
+    }
+  @media (max-width: 480px) {
+  .hero-banner-slider{
+  display:none
+  }
+  .home-hero-mobile{
+    display:block
+    }
+}
+</style>

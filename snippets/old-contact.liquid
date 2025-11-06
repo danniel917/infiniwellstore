@@ -1,0 +1,108 @@
+<div class="form-outer">
+  <h2 class="h3">Need A Faster Response?</h2>
+  <div class="form-section">
+    <div class="heading-section">
+      <p class="top-heading">General inquiries</p>
+      <span>Required Field*</span>
+    </div>
+    {%- assign formId = 'ContactForm' -%}
+      {% form 'contact'
+        , id: formId %}
+      {% include 'form-status'
+        , form: form
+        , form_id: formId %}
+      <div class="firstName-lastName flex">
+        <div class="floating-label-main">
+          <input
+            placeholder=" "
+            type="text"
+            class="first-name"
+            id="{{ formId }}-FirstName"
+            {% if form.first_name %}
+            value="{{ form.first_name }}"
+            {% endif %}
+            name="contact[{{ 'contact.form.name' | t }}]">
+          <label class="floating-label">First Name*</label>
+        </div>
+        <div class="floating-label-main">
+          <input
+            placeholder=" "
+            type="text"
+            class="last-name"
+            id="{{ formId }}-LastName"
+            {% if form.last_name %}
+            value="{{ form.last_name }}"
+            {% endif %}
+            name="contact[{{ 'contact.form.name' | t }}]">
+          <label class="floating-label">Last Name*</label>
+        </div>
+      </div>
+      <div class="phone-email flex">
+        <div class="email floating-label-main">
+          <input
+            placeholder=" "
+            type="email"
+            id="{{ formId }}-email"
+            name="contact[email]"
+            autocorrect="off"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {%- if form.errors contains 'email' -%}
+            class="input--error"
+            aria-invalid="true"
+            aria-describedby="{{ formId }}-email-error"
+            {%- endif -%}>
+          <label class="floating-label">Email Address*</label>
+          {%- if form.errors contains 'email' -%}
+            <span id="{{ formId}}-email-error" class="input-error-message">
+              <span class="visually-hidden">{{ 'general.accessibility.error' | t }}</span>
+              <span>
+                {{- form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}.</span>
+            </span>
+          {%- endif -%}
+        </div>
+        <div class="floating-label-main">
+          <input
+            placeholder=" "
+            type="tel"
+            class="phone-number"
+            id="{{ formId }}-phone"
+            value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+            name="contact[Phone]">
+          <label class="floating-label">Phone Number*</label>
+        </div>
+      </div>
+      {% comment %} <label>Message</label> {% endcomment %}
+      <div class="floating-label-main textarea">
+        <textarea
+          rows="10"
+          id="{{ formId }}-message"
+          placeholder=" "
+          name="contact[{{ 'contact.form.message' | t }}]">
+          {% if form.body %}
+            {{ form.body }}{% endif %}
+        </textarea>
+        <label class="floating-label">Message</label>
+      </div>
+      <div class="floating-label-main checkbox" style="display: flex; align-items: flex-start; gap: 10px; flex-wrap: nowrap;">
+        <input
+          type="checkbox"
+          id="{{ formId }}-sms-consent"
+          name="contact[sms_consent]"
+          style="margin: 3px 0 0 0; flex-shrink: 0;">
+        <label for="{{ formId }}-sms-consent" style="margin: 0; line-height: 1.5;">
+          By checking this box, you agree to receive SMS messages from InfiniWell. You may reply STOP to opt-out at any time, reply HELP for assistance. Messages and data rates may apply, message frequency may vary. This is the InfiniWell
+          <a href="https://infiniwell.com/pages/privacy-policy" target="_blank">privacy policy</a>.
+        </label>
+      </div>
+
+
+      <button
+        type="submit"
+        value="submit"
+        class="btn--primary">Submit</button>
+    {% endform %}
+  </div>
+</div>

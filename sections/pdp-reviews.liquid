@@ -1,0 +1,23 @@
+<!-- reviews -->
+
+<div
+  class="container-980 product-reviews-widget"
+  data-aos="fade-up"
+  data-aos-duration="2000">
+  <h2 class="text-center">Your Peers Approve.
+    <span class="color-grey">See Why</span>
+  </h2>
+  {% render 'okendo-reviews-widget'
+    , product: product %}
+</div>
+
+{% schema %}
+  {
+    "name": "Pdp Reviews Section",
+    "presets": [
+      {
+        "name": "Product Reviews Section"
+      }
+    ]
+  }
+{% endschema %}

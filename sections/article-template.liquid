@@ -1,0 +1,211 @@
+{% include 'article_img-script'  with articleRelated: article %}
+
+{% comment %} {% include 'article_hero-banner'   with article: article %} {% endcomment %}
+
+<div class="article-hero-banner-section">
+  <div class="container-993">
+    <h1>{{ article.title }}</h1>
+    {% if article.image != blank and article.metafields.custom.show_featured_image != false %}
+    <div class="image-section">
+      {%- assign img_url = article.image | img_url: 'master' -%}
+      <img
+        id="{{ img_id }}"
+        src="{{ img_url }}"
+        class="lazyload"
+        data-src="{{ img_url }}"
+        data-widths="[180, 360, 540, 720, 905, 1090, 1296, 1512, 1728, 2048]"
+        data-aspectratio="{{ article.image.aspect_ratio }}"
+        data-sizes="auto"
+        alt="{{ article.title }}"
+      >
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+<div class="article-template">
+  <div class="container-993 content">
+    <div class="article-content  full-format article-content-{{ article.id }} js__article-content" id="article-content">
+      {% include 'shortcode', load: article.content %}
+      {% if article.metafields.custom.sources != blank %}
+        <div class="pdp-tab-small__wrapper">
+        <ul class="accordian js__accordian">
+          <li class="outer-list">
+            <h3 class="h5">{{ article.metafields.custom.sources_heading }}</h3>
+            <div class="content">
+              {{ article.metafields.custom.sources | metafield_tag }}
+            </div>
+          </li>
+      </ul>
+        </div>
+        {% endif %}
+    </div>
+    <!-- Date - with - social Sharing -->
+<div class="article-social-share-with-date">
+  <div class="container-993">
+    <div class="inner-wrapper">
+      <div class="date-category-section">
+        <!--time>{{- article.published_at | time_tag: format: 'date' -}}</time>
+        <span>-</span-->
+        {% for tag in article.tags %}
+          <a href="{{blog.url}}/tagged/{{ tag | handleize }}" class="tag">{{ tag }}</a>
+          <span class="spacer">,</span>
+        {% endfor %}
+      </div>
+      {% if article.metafields.full_width.content != blank %}
+        <div class="article-full-width-content">
+          <h2>{{ article.metafields.full_width.content }}</h2>
+        </div>
+      {% endif %}
+      {% if section.settings.show_share_buttons %}
+        <div class="social-sharing-link flex-wrap">
+          <div class="social-icons flex">
+            {% if settings.share_facebook or settings.share_pinterest or settings.share_twitter or settings.print %}
+              <p class="share">Share</p>
+            {% endif %}
+            {% include 'social-sharing',
+              share_title: article.title,
+              share_permalink: article.url,
+              share_image: article.image
+            %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+    <div class="article-pagination flex">
+      <div class="prev-article">
+        <a href="{{ blog.previous_article.url }}">
+          {% if blog.previous_article %}
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="15" cy="15" rx="15" ry="15" fill="white"/>
+              <path d="M17.0429 19.39L12.0767 15.364L17.0429 11.0185" stroke="#1A1B1B" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          {% else %}
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="15" cy="15" rx="15" ry="15" fill="#FAF8F6"/>
+              <path d="M17.0429 19.39L12.0767 15.364L17.0429 11.0185" stroke="#1A1B1B" stroke-opacity="0.5" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          {% endif %}
+        </a>
+      </div>
+
+      <div class="article-tags">
+        {% if article.tags != blank %}
+          <span class="title">Tags:</span>
+          {% for tag in article.tags limit: 3 %}
+            <a href="{{blog.url}}/tagged/{{ tag | handleize }}" class="tag">{{ tag }}</a>
+            <span class="spacer">,</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="next-article">
+        <a href="{{ blog.next_article.url }}">
+          {% if blog.next_article %}
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="15" cy="15" rx="15" ry="15" fill="white"/>
+              <path d="M13.0767 11.0185L18.043 15.0445L13.0767 19.39" stroke="#1A1B1B" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          {% else %}
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="15" cy="15" rx="15" ry="15" fill="#FAF8F6"/>
+              <path d="M13.0767 11.0185L18.043 15.0445L13.0767 19.39" stroke="#1A1B1B" stroke-opacity="0.5" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+                
+{% comment %} Related Posts {% endcomment %}
+
+<div class="related-posts">
+  <div class="container-1243">
+    <div class="heading flex">
+      <h2>You May <span class="color-grey">Also Like</span></h2>
+      <a href="" class="link--primary">View All Articles</a>
+    </div>
+
+    <div class="inner-wrapper flex js__realated-articles">
+      {% for tag in article.tags limit: 2 %}
+        {% assign counter = 0 %}
+        {% assign skip_articles = article.handle | split: '.....' %}
+        {% for related_article in blog.articles %}
+          {% if related_article.tags contains tag and counter < 1 %}
+            {% unless skip_articles contains related_article.handle %}
+              {% assign counter = counter | plus: 1 %}
+              {% assign temp = related_article.handle | split: '.....' %}
+              {% assign skip_articles = skip_articles | concat: temp %}
+              <div class="articlecard--outer slide" data-article-id="{{related_article.id}}">
+                {%
+                  include 'article_Card' with articleRelated: related_article, show_tags: true, show_shortdescription: true, show_readMore:
+                  true
+                %}
+              </div>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  /** Hide blogs if they are gettings repeated **/
+  var relatedList = $('.js__realated-articles').children('.slide'),
+    relatedListArray = [];
+  /* If no posts - then hide the section */
+  if (relatedList.length === 0) {
+    $('.related-posts').hide();
+  }
+  /* get the current postID */
+  var currentArticleID = $('article').attr('data-article-id');
+  /* go through the loop of the postArray List */
+  $(relatedList).each(function () {
+    var articleID = $(this).attr('data-article-id');
+    /* if the current article ID matches anyone in the loop - then remove it */
+    if (currentArticleID == articleID) {
+      $(this).remove();
+    } else {
+      relatedListArray.indexOf(articleID) == -1 ? relatedListArray.push(articleID) : $(this).remove();
+    }
+  });
+  /* if you had just one in array and too matched - then hide the section */
+  if (relatedListArray.length === 0) {
+    $('.related-posts').hide();
+  }
+</script>
+{% schema %}
+{
+  "name": {
+    "en": "Posts"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "blog_show_date",
+      "label": {
+        "en": "Show date"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": {
+        "en": "Show social sharing buttons"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "recommendedHeading",
+      "label": "Recommended Blogs Heading"
+    }
+  ]
+}
+{% endschema %}

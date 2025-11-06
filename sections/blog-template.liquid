@@ -1,0 +1,239 @@
+{% comment %}
+  <div class="inner-hero-section">
+    {% assign mobile_image = blog.metafields.hero_banner.background_image_mobile | first %}
+    {% assign image = blog.metafields.hero_banner.background_image_desktop | first %}
+    <div class="image-section">
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="{%if blog.metafields.hero_banner.background_image_mobile != blank%}{{ mobile_image.cloudinary_src}}{%else%}{{image.cloudinary_src}}{%endif%}"
+        >
+        <img src="{{ image.cloudinary_src}}" alt="{{blog.title}}">
+      </picture>
+    </div>
+    <div class="container-1340">
+      <div class="content">
+        <h1 class="text-center">
+          {{ blog.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+{% endcomment %}
+<div class="inner-blog-hero-banner">
+  <div class="container-1246">
+    <div class="content">
+      {% comment %} <h1 class="h1">Our<span class="color-grey h1"> Journal</span></h1> {% endcomment %}
+      {% if blog.metafields.hero_banner.title_black != blank %}
+        <h1 class="h1">
+          {{ blog.metafields.hero_banner.title_black }}
+          {% if blog.metafields.hero_banner.title_gray != blank %}
+            <span class="color-grey h1">{{ blog.metafields.hero_banner.title_gray }}</span>
+          {% endif %}
+        </h1>
+      {% endif %}
+  
+        {% if blog.metafields.hero_banner.description != blank %}
+          <div class="description">
+          {{ blog.metafields.hero_banner.description }}
+        </div>
+        {% endif %}
+    
+
+      <div class="blog-category-section">
+        {% include 'blog_category' %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="blog-section">
+  <div class="middle-section">
+    <div class="container-1246 flex">
+      {% if section.settings.show_featured_article %}
+        {%- assign featuredArticle = articles[section.settings.featured_article] -%}
+        {% assign featuredArticleTitle = featuredArticle.title %}
+        {% if featuredArticle.title != blank %}
+          <div class="featured-section">
+            <div class="heading">
+              <h3 class="h5">FEATURED</h3>
+            </div>
+            <div class="featured-blog">
+              <a href="{{featuredArticle.url}}" class="image-section" title="{{featuredArticle.title}}">
+                {% if featuredArticle.image %}
+                  <picture>
+                    {% assign mobile_image = featuredArticle.metafields.hero_mobile_image.image | first %}
+                    <source
+                      media="(max-width: 768px)"
+                      srcset="{{ mobile_image.cloudinary_src}}"
+                    >
+                    <img src="{{ featuredArticle | img_url: 'master'  }}" alt="{{featuredArticle.title}}">
+                  </picture>
+                {% endif %}
+                {% comment %} <img src="{{ featuredArticle | img_url: 'master'}}" alt="{{featuredArticle.title}}"> {% endcomment %}
+              </a>
+
+              <div class="content">
+                <ul class="tags-wrapper">
+                  {% for tag in featuredArticle.tags limit: 2 %}
+                    <li class="tags">
+                      <a href="{{blog.url}}/tagged/{{ tag | handleize }}" title="{{tag}}" class="tag">
+                        {{- tag -}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <h2 class="h3">
+                  <a href="{{featuredArticle.url}}">{{ featuredArticle.title }}</a>
+                </h2>
+                <div class="full-format small description">
+                  <p>
+                    {%- if featuredArticle.excerpt.size > 0 -%}
+                      {{ featuredArticle.excerpt }}
+                    {%- else -%}
+                      {{ featuredArticle.content | strip_html | truncate: 600 }}
+                    {%- endif -%}
+                  </p>
+                </div>
+                <div class="article-read-section">
+                {% assign words_per_minute = 200 %} {% assign content_words = featuredArticle.content | strip_html | split: ' ' | size %} {% assign read_time = content_words | divided_by: words_per_minute | ceil %} <span class="estimated-read-time">{{ read_time }} min read</span>
+                <a href="{{featuredArticle.url}}" class="link--primary" title="Read More - {{featuredArticle.title}}"
+                  >2 Min Read</a
+                >
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+      <div class="latest-popular-posts">
+        <div class="latest-section">
+          <div class="heading">
+            <h3 class="h5">Latest</h3>
+          </div>
+          <ul class="latest-blog">
+            {% for article in blog.articles limit: 2 %}
+              <li>
+                {%
+                  include 'article_card' with articleRelated: article, isFeatured: false,
+                  show_tags_with_limits :true, show_time: false, show_moreshortdescription: true, show_readMore: true
+                %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% assign popularPosts = blog.metafields.popular.articles %}
+        {% if popularPosts != blank %}
+          <div class="popular-section">
+            <div class="heading">
+              <h3 class="h5">POPULAR</h3>
+            </div>
+            <ul class="popular-blog">
+              {% assign popularHandles = popularPosts | split: '|' %}
+              {% for popularBlog in popularHandles limit: 2 %}
+                {% assign article = articles[popularBlog] %}
+                {% if article != blank %}
+                  <li>
+                    {%
+                      include 'article_card' with articleRelated: article, isFeatured: false,
+                      show_tags_with_limits :true, show_time: false, show_moreshortdescription: true, show_readMore: true
+                    %}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% paginate blog.articles by section.settings.blogItems %}
+    <input
+      type="hidden"
+      class="js__perpage-item"
+      value="{{section.settings.blogItems}}"
+    >
+    <input
+      type="hidden"
+      class="js__total-page"
+      value="{{ paginate.pages }}"
+    >
+    <input
+      type="hidden"
+      class="js__current-page"
+      value="{{ paginate.current_page }}"
+    >
+    <input
+      type="hidden"
+      class="js__items-count"
+      value="{{blog.articles_count}}"
+    >
+    <div
+      class="blog_wrapper"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      <div class="container-1246">
+        <div class="heading">
+          <h3 class="h5">All Posts</h3>
+        </div>
+        <ul class="blog-list-view">
+          {% for article in blog.articles %}
+            {% assign articleTitle = article.id %}
+
+            <li>
+              {%
+                include 'article_Card' with articleRelated: article, isFeatured: false,
+                show_tags:true, show_time: false, show_description: true, show_readMore: true
+              %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% comment %} Pagination {% endcomment %}
+    {%- if paginate.pages > 1 -%}
+      <div class="pagination-section">
+        <div class="container-1246">
+          <div class="pagination-wrapper">
+            {% include 'pagination', paginate: paginate %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</div>
+{% schema %}
+{
+  "name": "Blog Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "Featured Article Info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_featured_article",
+      "label": {
+        "en": "Show Featured Article"
+      },
+      "default": true
+    },
+    {
+      "type": "article",
+      "id": "featured_article",
+      "label": "Featured Article"
+    },
+    {
+      "type": "number",
+      "id": "blogItems",
+      "label": "How Many Blogs Per Page",
+      "default": 10
+    }
+  ]
+}
+{% endschema %}

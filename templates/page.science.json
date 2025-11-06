@@ -1,0 +1,325 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "innerBanner": {
+      "type": "inner-hero-section",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/AdobeStock_273626382.jpg",
+        "mobileImage": "shopify:\/\/shop_images\/AdobeStock_273626382.jpg",
+        "title": "We don’t just follow science We apply it with rigor",
+        "description": "",
+        "buttonText1": "",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "left",
+        "smallHeight": true,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "4f78b03d-5f3f-42df-a29e-2d7755418fba": {
+      "type": "full-width-content",
+      "disabled": true,
+      "settings": {
+        "title1": "We GO to great lengths to bring the leading longevity",
+        "title2": "& wellness innovations to YOU.",
+        "description": "<p>Lectus sit amet est placerat. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Quam vulputate dignissim suspendisse in est ante in. Arcu dui vivamus arcu felis bibendum ut. Pellentesque dignissim enim sit amet venenatis urna cursus eget nunc. Diam donec adipiscing tristique risus nec. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa sapien faucibus et molestie.<\/p>",
+        "buttonText": "",
+        "buttonLink": "",
+        "paddingtop": 120,
+        "paddingtopmobile": 44,
+        "paddingbottom": 0,
+        "paddingbottommobile": 0
+      }
+    },
+    "3f8fb034-3206-475c-9d28-c1f67e7ba496": {
+      "type": "half-image-half-content",
+      "blocks": {
+        "02715ffc-eb55-4867-9a03-4dde7205f8c3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/2235994_InfiniWellGif_031924_9.gif",
+            "title1": "Physician",
+            "title2": "Formulated",
+            "description": "<p>We develop our formulations in partnership with top physicians who incorporate Infiniwell products in their clinical practices. We began in 2020 as a custom formulation service for forward-thinking doctors seeking quality and efficacy not otherwise available. Today, over twenty five thousand healthcare professionals recommend InfiniWell to their patients.   <br\/><br\/>We are committed to maintaining your trust. The third-party GMP certification of our manufacturing facility confirms strict adherence to best practices. As a company, we see compliance as the bare minimum, compelling InfiniWell professional formulas to stand out in a class of their own.<\/p>",
+            "buttonText": "",
+            "buttonLink": "",
+            "fontSize": false,
+            "center": false
+          }
+        },
+        "1114578a-4b3a-4dd4-8ee2-b342653c95a0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Map-WebsiteSizing.jpg",
+            "title1": "Results",
+            "title2": "Driven",
+            "description": "<p>Promising research is inspiring, but impact is what matters. You should never have to wonder if a product is working, and you shouldn’t have to “just trust us,” either. We design every product with measurable outcomes in mind, meaning we stand behind each and every formulation with data and clinical experience.<\/p>",
+            "buttonText": "",
+            "buttonLink": "",
+            "fontSize": false,
+            "center": false
+          }
+        },
+        "599932ef-19a4-429f-8cea-2df9be40235a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2024-04-19_at_5.30.55_PM.png",
+            "title1": "Meticulous",
+            "title2": "Sourcing",
+            "description": "<p>When we introduce a new product, we carefully vet the science and the supply chain, regularly verifying the purity and potency of each ingredient. High standards in sourcing means not only clinical efficacy, but also consistency and availability on-demand.<\/p>",
+            "buttonText": "",
+            "buttonLink": "",
+            "fontSize": false,
+            "center": false
+          }
+        },
+        "7b33a1b5-e86a-44ec-9444-773752e6b6ae": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Exact_Pax_Pills_in_Hand-4.jpg",
+            "title1": "Novel",
+            "title2": "formulations",
+            "description": "<p>We don’t waste time repackaging what’s readily available. Whether it’s a unique ingredient, a synergistic combination, or a state-of-the-art encapsulation, each InfiniWell product represents an advance on the frontier of science.<\/p>",
+            "buttonText": "",
+            "buttonLink": "",
+            "fontSize": false,
+            "center": false
+          }
+        }
+      },
+      "block_order": [
+        "02715ffc-eb55-4867-9a03-4dde7205f8c3",
+        "1114578a-4b3a-4dd4-8ee2-b342653c95a0",
+        "599932ef-19a4-429f-8cea-2df9be40235a",
+        "7b33a1b5-e86a-44ec-9444-773752e6b6ae"
+      ],
+      "settings": {
+        "bg": true
+      }
+    },
+    "91e2fa4e-295f-4959-b7f1-fbc11a2acf35": {
+      "type": "half-image-half-content-v2",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/dna_430x_fdaf7457-f7a1-41eb-8548-d0eefdbeca1b.webp",
+        "preTitle": "Lorem ipsum dolor sit amet",
+        "title1": "Wellness innovations",
+        "title2": "infinite possibilities.",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<\/p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p>",
+        "buttonText": "",
+        "buttonLink": ""
+      }
+    },
+    "0ac2639d-7510-497e-9b59-5fc8dc4a42cd": {
+      "type": "half-image-half-content-complex",
+      "blocks": {
+        "7b49843b-2e25-418e-9d59-1b3b69f1d07b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/half-image-half-content.webp",
+            "title": "MINDSET",
+            "description": "<p>Maintaining a healthy mindset and a minimal amount of mental stress is critically important.  By supporting mental health and a positive mindset there can be a positive impact on the following areas associated with aging and longevity.  <\/p>",
+            "buttonText": "Shop Mindset",
+            "buttonLink": "",
+            "collectionName": "Shop Mindset"
+          }
+        },
+        "a7dfa4c5-2269-468a-a6c6-96078202f5b7": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Mindset",
+            "collection": "mentality"
+          }
+        },
+        "aa1c6faf-f5da-4a32-8ee9-04dad6a3bc69": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/wellness-innovations_2x_4508b7d3-6f5e-418f-a24a-09af635d8caa.webp",
+            "title": "Energy",
+            "description": "<p>By supporting one's ability to exercise, build endurance, via joint and tissue integrity, protein synthesis, and energy production via NAD production, AMPK activation and inhibition of mTOR there can be a positive impact made on the following aspects of aging and longevity.<\/p>",
+            "buttonText": "Shop Energy",
+            "buttonLink": "shopify:\/\/collections\/exercise",
+            "collectionName": "Shop Energy"
+          }
+        },
+        "13ea7436-66a4-4971-bc57-f8f515afeb91": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Energy",
+            "collection": "exercise"
+          }
+        },
+        "f466bf28-fd92-4026-91a1-bcd3d253cbdc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/half-image-half-content.webp",
+            "title": "Sleep",
+            "description": "<p>Sleep has profound and far reaching effects on the body and specifically the areas associated with aging.  Supporting healthy, quality sleep is something to take very seriously and is an essential component to every longevity protocol.<\/p>",
+            "buttonText": "Shop Sleep",
+            "buttonLink": "shopify:\/\/collections\/sleep-and-mood",
+            "collectionName": "Shop Sleep"
+          }
+        },
+        "78f9f0c1-2d98-441c-859f-91cb8a4dc4b8": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Sleep",
+            "collection": "sleep-and-mood"
+          }
+        },
+        "eb339ccc-bd5e-45a2-a92e-57720052e791": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/half-image-half-content.webp",
+            "title": "Hormones",
+            "description": "<p>The endocrine system is one of the most powerful and acutely felt systems in the body.  By balancing and optimizing your hormones and hormone metabolism, each of the hallmarks of aging are supported in meaningful and profound ways.<\/p>",
+            "buttonText": "Shop Hormones",
+            "buttonLink": "shopify:\/\/collections\/hormones",
+            "collectionName": "Shop Hormones"
+          }
+        },
+        "bb2727ff-8ef4-4e8c-8767-f833f06b86d2": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Hormones",
+            "collection": "hormones"
+          }
+        },
+        "ec30f5e0-da23-4e92-b8ad-3da791908f39": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/wellness-innovations_2x_4508b7d3-6f5e-418f-a24a-09af635d8caa.webp",
+            "title": "Immunity",
+            "description": "<p>Whether the immune system is under or over active, the impact is felt throughout the entire body.  Supporting a healthy, thriving and well-honed immune system and setting the stage for a well maintained inflammatory response, in turn, provides the foundation for each of the hallmarks of aging.  <\/p>",
+            "buttonText": "Shop Immunity",
+            "buttonLink": "shopify:\/\/collections\/immunity-and-detoxification",
+            "collectionName": "Shop Immunity"
+          }
+        },
+        "24b88f98-5743-43a4-86b8-dd5228e15790": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Immunity",
+            "collection": "immunity-and-detoxification"
+          }
+        },
+        "29d95d20-43f4-4591-b655-3f77f90b6a4e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/half-image-half-content.webp",
+            "title": "Nourishment",
+            "description": "<p>Nutrient density in food and supplementing any potential nutrient gaps is so vitally important to every aspect of health and it serves as the structural framework upon which each of the hallmarks of aging are built.<\/p>",
+            "buttonText": "Shop Nourishment",
+            "buttonLink": "shopify:\/\/collections\/nourishment",
+            "collectionName": "Shop Nourishment"
+          }
+        },
+        "d83d9fe0-d17a-4bc6-a737-9ed3f6aa276f": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Nourishment",
+            "collection": "nourishment"
+          }
+        },
+        "3294c60c-4238-485c-9ca2-e128b16478c0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/half-image-half-content.webp",
+            "title": "GUT",
+            "description": "<p>Everything is connected to the gut, the body’s second brain, and as such, optimal balance within the gastrointestinal ecosystem is essential to overall health.  Whether you thrive or not, whether the hallmarks of aging advance prematurely or not all depends on the bacterial landscape within the gut.<\/p>",
+            "buttonText": "Shop Gut",
+            "buttonLink": "shopify:\/\/collections\/gut-health",
+            "collectionName": "Shop Gut"
+          }
+        },
+        "a1dce2ee-bab0-41d2-991f-db6025c73638": {
+          "type": "collection",
+          "settings": {
+            "title": "Shop Gut",
+            "collection": "gut-health"
+          }
+        }
+      },
+      "block_order": [
+        "7b49843b-2e25-418e-9d59-1b3b69f1d07b",
+        "a7dfa4c5-2269-468a-a6c6-96078202f5b7",
+        "aa1c6faf-f5da-4a32-8ee9-04dad6a3bc69",
+        "13ea7436-66a4-4971-bc57-f8f515afeb91",
+        "f466bf28-fd92-4026-91a1-bcd3d253cbdc",
+        "78f9f0c1-2d98-441c-859f-91cb8a4dc4b8",
+        "eb339ccc-bd5e-45a2-a92e-57720052e791",
+        "bb2727ff-8ef4-4e8c-8767-f833f06b86d2",
+        "ec30f5e0-da23-4e92-b8ad-3da791908f39",
+        "24b88f98-5743-43a4-86b8-dd5228e15790",
+        "29d95d20-43f4-4591-b655-3f77f90b6a4e",
+        "d83d9fe0-d17a-4bc6-a737-9ed3f6aa276f",
+        "3294c60c-4238-485c-9ca2-e128b16478c0",
+        "a1dce2ee-bab0-41d2-991f-db6025c73638"
+      ],
+      "disabled": true,
+      "settings": {
+        "paddingtop": 40,
+        "paddingtopmobile": 22,
+        "paddingbottom": 50,
+        "paddingbottommobile": 0
+      }
+    },
+    "ce193ef1-279a-4101-a9b8-762465a33c4f": {
+      "type": "full-width-image-and-content",
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/bg-bubbles_2x_5459eaf1-cc9e-44dd-9382-9778d7b22a87.webp",
+        "mobileImage": "shopify:\/\/shop_images\/bg-bubbles_2x_5459eaf1-cc9e-44dd-9382-9778d7b22a87.webp",
+        "video": "",
+        "videobanner": false,
+        "title1": "Lorem ipsum dolor sit amet consectetur adipiscing elit",
+        "title2": "",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.<\/p>",
+        "buttonText": "Shop Now",
+        "buttonLink": "",
+        "content_alignment": "left",
+        "paddingtop": 30,
+        "paddingtopmobile": 30,
+        "paddingbottom": 100,
+        "paddingbottomMobile": 40,
+        "bg": true,
+        "color": false
+      }
+    },
+    "9cd8d944-d05b-4b6e-8780-a56e0a03feb5": {
+      "type": "full-width-content",
+      "disabled": true,
+      "settings": {
+        "title1": "we GO to great lengths to bring the leading longevity",
+        "title2": "& wellness innovations to YOU.",
+        "description": "<p>Lectus sit amet est placerat. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Quam vulputate dignissim suspendisse in est ante in. Arcu dui vivamus arcu felis bibendum ut. Pellentesque dignissim enim sit amet venenatis urna cursus eget nunc. Diam donec adipiscing tristique risus nec. Sed vulputate mi sit amet mauris commodo quis imperdiet. Massa sapien faucibus et molestie.<\/p>",
+        "buttonText": "shop now",
+        "buttonLink": "shopify:\/\/pages\/ingredients",
+        "paddingtop": 120,
+        "paddingtopmobile": 80,
+        "paddingbottom": 98,
+        "paddingbottommobile": 80
+      }
+    }
+  },
+  "order": [
+    "innerBanner",
+    "4f78b03d-5f3f-42df-a29e-2d7755418fba",
+    "3f8fb034-3206-475c-9d28-c1f67e7ba496",
+    "91e2fa4e-295f-4959-b7f1-fbc11a2acf35",
+    "0ac2639d-7510-497e-9b59-5fc8dc4a42cd",
+    "ce193ef1-279a-4101-a9b8-762465a33c4f",
+    "9cd8d944-d05b-4b6e-8780-a56e0a03feb5"
+  ]
+}

@@ -1,0 +1,261 @@
+{% if section.blocks.size > 0 %}
+  {% comment %} 
+
+{% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+  <style>
+    .six-column-logos .container-910 ul li .image-section {
+        width: 100%;
+        height: 75px;
+    }
+  </style>
+  {% if section.settings.title1 != blank %}
+    <div class="six-column-logos animatedIcons">
+      <div class="container-910">
+        <div
+          class="heading"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <h2 class="h1">
+            {{ section.settings.title1 }}
+            {% if section.settings.title2 != blank %}
+              <span class="color-grey h1">{{ section.settings.title2 }}</span>
+            {% endif %}
+          </h2>
+          {% if section.settings.buttonText != blank %}
+            <a
+              href="{{ section.settings.buttonLink }}"
+              title="Read More About {{ section.settings.buttonText }}"
+              aria-label="Read More About {{ section.settings.buttonText }}"
+              class="link--primary"
+            >
+              {{ section.settings.buttonText }}
+            </a>
+          {% endif %}
+        </div>
+        <ul class="flex-wrap">
+          {%- for block in section.blocks -%}
+            {% if block.settings.logo != blank %}
+              <li>
+                <a
+                  href="{{ block.settings.link }}"
+                  title="Read More About {{ block.settings.title }}"
+                  aria-label="Read More About {{ block.settings.title }}"
+                  class="full-link"
+                >
+                  <div class="image-section">
+                    <!-- {{ block.settings.logo | image_url: width: 110 | image_tag: loading: 'lazy', widths: '120x120' }} -->
+                    {% case block.settings.animation %}
+                      {% when "cardio" %}
+                        <dotlottie-player
+                          src="https://lottie.host/395e2a9b-c8bb-44e5-b7cf-49828102c9f7/GoZsbSyVfG.lottie"
+                          background="transparent"
+                          id="cardio"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "aging" %}
+                        <dotlottie-player
+                          src="https://lottie.host/d0670218-68dd-428d-8127-21ef6a76040d/CTdzFWBO7m.lottie"
+                          background="transparent"
+                          id="aging"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "cosmetic" %}
+                        <dotlottie-player
+                          src="https://lottie.host/4f0c25b1-e89b-452a-84e2-2fb25545a6c9/OT3a8PTkCF.lottie"
+                          background="transparent"
+                          id="cosmetic"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "joint" %}
+                        <dotlottie-player
+                          src="https://lottie.host/69a59e9b-273f-43e2-ac25-ec6a9a44e233/7mwOYc57hX.lottie"
+                          background="transparent"
+                          id="joint"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "energy" %}
+                        <dotlottie-player
+                          src="https://lottie.host/6679e892-c4d1-4f11-9e39-b8e965d34e27/4O2cRRF48c.lottie"
+                          background="transparent"
+                          id="energy"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "gut" %}
+                        <dotlottie-player
+                          src="https://lottie.host/d33c2b45-0e5e-469a-a6d2-36af9a9aefe9/GQavMNPi0f.lottie"
+                          background="transparent"
+                          id="gut"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "immunity" %}
+                        <dotlottie-player
+                          src="https://lottie.host/3fc330c0-4a5b-4e45-a061-afa61ea03be2/empDB8L2Bl.lottie"
+                          background="transparent"
+                          id="immunity"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                      {% when "sleep" %}
+                        <dotlottie-player
+                          src="https://lottie.host/2e1003a2-3044-4db5-8157-2e4a02f66f27/7jaeLgNewE.lottie"
+                          background="transparent"
+                          id="sleep"
+                          speed="1"
+                          style="
+                            width: 100%; position: absolute;
+                            height: 100%;
+                            z-index: 10;
+                            left: 0;
+                            top: 0;
+                          "
+                          direction="1"
+                          playMode="normal"
+                          hover
+                        ></dotlottie-player>
+                    {% endcase %}
+                  </div>
+                  {% if block.settings.title != blank %}
+                    <p class="small">{{ block.settings.title }}</p>
+                  {% endif %}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Animated Icons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": "120 x 120px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "animation",
+          "label": "Animation Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Icons"
+    }
+  ]
+}
+{% endschema %}

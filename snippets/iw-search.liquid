@@ -1,0 +1,139 @@
+<iw-search
+  class="iw-search"
+  data-limit="{{ settings.search_products_to_show }}"
+  data-trending-products="{% if settings.trending_products != blank %}true{% endif %}">
+  <div class="iw-search-content">
+    <div class="search-form">
+      <div class="search-input-field">
+        <input
+          class="instant-search__input"
+          type="text"
+          placeholder="Search">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="37"
+          height="37"
+          viewBox="0 0 37 37"
+          fill="none">
+          <path d="M36.6383 34.7524L27.5777 25.7113C27.425 25.5709 27.2234 25.4955 27.0159 25.501H26.2434C28.7012 22.8378 30.1759 19.4018 30.1759 15.547C30.1759 7.55718 23.5768 0.967285 15.5677 0.967285C7.49206 0.967285 0.961308 7.55718 0.961308 15.547C0.959887 17.462 1.33677 19.3586 2.0704 21.1281C2.80403 22.8976 3.88 24.5055 5.23678 25.8596C6.59357 27.2137 8.20453 28.2876 9.97752 29.0198C11.7505 29.752 13.6507 30.1282 15.5695 30.1267C19.3634 30.1267 22.8745 28.6549 25.4728 26.272V26.9729C25.4728 27.2532 25.543 27.4635 25.6834 27.6036L34.744 36.6465C34.8198 36.7293 34.912 36.7954 35.0148 36.8406C35.1175 36.8859 35.2286 36.9092 35.3409 36.9092C35.4532 36.9092 35.5643 36.8859 35.6671 36.8406C35.7699 36.7954 35.8621 36.7293 35.9378 36.6465L36.6401 35.9457C36.723 35.8701 36.7892 35.7781 36.8345 35.6755C36.8798 35.5729 36.9032 35.4621 36.9032 35.35C36.9032 35.2379 36.8798 35.127 36.8345 35.0244C36.7892 34.9218 36.723 34.8298 36.6401 34.7542L36.6383 34.7524ZM15.5677 27.8858C13.9418 27.8951 12.3303 27.5823 10.8263 26.9656C9.32242 26.3489 7.95604 25.4405 6.80635 24.2931C5.65666 23.1456 4.7465 21.7819 4.1286 20.2809C3.5107 18.78 3.19733 17.1715 3.20665 15.5488C3.20309 13.9277 3.52038 12.3218 4.14032 10.8235C4.76027 9.32506 5.67064 7.96363 6.81918 6.81733C7.96772 5.67103 9.33181 4.76243 10.8331 4.1437C12.3345 3.52497 13.9434 3.20829 15.5677 3.21184C22.3812 3.21184 27.9288 8.75045 27.9288 15.5488C27.9323 17.1699 27.615 18.7758 26.9951 20.2742C26.3752 21.7726 25.4648 23.134 24.3163 24.2803C23.1677 25.4266 21.8036 26.3352 20.3023 26.9539C18.801 27.5726 17.192 27.8893 15.5677 27.8858Z" fill="#84827E" />
+        </svg>
+      </div>
+      <span class="js-search-close">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="38"
+          height="37"
+          viewBox="0 0 38 37"
+          fill="none">
+          <g clip-path="url(#clip0_55_88)">
+            <path
+              d="M1.94775 2.05595L35.1659 35.5411"
+              stroke="#84827E"
+              stroke-width="2.775"
+              stroke-linecap="round" />
+            <path
+              d="M2.8374 35.5402L36.0556 2.05488"
+              stroke="#84827E"
+              stroke-width="2.775"
+              stroke-linecap="round" />
+          </g>
+          <defs>
+            <clipPath id="clip0_55_88">
+              <rect
+                width="37"
+                height="37"
+                fill="white"
+                transform="translate(0.5)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </span>
+    </div>
+    <div class="iw-instant-search">
+      <div class="instant-search__wrapper">
+        <div class="instant-search__popular-searches">
+          <div class="iw-container">
+            {% if settings.popular_search_header != blank %}
+              <p class="iw-search__heading iw-search__heading--popular">{{ settings.popular_search_header }}</p>
+            {% endif %}
+            {% assign popular_searches = settings.popular_searches | split: ',' %}
+            {% for query in popular_searches %}
+              <a
+                role="link"
+                tabindex="0"
+                title="{{ query }}"
+                aria-label="{{ query }}"
+                href="{{ shop.url }}/search?q={{ query | handle }}"
+                class="iw-search__link">{{ query }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="iw-products-content">
+          {% if settings.trending_products_header != blank %}
+            <p class="iw-search__heading iw-search__heading--trending">{{ settings.trending_products_header }}</p>
+          {% endif %}
+          <div class="swiper-pagination"></div>
+          <div class="iw-products-result swiper swiper-container">
+            <div class="instant-search__trending-products swiper-wrapper">
+              {% if settings.trending_products %}
+                {% for product in settings.trending_products limit: settings.search_products_to_show %}
+                  {% render 'product_Card' with productRelated: product
+                    , show_price: false
+                    , show_tags: false
+                    , show_auto_tags: false
+                    , show_title: true
+                    , show_fav: false
+                    , show_secondary_button: false
+                    , hide_star: true
+                    , class: 'swiper-slide' %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loader"></div>
+    </div>
+    <div class="iw-predictive-search iw-hidden">
+      <div class="predictive-search__wrapper">
+        <div class="predictive-search__others">
+          <div class="iw-container">
+            <div class="predictive-search__collection">
+              <p class="iw-search__heading">Collections</p>
+              <div class="predictive-search__collection-results"></div>
+            </div>
+            <div class="predictive-search__page">
+              <p class="iw-search__heading">Pages</p>
+              <div class="predictive-search__page-results"></div>
+            </div>
+            <div class="predictive-search__article">
+              <p class="iw-search__heading">Articles</p>
+              <div class="predictive-search__article-results"></div>
+            </div>
+          </div>
+        </div>
+        <div class="iw-products-content">
+          <div class="iw-container">
+            <p class="iw-search__heading">Products</p>
+            <div class="swiper-pagination"></div>
+            <div class="iw-products-result swiper swiper-container">
+              <div class="iw-predictive-search__products swiper-wrapper"></div>
+            </div>
+          </div>
+          <div class="iw-predictive-search__form-submit">
+            <button
+              type="submit"
+              form="predictive-search-form"
+              class="predictive-search-form">
+              <span class="">View All</span>
+            </button>
+          </div>
+          <div class="iw-predictive-search__no-results iw-hidden">
+            {{ 'general.search.no_results' | t }}
+          </div>
+        </div>
+      </div>
+      <div class="loader"></div>
+    </div>
+  </div>
+</iw-search>

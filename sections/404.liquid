@@ -1,0 +1,87 @@
+{% if section.settings.title != blank %}
+  <div class="error-page">
+    {% if section.settings.backgroundImage != blank %}
+      <div class="image-section">
+        <picture>
+          <source
+            media="(max-width: 600px)"
+            srcset="{% if section.settings.backgroundImageMobile != blank %}{{ section.settings.backgroundImageMobile | img_url: '750x1400' }}{%endif%}"
+          >
+
+          {{
+            section.settings.backgroundImage
+            | image_url: width: 2800
+            | image_tag: loading: 'lazy', widths: '2880x1620'
+          }}
+        </picture>
+      </div>
+    {% endif %}
+
+    <div class="container-1240">
+      <div class="inner">
+        {% if section.settings.pretitle != blank %}
+          <p class="pre-title">{{ section.settings.pretitle }}</p>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h1 class="normal">{{ section.settings.title }}</h1>
+        {% endif %}
+
+        {% if section.settings.buttonText != blank %}
+          <a
+            class="btn--primary"
+            href="{{ section.settings.buttonUrl }}"
+            title="{{ section.settings.title }}"
+            aria-label="Read More About {{ section.settings.title }}"
+          >
+            {{ section.settings.buttonText }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "backgroundImage",
+      "label": "Background Image (desktop)",
+      "info": {
+        "en": "2880 x 1600px Recommended"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroundImageMobile",
+      "label": "Background Image (mobile)",
+      "info": {
+        "en": "640 x 1108px Recommended"
+      }
+    },
+    {
+      "type": "text",
+      "id": "pretitle",
+      "label": "Pre Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text (home)"
+    },
+    {
+      "type": "url",
+      "id": "buttonUrl",
+      "label": "Button Url (home)"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "9304e448-8fde-4458-8cc3-54e858982e77": {
+      "type": "faq-accordian-section",
+      "blocks": {
+        "c6e3c947-1ebb-4d13-89b9-40fd9fd27e2c": {
+          "type": "category",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "658d62e1-0b9c-44b6-9dc4-8ca362275196": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Returns",
+            "title": "Can I make a return on my order if I no longer want the product?",
+            "faqAnswer": "<p>InfiniWell offers the ability to return an order for a refund within 30 days of the order being placed. if you email us at shop@infiniwell.com we will send you a prepaid return label to send the products back for a refund once they arrive at our warehouse. <\/p>"
+          }
+        },
+        "d5d94da0-8ebf-4bca-bdc3-725bcf06f774": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Returns",
+            "title": "How long does a return take?",
+            "faqAnswer": "<p>Returns generally take the same amount of time as a shipment going out to a customer. Generally we receive returned packages within 4-7 business days and we send the refund on the day the package arrives back to us. <\/p>"
+          }
+        },
+        "7b71b388-7c8e-4911-80a5-47526555bc32": {
+          "type": "category",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "eb979703-fdc5-48cd-a179-cccec55d2567": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Shipping",
+            "title": "What is the standard shipping time?",
+            "faqAnswer": "<p>InfiniWell currently offers one tier of shipping, with transit times of 4-7 business days depending on the location we are shipping to.<\/p>"
+          }
+        },
+        "e2ae67af-f886-4bc6-98e2-27333a3b6d79": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Shipping",
+            "title": "Will my package ship out the same day I place my order?",
+            "faqAnswer": "<p>InfiniWell ships out all orders that are placed prior to 1pm EST on weekdays the same day. After 1pm, the order will be prepped to leave our warehouse the following business day. <\/p>"
+          }
+        },
+        "b0908b7a-39b3-497f-86a0-c8a6586bbb13": {
+          "type": "category",
+          "settings": {
+            "title": "Payment"
+          }
+        },
+        "c8427c1b-0eea-495e-b231-24aac0dfcabb": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Payment",
+            "title": "Does InfiniWell store my credit card information?",
+            "faqAnswer": "<p>When a payment is made InfiniWell doesn't have any credit card information stored. If on a subscription, our subscription software will keep the card information encrypted so that it can process a new order each month. Once a subscription is cancelled that information is deleted out of our subscription software automatically. <\/p>"
+          }
+        },
+        "171ac885-bc91-43c6-9b98-71c75b2abb3c": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Payment",
+            "title": "What payment methods do you accept?",
+            "faqAnswer": "<p>InfiniWell accepts all major credit cards as well as Apple Pay and Paypal. <\/p>"
+          }
+        },
+        "09281988-735b-4691-b9ec-f14b39e0e50f": {
+          "type": "category",
+          "settings": {
+            "title": "Refunds"
+          }
+        },
+        "095bfb15-445b-4688-aaa0-3d38387d2abd": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Refunds",
+            "title": "What is the return policy for InfiniWell?",
+            "faqAnswer": "<p>InfiniWell offers a 30 day money back guarantee on orders from the day that the order is received by a customer.<\/p>"
+          }
+        },
+        "32d011e3-b789-4916-8a61-caa8bce6d17c": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Refunds",
+            "title": "How long does it take to get my refund?",
+            "faqAnswer": "<p>Once processed by the InfiniWell team, refunds usually take 1-3 days to reflect back to a user on their credit card\/bank statements. <\/p>"
+          }
+        },
+        "2d85c612-e8ef-491d-acc4-34b8ce660f8f": {
+          "type": "category",
+          "settings": {
+            "title": "Ingredients"
+          }
+        },
+        "af528579-691d-4555-8111-aefab01c2ca5": {
+          "type": "list",
+          "settings": {
+            "categoryFAQ": "Ingredients",
+            "title": "Where can I learn more about the ingredients in InfiniWell products?",
+            "faqAnswer": "<p>To learn about all of the materials selected in our formulations you can click here: <a href=\"\/pages\/ingredients-2-0\" title=\"Ingredients 2.0\">Ingredient Information<\/a><\/p>"
+          }
+        },
+        "257e701a-6fd5-4438-9fb3-1d0597262e80": {
+          "type": "list",
+          "disabled": true,
+          "settings": {
+            "categoryFAQ": "Ingredients",
+            "title": "Ingredients Duis aute irure dolor in reprehenderit in",
+            "faqAnswer": "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c6e3c947-1ebb-4d13-89b9-40fd9fd27e2c",
+        "658d62e1-0b9c-44b6-9dc4-8ca362275196",
+        "d5d94da0-8ebf-4bca-bdc3-725bcf06f774",
+        "7b71b388-7c8e-4911-80a5-47526555bc32",
+        "eb979703-fdc5-48cd-a179-cccec55d2567",
+        "e2ae67af-f886-4bc6-98e2-27333a3b6d79",
+        "b0908b7a-39b3-497f-86a0-c8a6586bbb13",
+        "c8427c1b-0eea-495e-b231-24aac0dfcabb",
+        "171ac885-bc91-43c6-9b98-71c75b2abb3c",
+        "09281988-735b-4691-b9ec-f14b39e0e50f",
+        "095bfb15-445b-4688-aaa0-3d38387d2abd",
+        "32d011e3-b789-4916-8a61-caa8bce6d17c",
+        "2d85c612-e8ef-491d-acc4-34b8ce660f8f",
+        "af528579-691d-4555-8111-aefab01c2ca5",
+        "257e701a-6fd5-4438-9fb3-1d0597262e80"
+      ],
+      "settings": {
+        "title": "{{ page.title }}",
+        "description": "<p>Below you will find some commonly asked questions regarding orders, returns, subscriptions, and product ingredients. <\/p>",
+        "page_Menu": "sidebar-menu",
+        "searchTitle": "HOW CAN WE HELP YOU TODAY?",
+        "searchDescription": ""
+      }
+    }
+  },
+  "order": [
+    "9304e448-8fde-4458-8cc3-54e858982e77"
+  ]
+}

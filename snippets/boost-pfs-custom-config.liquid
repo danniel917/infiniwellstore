@@ -1,0 +1,52 @@
+<script>
+   if (typeof boostPFSConfig.custom === 'undefined') boostPFSConfig.custom = {}
+
+   boostPFSConfig.custom.custom_tags = [
+           {
+             "name": {{ settings.tag1 | json }},
+             "color": {{ settings.tagColor1 | json }},
+             "label": {{ settings.tagLabel1 | json }}
+           },
+           {
+             "name": {{ settings.tag2 | json }},
+             "color": {{ settings.tagColor2 | json }},
+             "label": {{ settings.tagLabel2 | json }}
+           },
+           {
+             "name": {{ settings.tag3 | json }},
+             "color": {{ settings.tagColor3 | json }},
+             "label": {{ settings.tagLabel3 | json }}
+           }
+         ]
+
+   function buildItemCustomTags(data) {
+  	var html = '';
+  	var tags = data.tags;
+  	var customTags = boostPFSConfig.custom.custom_tags;
+
+  	var boolArchiveTag =false;
+  	if (tags.indexOf("Archive") > -1) {
+  		boolArchiveTag=true;
+  	}
+  	if (tags.indexOf("Coming Soon") > -1) {
+  		boolArchiveTag=true;
+  	}
+
+
+  	for (var i = 0; i < customTags.length; i++) {
+  		if (tags.includes(customTags[i].name)) {
+
+  			if(boolArchiveTag==true && customTags[i].name=="Napa-OOS" )
+  			{
+  			}
+  			else
+  			{
+  			html += '<span class="tag" style="color:' + customTags[i].color + '">';
+  			html += customTags[i].label;
+  			html += '</span>';
+  			}
+  		}
+  	}
+  	return html;
+  }
+</script>

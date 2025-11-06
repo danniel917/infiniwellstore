@@ -1,0 +1,79 @@
+{%- layout none -%}
+{ "items":[
+{%- for item in cart.items -%}
+  { "product_title":
+  {% if item.product.metafields.product.display_name != blank -%}
+    {{- item.product.metafields.product.display_name | json -}}
+  {%- else -%}
+    {{- item.title | json -}}
+  {%- endif -%}
+  ,
+  "product_meta_image":
+    {% if item.product.metafields.product.image != blank -%}
+    {% assign productImage = item.product.metafields.product.image | first %}
+      {{- productImage.cloudinary_src | json -}}
+    {%- else -%}
+      {{- '' | json -}}
+    {%- endif -%}
+    ,
+  {% if item.variant.compare_at_price != blank %}
+    "comparePrice": {{ item.variant.compare_at_price }},
+  {% endif %}
+
+  {% if item.product.metafields.accentuate.recommed_product_for_cart != blank %}
+  {% assign productHandles = item.product.metafields.accentuate.recommed_product_for_cart | split: '|' %}
+  "recommedProduct": [
+  {% for productRec in productHandles %}
+    {% assign productRecommed = all_products[productRec] %}
+    {% if productRecommed.metafields.product.image != blank -%}
+      {% assign productRecImage = productRecommed.metafields.product.image | first %}
+      {% assign productRecommedImage = productRecImage.cloudinary_src %}
+        {%- else -%}
+          {% assign productRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+        {%- endif -%}
+        {% assign productPopupRecommedImage = productRecommed.featured_image.src | product_img_url: 'master' %}
+       
+  {%- assign productRecVariant = productRecommed.selected_or_first_available_variant -%}
+  {%  assign productRecommedBenefits = "" %}
+  {% for header in productRecommed.metafields['info-small-tabs'].title %}
+    {% assign title = productRecommed.metafields['info-small-tabs'].title[forloop.index0] %}
+    {% assign titleid = productRecommed.metafields['info-small-tabs'].title[forloop.index0]
+      | downcase
+      | remove: ' '
+    %}
+    
+    {% if titleid == 'benefits' %}
+   
+         {%  assign productRecommedBenefits = productRecommed.metafields['info-small-tabs'].description[forloop.index0] | default: "" | json %}
+    
+       
+    {% endif %}
+  {% endfor %}
+    {"product_name":"{{ productRecommed.title }}","product_id":"{{ productRecommed.id }}", "product_available":"{{ productRecommed.available }}","product_image":"{{ productRecommedImage }}", "product_url":"{{ productRecommed.url }}","product_price":"{{ productRecVariant.price | money }}","product_compare_price":"{{ productRecVariant.compare_at_price | money }}","product_variant":"{{ productRecVariant.id }}","product_benefits":{{ productRecommedBenefits }},"product_popup_image":"{{ productPopupRecommedImage }}"}
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+],
+  {% endif %}
+
+  "id": {{ item.id | json }}, "quantity": {{ item.quantity | json }},
+
+  {% if item.product.selling_plan_groups.size > 0 %}
+    "product_recharge":"True",
+    "recharge": [
+      {% for plan_group in item.product.selling_plan_groups %}
+        {% for selling_plan in plan_group.selling_plans %}
+      {"product_rechargeID":"{{ selling_plan.id }}", "product_rechargeName":"{{ selling_plan.name }}","product_rechargeDiscount":"{{ selling_plan.price_adjustments[0].value }}"}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+  {% else %}
+    "product_recharge":"false"
+  {% endif %}
+  
+  }
+  {% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+] }
+

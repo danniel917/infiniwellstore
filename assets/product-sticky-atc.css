@@ -1,0 +1,282 @@
+product-sticky-atc {
+    position: fixed;
+    width: 100%;
+    display: block;
+    left: 0;
+    bottom: 0;
+    border-radius: 10px 10px 0px 0px;
+    background: rgba(241, 240, 237, 0.79);
+    z-index: 11;
+    animation: slideup 0.3s;
+}
+
+product-sticky-atc:not(.active) {
+    display: none;
+}
+
+.product-sticky-atc__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 13px 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-sticky-atc__title h2 {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 15.5px;
+}
+
+.product-sticky-atc__buttons form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.product-sticky-atc__buttons .btn--primary:not(:hover) {
+    background-color: #6B86AA;
+    border-color: #6B86AA;
+    color: #fff;
+}
+
+.product-sticky-atc__buttons .btn--primary {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.24px;
+}
+
+.subscription-dropdown {
+    position: relative;
+}
+
+.subscription-dropdown__header {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15.5px;
+    letter-spacing: 0.24px;
+    border-radius: 90px;
+    border: 1px solid #CAC9C7;
+    background: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 14px;
+    min-width: 191px;
+    text-transform: uppercase;
+    height: 40px;
+}
+
+.subscription-dropdown__header--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.subscription-dropdown__content {
+    position: absolute;
+    left: -11px;
+    bottom: 65px;
+    background: rgba(204, 203, 201, 0.95);
+    border: 1px solid #CAC9C7;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 52px 14px 15px;
+    min-width: 375px;
+}
+
+@media (max-width: 768px) {
+    .subscription-dropdown__content {
+        border-radius: 10px 10px 0px 0px;
+        width: 100vw;
+        bottom: -13px;
+    }
+}
+
+.subscription-dropdown:not(.active) .subscription-dropdown__content {
+    display: none;
+}
+
+.subscription-dropdown.active .subscription-dropdown__header--icon {
+    rotate: 180deg;
+}
+
+.subscription-dropdown__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.subscription-dropdown__list li {
+    width: 100%;
+    height: auto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15.5px;
+    letter-spacing: 0.24px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 4px 5px;
+    display: block;
+    color: #1A1F2A;
+    border-radius: 9px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 38px;
+    min-height: 40px;
+}
+
+.subscription-dropdown__item-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscription-dropdown__item::before,
+.subscription-dropdown__item::after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.subscription-dropdown__item::before {
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    background-color: #84827E;
+}
+
+.subscription-dropdown__item::after {
+    width: 12px;
+    height: 12px;
+    left: 14px;
+    background-color: #fff;
+}
+
+.subscription-dropdown__item:not(.active)::after {
+    display: none;
+}
+
+.subscription-dropdown__item:hover,
+.subscription-dropdown__item.active {
+    background-color: #F0EFEE;
+    color: #1A1F2A;
+}
+
+.subscription-dropdown__item:hover *,
+.subscription-dropdown__item.active * {
+    color: #1A1F2A !important;
+}
+
+.subscription-dropdown__item .subscription-dropdown__item-price > span {
+    color: #777979 !important;
+    font-size: 12px;
+    text-decoration: line-through;
+    margin-top: 2px;
+}
+
+.subscription-dropdown__sr {
+    display: block;
+    width: 1px;
+    height: 25px;
+    margin: 0 12px;
+    background-color: #777979;
+}
+
+.subscription-dropdown__close {
+    background-color: #84827E;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.subscription-dropdown__close:hover {
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.product-sticky-atc__buttons form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .product-sticky-atc__container {
+        padding: 13px 11px;
+        justify-content: center;
+    }
+
+    .product-sticky-atc__title {
+        display: none;
+    }
+
+    .product-sticky-atc__buttons {
+        width: 100%;
+    }
+
+    .product-sticky-atc__buttons form {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .subscription-dropdown,
+    .product-sticky-atc__buttons .btn--primary {
+        width: calc(50% - 5px);
+        min-width: 0;
+    }
+
+    .subscription-dropdown__header {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .subscription-dropdown__header,
+    .product-sticky-atc__buttons .btn--primary {
+        font-size: 10px;
+    }
+
+    .product-sticky-atc__buttons .btn--primary {
+        padding: 14px;
+    }
+
+    .subscription-dropdown__content {
+        padding: 52px 11px 15px;
+    }
+}
+
+@keyframes slideup {
+    0% {transform: translateY(100%);}
+    100% {transform: translateY(0);}
+}

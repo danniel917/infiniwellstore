@@ -1,0 +1,67 @@
+{% if section.settings.title1 != blank %}
+  <div class="inner-hero-simple {% if section.settings.smallHeight == true %} small {% endif %}">
+    <div class="container-1340 {% if section.settings.content_alignment == "center" %} center--align {% endif %} {% if section.settings.content_alignment == "right" %} right--align {% endif %}
+      {% if section.settings.content_alignment == "left" %} left--align {% endif %}">
+      <div class="content">
+          <h1>{{ section.settings.title1 }} 
+            {% if section.settings.title2 != blank %}
+              <span class="color-grey h1">{{ section.settings.title2 }}</span>
+            {% endif %}
+          </h1>
+        {% if section.settings.description != blank %}
+          {{ section.settings.description }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Inner Banner Simple",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title 1"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title 2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "smallHeight",
+      "label": "Small Height"
+    },
+    {
+      "type": "header",
+      "content": "Extra Settings",
+      "info": "Recommened to be used by the developer only"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "center", "label": "Center" }
+      ],
+      "label": "Image Alignment",
+      "info": "By default it is center aligned.",
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inner Banner Simple"
+    }
+  ]
+}
+{% endschema %}

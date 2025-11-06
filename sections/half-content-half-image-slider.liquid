@@ -1,0 +1,105 @@
+{% if section.blocks.size > 0 %}
+  <div class="half-content-half-image">
+    <div class="container-1300">
+      <div class="slider {% if section.blocks.size > 1 %}js_half-content-half-image-slider{%endif %}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.settings.title != blank %}
+              <div class="swiper-slide flex">
+                <div class="content full-format">
+                  {% if block.settings.pretitle != blank %}
+                    <span class="pre-title blue">{{ block.settings.pretitle }}</span>
+                  {% endif %}
+                  <h2 class="h3">{{ block.settings.title }}</h2>
+                  {% if block.settings.description != blank %}
+                    {{ block.settings.description }}
+                  {% endif %}
+                  {% if block.settings.buttonText != blank and block.settings.videoLink != blank %}
+                    <a
+                      href="{{ block.settings.videoLink }}"
+                      title="Watch {{ block.settings.title }}"
+                      data-lity
+                      aria-label="Watch {{ block.settings.title }}"
+                      class="link--primary"
+                    >
+                      {{- block.settings.buttonText -}}
+                    </a>
+                  {% endif %}
+                </div>
+                {% if block.settings.image != blank %}
+                  <div class="image-section">
+                    {{
+                      block.settings.image
+                      | image_url: width: 1260
+                      | image_tag: loading: 'lazy', widths: '1260x1300'
+                    }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% if section.blocks.size > 1 %}
+        <div class="swiper-button-prev-content-slider">
+          {% include 'icon-arrow-slide-white' %}
+        </div>
+        <div class="swiper-button-next-content-slider">
+          {% include 'icon-arrow-slide-white' %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Half Img Half Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1260 x 1300px Recommended"
+        },
+        {
+          "type": "text",
+          "id": "pretitle",
+          "label": "Pre Title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "buttonText",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "videoLink",
+          "label": "Video Link",
+          "info": "Video Link (Vimeo / Mp4 / Youtube)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Half Image Half Content Slider"
+    }
+  ]
+}
+{% endschema %}

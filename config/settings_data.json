@@ -1,0 +1,638 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "trackLinkText": "",
+    "trackLink": "",
+    "tag1": "New",
+    "tagLabel1": "★ New",
+    "tagColor1": "#e2eaf5",
+    "tag2": "Hide",
+    "tagLabel2": "Hide",
+    "tagColor2": "#000000",
+    "tag3": "Ship",
+    "tagLabel3": "Ships 5/10",
+    "tagColor3": "#ffffff",
+    "freqBoughtTitle": "InfiniWell Physicians Also Recommend",
+    "freqBoughtLimit": 6,
+    "product_1": "bpc-157-rapid-pro",
+    "product_2": "abc",
+    "product_3": "ptd-dbm-methyl-vanillate",
+    "product_4": "duo-cosmetic-ghk-cu-zu-thymulin",
+    "freeShippingThresholdValue": "75",
+    "freeShippingMsg": "FREE standard shipping unlocked",
+    "infoimage1": "shopify://shop_images/check-new_1.svg",
+    "info1": "30-Day Guarantee",
+    "infoimage2": "shopify://shop_images/delivery_icons.svg",
+    "info2": "Ships Same Day",
+    "title": "You MAY ALSO LIKE",
+    "product1": "ignight",
+    "product2": "control",
+    "product3": "focus",
+    "product4": "defend",
+    "freeGift1ThresholdValue": "",
+    "freeProduct1": "",
+    "freeGift2ThresholdValue": "",
+    "freeProduct2": "",
+    "specialTitle": "",
+    "specialDescription": "",
+    "chattitle": "",
+    "chatdescription": "",
+    "chatText": "",
+    "chatLink": "#",
+    "chatnumber": "1-888-819-4640",
+    "phonetitle": "Phone Info",
+    "contactdescription": "<p>Call us at: 1-888-819-4640</p>",
+    "phonemobtitle": "Call Us",
+    "number": "1-888-819-4640",
+    "emailtitle": "Email Info",
+    "emailAddressdesc": "<p>Email us at <strong>shop@infiniwell.com </strong>anytime and we will get back to you within 24-48 hours</p>",
+    "emailAddress": "shop@infiniwell.com",
+    "addtitle": "Main Office",
+    "officeadd": "<p>InfiniWell</p><p>5706 E Mockingbird Ln </p><p>Suite 115-404</p><p>Dallas, Texas </p><p>75206 </p><p>United States</p>",
+    "hrtitle": "Hours",
+    "weekdays": "Mon - Fri",
+    "weekdayshr": "9:00am - 5:00pm EST",
+    "weekend": "",
+    "weekendshr": "",
+    "texttitle": "",
+    "textnumber": "",
+    "social_facebook_link": "https://www.facebook.com/shopinfiniwell/",
+    "social_twitter_link": "",
+    "social_instagram_link": "https://www.instagram.com/infiniwell.store/",
+    "social_tiktok_link": "",
+    "social_youtube_link": "",
+    "social_linkedin_link": "https://www.linkedin.com/company/infiniwell-bioscience",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "copy_link": true,
+    "favicon": "shopify://shop_images/favicon.png",
+    "popular_search_header": "Trending Searches:",
+    "popular_searches": "DHH-B, BPC Rapid Pro, PTD-DBM, GI Prime, IgNIGHT, BPC Probiotic | ABC",
+    "share_insta": true,
+    "share_youtube": true,
+    "checkout_logo_image": "shopify://shop_images/logo-alt-2-c_2x_3f3618a8-d7cb-4623-9eeb-980d8a00242c.webp",
+    "checkout_sidebar_background_color": "#fff",
+    "checkout_accent_color": "#080707",
+    "checkout_button_color": "#080707",
+    "social_pinterest_link": "https://pinterest.com/shopify",
+    "social_tumblr_link": "http://shopify.tumblr.com",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "c13bf8ac-4132-410a-8468-583fa81a6a43": {
+            "type": "block",
+            "disabled": true,
+            "settings": {
+              "category": "results",
+              "title": "Feature Headline",
+              "image": "shopify://shop_images/featured-product.webp",
+              "video": "",
+              "linkText": "shop now",
+              "link": "shopify://collections/all",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "bac6d11d-ca13-4da0-b8f4-09d5e62ed115": {
+            "type": "block",
+            "settings": {
+              "category": "results",
+              "title": "Feature Headline",
+              "image": "shopify://shop_images/featured-product.webp",
+              "video": "",
+              "linkText": "shop now",
+              "link": "shopify://pages/contact-us-old",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "1b7cf901-2179-47ab-98af-c8c7def00396": {
+            "type": "block",
+            "settings": {
+              "category": "results",
+              "title": "Feature Headline",
+              "image": "shopify://shop_images/featured-product.webp",
+              "video": "",
+              "linkText": "shop now",
+              "link": "shopify://collections",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "2908fdc1-f0cb-4940-b4c2-06f8067e366c": {
+            "type": "block",
+            "settings": {
+              "category": "results",
+              "title": "Feature Headline",
+              "image": "shopify://shop_images/featured-product.webp",
+              "video": "",
+              "linkText": "shop all",
+              "link": "shopify://products/foundational-supplement-pack",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "265fb6ee-379a-4e0d-beb6-a717a4f8d425": {
+            "type": "block",
+            "settings": {
+              "category": "GetStarted",
+              "title": "Shop Best Sellers",
+              "image": "shopify://shop_images/ShopTopProducts_1_e9f39fea-b9bc-48b6-aaaa-fe9164f88342.jpg",
+              "video": "",
+              "linkText": "Shop All",
+              "link": "shopify://collections/best-sellers",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "6ac5b87c-40f4-4eb9-afb7-06f18ae27a88": {
+            "type": "block",
+            "settings": {
+              "category": "GetStarted",
+              "title": "Shop BPC Products",
+              "image": "shopify://shop_images/ShopBundles.jpg",
+              "video": "",
+              "linkText": "Shop Now",
+              "link": "shopify://collections/bpc-products",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "deeca663-7397-4793-af60-af1f12f4314a": {
+            "type": "block",
+            "settings": {
+              "category": "GetStarted",
+              "title": "Shop ExactPax",
+              "image": "shopify://shop_images/ShopExactPax.jpg",
+              "video": "",
+              "linkText": "Shop Now",
+              "link": "shopify://collections/exactpax™",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "41c3008c-08b5-4662-9847-173a745824a1": {
+            "type": "block",
+            "settings": {
+              "category": "GetStarted",
+              "title": "Shop New Releases",
+              "image": "shopify://shop_images/ShopFeatured.jpg",
+              "video": "",
+              "linkText": "Shop Now",
+              "link": "shopify://collections/new-releases",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "805ed670-43f3-4a3d-b26f-4fce5487d971": {
+            "type": "block",
+            "settings": {
+              "category": "Discover",
+              "title": "About Us",
+              "image": "shopify://shop_images/NavImage-Trio_1.jpg",
+              "video": "",
+              "linkText": "Explore",
+              "link": "shopify://pages/about-science",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "ef9c0d91-1159-4291-a1bc-d6336bfe6e4f": {
+            "type": "block",
+            "settings": {
+              "category": "Discover",
+              "title": "Science",
+              "image": "shopify://shop_images/NavImage-Hand.jpg",
+              "video": "",
+              "linkText": "Explore",
+              "link": "shopify://pages/about-science",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "102c682a-dba1-4f73-bb27-6b2f9f0728db": {
+            "type": "block",
+            "settings": {
+              "category": "Discover",
+              "title": "Ingredients",
+              "image": "shopify://shop_images/NavImage-Ingredients.jpg",
+              "video": "",
+              "linkText": "Explore",
+              "link": "shopify://pages/ingredients",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "4377d616-b90c-406a-a249-e7db48064ab1": {
+            "type": "block",
+            "settings": {
+              "category": "Discover",
+              "title": "Journal",
+              "image": "shopify://shop_images/journal.png",
+              "video": "",
+              "linkText": "Explore",
+              "link": "shopify://blogs/iw-blog",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "bebb2c6a-069b-4c3f-95d1-e4e447fbe14e": {
+            "type": "block",
+            "settings": {
+              "category": "Products",
+              "title": "Shop All Products",
+              "image": "shopify://shop_images/ShopTopProducts_1.jpg",
+              "video": "",
+              "linkText": "Shop All",
+              "link": "shopify://collections/all-products",
+              "content_alignment": "right",
+              "contentColor": ""
+            }
+          },
+          "56e7d0f6-f017-4d50-aac3-e68676a35c11": {
+            "type": "block",
+            "settings": {
+              "category": "Products",
+              "title": "Shop New Releases",
+              "image": "shopify://shop_images/ShopALL-NewProducts.jpg",
+              "video": "",
+              "linkText": "Shop Now",
+              "link": "shopify://collections/new-releases",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "dcba3ad3-fa33-49fc-8913-ae52305a0151": {
+            "type": "icons",
+            "disabled": true,
+            "settings": {
+              "menuTitle": "Cardio Metabolic",
+              "icon": "shopify://shop_images/icon-cardic.svg"
+            }
+          },
+          "card_YB9TLz": {
+            "type": "card",
+            "settings": {
+              "title": "ABC",
+              "mobile-image": "shopify://shop_images/Product_Image.png",
+              "mobile-imageLink": "shopify://products/abc"
+            }
+          },
+          "card_RPUBqj": {
+            "type": "card",
+            "settings": {
+              "title": "BPC Rapid Pro",
+              "mobile-image": "shopify://shop_images/Bottles-85_3.jpg",
+              "mobile-imageLink": "shopify://products/bpc-157-rapid-pro"
+            }
+          },
+          "block_66bqQn": {
+            "type": "block",
+            "settings": {
+              "category": "practitioner",
+              "title": "Education & Protocols",
+              "video": "https://cdn.shopify.com/videos/c/o/v/0a7385947f4142d68f7ff4eff4526d47.mp4",
+              "linkText": "",
+              "link": "https://infiniwell.com/account/login",
+              "content_alignment": "right",
+              "contentColor": "#ffffff"
+            }
+          },
+          "block_4j8xM6": {
+            "type": "block",
+            "settings": {
+              "category": "practitioner",
+              "title": "Create Account",
+              "video": "https://cdn.shopify.com/videos/c/o/v/6a562c9c0b384e61b21680d89a322356.mp4",
+              "linkText": "",
+              "link": "https://ie9bk6o7ejm.typeform.com/to/mcc3f4kT",
+              "content_alignment": "right",
+              "contentColor": "#ffffff"
+            }
+          },
+          "block_9bk4gx": {
+            "type": "block",
+            "settings": {
+              "category": "practitioner",
+              "title": "Virtual Dispensary",
+              "video": "https://cdn.shopify.com/videos/c/o/v/dd3b7371efec4b878243cf669faa6eb1.mp4",
+              "linkText": "",
+              "link": "shopify://pages/virtual-dispensary-infiniwell",
+              "content_alignment": "right",
+              "contentColor": "#ffffff"
+            }
+          },
+          "block_wWwdkN": {
+            "type": "block",
+            "settings": {
+              "category": "practitioner",
+              "title": "Product Catalogue",
+              "video": "https://cdn.shopify.com/videos/c/o/v/299426ae1a6a4edda35bcad3903fce1b.mp4",
+              "linkText": "",
+              "link": "https://infiniwell.com/account/login",
+              "content_alignment": "right",
+              "contentColor": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "c13bf8ac-4132-410a-8468-583fa81a6a43",
+          "bac6d11d-ca13-4da0-b8f4-09d5e62ed115",
+          "1b7cf901-2179-47ab-98af-c8c7def00396",
+          "2908fdc1-f0cb-4940-b4c2-06f8067e366c",
+          "265fb6ee-379a-4e0d-beb6-a717a4f8d425",
+          "6ac5b87c-40f4-4eb9-afb7-06f18ae27a88",
+          "deeca663-7397-4793-af60-af1f12f4314a",
+          "41c3008c-08b5-4662-9847-173a745824a1",
+          "805ed670-43f3-4a3d-b26f-4fce5487d971",
+          "ef9c0d91-1159-4291-a1bc-d6336bfe6e4f",
+          "102c682a-dba1-4f73-bb27-6b2f9f0728db",
+          "4377d616-b90c-406a-a249-e7db48064ab1",
+          "bebb2c6a-069b-4c3f-95d1-e4e447fbe14e",
+          "56e7d0f6-f017-4d50-aac3-e68676a35c11",
+          "dcba3ad3-fa33-49fc-8913-ae52305a0151",
+          "card_YB9TLz",
+          "card_RPUBqj",
+          "block_66bqQn",
+          "block_4j8xM6",
+          "block_9bk4gx",
+          "block_wWwdkN"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/infiniwell-new.png",
+          "whiteLogo": "shopify://shop_images/InfiniWell-white.png",
+          "mobileLogo": "shopify://shop_images/Logo_1_b027b35d-930c-4186-b136-b74658f61da6.png",
+          "nav_menu": "main-menu-3-0",
+          "loginMenu": "login-menu",
+          "bottommobileMenu": "menu-bottom",
+          "nav_mobilemenu": "mobile-menu-3-0",
+          "nav_mobiletop": "mobile-top-banner",
+          "nav_mobilebottom": "bottom-mobile-menu",
+          "practimage": "shopify://shop_images/Screenshot_2025-02-18_at_5.46.00_PM_1.jpg",
+          "practVideoLink": "",
+          "practVideoLinkdesktop": "https://cdn.shopify.com/videos/c/o/v/1a37937539064c38b26ed2076543b3b4.mp4"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "topDescription": "<p>InfiniWell offers free shipping on all US orders over $75</p>",
+          "newsTitle": "Join Our Community",
+          "footerMenu": "footer-menu-2-0",
+          "copyright": "Infiniwell. All Rights Reserved.",
+          "description": "<p>*Statements on this website have not been evaluated by the FDA. These products are not intended to diagnose, treat, cure or prevent any disease. If you are taking prescription medication, have a medical condition, or are pregnant or nursing, consult your physician prior to use. Not for children. Results may vary.</p>"
+        }
+      },
+      "home-hero-banner": {
+        "type": "home-hero-banner",
+        "blocks": {
+          "761c1895-5f77-4e74-8484-c97919fd4e83": {
+            "type": "slide",
+            "settings": {
+              "backgroundImage": "shopify://shop_images/AdobeStock_280609097.jpg",
+              "video": "",
+              "videobanner": false,
+              "pretitle": "Liver Powered Engery Bars",
+              "title": "Unleash Your Primal Power",
+              "description": "",
+              "buttonText": "Shop now!",
+              "buttonLink": "shopify://collections",
+              "content_alignment": "center"
+            }
+          },
+          "3ba8ea7f-f4ca-4056-9825-9402abab930e": {
+            "type": "slide",
+            "settings": {
+              "video": "",
+              "videobanner": false,
+              "pretitle": "",
+              "title": "",
+              "description": "",
+              "buttonText": "",
+              "buttonLink": "",
+              "content_alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "761c1895-5f77-4e74-8484-c97919fd4e83",
+          "3ba8ea7f-f4ca-4056-9825-9402abab930e"
+        ],
+        "settings": {}
+      },
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "f12678f8-f284-4d0b-92d6-bd5eb23001ae": {
+            "type": "announcement",
+            "settings": {
+              "header_text": "<p>GLOBAL SHIPPING | USA SHIPS FREE OVER $75</p>",
+              "announcement_link": "shopify://collections",
+              "announcement_link_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "f12678f8-f284-4d0b-92d6-bd5eb23001ae"
+        ],
+        "settings": {
+          "show_announcement": true
+        }
+      },
+      "collection-template-boost-pfs-filter": {
+        "type": "collection-template-boost-pfs-filter",
+        "settings": {
+          "switch_layout_filter": "switch_layout_filter_vertical",
+          "enable_filter_sticky": false,
+          "toolbar_filter_sticky_mobile": false,
+          "filter_layout": "filter_layout_default",
+          "layout_type": "box",
+          "show_collection_image": true,
+          "collection_header_bg_color": "",
+          "collection_header_text_color": "",
+          "show_toolbar_view_as": true,
+          "show_toolbar_product_count": true,
+          "show_toolbar_sort_by": true,
+          "show_toolbar_view_as_mobile": true,
+          "show_toolbar_product_count_mobile": true,
+          "show_toolbar_sort_by_mobile": true,
+          "view_as_type": "view_as_type_grid_list",
+          "products_per_page": 50,
+          "products_per_row": 3,
+          "products_per_row_mobile": 2,
+          "product_item_type": "grid",
+          "product_item_layout": "no-border",
+          "text_alignment": "left",
+          "show_details_when_hovering": false,
+          "show_vendor": false,
+          "show_price": true,
+          "active_image_swap": true,
+          "show_product_review": true,
+          "show_sold_out_label": true,
+          "show_sale_label": false,
+          "show_sale_percent": false,
+          "product_label_has_border_radius": true,
+          "show_label_by_tag": false,
+          "product_item_label_position": "top_left",
+          "product_label_type": "rectangle",
+          "product_item_label_bg_color": "",
+          "product_item_label_text_color": "",
+          "show_product_label_image": false,
+          "product_item_title_color": "#3d4246",
+          "product_item_title_font": "poppins_n6",
+          "product_item_title_font_size": 14,
+          "product_item_vendor_color": "#969595",
+          "product_item_vendor_font": "poppins_n4",
+          "product_item_vendor_font_size": 12,
+          "product_item_price_color": "#222222",
+          "product_item_old_price_color": "#969595",
+          "product_item_sale_price_color": "#f30000",
+          "product_item_price_font": "poppins_n4",
+          "product_item_price_font_size": 14,
+          "product_item_des_color": "#3a3a3a",
+          "product_item_des_font": "poppins_n4",
+          "product_item_des_font_size": 14,
+          "display_item_swatch": true,
+          "show_item_swatch_tooltip": true,
+          "swatch_color_display_type": "swatch_color_display_type_image_product",
+          "swatch_color_event_change_image": "hover",
+          "swatches_color_shape": "circle",
+          "display_item_swatch_size": false,
+          "equal_height": "auto",
+          "ratio_width_height_other": "",
+          "equal_height_crop_image_position": "center",
+          "leftSideButtonText": "",
+          "leftSideButtonLink": ""
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "title": "",
+          "show_featured_article": true,
+          "featured_article": "iw-blog/how-to-choose-the-right-bpc-157-peptide",
+          "blogItems": 10
+        }
+      },
+      "collection-modals": {
+        "type": "collection-modals",
+        "custom_css": [],
+        "settings": {}
+      },
+      "404": {
+        "type": "404",
+        "settings": {
+          "backgroundImage": "shopify://shop_images/ambassador-hero-desktop_2x_e9ffc1e0-4453-46c8-87bb-24d5fd731bc3.webp",
+          "pretitle": "404 - Page Not Found",
+          "title": "We can’t seem to find what you’re looking for",
+          "buttonText": "Go Home",
+          "buttonUrl": "/"
+        }
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "product_quantity_enable": false,
+          "enable_payment_button": true,
+          "onetimeText": "or set up interest-free payments with Shop Pay",
+          "subscribeText": "Delivery every 30 Days. Cancel anytime."
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "title": ""
+        }
+      },
+      "faq-dropdown": {
+        "type": "faq-dropdown",
+        "settings": {
+          "use_collection_metafield": true
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "5946647744298494267": {
+        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+        "disabled": false,
+        "settings": {}
+      },
+      "17151115064775110295": {
+        "type": "shopify://apps/recharge-subscriptions/blocks/recharge-theme/371eed76-0b44-4869-9813-730372ea378e",
+        "disabled": false,
+        "settings": {
+          "color_brand": "#467c99",
+          "contrast_color": "#ffffff",
+          "color_brand_secondary": "#467c99",
+          "corners": "8px",
+          "app_background": "#f9f8f4",
+          "app_container": 1200,
+          "app_vertical_padding": 32,
+          "images_aspect_ratio": "1",
+          "cards_background": "#ffffff",
+          "cards_border_color": "rgba(0,0,0,0)"
+        }
+      },
+      "18209738915288330680": {
+        "type": "shopify://apps/wholesale-all-in-one/blocks/wholesale-all-in-one/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
+        "disabled": false,
+        "settings": {
+          "wsaio_app_access_token": "godzilla_wsaiouvh6qz",
+          "wsaio_main_js_file": "",
+          "wsaio_main_liquid_file": "",
+          "wsaio_modules_liquid_file": "",
+          "wsaio_addons_liquid_file": "",
+          "wsaio_custom_css_file": ""
+        }
+      },
+      "c5727711-05ae-4ea9-911a-a47d3c3c1d92": {
+        "type": "shopify://apps/boost-ai-search-discovery/blocks/boost-sd/7fc998ae-a150-4367-bab8-505d8a4503f7",
+        "disabled": true,
+        "settings": {}
+      },
+      "11809892702313333283": {
+        "type": "shopify://apps/firework-virtual-store/blocks/firework-header/347a2e4c-f5cb-410d-8354-490d1e80558c",
+        "disabled": false,
+        "settings": {}
+      },
+      "319724205969189013": {
+        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+        "disabled": false,
+        "settings": {}
+      },
+      "1291562577487733835": {
+        "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
+        "disabled": false,
+        "settings": {}
+      },
+      "733389323033596483": {
+        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
+      },
+      "10840395464443086010": {
+        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}

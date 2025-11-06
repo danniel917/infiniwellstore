@@ -1,0 +1,147 @@
+<footer>
+  {% if section.settings.topDescription != blank %}
+    <div class="footer-top-bar">
+      <div class="container-1390">
+        <div class=" slider">
+          <div class="swiper-wrapper">
+            <div class="slide swiper-slide">
+              {{ section.settings.topDescription }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="main-footer">
+    <div class="container-1390">
+      <div class="main-footer__middle flex">
+        <div class="left-section">
+          <div class="main-footer__newsletter">
+            {% if section.settings.newsTitle != blank %}
+              <span class="newsletter-title uppercase">{{ section.settings.newsTitle }}</span>
+            {% endif %}
+            {% comment %}
+              {% if section.settings.newsContent != blank %}
+              <p>{{ section.settings.newsContent }}</p>
+              {% endif %}
+            {% endcomment %}
+            <div class="newsletter-form">
+              <div class="klaviyo-form-RFhwcu"></div>
+            </div>
+          </div>
+          <div class="none-980">
+            <div class="social-icons">
+              {% include 'social-icons' %}
+            </div>
+            {% if section.settings.description != blank %}
+              <div class="description ">
+                {{ section.settings.description }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Footer Menu -->
+        <div class="main-footer__nav flex-wrap">
+          {% assign fotterMenu = linklists[section.settings.footerMenu] %}
+          {% for link in fotterMenu.links %}
+            {% assign linkTitle = link.title | downcase | remove: ' ' %}
+            <div class="footer-links">
+              <p class="accordion-toggle">
+                <a href="javascript:;" title="{{ link.title | escape }} About Pages">
+                  {{- link.title }}
+                  <span class="sr-only"> About Other Pages</span>
+                </a>
+              </p>
+              <ul class="accordion-content">
+                {% for childlink in link.links %}
+                  <li>
+                    <a href="{{ childlink.url }}" title="{{ childlink.title }}">{{ childlink.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+        <div class=" block-980">
+          {% if section.settings.description != blank %}
+            <div class="description">
+              {{ section.settings.description }}
+            </div>
+          {% endif %}
+          <div class="social-icons">
+            {% include 'social-icons' %}
+          </div>
+        </div>
+      </div>
+      <div class="main-footer__bottom">
+        <!-- Copyright -->
+        <div class="copyright">
+          <div class="copyright-section flex-wrap">
+            {% if section.settings.copyright != blank %}
+              <p>
+                © {{ 'now' | date: '%Y' }}
+                {{ section.settings.copyright }}
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": {
+    "en": "Footer"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "en": "Footer Annoucement"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "topDescription",
+      "label": "Footer Annoucement Description"
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Footer Info"
+      }
+    },
+    {
+      "type": "text",
+      "id": "newsTitle",
+      "label": "Newsletter Title",
+      "default": "Newsletter"
+    },
+    {
+      "type": "link_list",
+      "id": "footerMenu",
+      "label": {
+        "en": "Footer Menu"
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  .boost-pfs-filter-tree.boost-pfs-filter-tree-v{
+    padding:20px;
+  }
+</script>

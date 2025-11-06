@@ -1,0 +1,345 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=0 ">
+
+    {% render 'canonical-settings' %}
+
+    {% include 'head' %}
+    {% include 'sm-og-data' %}
+    {% include 'scripts_head' %}
+
+  {{ content_for_header }}
+    {% comment %}
+      <!-- Extra Apps Per Theme-->
+      {% render 'hulkapps-wishlist-js' %}
+      <link href='//hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/hulkapps-wishlist-styles.css' rel='stylesheet'>
+    {% endcomment %}
+    <!-- begin-boost-pfs-filter-css -->
+    {% render 'boost-pfs-style' %}
+    <!-- end-boost-pfs-filter-css -->
+    <script
+      async
+      defer
+      src="https://tools.luckyorange.com/core/lo.js?site-id=8894106a"></script>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        function formatEuroPrices() {
+          // Select all price elements
+          const priceElements = document.querySelectorAll('.product-card__price span');
+
+          priceElements.forEach(function (element) {
+            let priceText = element.textContent.trim();
+
+            // Check if the price text starts with the Euro symbol
+            if (priceText.startsWith('€')) {
+              // Remove the Euro symbol temporarily
+              priceText = priceText.substring(1);
+
+              // Replace the comma with a dot
+              priceText = priceText.replace(',', '.');
+
+              // Add the Euro symbol back and update the element
+              element.textContent = '€' + priceText;
+            }
+          });
+
+          pdpPriceElements = document.querySelectorAll('.product-single__prices span');
+
+          pdpPriceElements.forEach(function (element) {
+            let priceText = element.textContent.trim();
+
+            // Check if the price text starts with the Euro symbol
+            if (priceText.startsWith('€')) {
+              // Remove the Euro symbol temporarily
+              priceText = priceText.substring(1);
+
+              // Replace the comma with a dot
+              priceText = priceText.replace(',', '.');
+
+              // Add the Euro symbol back and update the element
+              element.textContent = '€' + priceText;
+            }
+          });
+
+          pdpComPriceElements = document.querySelectorAll('.product-single__prices s');
+
+          pdpComPriceElements.forEach(function (element) {
+            let priceText = element.textContent.trim();
+
+            // Check if the price text starts with the Euro symbol
+            if (priceText.startsWith('€')) {
+              // Remove the Euro symbol temporarily
+              priceText = priceText.substring(1);
+
+              // Replace the comma with a dot
+              priceText = priceText.replace(',', '.');
+
+              // Add the Euro symbol back and update the element
+              element.textContent = '€' + priceText;
+            }
+          });
+        }
+
+        // Run the formatting function when the page loads
+        formatEuroPrices();
+
+        // If you're using AJAX to update prices, you might need to run this function again after price updates
+        // For example, if you're using Shopify's Ajax API:
+        if (typeof Shopify !== 'undefined' && Shopify.onItemAdded) {
+          Shopify.onItemAdded = function () {
+            formatEuroPrices();
+            // ... any other code you want to run when an item is added ...
+          };
+        }
+      });
+    </script>
+    <!-- Begin: Northbeam pixel -->
+    <script>
+      (function () {
+        var t;
+        ((n = t = t || {}).A = 'identify'),
+          (n.B = 'trackPageView'),
+          (n.C = 'fireEmailCaptureEvent'),
+          (n.D = 'fireCustomGoal'),
+          (n.E = 'firePurchaseEvent'),
+          (n.F = 'trackPageViewInitial');
+        var n = '//j.northbeam.io/ota-sp/f98b0c8d-ab0a-435c-909c-e61db824bd6a.js';
+        function r(n) {
+          for (var e = [], t = 1; t < arguments.length; t++) e[t - 1] = arguments[t];
+          a.push({ fnName: n, args: e });
+        }
+        var e,
+          a = [],
+          i =
+            (((e = {})[t.F] = function (n) {
+              r(t.F, n);
+            }),
+            ((i = { _q: a })[t.A] = function (n, e) {
+              return r(t.A, n, e);
+            }),
+            (i[t.B] = function () {
+              return r(t.B);
+            }),
+            (i[t.C] = function (n, e) {
+              return r(t.C, n, e);
+            }),
+            (i[t.D] = function (n, e) {
+              return r(t.D, n, e);
+            }),
+            (i[t.E] = function (n) {
+              return r(t.E, n);
+            }),
+            (window.Northbeam = i),
+            document.createElement('script'));
+        (i.async = !0), (i.src = n), document.head.appendChild(i), e.trackPageViewInitial(window.location.href);
+      })();
+    </script>
+    <!-- End: Northbeam pixel -->
+    <script>
+       window.Northbeam.fireCustomGoal("add_to_cart", {})
+       window.Northbeam.fireCustomGoal("initiate_checkout", {})
+    </script>
+
+    <!-- Attribution SDK - Jeeng -->
+    <script type="text/javascript">
+      window.jeeng_attribution = window.jeeng_attribution || [];
+      (function () {
+        var jn = document.createElement('script');
+        jn.async = true;
+        jn.src = 'https://cdn.powerinboxedge.com/events/jeeng-attribution.js';
+        var ref = document.getElementsByTagName('script')[0];
+        ref.parentNode.insertBefore(jn, ref);
+      })();
+
+      window.jeeng_attribution.push(['init', { company: 4420 }]);
+    </script>
+
+    <!-- Taboola Pixel Code -->
+    <script type="text/javascript">
+      window._tfa = window._tfa || [];
+      window._tfa.push({ notify: 'event', name: 'page_view', id: 1792983 });
+      !(function (t, f, a, x) {
+        if (!document.getElementById(x)) {
+          t.async = 1;
+          t.src = a;
+          t.id = x;
+          f.parentNode.insertBefore(t, f);
+        }
+      })(
+        document.createElement('script'),
+        document.getElementsByTagName('script')[0],
+        '//cdn.taboola.com/libtrc/unip/1792983/tfa.js',
+        'tb_tfa_script'
+      );
+    </script>
+    <!-- End of Taboola Pixel Code -->
+
+    <!-- GSC prefix property Lantern Sol -->
+    <meta name="google-site-verification" content="QZztkRnCjic8xdadkhd_weuxp6Rf92UQMMFXsjWQkK8" />
+    <!-- End of GSC prefix property Lantern Sol -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "sfwoafajaq");
+    </script>
+  </head>
+
+  <body class="template-{{ request.page_type | handle }} ">
+    <div id="preloader" class="page-loader hide">
+      <img
+        src="{{"preloader-logo-2.png" | asset_url  }}"
+        class="logo"
+        alt="{{shop.name}} Logo"
+        loading="lazy">
+    </div>
+    {% section 'announcement' %}
+    {% section 'header' %}
+    <div class="page-container drawer-page-content" id="PageContainer">
+      <main
+        class="main-content js-focus-hidden js__main-content"
+        id="MainContent"
+        role="main"
+        tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+      {% section 'footer' %}
+    </div>
+    {% include 'scripts_footer' %}
+  {% include 'breadcrumb-structured' %}
+    {% comment %}
+      <!-- Extra Scripts for Apps-->
+      <!-- Hulk App WishList for PDP -->
+      {% if template != null %}{% endif %}
+      {% render 'hulkappsWishlistPopup' %} {% if template != null %}
+      <script type='text/javascript'
+      src='//hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/hulkapps-wishlist-global.js'></script>{% endif %}
+      <div data-wishlist-wrapper style='display:none' data-time='2021-06-18'></div>
+    {% endcomment %}
+    <!-- begin-boost-pfs-js -->
+    {% render 'boost-pfs' %}
+    <!-- end-boost-pfs-js -->
+
+    <script>
+      AOS.init();
+      var options = {
+        startEvent: 'cloneDOMContentLoaded',
+      };
+      AOS.init(options);
+
+      document.addEventListener('DOMContentLoaded', function (event) {
+        var cloneDOMContentLoaded = new Event('cloneDOMContentLoaded');
+        document.dispatchEvent(cloneDOMContentLoaded);
+      });
+    </script>
+    <script>
+      // var initGorgiasChatPromise = window.GorgiasChat
+      //   ? window.GorgiasChat.init()
+      //   : new Promise(function (resolve) {
+      //       window.addEventListener('gorgias-widget-loaded', function () {
+      //         resolve();
+      //       });
+      //     });
+
+      // initGorgiasChatPromise.then(async () => {
+      //   GorgiasChat.hidePoweredBy(true);
+      // });
+    </script>
+    {% include 'ins_opensend' %}
+    <script>
+      window.addEventListener('load', function () {
+        var _learnq = window._learnq || [];
+        function addedToCart() {
+          fetch(`${window.location.origin}/cart.js`).then((res) =>
+            res
+              .clone()
+              .json()
+              .then((data) => {
+                var cart = {
+                  total_price: data.total_price / 100,
+                  $value: data.total_price / 100,
+                  total_discount: data.total_discount,
+                  original_total_price: data.original_total_price / 100,
+                  items: data.items,
+                };
+                if (item !== 'undefined') {
+                  cart = Object.assign(cart, item);
+                }
+                if (klAjax) {
+                  _learnq.push(['track', 'Added to Cart', cart]);
+                  klAjax = false;
+                }
+              })
+          );
+        }
+        (function (ns, fetch) {
+          ns.fetch = function () {
+            const response = fetch.apply(this, arguments);
+            response.then((res) => {
+              if (`${window.location.origin}/cart/add.js`.includes(res.url) && res.url !== '') {
+                addedToCart();
+              }
+            });
+            return response;
+          };
+        })(window, window.fetch);
+        var klAjax = true;
+        var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+        for (var i = 0; i < atcButtons.length; i++) {
+          atcButtons[i].addEventListener('click', function () {
+            if (klAjax) {
+              _learnq.push(['track', 'Added to Cart', item]);
+              klAjax = false;
+            }
+          });
+        }
+      });
+    </script>
+    <style>
+      #dynamic-checkout-cart shopify-accelerated-checkout-cart {
+        display: block !important;
+        height: 50px;
+      }
+      shopify-accelerated-checkout-cart > *:not(shop-pay-wallet-button) {
+        display: none !important;
+        visibility: false !important;
+      }
+      shopify-accelerated-checkout-cart > shopify-paypal-button {
+        display: none !important;
+        visibility: false !important;
+      }
+      shopify-accelerated-checkout-cart > shopify-google-pay-button {
+        display: none !important;
+        visibility: false !important;
+      }
+    </style>
+
+    <script>
+      var preLoaderCookie = readCookie('preloader');
+
+      if (preLoaderCookie == null || preLoaderCookie != 'Yes') {
+        $('#preloader').children('img').show();
+      } else {
+        $('#preloader').hide();
+      }
+
+      window.addEventListener('load', () => {
+        const preload = document.getElementById('preloader');
+        setTimeout(function () {
+          preload.classList.add('preload-finish');
+          preload.style.display = 'none';
+          createCookie('preloader', 'Yes', '1');
+        }, 1000);
+      });
+    </script>
+
+    <script src="{{ 'custom.js' | asset_url }}" defer></script>
+
+  </body>
+</html>

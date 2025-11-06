@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "d84fc4f3-d860-4b70-8e32-59506fae6b47": {
+      "type": "contact-us",
+      "settings": {
+        "title": "Contact Us",
+        "title2": "",
+        "description": "<p>Here are a few ways to reach the InfiniWell team. <\/p>",
+        "page_Menu": "sidebar-menu",
+        "storeTitle": "Find Us In STORE"
+      }
+    }
+  },
+  "order": [
+    "d84fc4f3-d860-4b70-8e32-59506fae6b47"
+  ]
+}

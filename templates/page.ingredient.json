@@ -1,0 +1,918 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "innerBanner": {
+      "type": "inner-hero-section",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "description": "",
+        "buttonText1": "",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "center",
+        "smallHeight": false,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "dbd5cda6-9b3b-4c82-872e-78f16596abce": {
+      "type": "three-column-card",
+      "blocks": {
+        "6dd081af-00ed-4101-bb6d-f5c7c5036228": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ac-11-Cat_s-Claw_e2987742-ec14-4589-96d1-45dda98fb35c.jpg",
+            "title": "ac-11® Cat's Claw",
+            "table": "<ul><li>Found In   </li><li>Cat's Claw Aqueous Extract  </li><li>Source</li><li>Unicaria tomentosa</li><li>Benefits   </li><li>DNA, Telomere Support, Joint Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=cats+claw\"><span style=\"text-decoration:underline\">345</span></a> pubilshed articles</li><li>Featured In</li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "761ff2a3-58fb-49b8-870b-c786a64e7774": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Actiponin_43bb3767-b924-4300-ac10-2946f358b310.jpg",
+            "title": "Actiponin®",
+            "table": "<ul><li>Found In</li><li>Gynostemma pentaphyllum Extract  </li><li>Source</li><li>Gynostemma pentaphyllum</li><li>Benefits   </li><li>Weight Management, Metabolism  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=gynostemma+pentaphyllum\"><span style=\"text-decoration:underline\">550</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "4edc9fbf-5aec-471a-9cac-ca4f8c8f13bf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ActivatedBroccoRaphanin_cbe040ad-f07f-43e1-9e13-0b987170a6e1.jpg",
+            "title": "Activated BroccoRaphanin®",
+            "table": "<ul><li>Found In   </li><li>Broccoli  </li><li>Source   </li><li>Broccoli Seed Concentrate, Myrosinase Enzyme  </li><li>Benefits   </li><li>Liver Health, Estrogen Metabolism, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=broccoli+extract\"><span style=\"text-decoration:underline\">3,156</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "877df2ff-6486-4f56-9437-42be0122a31e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Alpha-Ketoglutarate_0ff861ab-05db-4fb3-bb78-2127c486adf7.jpg",
+            "title": "Alpha-Ketoglutarate",
+            "table": "<ul><li>Found In   </li><li>Citrus Fruits, Berries, Tomatoes, Spinach (in small amounts)  </li><li>Source   </li><li>Arginine Alpha-Ketoglutarate  </li><li>Benefits   </li><li>Blood Pressure, Energy Production  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=arginine+alpha+ketoglutarate\"><span style=\"text-decoration:underline\">337</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "a9c6907d-998b-4538-b198-d1ddfd54c27c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Ashwaghanda_5caa143d-6417-4e49-8173-d879cc68fa17.jpg",
+            "title": "Ashwagandha",
+            "table": "<ul><li>Found In</li><li>Ashwagandha Root  </li><li>Source</li><li>Withania somnifera, Shoden Ashwagandha  </li><li>Benefits</li><li>Stress, Sleep, Brain Function, Hormone Balance  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=ashwagandha\"><span style=\"text-decoration:underline\">1,690</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/ashwagandha\" title=\"ASHWAGANDHA\">Ashwagandha</a>, <a href=\"/products/ignight\" title=\"IGNIGHT\">IgNIGHT</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "ecd4a4d7-b33a-407c-92d3-cad12c8bacba": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AstraGin_e152a8de-84fb-40b3-a96d-31a0310b5db2.jpg",
+            "title": "AstraGin®",
+            "table": "<ul><li>Found In</li><li>Astragalus and Notoginseng</li><li>Source</li><li>Astragalus membranaceus and Panax Notoginseng</li><li>Benefits</li><li>Nutrient Absorption, Gut Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=panax+notoginseng\"><span style=\"text-decoration:underline\">2,186</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/defend\" title=\"DEFEND\">Defend</a>, <a href=\"/products/defend-pro\" title=\"DEFEND PRO\">Defend Pro</a>, <a href=\"/products/omega-5x\" title=\"OMEGA 5x\">Omega 5X</a>, <a href=\"/products/strength\" title=\"STRENGTH\">Strength</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "98567fea-dd86-4a21-b24d-7cd285cffe3d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AvailOM_3acaba41-0c2a-48b4-8734-8b672a837fcc.jpg",
+            "title": "AvailOm® Omega-3 Lysine Complex",
+            "table": "<ul><li>Found In</li><li>Fish, Flax, Walnuts</li><li>Source</li><li>AvailOm EPA and DHA</li><li>Benefits</li><li>Heart, Brain, Joint, Eye Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=omega+3\"><span style=\"text-decoration:underline\">38,261</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/omega-5x\" title=\"OMEGA 5x\">Omega 5X</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax </a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "be210c79-e2e5-4e66-b701-2f12cd0c2a3d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BaCognize_351c7160-74d5-4df2-9c91-31bb93b56894.jpg",
+            "title": "BaCognize®",
+            "table": "<ul><li>Found In   </li><li>Whole Herb Extract  </li><li>Source   </li><li>Bacopa monnieri  </li><li>Benefits   </li><li>Brain Function, Mood  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=bacopa+monnieri\"><span style=\"text-decoration:underline\">425</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/calm\" title=\"CALM\">Calm</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "1b7e8762-dc3e-4e96-a63f-02268c235bc1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Berberine_1.jpg",
+            "title": "Berberine",
+            "table": "<ul><li>Found In</li><li>European Barberry, Goldenseal, Oregon grape  </li><li>Source</li><li>Berberine HCL</li><li>Benefits</li><li>Blood Sugar, Metabolism, Digestion</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=berberine\"><span style=\"text-decoration:underline\">7,979</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "401fc5c2-29ed-4c9c-b2d2-d1e934d7ce25": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Biotin_47eed00f-3c51-494b-8c3c-b3f0cb773fc8.jpg",
+            "title": "BIOTIN",
+            "table": "<ul><li>Found In</li><li>Egg Yolks, Legumes, Nuts, Seeds, Liver</li><li>Source</li><li>Vitamin H</li><li>Benefits</li><li>Hair, Skin, Nails and Brain Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=biotin\"><span style=\"text-decoration:underline\">36,292</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "5a0e9aa8-1da6-4c57-be32-5d97d779074d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BlackPepper_dfeace6e-0a7a-4360-8ccb-6cb44d962cd5.jpg",
+            "title": "Black Pepper Extract",
+            "table": "<ul><li>Found In</li><li>Black Pepper  </li><li>Source</li><li>Piper Nigrum  </li><li>Benefits</li><li>Nutrient Absorption  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=black+pepper+extract\"><span style=\"text-decoration:underline\">593</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/ashwagandha\" title=\"ASHWAGANDHA\">Ashwagandha</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b055f6c3-992f-4233-9a19-9410b469482e": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/BPC_381e9dee-1234-4f58-86fb-9e2674489c30.jpg",
+            "title": "BPC",
+            "table": "<ul><li>Found In</li><li>Human Digestive System</li><li>Source</li><li>Pentadeca Short Chain Aminos</li><li>Benefits</li><li>Muscle, Joint & Gut</li><li>Science</li><li><span style=\"text-decoration:underline\">195</span> published articles</li><li>Featured In</li><li><a href=\"/products/bpc-157-rapid-pro\" title=\"BPC-157 RAPID PRO - 500MCG\">BPC Rapid Pro</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "d85fa19f-02e0-4f71-836e-c52d2f550f55": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/openart-image_aC6YRKHm_1758750856553_raw.jpg",
+            "title": "Buckwheat Extract 20:1",
+            "table": "<ul><li>Found In   </li><li>Buckwheat Grass, Sprouts  </li><li>Source   </li><li>Buckwheat Extract 20:1  </li><li>Benefits   </li><li>Cholesterol, Metabolism, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=buckwheat+peptide\"><span style=\"text-decoration:underline\">173</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e2b0e21c-6f47-4d7f-b51f-f0a5d7f23d72": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ButyraGen.jpg",
+            "title": "ButyraGen™",
+            "table": "<ul><li>Found In   </li><li>Butter  </li><li>Source   </li><li>Tributyrin  </li><li>Benefits   </li><li>Digestion, Brain Support  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=tributyrin\"><span style=\"text-decoration:underline\">871</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/gi-prime\" title=\"GI PRIME\">GI Prime</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "61c435b9-90dc-4342-b491-1282b42dc16c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Calcium.jpg",
+            "title": "Calcium",
+            "table": "<ul><li>Found In</li><li>Dairy Products, Leafy Greens, Almonds, Tofu</li><li>Source</li><li>Calcium Beta-Hydroxy Beta Methylbutyrate Monohydrate  </li><li>Benefits</li><li>Bone Support (primarily), Heart/Muscles/Nerve Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=calcium\"><span style=\"text-decoration:underline\">660,474</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/strength\" title=\"STRENGTH\">Strength</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "033ca638-2715-4791-b50c-a0ada02aa289": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CaloruBurn.jpg",
+            "title": "CaloriBurn GP®",
+            "table": "<ul><li>Found In   </li><li>Grains of Paradise Extract  </li><li>Source   </li><li>Aframomum melegueta</li><li>Benefits   </li><li>Metabolism, Weight Management  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=Grains+of+paradise\"><span style=\"text-decoration:underline\">25</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/ignight\" title=\"IGNIGHT\">IgNIGHT</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "283da9bc-7515-46cc-9df1-4fbcc5174c40": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Chokeberry.jpg",
+            "title": "Chokeberry",
+            "table": "<ul><li>Found In   </li><li>Chokeberry Extract  </li><li>Source</li><li>Aronia melanocarpa</li><li>Benefits   </li><li>Heart, Blood Vessels, Blood Sugar  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=aronia+melanocarpa\"><span style=\"text-decoration:underline\">554</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/infiniage\" title=\"InfiniAge - Preorder\">InfiniAGE</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "2e6094a5-8b17-4a78-a509-8329ef256a6d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Choline.jpg",
+            "title": "CHOLINE",
+            "table": "<ul><li>Found In</li><li>Eggs, Liver, Broccoli, Mushrooms</li><li>Source</li><li>Choline Bitartrate</li><li>Benefits</li><li>Brain Health, Liver Function, Metabolism</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=choline\"><span style=\"text-decoration:underline\">87,118</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b45495e7-8279-40cf-84de-52610fcfcffd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CitrusBergamot.jpg",
+            "title": "Citrus Bergamot Extract",
+            "table": "<ul><li>Found In</li><li>Bergamot Fruit (Citrus bergamia)</li><li>Source</li><li>Bergamonte  </li><li>Benefits</li><li>Cholesterol, Immune System, Mood, Mental Alertness</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=bergamot\"><span style=\"text-decoration:underline\">471</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "15ee47c0-8b6e-4f2a-b752-25954e276be4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/CoQ10.jpg",
+            "title": "CoQ10 (Coenzyme Q10)",
+            "table": "<ul><li>Found In   </li><li>Organ Meats, Fatty Fish, Spinach, Broccoli  </li><li>Source   </li><li>MicroActive CoQ10® (Ubiquinone Complex + Beta-Cyclodextrin)  </li><li>Benefits   </li><li>Heart Health, Brain Function, Energy Production  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=coq10\"><span style=\"text-decoration:underline\">17,148</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular Support</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "7c3f6bc3-ee52-439a-8374-9a68a2d3070d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Curcumin.jpg",
+            "title": "Curcumin",
+            "table": "<ul><li>Found In</li><li>Turmeric</li><li>Source</li><li>TurmiPure Gold®, CurcuPrime® Tetrahydrocurcumin</li><li>Benefits</li><li>Brain, Immune, Metabolism, Gut Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=curcumin\"><span style=\"text-decoration:underline\">22,552</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">Cardio Prime+</a>, <a href=\"/products/senescent-regulator\" title=\"SENESCENT REGULATOR\">Senescent Regulator</a>, <a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "9589003c-b643-46fd-b876-f4ad29ecda3e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DHEA.jpg",
+            "title": "DHEA",
+            "table": "<ul><li>Found In   </li><li>Hormone Found in the Human Body  </li><li>Source   </li><li>Synthesized via Wild Yam  </li><li>Benefits   </li><li>Hormone Balance, Energy, Mood, Bone Density, Libido  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=DHEA\"><span style=\"text-decoration:underline\">18,611</span></a> published articles</li><li>Featured In</li><li>DHEA 5, DHEA 25</li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "42799fb6-22a1-4f92-b76c-9d8a2bc4f578": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DHHB.jpg",
+            "title": "DHH-B",
+            "table": "<ul><li>Found In</li><li>Magnolia Extract  </li><li>Source</li><li>Dihydrohonokiol-B  </li><li>Benefits</li><li>Stress, Sleep, Brain Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=honokiol\"><span style=\"text-decoration:underline\">1,186</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dhh-b\" title=\"DHH-B\">DHH-B</a>, <a href=\"/products/dhh-b-max\" title=\"DHH-B MAX\">DHH-B Max</a>, <a href=\"/products/calm\" title=\"CALM\">Calm</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "d25d9f18-3004-433a-b2c0-9951b25fca66": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DiiodoLThyronine_1.jpg",
+            "title": "Diiodo-L-Thyronine",
+            "table": "<ul><li>Found In</li><li>Small amounts within the human body  </li><li>Source</li><li>3,5-diiodo-L-thyronine  </li><li>Benefits</li><li>Thyroid, Energy, Hair, Skin, Nail Support  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=diido-l-thyronine\"><span style=\"text-decoration:underline\">173</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "d0e27155-4b1c-493e-a052-3827cade55b0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/DIM.jpg",
+            "title": "DIM",
+            "table": "<ul><li>Found In</li><li>Broccoli, Brussels Sprouts, Cabbage, Kale</li><li>Source</li><li>3,3' Diindolylmethane</li><li>Benefits</li><li>Liver Health, Estrogen Metabolism, Antioxidant</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=diindolylmethane\"><span style=\"text-decoration:underline\">676</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dim\" title=\"DIM - HORMONE SUPPORT\">DIM</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "3a7765d6-0648-4707-bb8a-10caaeab6d9e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Dynamine.jpg",
+            "title": "Dynamine™",
+            "table": "<ul><li>Found In</li><li>Coffee Beans, Tea, Nnuts, Cocoa, Yerba Mate</li><li>Source</li><li>Methylliberine</li><li>Benefits</li><li>Alertness, Brain Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=Methylliberine\"><span style=\"text-decoration:underline\">7</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "18741bf4-902a-4800-b661-a94b4b351127": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Epicatechin.jpg",
+            "title": "Epicatechin",
+            "table": "<ul><li>Found In</li><li>Green Tea, Cacao</li><li>Source</li><li>2,3-cis-epicatechin</li><li>Benefits</li><li>Muscle Building, Heart, Brain Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=epicatechin\"><span style=\"text-decoration:underline\">18,814</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/epicatechin\" title=\"EPICATECHIN\">Epicatchin</a>, <a href=\"/products/strength\" title=\"STRENGTH\">Strength</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "ce395e0e-2308-40ed-b847-0ff849c0707c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EpiCor.jpg",
+            "title": "EpiCor®",
+            "table": "<ul><li>Found In   </li><li>Brewer's Yeast  </li><li>Source  </li><li>Saccharomyces cerevisiae</li><li>Benefits   </li><li>Immune Support, Digestion  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=epicor\"><span style=\"text-decoration:underline\">97</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/gi-prime\" title=\"GI PRIME\">GI Prime</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "597439d6-07c6-4d7c-b3b7-f13dbcbf9c08": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EpigallocatechinGallate_EGCG.jpg",
+            "title": "Epigallocatechin Gallate",
+            "table": "<ul><li>Found In   </li><li>Green Tea  </li><li>Source</li><li>Camellia sinensis</li><li>Benefits   </li><li>Antioxidant, Mood, Calming Support, Memory  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=egcg\"><span style=\"text-decoration:underline\">7,138</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "6e5731bb-f0fb-40f6-ad66-11e266495e2d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/FACTOR21.jpg",
+            "title": "Factor21®",
+            "table": "<ul><li>Found In</li><li>Bitter Melon Extract</li><li>Source</li><li>Momordica charatia</li><li>Benefits</li><li>Blood Sugar, Metabolism, Weight Management  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=bitter+melon+extract\"><span style=\"text-decoration:underline\">54</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "d4661a82-b107-4ad5-8098-2eacb8ed38fe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Finestin.jpg",
+            "title": "Fisetin",
+            "table": "<ul><li>Found In</li><li>Strawberries, Apples, Mangoes, Kiwis</li><li>Source </li><li>Rhus succedanea</li><li>Benefits</li><li>Antioxidant</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=fisetin\"><span style=\"text-decoration:underline\">1,213</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "dae486f8-a31f-47e8-81ca-98626b1b6e80": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Folate.jpg",
+            "title": "FOLATE",
+            "table": "<ul><li>Found In</li><li>Spinach, Turnips, Asparagus, Brussel Sprouts, Beans</li><li>Source</li><li>5-Methyltetrahydrofolic Acid</li><li>Benefits</li><li>Brain, Heart Health, Red Blood Cell Formation</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=folate\"><span style=\"text-decoration:underline\">69,828</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b189c2fd-6136-4c59-9a45-df2f7ae4eae9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/GlucoVantage.jpg",
+            "title": "GlucoVantage®",
+            "table": "<ul><li>Found In</li><li>Indian Barberry  </li><li>Source   </li><li>Dihydroberberine</li><li>Benefits</li><li>Blood Sugar, Metabolism, Weight Management, Digestion</li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=dihydroberberine\"><span style=\"text-decoration:underline\">45</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "817819e6-c078-48c0-97c8-dc465bc9039d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Glycine.jpg",
+            "title": "Glycine",
+            "table": "<ul><li>Found In   </li><li>Red Meat, Seeds, Poultry, Peanuts  </li><li>Source   </li><li>Glycine  </li><li>Benefits   </li><li>Metabolic Support, Sleep, Liver Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=glycine\"><span style=\"text-decoration:underline\">95,325</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/glynac\" title=\"GLYNAC\">GlyNAC</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "ba33b412-0fa7-4568-9b03-d5c49341c1fb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Guggulsterone.jpg",
+            "title": "Guggulsterone",
+            "table": "<ul><li>Found In</li><li>Resin found in Guggul Plant</li><li>Source   </li><li>Commiphora mukul, Oleo Gum Resin, Guggulsterone E-Z </li><li>Benefits</li><li>Thyroid Health  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=guggulsterone\"><span style=\"text-decoration:underline\">311</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "c490f221-3720-42f2-be28-ff9d8ae1910b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Hobamine.jpg",
+            "title": "Hobamine®",
+            "table": "<ul><li>Found In   </li><li>Himalayan Tartary Buckwheat  </li><li>Source   </li><li>2-HOBA  </li><li>Benefits   </li><li>Cholesterol, Heart Health, Immune Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=2-hoba\"><span style=\"text-decoration:underline\">20</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "88f6674e-503c-4159-bd9e-84f8f2d6c1c5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HuperzineA.jpg",
+            "title": "Huperzine A",
+            "table": "<ul><li>Found In</li><li>Chinese Club Moss</li><li>Source</li><li>Huperzia serrata</li><li>Benefits</li><li>Brain Function, Memory</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=huperzine+A\"><span style=\"text-decoration:underline\">707</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "272b8e07-a103-45b4-81a8-bfbf1be74786": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/HydroxytyrosolAcetate.jpg",
+            "title": "Hydroxytyrosol Acetate",
+            "table": "<ul><li>Found In</li><li>Olives, Olive Oil</li><li>Source</li><li>4-(2-hydroxyethyl)-1,2-benzendiol</li><li>Benefits</li><li>Thyroid Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=hydroxytyrosol\"><span style=\"text-decoration:underline\">1,878</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "29df0044-59b1-4534-a30c-9d081c700e0c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Immuse.jpg",
+            "title": "IMMUSE™ (LC-Plasma)",
+            "table": "<ul><li>Found In</li><li>Probiotic Bacteria  </li><li>Source  </li><li>Lactobacillus lactis Plasma  </li><li>Benefits   </li><li>Immune Support, Digestion  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=lactobacillus+lactis\"><span style=\"text-decoration:underline\">2,969</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/gi-prime\" title=\"GI PRIME\">GI Prime</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "af5afc52-5be6-4600-8c8a-3665eb0e123b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/InnoSlim.jpg",
+            "title": "InnoSlim®",
+            "table": "<ul><li>Found In</li><li>Astragalus Root Extract  </li><li>Source</li><li>Astragalus membranaceus and Panax notoginseng</li><li>Benefits</li><li>Metabolism, Weight Management</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=Astragalus+membranaceus+and+Panax+notoginseng\"><span style=\"text-decoration:underline\">38</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "6f1bced5-a26c-4e7e-be58-967e642b6809": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/InnovaTea_b4ec828f-360d-4070-aa3f-b1ef7a2f198f.jpg",
+            "title": "InnovaTea®",
+            "table": "<ul><li>Found In</li><li>Tea, 98% Natural Caffiene</li><li>Source</li><li>Camellia sinesis</li><li>Benefits</li><li>Alertness, Brain Function, Athletic Performance</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=caffeine\"><span style=\"text-decoration:underline\">38,975</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "fd55f0cc-0ff4-4640-95ab-554f58f6c747": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inositol.jpg",
+            "title": "INOSITOL",
+            "table": "<ul><li>Found In</li><li>Citrus Fruits, Melons, Beans, Grains, Nuts</li><li>Source</li><li>Myo-Inositol</li><li>Benefits</li><li>Blood Sugar, Cholesterol, Blood Pressure, Ovarian Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=inositol\"><span style=\"text-decoration:underline\">50,145</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "96133870-d3b6-404e-80b5-15ad5cfb582e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Iodine.jpg",
+            "title": "Iodine",
+            "table": "<ul><li>Found In</li><li>Edible Seaweed, Eggs, Dairy Products, Prunes, Cod</li><li>Source</li><li>Potassium Iodide</li><li>Benefits</li><li>Thyroid Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=potassium+iodide\"><span style=\"text-decoration:underline\">4,677</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e356c720-0131-489c-8e8c-11ccfadb350b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/L-Cysteine.jpg",
+            "title": "L-Cysteine",
+            "table": "<ul><li>Found In   </li><li>Cysteine: Poultry, Dairy, Eggs, Sunflower Seeds, Legumes  </li><li>Source   </li><li>N-Acetyl L-Cysteine  </li><li>Benefits   </li><li>Liver Health, Detoxifcation, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=n+acetyl+cysteine\"><span style=\"text-decoration:underline\">24,535</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/glynac\" title=\"GLYNAC\">GlyNAC</a>, <a href=\"/products/infiniage\" title=\"InfiniAge - Preorder\">InfiniAGE</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "491d31a1-29e7-408b-a749-8c2f13edac1c": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/L-teaactive_312bd99a-4fd4-48ac-9fc6-27582fc26995.jpg",
+            "title": "L-TeaActive® L-Theanine",
+            "table": "<ul><li>Found In</li><li>Green Tea, Black Tea, Certain Mushrooms  </li><li>Source</li><li>L-Theanine  </li><li>Benefits</li><li>Stress, Sleep, Focus, Mood Support</li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=theanine\"><span style=\"text-decoration:underline\">901</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/calm\" title=\"CALM\">Calm</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e77e6f31-e59b-4c5f-bbb4-9a25b8f0d42e": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Lutein.jpg",
+            "title": "Lutein",
+            "table": "<ul><li>Found In   </li><li>Leafy Vegetables, Egg Yolks  </li><li>Source   </li><li>Lutein  </li><li>Benefits   </li><li>Eye Health, Digital Device/Blue Light Protection  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=lutein+and+zeaxanthin\"><span style=\"text-decoration:underline\">2,758</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/infiniage\" title=\"InfiniAge - Preorder\">InfiniAGE</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e76e98e6-f8b6-4142-81b1-b75b5fda01ba": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/LuteMax2020.jpg",
+            "title": "Lutemax 2020",
+            "table": "<ul><li>Found In</li><li>Marigold Flowers  </li><li>Source</li><li>Lutein and Zeaxanthin</li><li>Benefits</li><li>Eye Health, Digital Device/Blue Light Protection, Brain Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=lutein+and+zeaxanthin\"><span style=\"text-decoration:underline\">2,758</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "ad9161e8-2c0d-4ded-8e39-e9f9684a8c98": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Luteolin.jpg",
+            "title": "Luteolin",
+            "table": "<ul><li>Found In</li><li>Parsley, Carrots, Broccoli, Artichoke</li><li>Source </li><li>3′,4′,5,7-tetrahydroxyflavone</li><li>Benefits</li><li>Brain, Immune, Metabolism, Gut Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=luteolin\"><span style=\"text-decoration:underline\">6,618</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/senescent-regulator\" title=\"SENESCENT REGULATOR\">Senescent Regulator</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity+ ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "6dd081af-00ed-4101-bb6d-f5c7c5036228",
+        "761ff2a3-58fb-49b8-870b-c786a64e7774",
+        "4edc9fbf-5aec-471a-9cac-ca4f8c8f13bf",
+        "877df2ff-6486-4f56-9437-42be0122a31e",
+        "a9c6907d-998b-4538-b198-d1ddfd54c27c",
+        "ecd4a4d7-b33a-407c-92d3-cad12c8bacba",
+        "98567fea-dd86-4a21-b24d-7cd285cffe3d",
+        "be210c79-e2e5-4e66-b701-2f12cd0c2a3d",
+        "1b7e8762-dc3e-4e96-a63f-02268c235bc1",
+        "401fc5c2-29ed-4c9c-b2d2-d1e934d7ce25",
+        "5a0e9aa8-1da6-4c57-be32-5d97d779074d",
+        "b055f6c3-992f-4233-9a19-9410b469482e",
+        "d85fa19f-02e0-4f71-836e-c52d2f550f55",
+        "e2b0e21c-6f47-4d7f-b51f-f0a5d7f23d72",
+        "61c435b9-90dc-4342-b491-1282b42dc16c",
+        "033ca638-2715-4791-b50c-a0ada02aa289",
+        "283da9bc-7515-46cc-9df1-4fbcc5174c40",
+        "2e6094a5-8b17-4a78-a509-8329ef256a6d",
+        "b45495e7-8279-40cf-84de-52610fcfcffd",
+        "15ee47c0-8b6e-4f2a-b752-25954e276be4",
+        "7c3f6bc3-ee52-439a-8374-9a68a2d3070d",
+        "9589003c-b643-46fd-b876-f4ad29ecda3e",
+        "42799fb6-22a1-4f92-b76c-9d8a2bc4f578",
+        "d25d9f18-3004-433a-b2c0-9951b25fca66",
+        "d0e27155-4b1c-493e-a052-3827cade55b0",
+        "3a7765d6-0648-4707-bb8a-10caaeab6d9e",
+        "18741bf4-902a-4800-b661-a94b4b351127",
+        "ce395e0e-2308-40ed-b847-0ff849c0707c",
+        "597439d6-07c6-4d7c-b3b7-f13dbcbf9c08",
+        "6e5731bb-f0fb-40f6-ad66-11e266495e2d",
+        "d4661a82-b107-4ad5-8098-2eacb8ed38fe",
+        "dae486f8-a31f-47e8-81ca-98626b1b6e80",
+        "b189c2fd-6136-4c59-9a45-df2f7ae4eae9",
+        "817819e6-c078-48c0-97c8-dc465bc9039d",
+        "ba33b412-0fa7-4568-9b03-d5c49341c1fb",
+        "c490f221-3720-42f2-be28-ff9d8ae1910b",
+        "88f6674e-503c-4159-bd9e-84f8f2d6c1c5",
+        "272b8e07-a103-45b4-81a8-bfbf1be74786",
+        "29df0044-59b1-4534-a30c-9d081c700e0c",
+        "af5afc52-5be6-4600-8c8a-3665eb0e123b",
+        "6f1bced5-a26c-4e7e-be58-967e642b6809",
+        "fd55f0cc-0ff4-4640-95ab-554f58f6c747",
+        "96133870-d3b6-404e-80b5-15ad5cfb582e",
+        "e356c720-0131-489c-8e8c-11ccfadb350b",
+        "491d31a1-29e7-408b-a749-8c2f13edac1c",
+        "e77e6f31-e59b-4c5f-bbb4-9a25b8f0d42e",
+        "e76e98e6-f8b6-4142-81b1-b75b5fda01ba",
+        "ad9161e8-2c0d-4ded-8e39-e9f9684a8c98"
+      ],
+      "settings": {
+        "title1": "Our",
+        "title2": "Collection",
+        "description": "<p>At the frontier of science, creativity becomes as vital as empirical rigor. The collection of elements on this page represent our current source material—the ninety three carefully selected research discoveries that compose our products. Science has illuminated their raw potential, and through ingenuity we unlock the transformative power of their combination and application. </p>",
+        "paddingtop": 20,
+        "paddingtopmobile": 20,
+        "paddingbottom": 0,
+        "paddingbottommobile": 0
+      }
+    },
+    "322ced78-0a1b-4e3e-9391-ce0689777055": {
+      "type": "three-column-card",
+      "blocks": {
+        "2f31b644-a6ef-4a7c-8466-1aa2372be961": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Magnesium.jpg",
+            "title": "Magnesium",
+            "table": "<ul><li>Found In</li><li>Spinach, Legumes, Nuts, Seeds, Whole Grains</li><li>Source</li><li>Di-Magnesium Malate & TRAACS Magnesium Lysine Glycinate Chelate</li><li>Benefits</li><li>Heart, Sleep, Mood, Stress & Hormones </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=magnesium\" title=\"https://pubmed.ncbi.nlm.nih.gov/?term=magnesium\">120,614</a> published articles</li><li>Featured In</li><li><a href=\"/products/activated-magnesium\" title=\"ACTIVATED MAGNESIUM\">Activated Magnesium</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b7e3c97b-7a1e-48d4-a2ba-ec58ada82fd0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Malic-Acid.jpg",
+            "title": "MALIC ACID",
+            "table": "<ul><li>Found In</li><li>Apples (Predominately), Bananas, Grapes</li><li>Source</li><li>Di-Magnesium Malate</li><li>Benefits</li><li>Energy, Physical Comfort, Athletic Performance</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=malic+acid\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/?term=malic+acid\">4,950</a> published articles</li><li>Featured In</li><li><a href=\"/products/activated-magnesium\" title=\"ACTIVATED MAGNESIUM\">Activated Magnesium</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "9f99a89e-1676-438b-bf8c-038dbd597991": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MitoBurn.jpg",
+            "title": "MitoBurn®",
+            "table": "<ul><li>Found In</li><li>L-BAIBA</li><li>Source</li><li>Beta-aminoisobutyric Acid</li><li>Benefits   </li><li>Metabolism, Weight Management, Blood Sugar Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=beta-aminoisobutyric+acid\"><span style=\"text-decoration:underline\">325</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/control\" title=\"CONTROL\">Control</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "014cc95d-1b71-464b-877b-64053ac63f42": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MitoPrime.jpg",
+            "title": "MitoPrime®",
+            "table": "<ul><li>Found In   </li><li>Mushrooms  </li><li>Source   </li><li>L-Ergothioneine  </li><li>Benefits   </li><li>Energy Production, DNA, Telomere Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=ergothioneine\"><span style=\"text-decoration:underline\">816</span></a> published articles</li><li>Featured In  </li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "fec7ab7f-8726-462a-a7fb-b0fbd803e782": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MyHBU.jpg",
+            "title": "myHMB®",
+            "table": "<ul><li>Found In</li><li>Grapefruit, Alfalfa, Catfish  </li><li>Source</li><li>Calcium Beta-Hydroxy Beta Methylbutyrate Monohydrate  </li><li>Benefits</li><li>Muscle Growth, Mitigation of Muscle Loss  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=Beta-Hydroxy+Beta+Methylbutyrate\"><span style=\"text-decoration:underline\">592</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/strength\" title=\"STRENGTH\">Strength</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a> </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "822f33b5-ea10-4193-b33f-b43500823461": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/NAD3.jpg",
+            "title": "NAD3® Proprietary Blend",
+            "table": "<ul><li>Found In</li><li>Wasabi, Tea  </li><li>Source</li><li>Wasabia japonica, Theacrine, Cuprous Niacin  </li><li>Benefits</li><li>Energy, Heart, Brain Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=wasabi+extract\"><span style=\"text-decoration:underline\">52</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "9b1466e3-73d0-4d16-972b-a27b56f1d8e7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Niacin.jpg",
+            "title": "NIACIN",
+            "table": "<ul><li>Found In</li><li>Red Meat, Poultry, Fish, Brown Rice</li><li>Source</li><li>Niacinamide</li><li>Benefits</li><li>Cholesterol, Blood Pressure, Metabolism, Skin Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=niacin\"><span style=\"text-decoration:underline\">14,556</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "79023290-35eb-462c-b58c-f1a75660cff6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/NMN.jpg",
+            "title": "NMN",
+            "table": "<ul><li>Found In</li><li>Broccoli, Cabbage, Tomato, Avocado</li><li>Source</li><li>Ribose, Nicotinamide, Nicotinamide Riboside, Niacin</li><li>Benefits</li><li>Energy Production, Weight, Metabolism</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=NMN\"><span style=\"text-decoration:underline\">1,527</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/nmn\" title=\"NMN - HEALTHY AGING SUPPORT\">NMN</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b8f1ee20-01df-4450-a74c-8b94361eb8f6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/NSK-SD.jpg",
+            "title": "NSK-SD® Nattokinase",
+            "table": "<ul><li>Found In</li><li>Synthesized from Natto via Fermentation Process</li><li>Source</li><li>Nattokinase Enzyme  </li><li>Benefits</li><li>Blood Pressure, Heart Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=nattokinase\"><span style=\"text-decoration:underline\">246</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "ad014908-251b-4b6a-b122-0a29791766b7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pantothenic-Acid.jpg",
+            "title": "PANTOTHENIC ACID (VITAMIN B5)",
+            "table": "<ul><li>Found In</li><li>Organ Meats, Beef, Chicken Breast, Mushrooms</li><li>Source</li><li>D-Calcium Pantothenate</li><li>Benefits</li><li>Energy, Metabolism of Fats and Carbs, Cholesterol</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitmain+b5\"><span style=\"text-decoration:underline\">4,224</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "09c58a6f-b367-49b7-a844-eb0a5df44ac9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pterostilbene.jpg",
+            "title": "Pterostilbene",
+            "table": "<ul><li>Found In</li><li>Almonds, Blueberries, Grapes, Cranberries</li><li>Source</li><li>Pterocarpus marsupium</li><li>Benefits</li><li>Antioxidant, Brain, Metabolism, Heart Health</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=pterostilbene\"><span style=\"text-decoration:underline\">856</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/nmn\" title=\"NMN - HEALTHY AGING SUPPORT\">NMN</a>, <a href=\"/products/senescent-regulator\" title=\"SENESCENT REGULATOR\">Senescent Regulator</a>, <a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax </a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "9975f922-7e12-42e6-988b-c9b82a79e216": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PurpleTea.jpg",
+            "title": "PurpleForce® Purple Tea",
+            "table": "<ul><li>Found In</li><li>Purple Tea</li><li>Source</li><li>Camella Sinesis (3% GHG)</li><li>Benefits</li><li>Antioxidant, Immune, Cholesterol, Athletic Performance</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=purple+tea\"><span style=\"text-decoration:underline\">114</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/strength\" title=\"STRENGTH\">Strength</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a> </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "80dfc98a-443b-44fa-81b2-d8afa4f1b7c0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Quercetin.jpg",
+            "title": "Quercitin",
+            "table": "<ul><li>Found In</li><li>Capers, Onions, Apples, Broccoli, Grapes</li><li>Source</li><li>Sophora japonica</li><li>Benefits</li><li>Antioxidant, Respiratory, Immune Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=quercetin\"><span style=\"text-decoration:underline\">27,125</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "4aaf7654-bdca-4f5d-8c92-1c0a956f64d8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Resveratrol.jpg",
+            "title": "RESVERATROL",
+            "table": "<ul><li>Found In</li><li>Red Wine, Grapes, Cranberries, Chocolate</li><li>Source</li><li>Polygonum cuspidatum</li><li>Benefits</li><li>Heart, Brain Health, Energy Production</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=resveratrol\"><span style=\"text-decoration:underline\">17,646</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/nmn\" title=\"NMN - HEALTHY AGING SUPPORT\">NMN</a>, <a href=\"/products/senescent-regulator\" title=\"SENESCENT REGULATOR\">Senescent Regulator</a>, <a href=\"/products/senolytic\" title=\"SENOLYTIC - AGING SUPPORT\">Senolytic</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "76fb1600-f2dc-4a36-8634-ca391650958a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/RhodioPrime.jpg",
+            "title": "RhodioPrime® 6X",
+            "table": "<ul><li>Found In</li><li>Rhodiola Extract 6% Salidroside</li><li>Source</li><li>Rhodiola rosea</li><li>Benefits</li><li>Stress, Sleep, Focus, Brain Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=rhodiola\"><span style=\"text-decoration:underline\">1,243</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "1ee23c8c-e1f6-461d-be27-477a37531c18": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Selenium.jpg",
+            "title": "Selenium",
+            "table": "<ul><li>Found In</li><li>Brewer's Yeast, Brazilian Nuts, Eggs, Brown Rice</li><li>Source</li><li>L-Selenomethionine</li><li>Benefits</li><li>Antioxidant, Thyroid Support, Immune Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=selenium\"><span style=\"text-decoration:underline\">43,441</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b5f762ac-68b4-4c17-98d6-fed0cc21174d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Senactiv.jpg",
+            "title": "Senactiv®",
+            "table": "<ul><li>Found In</li><li>Notoginseng and Astragalus Extracts</li><li>Source</li><li>Panax notoginseng, Rosa roxburghii, Astragalus membranaceus  </li><li>Benefits</li><li>Athletic Perfomance, Endurance, Muscle Recovery Post Exercise</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=ginsenoside+rg1\"><span style=\"text-decoration:underline\">1,246</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/strength\" title=\"STRENGTH\">Strength</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "8386cae5-0587-4535-aac5-dd35b8e027ec": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Sleeproot.jpg",
+            "title": "Sleeproot Valerian™",
+            "table": "<ul><li>Found In   </li><li>Valerian Root Extract 2% Valeric Acid  </li><li>Source   </li><li>Valeriana officinalis</li><li>Benefits   </li><li>Sleep, Stress, Brain Support  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=valerian\"><span style=\"text-decoration:underline\">1,177</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/ignight\" title=\"IGNIGHT\">IgNIGHT</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e7aceb4c-38a0-4d62-b538-88c3b5e47960": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SmartPrime.jpg",
+            "title": "SmartPrime-Om™ Complex",
+            "table": "<ul><li>Found In   </li><li>Fish, Flax, Walnuts  </li><li>Source   </li><li>AvailOm EPA and DHA  </li><li>Benefits   </li><li>Heart, Brain, Joint, Eye Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=omega+3\"><span style=\"text-decoration:underline\">38,261</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/omega-5x\" title=\"OMEGA 5x\">Omega 5X</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax </a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "47a2803e-47c5-4fcd-8c95-308ce84cd267": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Snac_3.jpg",
+            "title": "SNAC",
+            "table": "<ul><li>Found In</li><li>Synthesized  </li><li>Source</li><li>Salcoprozate Sodium</li><li>Benefits</li><li>Oral Peptide Bioavailability  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=salcaprozate+sodium\"><span style=\"text-decoration:underline\">75</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/bpc-157-rapid-pro\" title=\"BPC-157 RAPID PRO - 500MCG\">BPC-157 Rapid Pro</a>, <a href=\"/products/repair-and-recovery-exactpax™\" title=\"REPAIR AND RECOVERY\">Repair & Recovery ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "a714e328-1fb6-4395-b48c-8ebb9a4e65f0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Spermidine.jpg",
+            "title": "Spermidine",
+            "table": "<ul><li>Found In   </li><li>Wheatgerm, Soya beans, Mushrooms, Mature Cheeses  </li><li>Source   </li><li>Combination of 14-Butanediamine and SAMe  </li><li>Benefits   </li><li>Energy, Heart, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=spermidine\"><span style=\"text-decoration:underline\">14,420</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "121fd731-986f-4016-9241-961f86abfd0d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SporeProbiotics.jpg",
+            "title": "Spore Probiotics",
+            "table": "<ul><li>Found In   </li><li>Plant and Soil Based  </li><li>Source   </li><li>Bacillus coagulans, Bacillus subtilis, Bacillus clausii  </li><li>Benefits   </li><li>Digestion, Brain Support  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=Bacillus+coagulans\"><span style=\"text-decoration:underline\">853</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/gi-prime\" title=\"GI PRIME\">GI Prime</a>, <a href=\"/products/metabolic-exactpax™\" title=\"METABOLIC ACTIVATOR\">Metabolic Activator ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b766cd50-1b77-4334-9575-3a974886f1b5": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SulforaphaneGlucosinolate.jpg",
+            "title": "Sulforaphane Glucosinolate",
+            "table": "<ul><li>Found In   </li><li>Broccoli  </li><li>Source</li><li>Glucoraphanin</li><li>Benefits   </li><li>Liver Health, Estrogen Metabolism, Brain Health  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=sulforaphane\"><span style=\"text-decoration:underline\">2,971</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/dna-prime\" title=\"DNA PRIME\">DNA Prime</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "e68cb5e9-4c35-4fd2-a66e-399eafcda0bf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Taxifolin.jpg",
+            "title": "Taxifolin",
+            "table": "<ul><li>Found In</li><li>Onions, Milk Thistle, French Maritime Pine Bark  </li><li>Source   </li><li>Dihydroquercetin  </li><li>Benefits   </li><li>Liver Health, Detoxification, Brain Health, Immune Function  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=taxifolin\"><span style=\"text-decoration:underline\">1,083</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "0de19297-9e98-474b-8fbe-ee980440f788": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/TeaCrine.jpg",
+            "title": "TeaCrine®",
+            "table": "<ul><li>Found In</li><li>Coffee, Green Tea, Kucha Tea</li><li>Source</li><li>Theacrine</li><li>Benefits</li><li>Alertness, Brain Function  </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=theacrine\"><span style=\"text-decoration:underline\">54</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/focus\" title=\"FOCUS\">Focus</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "a2640e3a-8aa9-469a-ae9d-1392a0fe47c7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Theobromine.jpg",
+            "title": "Theobromine",
+            "table": "<ul><li>Found In</li><li>Cacao Bean, Chocolate  </li><li>Source</li><li>Principal alkaloid of Theobroma cacao  </li><li>Benefits</li><li>Mood, Energy, Alertness</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=theobromine\"><span style=\"text-decoration:underline\">6,330</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/thyroid-support\" title=\"THYROID SUPPORT\">Thyroid Support</a>, <a href=\"/products/thyroid-support-1\" title=\"THYROID SUPPORT+\">Thyroid Support+</a>, <a href=\"/products/thyroid-optimizer-exactpax™\" title=\"THYROID OPTIMIZER\">Thyroid Optimizer ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "1e335db8-40dc-4dd7-99e8-02e3569de083": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Trimethylglycine.jpg",
+            "title": "Trimethylglycine",
+            "table": "<ul><li>Found In   </li><li>Wheat, Beets, Quinoa, Seafood  </li><li>Source   </li><li>Betaine Anhydrous  </li><li>Benefits   </li><li>Immune Function, Liver Health, Athletic Performance  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=trimethylglycine\"><span style=\"text-decoration:underline\">9,341</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/enhance\" title=\"ENHANCE\">Enhance</a>, <a href=\"/products/longevity-exactpax™\" title=\"LONGEVITY\">Longevity ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "a582cf38-2f1b-4b29-b732-27201a2d606a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Uridine.jpg",
+            "title": "Uridine",
+            "table": "<ul><li>Found In   </li><li>Sugar Beets, Sugar Cane, Tomatoes, Yeast, Organ Meat  </li><li>Source   </li><li>Uridine Monophosphate  </li><li>Benefits   </li><li>Mood, Brain Support  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=uridine+monophosphate\"><span style=\"text-decoration:underline\">4,736</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/infiniage\" title=\"InfiniAge - Preorder\">InfiniAGE</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "87f9059b-be8a-4a14-a210-d6b458156ca8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VasoDrive.jpg",
+            "title": "VasoDrive-AP®",
+            "table": "<ul><li>Found In</li><li>Dairy Products  </li><li>Source</li><li>(Isoleucyl-prolyl-proline and Valyl-prolyl-proline)</li><li>Benefits</li><li>Blood Pressure, Heart Health, Libido</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=lactotripeptide\"><span style=\"text-decoration:underline\">44</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/cardio-prime\" title=\"CARDIO PRIME+\">CardioPrime+</a>, <a href=\"/products/cardiovascular-support-exactpax™\" title=\"CARDIOVASCULAR SUPPORT\">Cardiovascular ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "056b5b6e-84e1-49c5-b854-eecf50dc4edb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminA.jpg",
+            "title": "VITAMIN A",
+            "table": "<ul><li>Found In</li><li>Sweet Potato, Carrot, Spinach, Liver, Mango, Eggs</li><li>Source</li><li>Retinyl Palmitate</li><li>Benefits</li><li>Eye Health, Immune Function, Skin</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitamin+a\"><span style=\"text-decoration:underline\">59,527</span></a> published articles</li><li>Featured In </li><li><a href=\"/products/defend\" title=\"DEFEND\">Defend</a>, <a href=\"/products/defend-pro\" title=\"DEFEND PRO\">Defend Pro</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "05cbc7b2-bd38-406b-96cc-64f3273d2747": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminB1.jpg",
+            "title": "VITAMIN B1",
+            "table": "<ul><li>Found In</li><li>Lean Pork Chops, Salmon, Flax Seeds, Green Peas, Navy Beans</li><li>Source</li><li>Thiamine HCl</li><li>Benefits</li><li>Brain, Heart, Immune Function, Eye Health, Metabolism </li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=thiamine\"><span style=\"text-decoration:underline\">19,782</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "9213cbee-4782-4011-aaaa-094c47e09223": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminB2.jpg",
+            "title": "VITAMIN B2",
+            "table": "<ul><li>Found In</li><li>Lean Beef, Dairy Products, Chicken Breast, Salmon</li><li>Source</li><li>Riboflavin HCl</li><li>Benefits</li><li>Energy Production, Fat, Carb Metabolism</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=riboflavin\"><span style=\"text-decoration:underline\">21,401</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "be6a22b1-ec77-4588-adfa-8eaf40033dbb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminB12.jpg",
+            "title": "VITAMIN B12",
+            "table": "<ul><li>Found In</li><li>Organ Meats, Clams, Sardines/Various Fish, Red Meat</li><li>Source</li><li>Methylcobalamin</li><li>Benefits</li><li>Brain, Mood, Heart, Eye, Red Blood Cell Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitamin+b12\"><span style=\"text-decoration:underline\">36,493</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/methylated-b-complex\" title=\"METHYLATED B-COMPLEX\">Methylated B Complex</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "bf7cc3ce-5246-4a59-863d-83dba41f8834": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminD.jpg",
+            "title": "VITAMIN D",
+            "table": "<ul><li>Found In</li><li>Sunlight, Egg Yolks, Mushrooms, Salmon</li><li>Source</li><li>Cholecalciferol</li><li>Benefits</li><li>Bone Formation, Heart Health, Immune Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitamin+d\"><span style=\"text-decoration:underline\">130,124</span></a> published articles </li><li>Featured In</li><li><a href=\"/products/defend\" title=\"DEFEND\">Defend</a>, <a href=\"/products/defend-pro\" title=\"DEFEND PRO\">Defend Pro</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "cd551f7d-e95f-4440-8773-9dbbd4cc21b4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminE.jpg",
+            "title": "VITAMIN E",
+            "table": "<ul><li>Found In</li><li>Seeds, Avacodos, Almonds, Wheat Germ Oil</li><li>Source</li><li>d-alpha tocopherol succinate</li><li>Benefits</li><li>Heart, Brain, Bone Health, Antioxidant Support</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitamin+e\"><span style=\"text-decoration:underline\">47,608</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/defend\" title=\"DEFEND\">Defend</a>, <a href=\"/products/defend-pro\" title=\"DEFEND PRO\">Defend Pro</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a>, <a href=\"/products/hrt-support-exactpax™\" title=\"HRT SUPPORT\">HRT Support ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "0ae56227-b3aa-4fcc-853d-bb3cfdfa6da0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VitaminK2.jpg",
+            "title": "VITAMIN k2",
+            "table": "<ul><li>Found In</li><li>Natto, Soy, Fermented Foods, Grass-Fed Butter</li><li>Source</li><li>K2VITAL DELTA All-Trans Menaquinone-7</li><li>Benefits</li><li>Heart Heatlh, Hormones, Brain Function</li><li>Science</li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=vitamin+k2\"><span style=\"text-decoration:underline\">5,192</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/defend\" title=\"DEFEND\">Defend</a>, <a href=\"/products/defend-pro\" title=\"DEFEND PRO\">Defend Pro</a>, <a href=\"/products/foundational-exactpax™\" title=\"FOUNDATIONAL\">Foundational ExactPax</a></li></ul>",
+            "bg_color": "#ffffff"
+          }
+        },
+        "b488444d-faa7-4746-af2f-69b19d3f21ca": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Zinc.jpg",
+            "title": "Zinc",
+            "table": "<ul><li>Found In   </li><li>Oysters, Pumpkin Seeds, Cashews, Dark Chocolate  </li><li>Source   </li><li>Zinc Oxide  </li><li>Benefits   </li><li>Prostate Support, Enzymatic Support, Immune Support  </li><li>Science   </li><li><a href=\"https://pubmed.ncbi.nlm.nih.gov/?term=zinc\"><span style=\"text-decoration:underline\">183,611</span></a> published articles</li><li>Featured In</li><li><a href=\"/products/infiniage\" title=\"InfiniAge - Preorder\">InfiniAGE</a>  </li></ul>",
+            "bg_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "2f31b644-a6ef-4a7c-8466-1aa2372be961",
+        "b7e3c97b-7a1e-48d4-a2ba-ec58ada82fd0",
+        "9f99a89e-1676-438b-bf8c-038dbd597991",
+        "014cc95d-1b71-464b-877b-64053ac63f42",
+        "fec7ab7f-8726-462a-a7fb-b0fbd803e782",
+        "822f33b5-ea10-4193-b33f-b43500823461",
+        "9b1466e3-73d0-4d16-972b-a27b56f1d8e7",
+        "79023290-35eb-462c-b58c-f1a75660cff6",
+        "b8f1ee20-01df-4450-a74c-8b94361eb8f6",
+        "ad014908-251b-4b6a-b122-0a29791766b7",
+        "09c58a6f-b367-49b7-a844-eb0a5df44ac9",
+        "9975f922-7e12-42e6-988b-c9b82a79e216",
+        "80dfc98a-443b-44fa-81b2-d8afa4f1b7c0",
+        "4aaf7654-bdca-4f5d-8c92-1c0a956f64d8",
+        "76fb1600-f2dc-4a36-8634-ca391650958a",
+        "1ee23c8c-e1f6-461d-be27-477a37531c18",
+        "b5f762ac-68b4-4c17-98d6-fed0cc21174d",
+        "8386cae5-0587-4535-aac5-dd35b8e027ec",
+        "e7aceb4c-38a0-4d62-b538-88c3b5e47960",
+        "47a2803e-47c5-4fcd-8c95-308ce84cd267",
+        "a714e328-1fb6-4395-b48c-8ebb9a4e65f0",
+        "121fd731-986f-4016-9241-961f86abfd0d",
+        "b766cd50-1b77-4334-9575-3a974886f1b5",
+        "e68cb5e9-4c35-4fd2-a66e-399eafcda0bf",
+        "0de19297-9e98-474b-8fbe-ee980440f788",
+        "a2640e3a-8aa9-469a-ae9d-1392a0fe47c7",
+        "1e335db8-40dc-4dd7-99e8-02e3569de083",
+        "a582cf38-2f1b-4b29-b732-27201a2d606a",
+        "87f9059b-be8a-4a14-a210-d6b458156ca8",
+        "056b5b6e-84e1-49c5-b854-eecf50dc4edb",
+        "05cbc7b2-bd38-406b-96cc-64f3273d2747",
+        "9213cbee-4782-4011-aaaa-094c47e09223",
+        "be6a22b1-ec77-4588-adfa-8eaf40033dbb",
+        "bf7cc3ce-5246-4a59-863d-83dba41f8834",
+        "cd551f7d-e95f-4440-8773-9dbbd4cc21b4",
+        "0ae56227-b3aa-4fcc-853d-bb3cfdfa6da0",
+        "b488444d-faa7-4746-af2f-69b19d3f21ca"
+      ],
+      "settings": {
+        "title1": "",
+        "title2": "",
+        "description": "",
+        "paddingtop": 0,
+        "paddingtopmobile": 0,
+        "paddingbottom": 174,
+        "paddingbottommobile": 60
+      }
+    }
+  },
+  "order": [
+    "innerBanner",
+    "dbd5cda6-9b3b-4c82-872e-78f16596abce",
+    "322ced78-0a1b-4e3e-9391-ce0689777055"
+  ]
+}

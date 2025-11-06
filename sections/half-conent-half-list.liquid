@@ -1,0 +1,105 @@
+{% if section.blocks.size > 0 %}
+  {% if section.settings.title1 != blank and section.settings.description != blank %}
+    <div
+      class="half-content-half-list"
+      data-aos="fade-up"
+      data-aos-duration="2000"
+    >
+      <div class="container-1210">
+        <div class="inner flex">
+          <div class="content full-format">
+            <h2>
+              {{ section.settings.title1 }}
+              {% if section.settings.title2 != blank %}
+                <span class="color-grey h2">{{ section.settings.title2 }}</span>
+              {% endif %}
+            </h2>
+
+            {% if section.settings.description != blank %}
+              {{ section.settings.description }}
+            {% endif %}
+            {% if section.settings.buttonText != blank %}
+              <a
+                href="{{ section.settings.buttonLink }}"
+                title="Read More About {{ section.settings.buttonText }}"
+                aria-label="Read More About {{ section.settings.buttonText }}"
+                class="btn--primary"
+              >
+                {{ section.settings.buttonText }}
+              </a>
+            {% endif %}
+          </div>
+
+          <ul>
+            {%- for block in section.blocks -%}
+              {% if block.settings.list != blank %}
+                <li>{{ block.settings.list }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% if section.settings.buttonText != blank %}
+        <a
+          href="{{ section.settings.buttonLink }}"
+          title="Read More About {{ section.settings.buttonText }}"
+          aria-label="Read More About {{ section.settings.buttonText }}"
+          class="btn--primary second"
+        >
+          {{ section.settings.buttonText }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Half Content Half List",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "List",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Half Content Half List"
+    }
+  ]
+}
+{% endschema %}

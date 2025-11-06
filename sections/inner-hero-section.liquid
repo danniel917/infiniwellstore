@@ -1,0 +1,167 @@
+{% if section.settings.image != blank and section.settings.title != blank %}
+  <div class="inner-hero-section {%if section.settings.height-810 == true%} height-810{%endif%} {% if section.settings.gradient == true %} gradient-padding-sm{%endif%} {% if section.settings.smallHeight == true %} small {% endif %} ">
+    <div class="image-section {% if section.settings.gradient == true %} gradient{%endif%}">
+      <picture>
+        <source
+          media="(max-width: 480px)"
+          srcset="{% if section.settings.mobileImage != blank %}{{ section.settings.mobileImage | img_url: '750x1400' }}   {% endif %}"
+        >
+        {{ section.settings.image | image_url: width: 2880 | image_tag: loading: 'lazy', widths: '2880x1620' }}
+      </picture>
+    </div>
+
+    <div
+      class="
+        container-1340 {% if section.settings.content_alignment == "center" %} center--align {% endif %} {% if section.settings.content_alignment == "right" %} right--align {% endif %}{% if
+        section.settings.content_alignment == "left" %} left--align {% endif %}
+      "
+    >
+      <div class="content">
+        {% if section.settings.pageBanner == true %}
+          <h1>
+            {{ section.settings.title }}
+          </h1>
+        {% else %}
+          <h2 class="h1">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          {{ section.settings.description }}
+        {% endif %}
+
+        <div class="buttons">
+          {% if section.settings.buttonText1 != blank %}
+            <a
+              href="{{ section.settings.buttonLink1 }}"
+              title="Read More About {{ section.settings.buttonText1 }}"
+              aria-label="Read More About {{ section.settings.buttonText}}"
+              class="btn--secondary"
+              title="{{ section.settings.buttonText1 }}"
+            >
+              {{- section.settings.buttonText1 -}}
+            </a>
+          {% endif %}
+          {% if section.settings.buttonText2 != blank %}
+            <a
+              href="{{ section.settings.buttonLink2 }}"
+              title="Read More About {{ section.settings.buttonText2 }}"
+              aria-label="Read More About {{ section.settings.buttonText2 }}"
+              class="btn--secondary"
+              title="{{ section.settings.buttonText2 }}"
+            >
+              {{- section.settings.buttonText2 -}}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Inner Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image (Desktop)",
+      "info": "2880 x 1620px Recommended"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobileImage",
+      "label": "Background Image (Mobile)",
+      "info": "750 x 1400px Recommended"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "buttonText1",
+      "label": "Button Text 1"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink1",
+      "label": "Button Link 1"
+    },
+    {
+      "type": "text",
+      "id": "buttonText2",
+      "label": "Button Text 2"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink2",
+      "label": "Button Link 2"
+    },
+    {
+      "type": "header",
+      "content": "Extra Settings",
+      "info": "Recommened to be used by the developer only"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "center", "label": "Center" }
+      ],
+      "label": "Image Alignment",
+      "info": "By default it is center aligned.",
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "smallHeight",
+      "label": "Decrease the overall padding for the section"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "pageBanner",
+      "label": "H1 Tag Selection",
+      "info": "Designates the main hero banner",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "gradient",
+      "label": "Gradient",
+      "info": "Change gradient direction to horizontal"
+    },
+    {
+      "type": "checkbox",
+      "id": "height-810",
+      "label": "Increase Height of Banner upto 810px",
+      "info": "By default height of banner will be 650px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inner Banner"
+    }
+  ]
+}
+{% endschema %}

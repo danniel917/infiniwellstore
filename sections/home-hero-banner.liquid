@@ -1,0 +1,642 @@
+{% if section.blocks.size > 0 %}
+
+  <div class="slider hero-banner-slider   {% if section.blocks.size > 1 %} js__hero-banner-slider  padding-left-right {% endif %}">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+   
+       
+        {%- style -%}
+         .slide-{{ block.id }}{
+      padding-top: {{ block.settings.paddingtop | round: 0 }}px !important;
+      padding-bottom: {{ block.settings.paddingbottom | round: 0 }}px !important;
+    }
+
+ 
+          .description-{{ block.id }} p {
+  color: {{ block.settings.color_scheme }} !important;
+}
+       .btn--primary-{{ block.id }} {
+    
+      margin-top: 15px !important;
+         font-family: Helvetica, sans-serif !important;
+    color: #1a1b1b !important;
+   
+    padding-left: 30px;
+    padding-right: 60px;
+    background: url(/cdn/shop/t/60/assets/icon-arrow-btn.svg) no-repeat right 20px center / 22px #fff !important;
+
+    margin-left: 0px;
+    cursor: pointer;
+    display: block;
+   
+    line-height: normal;
+    letter-spacing: .01px;
+    text-align: center;
+  
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    border: 1.5px solid #1a1b1b;
+    border-radius: 50px;
+  
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-decoration: none;
+  
+    min-width: 170px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-transform: capitalize;
+    -webkit-transition: .6s ease all;
+    transition: .6s ease all;
+         font-size: 17px;
+    font-weight: 500;
+  
+    min-height: 52px;
+          {% if block.settings.button_style == 'outline' %}
+        background-color: transparent !important;
+         border: 1.5px solid #1a1b1b !important;
+      {% else %}
+        background: url({{"icon-arrow-btn-white.svg" | asset_url  }}) no-repeat right 20px center / 22px #fff !important;
+        background-color: transparent !important;
+        border-color: #fff !important;
+        color: #fff !important;
+      {% endif %}
+}
+ 
+  .block-{{ block.id }}-h1{
+      font-size: {{ block.settings.fontSizeTitle | round: 0 }}px !important;
+        color: {{ block.settings.color_scheme }} !important;
+    }
+
+    @media screen and (max-width: 480px) {
+    .block-{{ block.id }}-h1{
+      font-size: {{ block.settings.fontSizeTitleMobile | round: 0 }}px !important;
+     
+    }
+  }
+
+  .slide-{{ block.id }} .image-section:before{
+    background:{{ block.settings.gradiendCss }} !important
+  }
+
+  .slide-{{ block.id }} .content-image{
+    width:{{ block.settings.contentImageWidth }}px !important;
+    height:{{ block.settings.contentImageHeight }}px !important;
+  }
+      
+ 
+{%- endstyle -%}
+        {% if block.settings.backgroundImage != blank or block.settings.videobanner != blank %}
+          <div
+            class="slide-{{ block.id }} 
+              slide swiper-slide
+              hero-banner vertical-align-{{ block.settings.content_alignment_vertical  }} {% if block.settings.content_alignment == "center" %} center-align{% endif %} {% if block.settings.content_alignment == "right" %} right-align{% endif %}
+              {% if block.settings.content_alignment == "left" %} left-align{% endif %} {% if section.blocks.size > 1 %} padding-left-right {% endif %}
+            "
+          >
+            {% if block.settings.buttonLink != blank and block.settings.buttonText != blank %}
+              <a
+                href="{{ block.settings.buttonLink }}"
+                title="Read More About {{ block.settings.title }}"
+                aria-label="Read More About {{ block.settings.title }}"
+                class="full-link"
+              ></a>
+            {% endif %}
+            {%- if block.settings.videobanner -%}
+              <div class="video-section">
+                <div class="video-wrapper">
+                  {% if block.settings.video contains '.mp4' %}
+                    <video muted loop autoplay>
+                      <source src="{{ block.settings.video }}" type="video/mp4">
+                    </video>
+                  {% else %}
+                    {% if block.settings.video != blank %}
+                      {% assign videoId = block.settings.video | split: 'vimeo.com/' %}
+                      <iframe
+                        src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
+                        frameborder="0"
+                        allow="fullscreen"
+                        allowfullscreen
+                        loading="lazy"
+                      ></iframe>
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+              <div class="image-section {%if block.settings.gradient == true%} gradient-none{%endif%}">
+                <picture>
+                  <source
+                    media="(max-width: 600px)"
+                    srcset="{% if block.settings.backgroundImageMobile != blank %}{{ block.settings.backgroundImageMobile | img_url: '750x1400' }}{%endif%}"
+                  >
+                  <img
+                    src="{{ block.settings.backgroundImage | img_url: '2880x1620' }}"
+                    alt="{{ block.settings.backgroundImage.alt}}"
+                    loading="lazy"
+                  >
+                </picture>
+              </div>
+            {% endif %}
+            <div class="container-1340 flex">
+              {%- if block.settings.productImage -%}
+                <div class="product-image">
+                  <img
+                    src="{{ block.settings.productImage | img_url: '530x530' }}"
+                    alt="{{ block.settings.productImage.alt}}"
+                    loading="lazy"
+                  >
+                  </div>
+              {% endif %}
+              <div
+                class="content"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                 style="max-width: {{ block.settings.content_width }}px; "
+              >
+                {%- if block.settings.logo -%}
+                  <div class="logo-image">
+                    <img
+                      src="{{ block.settings.logo | img_url: '162x144' }}"
+                      alt="{{ block.settings.logo.alt}}"
+                      loading="lazy"
+                    >
+                    </div>
+                {% endif %}
+                {%- if block.settings.titleImage -%}
+                  <div class="title-image">
+                    <img
+                      src="{{ block.settings.titleImage | img_url: '1000x200' }}"
+                      alt="{{ block.settings.titleImage.alt}}"
+                      loading="lazy"
+                    >
+                    </div>
+                {% endif %}
+               
+                {%- if block.settings.contentImage -%}
+                  <div class="content-image" >
+                    <img
+                      src="{{ block.settings.contentImage | img_url: 'master' }}"
+                      alt="{{ block.settings.contentImage.alt}}"
+                      loading="lazy"
+                    >
+                    </div>
+                {% endif %}
+               
+                {% if block.settings.pretitle != blank %}
+                  <span class="pre-title">{{ block.settings.pretitle }}</span>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  {% if section.blocks.size > 1 %}
+                    <p class="h1 block-{{ block.id }}-h1">{{ block.settings.title }}</p>
+                  {% else %}
+                    <h1 class="block-{{ block.id }}-h1" style="color: {{ block.settings.color_scheme }};">{{ block.settings.title }}</h1>
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.subtitle != blank %}
+                  <div class="subtitle" style="color: {{ block.settings.color_scheme }};">{{ block.settings.subtitle }}</div>
+                {% endif %}
+                {% if block.settings.ratingImage != blank %}
+                <div class="rating-section  {%if block.settings.ratingType == true%} horizontal  {% endif %}">
+                  <div class="rating-image-section">
+                    <div class="rating-image">
+                     <img
+                    src="{{ block.settings.ratingImage | img_url: '320x56' }}"
+                    alt="{{ block.settings.ratingImage.alt}}"
+                    loading="lazy"
+                     >
+                    </div>
+                      <span class="rating-count">{{ block.settings.ratingCount }}</span>
+                    </div>
+                    {% if block.settings.ratingSummary != blank %}
+                      <div class="rating-summary">{{ block.settings.ratingSummary }}</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+               
+                
+                
+                {% if block.settings.listTitle1 != blank or block.settings.listTitle2 or block.settings.listTitle3 %}  
+                  <ul class="list-section {%if block.settings.listType == true%} horizontal  {% endif %}">
+                    {% if block.settings.listTitle1 != blank %}
+                    <li>
+                    {% if block.settings.icon1 != blank %}  
+                      <div class="icon">
+                        <img
+                       src="{{ block.settings.icon1 | img_url: 'master' }}"
+                       alt="{{ block.settings.icon1.alt}}"
+                       loading="lazy"
+                        >
+                       </div>
+                    {% endif %}
+                    <span>{{block.settings.listTitle1 }}</span>
+                    </li>
+                  {% endif %}
+                  {% if block.settings.listTitle2 != blank %}
+                    <li>
+                    {% if block.settings.icon2 != blank %}  
+                      <div class="icon">
+                        <img
+                       src="{{ block.settings.icon2 | img_url: 'master' }}"
+                       alt="{{ block.settings.icon2.alt}}"
+                       loading="lazy"
+                        >
+                       </div>
+                    {% endif %}
+                    <span>{{block.settings.listTitle2 }}</span>
+                    </li>
+                  {% endif %}
+                  {% if block.settings.listTitle3 != blank %}
+                    <li>
+                    {% if block.settings.icon3 != blank %}  
+                      <div class="icon">
+                        <img
+                       src="{{ block.settings.icon3 | img_url: 'master' }}"
+                       alt="{{ block.settings.icon3.alt}}"
+                       loading="lazy"
+                        >
+                       </div>
+                    {% endif %}
+                    <span>{{block.settings.listTitle3 }}</span>
+                    </li>
+                  {% endif %}
+                  </ul>
+                {% endif %}
+                <!-- Description -->
+                
+                {% if block.settings.description != blank %}
+                  <div class="description description-{{ block.id }}">
+                    
+                    {{ block.settings.description }}</div>
+                {% endif %}
+                {% if block.settings.buttonText != blank %}
+      
+                  <span
+                    class="btn-hero btn--primary-{{ block.id }} "
+                  >
+                
+                    {{- block.settings.buttonText -}}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.blocks.size > 1 %}
+      <div class="swiper-pagination swiper-pagination-home-hero-desktop"></div>
+      {% comment %}
+       <div class="swiper-button-arrow swiper-button-prev-hero-banner">
+         {% include 'icon-arrow-slide-white' %}
+       </div>
+       <div class="swiper-button-arrow swiper-button-next-hero-banner">
+         {% comment %}
+           {% include 'icon-arrow-slide-white' %}
+         {% endcomment %}
+         {% include 'icon-arrow-slide' %}
+       </div>
+        {% endcomment %}
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "backgroundImage",
+          "label": "Background Image (Desktop)",
+          "info": {
+            "en": "2880 x 1620px Recommended"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "backgroundImageMobile",
+          "label": "Background Image (Mobile)",
+          "info": {
+            "en": "750 x 1400px Recommended"
+          }
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+          "info": {
+            "en": "162 x 144px Recommended"
+          }
+        },
+        {
+          "type": "url",
+          "id": "video",
+          "label": "Background Video"
+        },
+        {
+          "type": "checkbox",
+          "id": "videobanner",
+          "label": "Video Banner",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "productImage",
+          "label": "Product Image",
+          "info": {
+            "en": "162 x 144px Recommended"
+          }
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "contentImage",
+          "label": "Content Image"
+        },
+        {
+          "type": "range",
+          "id": "contentImageWidth",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "px",
+          "label": "Content Image Width",
+          "default": 400
+        },
+        {
+          "type": "range",
+          "id": "contentImageHeight",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "px",
+          "label": "Content Image Height",
+          "default": 400
+        },
+        {
+          "type": "image_picker",
+          "id": "titleImage",
+          "label": "Title Image",
+          "info": {
+            "en": "1000 x 200px Recommended"
+          }
+        },
+        {
+          "type": "inline_richtext",
+          "id": "pretitle",
+          "label": "Pre Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "header",
+          "content": "Title Font Size"
+        },
+        {
+          "type": "range",
+          "id": "fontSizeTitle", 
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Font Size (Desktop)",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "fontSizeTitleMobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Font Size (Mobile)",
+          "default": 25
+        },
+        {
+          "type": "richtext",
+          "id": "subtitle",
+          "label": "SubTitle"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "buttonText",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "buttonLink",
+          "label": "Button Link"
+        },
+        {
+          "type": "header",
+          "content": "Top/Bottom Section Space"
+        },
+        {
+          "type": "range",
+          "id": "paddingtop",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 150
+        },
+        {
+          "type": "range",
+          "id": "paddingbottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding Bottom",
+          "default": 100
+        },
+        {
+          "type": "header",
+          "content": "Extra Settings",
+          "info": "Recommened to be used by the developer only"
+        },
+        
+
+        {
+          "type": "checkbox",
+          "id": "gradient",
+          "label": "Switch off Gradient",
+          "info": "By default Gradient is On"
+        },
+        {
+          "type": "text",
+          "id": "gradiendCss",
+          "label": "Gradient CSS"
+        },
+
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" },
+            { "value": "center", "label": "Center" }
+          ],
+          "label": "Content Horizontal Alignment",
+          "info": "By default it is center aligned.",
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "content_alignment_vertical",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "bottom", "label": "Bottom" },
+            { "value": "center", "label": "Center" }
+          ],
+          "label": "Content Vertical Alignment",
+          "info": "By default it is center aligned.",
+          "default": "center"
+        },
+          {
+          "type": "header",
+          "content": "Content Width"
+        },
+        {
+          "type": "range",
+          "id": "content_width",
+          "min": 300,
+          "max": 800,
+          "step": 10,
+          "unit": "px",
+          "label": "Content Width",
+          "default": 500
+        },
+        {
+          "type": "header",
+          "content": "Color Settings"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "options": [
+            { "value": "#1A1F2A", "label": "Blue" },
+            { "value": "#fff", "label": "White" }
+          ],
+          "label": "Color Scheme",
+          "default": "#1A1F2A"
+        },
+        {
+  "type": "header",
+  "content": "Button Settings"
+},
+{
+  "type": "select",
+  "id": "button_style",
+  "options": [
+    { "value": "outline", "label": "Outline" },
+    { "value": "solid", "label": "Solid" },
+  ],
+  "label": "Button Style",
+  "default": "solid"
+},
+        {
+          "type": "header",
+          "content": "Reviews"
+        },
+        {
+          "type": "image_picker",
+          "id": "ratingImage",
+          "label": "Rating Image"
+        }, 
+        {
+          "type": "text",
+          "id": "ratingCount",
+          "label": "Rating Count"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "ratingSummary",
+          "label": "Rating Summary"
+        },
+        {
+          "type": "header",
+          "content": "List"
+        }, 
+        {
+          "type": "checkbox",
+          "id": "ratingType",
+          "label": "Rating Type Horizontal",
+          "info": "By default Vertial"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon1",
+          "label": "Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "listTitle1",
+          "label": "List Title 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon2",
+          "label": "Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "listTitle2",
+          "label": "List Title 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon3",
+          "label": "Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "listTitle3",
+          "label": "List Title 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+<style>
+  .hero-banner-slider .hero-banner .container-1340 .content .rating-section{
+    margin-top: 20px  !important;
+    padding-top: 20px  !important;
+  }
+.hero-banner-slider .hero-banner .container-1340 .content .rating-section .rating-image-section
+  {
+    margin-bottom: 10px !important;
+}
+</style>

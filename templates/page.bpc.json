@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "inner_hero_section_3kQfkc": {
+      "type": "inner-hero-section",
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.inner-hero-section.small, .pdp-full-width-image-section.small {min-height: 400px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_c5b6bfa0-2590-4913-b43b-0a7f3a0c0b1e.png",
+        "mobileImage": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_c5b6bfa0-2590-4913-b43b-0a7f3a0c0b1e.png",
+        "title": "A4M Special offer",
+        "description": "<p>As a thank you for attending our booth at A4M, the InfiniWell team wanted to offer you the chance to try any of our products, completely on us! Just fill out the form below and your sample bottle will ship out to you starting on 5/6.</p>",
+        "buttonText1": "",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "center",
+        "smallHeight": true,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "1714513188b231968f": {
+      "type": "apps",
+      "blocks": {
+        "hulk_form_builder_form_block_ebdQ3x": {
+          "type": "shopify://apps/hulk-form-builder/blocks/form-block/b6b8dd14-356b-4725-a4ed-77232212b3c3",
+          "settings": {
+            "form_uuid": "Q0b5rdr9k8dEwENHqvBvkg",
+            "form_settings": false,
+            "font_color": "#000000",
+            "size": 14,
+            "input_background_color": "#ffffff",
+            "input_background_color_focus": "#f4dada",
+            "input_border_radius": 1,
+            "input_border_color": "#ebe9e9",
+            "input_border_color_focus": "#2d2727",
+            "input_font_color": "#3d3131",
+            "input_size": 14,
+            "border_color": "#121212",
+            "border_radius": 2,
+            "border": 1,
+            "fill_color": "#ebe9e9",
+            "padding": 35,
+            "form_width": 600,
+            "btn_text": "Submit",
+            "sub_btn_txt_color": "#f3f3f3",
+            "sub_btn_bg_color": "#3f3333",
+            "sub_btn_font_size": 14,
+            "sub_btn_bdr_color": "#ffffff",
+            "sub_btn_bdr_rad": 3,
+            "sub_btn_bdr_width": 1,
+            "fonts": "Helvetica"
+          }
+        }
+      },
+      "block_order": [
+        "hulk_form_builder_form_block_ebdQ3x"
+      ],
+      "settings": {}
+    },
+    "page_default_content_d8H4Lf": {
+      "type": "page-default-content",
+      "settings": {}
+    }
+  },
+  "order": [
+    "inner_hero_section_3kQfkc",
+    "1714513188b231968f",
+    "page_default_content_d8H4Lf"
+  ]
+}

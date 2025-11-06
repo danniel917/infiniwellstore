@@ -1,0 +1,110 @@
+<div
+  class="product-wrapper {{ class }}"
+>
+  <div class="image-section">
+    <a href="{{productRelated.url}}">
+      {% if productRelated.images.size > 1 %}
+        <img
+          class="js__product-image-{{productRelated.id}} first-img"
+          data-src="{{  productRelated.images[0] | img_url: '558x558' }}"
+          src="{{  productRelated.images[0] | img_url: '558x558' }}"
+          alt="{{ productRelated.featured_image.alt | escape }}"
+          loading="lazy"
+        >
+        <img
+          class="hover-img"
+          data-src="{{  productRelated.images[1] | img_url: '558x558' }}"
+          src="{{  productRelated.images[1] | img_url: '558x558' }}"
+          alt="{{ productRelated.featured_image.alt | escape  }}"
+          loading="lazy"
+        >
+      {% else %}
+        <img
+          class="js__product-image-{{productRelated.id}} first-img hover-img"
+          src="{{  productRelated.images[0] | img_url: '558x558' }}"
+          data-src="{{ productRelated.images[0] | img_url: '558x558' }}"
+          alt="{{ productRelated.featured_image.alt | escape }}"
+          loading="lazy"
+        >
+      {% endif %}
+    </a>
+
+    <!-- Custom Tags -->
+    {% if show_tags %}
+      <span class="product-card__tags-status">
+        {% include 'product_tags' with productRelated %}
+
+        {% if productRelated.compare_at_price > productRelated.price %}
+          <span class="tag sale">Sale</span>
+        {% endif %}
+      </span>
+    {% endif %}
+
+    {% unless hide_star %}
+    <!-- Swym Wishlist Plus EPI Button -->
+      <button
+        data-with-epi="true"
+        class="swym-button swym-add-to-wishlist-view-product product_{{productRelated.id}}"
+        data-swaction="addToWishlist"
+        data-product-id="{{productRelated.id | json}}"
+        data-variant-id="{{productRelated.variants[0].id}}"
+        data-product-url="{{ shop.url }}{{ productRelated.url }}"
+      >
+        {% include 'icon-star' -%}
+        {%- include 'icon-star-filled' %}
+      </button>
+    {% endunless %}
+  </div>
+
+  <div class="content">
+    {% if show_title %}
+      <p class="h5 product-card__product-title uppercase">
+        <a href="{{productRelated.url}}">
+          {% if productRelated.metafields.productInfo.product_name != blank %}
+            {{ productRelated.metafields.prodctInfo.product_name }}
+          {% else %}
+            {{ productRelated.title }}
+          {% endif %}
+        </a>
+      </p>
+    {% endif %}
+    {% if productRelated.metafields.product.short_description != blank %}
+      <span class="sub-title">{{ productRelated.metafields.product.short_description }}</span>
+    {% endif %}
+    <a href="{{productRelated.url }}">
+      {% render 'okendo-reviews-product-rating-summary', product: productRelated %}
+    </a>
+    <!-- Price -->
+    {% if show_price %}
+      <span class="product-card__price flex">
+        {% if productRelated.variants.size > 1 %}
+          <!-- <span class="starting">Starting at </span> <span> {{ productRelated.price_min | money }} </span> -->
+           <span> {{ productRelated.price_max | money }} </span> 
+        {% else %}
+          <span> {{ productRelated.price | money }}</span>
+          {% if productRelated.compare_at_price_min > productRelated.price %}
+            <s>
+              {{ productRelated.compare_at_price_min | money }}
+            </s>
+          {% endif %}
+        {% endif %}
+      </span>
+    {% endif %}
+    <a
+      class="{% if hide_star %}btn--secondary{% else %}btn--primary{% endif %} js__quick-view-click"
+      title="{{ productRelated.title }}"
+      href="javascript:;"
+      title="Shop {{productRelated.title}}"
+      data-id="{{productRelated.id}}"
+      data-slider_main="{%- for img in productRelated.images -%}{{- img | img_url: '710x710' -}}|{%- endfor -%}"
+      data-slider_thumb="{%- for img in productRelated.images -%}{{- img | img_url: '150x150' -}}|{%- endfor -%}"
+      data-var_images="{%- for var in productRelated.variants -%}{{- var.image | img_url: '150x150' -}}|{%- endfor -%}"
+      >
+      {% if hide_star %}
+        Add
+      {% else %}
+        Quick View
+      {% endif %}
+      </a>
+  </div>
+</div>
