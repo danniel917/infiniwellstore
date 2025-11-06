@@ -23,7 +23,8 @@
 <div id="product" class="product">
   {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
     {%- assign t = template | split: '.' | first -%}
-    <div class="breadcrump hide" role="navigation" aria-label="breadcrumbs">
+    <!-- Breadcrumb - Visible -->
+    <div class="breadcrump" role="navigation" aria-label="breadcrumbs">
       <div class="container-1300">
         <ul>
           <li>
@@ -45,22 +46,34 @@
       </div>
     </div>
   {%- endunless -%}
-  <div class="container-1220 flex-wrap">
-    {% comment %}
-      <div class=" block-980">
-        <span class="product__pre-title hide"></span>
-        <h2 class="h1 product__title uppercase">
-          {% if product.metafields.product.display_name != blank %}
-            {{ product.metafields.product.display_name }}
-          {% else %}
-            {{ product.title }}
-          {% endif %}
-        </h2>
-        <p>Enhances your sleep & offers nutritional support</p>
-      </div>
-    {% endcomment %}
-    <!-- Left Product Image Slider Section -->
 
+  <!-- Product Title -->
+  <div class="container-1220">
+    <h1 class="js__pdp-title uppercase small">
+      {% if product.metafields.custom.alternate_title != blank %}
+        {{ product.metafields.custom.alternate_title }}
+      {% else %}
+        {{ product.title }}
+      {% endif %}
+    </h1>
+
+    <!-- Product Short Description -->
+    {% if product.metafields.product.short_description != blank %}
+      <div class="description">
+        <p>
+          {{ product.metafields.product.short_description }}
+        </p>
+      </div>
+    {% endif %}
+
+    <!-- Reviews -->
+    <div class="product-reviews-summary">
+      {% render 'okendo-reviews-product-rating-summary', product: product %}
+    </div>
+  </div>
+
+  <div class="container-1220 flex-wrap">
+    <!-- Product Media -->
     <div class="left-section">
       {% include 'product_images' %}
       <div class="five-column-icons-section none-980">
@@ -87,37 +100,19 @@
       data-extra-tab-content="{{ section.settings.extra_tab_content }}"
       data-enable-history-state="true"
     >
-      <div class="">
-        <h1 class=" js__pdp-title uppercase small">
-          {% if product.metafields.custom.alternate_title != blank %}
-            {{ product.metafields.custom.alternate_title }}
-          {% else %}
-            {{ product.title }}
-          {% endif %}
-        </h1>
-        <!-- Product Short Description -->
-        {% if product.metafields.product.short_description != blank %}
-          <div class="description">
-            <p>
-              {{ product.metafields.product.short_description }}
-            </p>
-          </div>
-        {% endif %}
-        <div class="flex-column price__wrapper ">
-          {% comment %} Price {% endcomment %}
-          <div class=" ">
-            <!-- i have removed this class for the time being js__product-single__prices -->
-            <div
-              class="product-single__prices "
-              content="{{ current_variant.price | divided_by: 100.00 }}"
-            >
-              {% if product.price < product.compare_at_price %}
-                <span>{{ product.price | money }}</span> <s>{{ product.compare_at_price | money }}</s>
-              {% else %}
-                <span> {{ product.price | money }}</span>
-              {% endif %}
-            </div>
-            {% render 'okendo-reviews-product-rating-summary', product: product %}
+      <!-- Price - Hidden -->
+      <div class="flex-column price__wrapper hide">
+        {% comment %} Price {% endcomment %}
+        <div class="">
+          <div
+            class="product-single__prices"
+            content="{{ current_variant.price | divided_by: 100.00 }}"
+          >
+            {% if product.price < product.compare_at_price %}
+              <span>{{ product.price | money }}</span> <s>{{ product.compare_at_price | money }}</s>
+            {% else %}
+              <span> {{ product.price | money }}</span>
+            {% endif %}
           </div>
         </div>
       </div>
