@@ -23,26 +23,20 @@
 <div id="product" class="product">
   {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
     {%- assign t = template | split: '.' | first -%}
-    <!-- Breadcrumb - Visible -->
+    <!-- Breadcrumb - Single Line -->
     <div class="breadcrump" role="navigation" aria-label="breadcrumbs">
       <div class="container-1300">
-        <ul>
-          <li>
-            <a href="/"> Home </a>
-          </li>
-          {% assign full_url = request.path %}
-          {% assign productURL = full_url | split: '/' %}
-          {% if productURL[1] == 'collections' %}
-            <li>
-              <a href="{{ collections[productURL[2] ].url }}" title="{{ collections[productURL[2] ].title }}">
-                {{ collections[productURL[2]].title }}
-              </a>
-            </li>
-          {% endif %}
-          <li class="active">
-            <span>{{ product.title }}</span>
-          </li>
-        </ul>
+        {% assign full_url = request.path %}
+        {% assign productURL = full_url | split: '/' %}
+        <a href="/">Home</a>
+        {% if productURL[1] == 'collections' %}
+          <span> / </span>
+          <a href="{{ collections[productURL[2] ].url }}" title="{{ collections[productURL[2] ].title }}">
+            {{ collections[productURL[2]].title }}
+          </a>
+        {% endif %}
+        <span> / </span>
+        <span>{{ product.title }}</span>
       </div>
     </div>
   {%- endunless -%}
@@ -533,3 +527,11 @@
   </script>
 {% endif %}
 <span class="js__productid" data-id="{{product.id }}"></span>
+
+{% stylesheet %}
+  @media (max-width: 980px) {
+    .pdp-slider.pdp-slider {
+        margin-top: 0;
+    }
+}
+{% endstylesheet %}
