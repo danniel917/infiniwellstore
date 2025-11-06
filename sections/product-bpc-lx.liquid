@@ -1,0 +1,540 @@
+{% comment %}
+  ============================================================
+  CUSTOM SECTION: Product BPC-LX Layout
+  ============================================================
+  This is a duplicated section from product.liquid specifically
+  for the BPC-LX product template (product.bpc-lx.json).
+
+  You can now modify this section independently without affecting
+  the default product template.
+
+  Schema Name: "Product pages - BPC-LX"
+  Template: templates/product.bpc-lx.json
+  ============================================================
+{% endcomment %}
+
+{% if product.tags contains 'hide' or product.tags contains 'Hide' %}
+  <script>
+    window.location.href = '/collections/all';
+  </script>
+{% endif %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div id="product" class="product">
+  {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+    {%- assign t = template | split: '.' | first -%}
+    <div class="breadcrump hide" role="navigation" aria-label="breadcrumbs">
+      <div class="container-1300">
+        <ul>
+          <li>
+            <a href="/"> Home </a>
+          </li>
+          {% assign full_url = request.path %}
+          {% assign productURL = full_url | split: '/' %}
+          {% if productURL[1] == 'collections' %}
+            <li>
+              <a href="{{ collections[productURL[2] ].url }}" title="{{ collections[productURL[2] ].title }}">
+                {{ collections[productURL[2]].title }}
+              </a>
+            </li>
+          {% endif %}
+          <li class="active">
+            <span>{{ product.title }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  {%- endunless -%}
+  <div class="container-1220 flex-wrap">
+    {% comment %}
+      <div class=" block-980">
+        <span class="product__pre-title hide"></span>
+        <h2 class="h1 product__title uppercase">
+          {% if product.metafields.product.display_name != blank %}
+            {{ product.metafields.product.display_name }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+        </h2>
+        <p>Enhances your sleep & offers nutritional support</p>
+      </div>
+    {% endcomment %}
+    <!-- Left Product Image Slider Section -->
+
+    <div class="left-section">
+      {% include 'product_images' %}
+      <div class="five-column-icons-section none-980">
+        <ul class="flex">
+          {% for value in product.metafields.accentuate.ico %}
+            {% assign image = product.metafields.accentuate.ico[forloop.index0] | first %}
+            <li>
+              <div class="image-section">
+                <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Product Information Section -->
+    <div
+      class="product__information"
+      id="ProductSection"
+      data-section-id="{{ section.id }}"
+      data-section-type="product-template"
+      data-image-zoom-type="{{ section.settings.product_image_zoom_type }}"
+      data-extra-tab-content="{{ section.settings.extra_tab_content }}"
+      data-enable-history-state="true"
+    >
+      <div class="">
+        <h1 class=" js__pdp-title uppercase small">
+          {% if product.metafields.custom.alternate_title != blank %}
+            {{ product.metafields.custom.alternate_title }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+        </h1>
+        <!-- Product Short Description -->
+        {% if product.metafields.product.short_description != blank %}
+          <div class="description">
+            <p>
+              {{ product.metafields.product.short_description }}
+            </p>
+          </div>
+        {% endif %}
+        <div class="flex-column price__wrapper ">
+          {% comment %} Price {% endcomment %}
+          <div class=" ">
+            <!-- i have removed this class for the time being js__product-single__prices -->
+            <div
+              class="product-single__prices "
+              content="{{ current_variant.price | divided_by: 100.00 }}"
+            >
+              {% if product.price < product.compare_at_price %}
+                <span>{{ product.price | money }}</span> <s>{{ product.compare_at_price | money }}</s>
+              {% else %}
+                <span> {{ product.price | money }}</span>
+              {% endif %}
+            </div>
+            {% render 'okendo-reviews-product-rating-summary', product: product %}
+          </div>
+        </div>
+      </div>
+
+      <!-- 980 Ends -->
+      {% comment %}
+        <div class="">
+          <div class="product__reviews flex-space-between">
+            <!-- product type -->
+            {% if product.type != blank %}
+              <p class="h5">{{ product.type }}</p>
+            {% endif %}
+            <div data-oke-reviews-product-listing-rating>{{ product.metafields.okendo.ProductListingSnippet }}</div>
+          </div>
+        </div>
+      {% endcomment %}
+      {% comment %} information section ends {% endcomment %}
+      {% comment %} Scroll down to section {% endcomment %}
+      <a href="#" class="hide link--secondary ">View Ingredients & Nutrition Facts</a>
+      {% comment %} Form {% endcomment %}
+      <div class="product__form">
+        <form
+          action="/cart/add"
+          id="add-to-cart"
+          method="post"
+          enctype="multipart/form-data"
+          data-productid="{{ product.id }}"
+        >
+
+
+          {% include 'product_linked-options' %}
+          {% for block in section.blocks -%}
+            {% case block.type %}
+              {% when '@app' %}
+                {% render block %}
+            {% endcase %}
+          {%- endfor %}
+          <div class="hide">
+            <select id="product-select" name="id" style="display: none;">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option
+                    {% if variant == current_variant %}
+                      selected="selected"
+                    {% endif %}
+                    value="{{ variant.id }}"
+                  >
+                    {{ variant.title }}
+                  </option>
+                {% else %}
+                  <option value="{{ variant.id }}">{{ variant.title }} - sold out!</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="product__actions flex">
+            <div class="product-single__quantity js-product-single__quantity js-quantity-hide">
+              <span class="hide">Qty</span>
+              <div class="quantity-outer " data-children-count="1">
+                <a class="minus-qty js-plus-minus-qty" data-type="minus">{% include 'icon-minus' %}</a>
+                <input
+                  type="number"
+                  class="quantity-selector js-quantity-selector"
+                  value="1"
+                  id="Quantity"
+                  name="quantity"
+                  min="1"
+                >
+                <a class="plus-qty js-plus-minus-qty" data-type="plus">{% include 'icon-plus' %}</a>
+              </div>
+            </div>
+            <div class="add-to-cart">
+              <button
+                type="submit"
+                name="add"
+                id="add"
+                class="btn--primary"
+                onclick="addItem('add-to-cart'); return false;"
+              >
+                <span class="pdp-add-to-cart-text">Add to Cart</span>
+                {% comment %} <span class="pdp-add-to-cart-price"></span> {% endcomment %}
+              </button>
+              <div class="trigger_disclaimer"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+      {% comment %} Form ends {% endcomment %}
+      {% comment %}
+        show success/error message if required.
+        This needs to be enabled in js
+      {% endcomment %}
+      <div id="cart-message"></div>
+      {% comment %} Tabs {% endcomment %}
+
+      <section class="pdp-tab-small">
+        <div class="pdp-tab-small__wrapper">
+          <div class="pdp-tab-small__wrapper__head none-980">
+            <ul class="flex">
+              {% for value in product.metafields['info-small-tabs'].title %}
+                {% assign title = product.metafields['info-small-tabs'].title[forloop.index0] %}
+
+                <li class="js__tab-small">
+                  <a
+                    class="pdp-tab-link"
+                    data-attr="{{title |  downcase | remove: ' '}}"
+                    id="tab-{{title |  downcase | remove: ' '}}"
+                  >
+                    {{- title -}}
+                  </a>
+                </li>
+              {% endfor %}
+              {% comment %} <a class="tab-link  active" id="tab-small-link-benefits" data-attr="benefits"> benefits </a> {% endcomment %}
+            </ul>
+          </div>
+          <div class="pdp-tab-small__wrapper__content none-980">
+            {% for header in product.metafields['info-small-tabs'].title %}
+              {% assign title = product.metafields['info-small-tabs'].title[forloop.index0] %}
+              {% assign titleid = product.metafields['info-small-tabs'].title[forloop.index0]
+                | downcase
+                | remove: ' '
+              %}
+              {% if titleid == 'howtouse' %}
+                <div class="pdp-tab-content content how-to-use-tab" id="{{title |  downcase | remove: ' '}}">
+                  {% for value in product.metafields.how_to_use.title -%}
+                    {% assign title = product.metafields.how_to_use.title[forloop.index0] %}
+                    {% assign description = product.metafields.how_to_use.description[forloop.index0] %}
+                    {% assign icon = product.metafields.how_to_use.icon[forloop.index0] | first %}
+                    <div class="inner-content">
+                      <div class="title">
+                        <img src="{{ icon.cloudinary_src}}" alt="{{icon.alt }}">
+                        <span class="h5">{{ title }}</span>
+                      </div>
+                      <div class="description">{{ description }}</div>
+                    </div>
+                  {%- endfor %}
+                </div>
+              {% else %}
+                <div class="pdp-tab-content content" id="{{title |  downcase | remove: ' '}}">
+                  {{ product.metafields['info-small-tabs'].description[forloop.index0] }}
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% comment %}
+              {% if product.metafields.overview_tab_section.heading_black != blank %}
+                <div class="tab-content   active" id="benefits" data-attr="tab-small-link-benefits">
+                  {% comment %} <a class="accordion-link " id="tab-small-link-benefits" data-attr="benefits">benefits</a> {% endcomment %}
+                  <div class="inner-content accordion-con benefits-content-wrapper">
+                    {% comment %}
+                      <h2 class="h2">
+
+
+                          <span class="color-grey h2">{{ product.metafields.overview_tab_section.heading_gray }}</span>
+
+                      </h2>
+                    {% endcomment %}
+                    <div class="benefits-content">
+                      {% comment %} {{ product.metafields.info-small-tabs.description }} {% endcomment %}
+                      {% comment %}
+                        <ul>
+                          {% for value in product.metafields.overview_tab_section.title %}
+                            {% assign title = product.metafields.overview_tab_section.title[forloop.index0] %}
+
+                            {% assign description = product.metafields.overview_tab_section.description[forloop.index0] %}
+                            <li>
+                              <h3 class="h5">{{ title }}</h3>
+                              <div class="description">
+                                {{ description }}
+                              </div>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endcomment %}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endcomment %}
+          </div>
+          <ul class="accordian js__accordian block-980">
+            {% for value in product.metafields['info-small-tabs'].title %}
+              {% assign Title = product.metafields['info-small-tabs'].title[forloop.index0] %}
+              {% assign titleid = product.metafields['info-small-tabs'].title[forloop.index0]
+                | downcase
+                | remove: ' '
+              %}
+              {% assign listContent = product.metafields['info-small-tabs'].description[forloop.index0] %}
+              <li class="outer-list">
+                <h3 class="h5">{{ Title }}</h3>
+                {% if titleid == 'howtouse' %}
+                  <div class="content how-to-use-tab">
+                    {% for value in product.metafields.how_to_use.title -%}
+                      {% assign title = product.metafields.how_to_use.title[forloop.index0] %}
+                      {% assign description = product.metafields.how_to_use.description[forloop.index0] %}
+                      {% assign icon = product.metafields.how_to_use.icon[forloop.index0] | first %}
+                      <div class="inner-content">
+                        <div class="title">
+                          <img src="{{ icon.cloudinary_src}}" alt="{{icon.alt }}">
+                          <span class="h5">{{ title }}</span>
+                        </div>
+                        <div class="description">{{ description }}</div>
+                      </div>
+                    {% endfor %}
+                    {% comment %} {{ listContent }} {% endcomment %}
+                  </div>
+                {% else %}
+                  <div class="content">
+                    {{ listContent }}
+                  </div>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+      </section>
+    </div>
+    {% comment %} Right section Ends {% endcomment %}
+  </div>
+</div>
+
+<span class="hide js__onetimeText">{{ section.settings.onetimeText }}</span>
+<span class="hide js__subscribeText">{{ section.settings.subscribeText }}</span>
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+{{ 'product-sticky-atc.css' | asset_url | stylesheet_tag }}
+<script src="{{'product-sticky-atc.js' | asset_url}}" defer="defer"></script>
+{% render 'product-sticky-atc' %}
+
+{% schema %}
+{
+  "name": "Product pages - BPC-LX",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "product_quantity_enable",
+      "label": {
+        "en": "Show quantity selector"
+      }
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Product options form (Not being used)"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_payment_button",
+      "label": {
+        "en": "Show dynamic checkout button"
+      },
+      "info": {
+        "en": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+      },
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Product Recharge Info"
+      }
+    },
+    {
+      "type": "text",
+      "id": "onetimeText",
+      "label": "Onetime Info"
+    },
+    {
+      "type": "text",
+      "id": "subscribeText",
+      "label": "Subscribe info"
+    }
+  ]
+  ,
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Information - BPC-LX"
+    }
+  ]
+}
+{% endschema %}
+{% if template contains 'product' %}
+  {% assign selected_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+  {% assign product_image = selected_variant.featured_image | default: product.featured_image %}
+  {%- capture product_name -%}
+        {{ product.title }}
+        {%- if selected_variant.title != 'Default Title' and selected_variant.option1 == 'Default Title' -%}
+          - {{ selected_variant.title }}
+        {%- endif -%}
+      {%- endcapture -%}
+  {%- assign now = 'now' | date: '%Y-%m-%d' | split: '-' -%}
+  {% capture year_from_now %}{{ now[0] | plus: 1 }}-{{ now[1] }}-{{ now[2] | at_most: 28 }}{% endcapture %}
+  <script type="application/ld+json">
+      {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "url": "{{shop.secure_url | escape}}{{ product.url | escape }}",
+            "name": {{ product_name | strip_newlines | json }},
+            "image": {{ product_image | img_url: '1024x1024' | prepend: 'https:' | json }},
+            "gtin12": {{ selected_variant.barcode | json }},
+            "description": {% if product.description == '""' or product.description == '' %}
+                {{ product.title | json }}
+              {% else %}
+                {{ product.description | strip_html | json }}
+              {% endif %},
+
+              {% if product.vendor %}
+              "brand": {
+                "@type": "Brand",
+                "name": {{ product.vendor | json }}
+              },
+            {% endif %}
+            {% if selected_variant.sku != blank %}
+        "sku": {{ selected_variant.sku | json }},
+      {% endif %}
+      {% if selected_variant.barcode != blank %}
+      "mpn": {{ selected_variant.barcode | json }},
+    {% endif %}
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ selected_variant.price | divided_by: 100.0 | json }},
+      "availability": "http://schema.org/{% if selected_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+      "url": "{{ shop.url }}{{ selected_variant.url }}",
+      "seller": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      },
+      "priceValidUntil": {{ year_from_now | json }},
+      {% assign price = selected_variant.price | divided_by: 100.0 %}
+      {% if price >= 75 %}
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 0,
+            "currency": "USD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 4,
+              "unitCode": "DAY"
+            }
+          }
+        },
+      {% else %}
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 4.95,
+            "currency": "USD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 4,
+              "unitCode": "DAY"
+            }
+          }
+        },
+      {% endif %}
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    }
+    {% if product.metafields.reviews.rating_count and product.metafields.okendo.summaryData.reviewAverageValue != "0" %}
+    ,"aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": {{ product.metafields.okendo.summaryData.reviewAverageValue }},
+        "reviewCount": {{ product.metafields.reviews.rating_count }},
+        "bestRating": 5,
+        "worstRating": 1
+    }
+    {% endif %}
+      }
+  </script>
+{% endif %}
+<span class="js__productid" data-id="{{product.id }}"></span>

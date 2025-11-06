@@ -10,7 +10,7 @@
 {
   "sections": {
     "product_gDBkfE": {
-      "type": "product",
+      "type": "product-bpc-lx",
       "blocks": {
         "recharge_subscriptions_subscription_widget_GNm6Ba": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
