@@ -1,47 +1,115 @@
 {% comment %}
   Subscription Section
   Newsletter signup with email input and button
+  Similar to Feel the Difference but with newsletter form instead of icon+text
 {% endcomment %}
 
-<div class="subscription-win" style="padding: {{ section.settings.mobile_padding_top }}px {{ section.settings.mobile_padding_sides }}px {{ section.settings.mobile_padding_bottom }}px;">
+{{ 'subscription.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Dynamic Padding - Outer Container */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px;
+    padding-left: {{ section.settings.paddingleft | round: 0 }}px;
+    padding-right: {{ section.settings.paddingright | round: 0 }}px;
+  }
+
+  /* Mobile Padding - Outer Container */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottommobile | round: 0 }}px;
+      padding-left: {{ section.settings.paddingleftmobile | round: 0 }}px;
+      padding-right: {{ section.settings.paddingrightmobile | round: 0 }}px;
+    }
+  }
+
+  /* Image Container Height - Desktop */
+  .section-{{ section.id }} .subscription-win-image-container {
+    height: {{ section.settings.image_height_desktop | round: 0 }}px;
+    max-height: {{ section.settings.image_max_height_desktop | round: 0 }}px;
+  }
+
+  /* Image Container Height - Mobile */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} .subscription-win-image-container {
+      height: {{ section.settings.image_height_mobile | round: 0 }}px;
+      max-height: {{ section.settings.image_max_height_mobile | round: 0 }}px;
+    }
+  }
+
+  /* Content Container Padding - Desktop */
+  .section-{{ section.id }} .subscription-win-content {
+    padding-top: {{ section.settings.content_paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.content_paddingbottom | round: 0 }}px;
+    padding-left: {{ section.settings.content_paddingleft | round: 0 }}px;
+    padding-right: {{ section.settings.content_paddingright | round: 0 }}px;
+  }
+
+  /* Content Container Padding - Mobile */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} .subscription-win-content {
+      padding-top: {{ section.settings.content_paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.content_paddingbottommobile | round: 0 }}px;
+      padding-left: {{ section.settings.content_paddingleftmobile | round: 0 }}px;
+      padding-right: {{ section.settings.content_paddingrightmobile | round: 0 }}px;
+    }
+  }
+</style>
+
+<section class="subscription-win section-{{ section.id }}-padding section-{{ section.id }}">
   <div class="subscription-win-wrapper">
-    {% for block in section.blocks %}
-      {% case block.type %}
 
-        {% when 'image' %}
-          <div class="subscription-win-image-container" style="height: {{ section.settings.mobile_image_height }}px;" {{ block.shopify_attributes }}>
-            {% if block.settings.image_desktop != blank or block.settings.image_mobile != blank %}
-              {% comment %} Desktop Image {% endcomment %}
-              {% if block.settings.image_desktop != blank %}
-                {{ block.settings.image_desktop | image_url: width: 1920 | image_tag: class: 'subscription-win-background-image none-480', loading: 'lazy' }}
-              {% endif %}
+    <!-- Image Container -->
+    <div class="subscription-win-image-container">
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <!-- Desktop Image -->
+          {% if block.settings.image_desktop != blank %}
+            {{ block.settings.image_desktop | image_url: width: 1920 | image_tag: class: 'subscription-win-background-image none-480', loading: 'lazy' }}
+          {% else %}
+            <div class="subscription-win-image-placeholder none-480">
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
 
-              {% comment %} Mobile Image {% endcomment %}
-              {% if block.settings.image_mobile != blank %}
-                {{ block.settings.image_mobile | image_url: width: 1344 | image_tag: class: 'subscription-win-background-image block-480', loading: 'lazy' }}
-              {% endif %}
-            {% else %}
-              <div class="subscription-win-image-placeholder">
-                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-            {% endif %}
-          </div>
+          <!-- Mobile Image -->
+          {% if block.settings.image_mobile != blank %}
+            {{ block.settings.image_mobile | image_url: width: 1344 | image_tag: class: 'subscription-win-background-image block-480', loading: 'lazy' }}
+          {% elsif block.settings.image_desktop != blank %}
+            {{ block.settings.image_desktop | image_url: width: 1344 | image_tag: class: 'subscription-win-background-image block-480', loading: 'lazy' }}
+          {% else %}
+            <div class="subscription-win-image-placeholder block-480">
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
 
-        {% when 'title' %}
+    <!-- Content Container -->
+    <div class="subscription-win-content">
+
+      {% for block in section.blocks %}
+
+        {% if block.type == 'title' %}
           <div class="subscription-win-title-wrapper align-{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
             {% if block.settings.title != blank %}
               <h2 class="subscription-win-title">{{ block.settings.title }}</h2>
             {% endif %}
           </div>
+        {% endif %}
 
-        {% when 'text' %}
+        {% if block.type == 'text' %}
           <div class="subscription-win-text-wrapper align-{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
-            {% if block.settings.text != blank %}
-              <div class="subscription-win-text">{{ block.settings.text }}</div>
+            {% if block.settings.content != blank %}
+              <div class="subscription-win-text">{{ block.settings.content }}</div>
             {% endif %}
           </div>
+        {% endif %}
 
-        {% when 'newsletter' %}
+        {% if block.type == 'newsletter' %}
           <div class="subscription-win-newsletter-wrapper" {{ block.shopify_attributes }}>
             {% form 'customer', id: 'SubscriptionWinForm', class: 'subscription-win-form' %}
               <input type="hidden" name="contact[tags]" value="newsletter">
@@ -74,55 +142,242 @@
               {% endif %}
             {% endform %}
           </div>
+        {% endif %}
 
-      {% endcase %}
-    {% endfor %}
+      {% endfor %}
+
+    </div>
+
   </div>
-</div>
+</section>
 
 {% schema %}
 {
   "name": "Subscription",
   "settings": [
     {
-      "type": "range",
-      "id": "mobile_padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "Mobile Padding Top",
-      "default": 40
+      "type": "header",
+      "content": "Section Padding (Desktop)"
     },
     {
       "type": "range",
-      "id": "mobile_padding_bottom",
+      "id": "paddingtop",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
-      "label": "Mobile Padding Bottom",
-      "default": 40
+      "label": "Padding Top",
+      "default": 0
     },
     {
       "type": "range",
-      "id": "mobile_padding_sides",
+      "id": "paddingbottom",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
-      "label": "Mobile Padding Sides",
-      "default": 16
+      "label": "Padding Bottom",
+      "default": 0
     },
     {
       "type": "range",
-      "id": "mobile_image_height",
+      "id": "paddingleft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingright",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingleftmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingrightmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Image Container (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "image_height_desktop",
       "min": 200,
       "max": 800,
       "step": 10,
       "unit": "px",
-      "label": "Mobile Image Height",
+      "label": "Height",
       "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_max_height_desktop",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Height",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Image Container (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "min": 150,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Height",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "image_max_height_mobile",
+      "min": 150,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Height",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Content Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "content_paddingtop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_paddingbottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_paddingleft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "content_paddingright",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Content Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "content_paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "content_paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "content_paddingleftmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "content_paddingrightmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
     }
   ],
   "blocks": [
@@ -134,12 +389,14 @@
         {
           "type": "image_picker",
           "id": "image_desktop",
-          "label": "Desktop Image"
+          "label": "Image (Desktop)",
+          "info": "1920px width recommended"
         },
         {
           "type": "image_picker",
           "id": "image_mobile",
-          "label": "Mobile Image"
+          "label": "Image (Mobile)",
+          "info": "1344px width recommended. Falls back to desktop if empty."
         }
       ]
     },
@@ -183,8 +440,8 @@
       "settings": [
         {
           "type": "richtext",
-          "id": "text",
-          "label": "Text",
+          "id": "content",
+          "label": "Content",
           "default": "<p>Join our newsletter for exclusive offers and health insights.</p>"
         },
         {
