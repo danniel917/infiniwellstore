@@ -9,56 +9,302 @@
  */
 {
   "sections": {
-    "product_gDBkfE": {
+    "product_bpc_lx_HgGmNM": {
       "type": "product-bpc-lx",
       "blocks": {
-        "recharge_subscriptions_subscription_widget_GNm6Ba": {
-          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
-          "disabled": true,
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "recharge_subscriptions_subscription_widget_v2_cgJg3L": {
+        "recharge_subscriptions_subscription_widget_v2_R49yjH": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         }
       },
       "block_order": [
-        "recharge_subscriptions_subscription_widget_GNm6Ba",
-        "recharge_subscriptions_subscription_widget_v2_cgJg3L"
+        "recharge_subscriptions_subscription_widget_v2_R49yjH"
       ],
+      "name": "Product Information - BPC-LX",
       "settings": {
         "product_quantity_enable": false,
         "enable_payment_button": true,
-        "onetimeText": "or set up interest-free payments with Shop Pay",
-        "subscribeText": "Delivery every 30 Days. Cancel anytime."
+        "onetimeText": "",
+        "subscribeText": ""
+      }
+    },
+    "full_width_media_blocks_C8n9tP": {
+      "type": "full-width-media-blocks",
+      "blocks": {
+        "content_block_yt4dhM": {
+          "type": "content_block",
+          "settings": {
+            "image": "shopify://shop_images/Line_6.svg",
+            "image_max_width": 198,
+            "title": "Unmatched Convenience",
+            "description": "<p>Take anytime, anywhere. No needles or bulky containers. Stable in all temperatures.</p>",
+            "alignment": "left"
+          }
+        },
+        "content_block_PhdRNG": {
+          "type": "content_block",
+          "settings": {
+            "image": "shopify://shop_images/Line_6_1.svg",
+            "image_max_width": 174,
+            "title": "Rapid Absorption & Bioavailability",
+            "description": "<p>Via LipoEmulsion lipid-based oral delivery.</p>",
+            "alignment": "right"
+          }
+        }
+      },
+      "block_order": [
+        "content_block_yt4dhM",
+        "content_block_PhdRNG"
+      ],
+      "name": "Full Width Media Blocks",
+      "settings": {
+        "use_video_desktop": false,
+        "max_height_desktop": 650,
+        "video_mobile": "shopify://files/videos/infiniwell-bottle-mobile.webm",
+        "use_video_mobile": true,
+        "max_height_mobile": 500,
+        "overlay_enable": false,
+        "overlay_opacity": 80,
+        "paddingtop": 80,
+        "paddingtopmobile": 56,
+        "paddingbottom": 80,
+        "paddingbottomMobile": 56
+      }
+    },
+    "benefits_QejPjz": {
+      "type": "benefits",
+      "blocks": {
+        "video_34dadH": {
+          "type": "video",
+          "settings": {
+            "video_mobile": "shopify://files/videos/3_b047c752-d98a-41c8-8906-31c364492aec.mp4"
+          }
+        },
+        "title_3mpVei": {
+          "type": "title",
+          "settings": {
+            "title": "Benefits of Daily Use",
+            "alignment": "center"
+          }
+        },
+        "collapsible_6BDKcC": {
+          "type": "collapsible",
+          "settings": {
+            "icon_image": "shopify://shop_images/IW-Sleep-Gradient_2.png",
+            "title": "Joint Renewal",
+            "content": "<p>Maintains healthy connective tissue and supports joint flexibility for comfortable and fluid movement</p>"
+          }
+        },
+        "collapsible_jaUhAK": {
+          "type": "collapsible",
+          "settings": {
+            "icon_image": "shopify://shop_images/IW-Aging-Gradient_2924794f-4703-44be-9775-8384f9d5e5b7_2.png",
+            "title": "Muscle Recovery",
+            "content": "<p>Promotes healthy tissue function and cellular stability after physical activity or stress.</p>"
+          }
+        },
+        "button_EDrYjn": {
+          "type": "button",
+          "settings": {
+            "button_label": "Experience BPC-Lx",
+            "button_url": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "video_34dadH",
+        "title_3mpVei",
+        "collapsible_6BDKcC",
+        "collapsible_jaUhAK",
+        "button_EDrYjn"
+      ],
+      "name": "Benefits",
+      "settings": {
+        "paddingtop": 60,
+        "paddingbottom": 60,
+        "paddingtopmobile": 40,
+        "paddingbottommobile": 40,
+        "content_paddingtop": 60,
+        "content_paddingbottom": 60,
+        "content_paddingtopmobile": 40,
+        "content_paddingbottommobile": 40
+      }
+    },
+    "what_to_expect_xRkEqL": {
+      "type": "what-to-expect",
+      "blocks": {
+        "title_AJiULr": {
+          "type": "title",
+          "settings": {
+            "title": "What to Expect from BPC-Lx*",
+            "alignment": "left"
+          }
+        },
+        "stat_Ncwf7d": {
+          "type": "stat",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "counter_number": "93%",
+            "content": "<p>Joint comfort & function</p>"
+          }
+        },
+        "stat_7WEjgt": {
+          "type": "stat",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "counter_number": "92%",
+            "content": "<p>Strength & recovery</p>"
+          }
+        },
+        "stat_7zeizF": {
+          "type": "stat",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "counter_number": "83%",
+            "content": "<p>Digestive balance</p>"
+          }
+        },
+        "stat_rTpVq3": {
+          "type": "stat",
+          "settings": {
+            "icon": "shopify://shop_images/Layer_1.svg",
+            "counter_number": "92%",
+            "content": "<p>Difference in 4 weeks</p>"
+          }
+        },
+        "rich_text_YYtLVM": {
+          "type": "rich_text",
+          "settings": {
+            "content": "<p>*Study conducted over 3,000 InfiniWell members, aggregated population health data over one year.<br/><a href=\"#\" title=\"#\"><em>See the live study</em></a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_AJiULr",
+        "stat_Ncwf7d",
+        "stat_7WEjgt",
+        "stat_7zeizF",
+        "stat_rTpVq3",
+        "rich_text_YYtLVM"
+      ],
+      "name": "What to Expect",
+      "settings": {
+        "paddingtop": 60,
+        "paddingbottom": 60,
+        "paddingleft": 15,
+        "paddingright": 15,
+        "paddingtopmobile": 48,
+        "paddingbottommobile": 0,
+        "paddingleftmobile": 32,
+        "paddingrightmobile": 32
+      }
+    },
+    "media_background_EWf36P": {
+      "type": "media-background",
+      "name": "Media Background",
+      "settings": {
+        "max_height_desktop": 600,
+        "use_video_desktop": false,
+        "flip_horizontal_desktop": false,
+        "max_height_mobile": 165,
+        "image_mobile": "shopify://shop_images/a51ab71348952073100d3245f5d7a5365853bd3c_1.gif",
+        "use_video_mobile": false,
+        "flip_horizontal_mobile": true
+      }
+    },
+    "professional_brand_BaihKC": {
+      "type": "professional-brand",
+      "blocks": {
+        "image_JUMtLV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Vector.svg",
+            "image_width": 140
+          }
+        },
+        "title_8Vnj8A": {
+          "type": "title",
+          "settings": {
+            "title": "#1 Professional Brand",
+            "alignment": "left"
+          }
+        },
+        "media_VBfH6c": {
+          "type": "media",
+          "settings": {
+            "use_video_desktop": false,
+            "image_mobile": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e.gif",
+            "use_video_mobile": false
+          }
+        },
+        "rich_text_HXKxRD": {
+          "type": "rich_text",
+          "settings": {
+            "content": "<p>Teaming up with world-class researcher. Trusted by over 25k+ medical professionals globally.</p>"
+          }
+        },
+        "button_nKXarz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Professional Product Info",
+            "button_url": ""
+          }
+        },
+        "logo_marquee_6XBbdM": {
+          "type": "logo_marquee",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image_JUMtLV",
+        "title_8Vnj8A",
+        "media_VBfH6c",
+        "rich_text_HXKxRD",
+        "button_nKXarz",
+        "logo_marquee_6XBbdM"
+      ],
+      "name": "Professional Brand",
+      "settings": {
+        "paddingtop": 60,
+        "paddingbottom": 60,
+        "paddingleft": 15,
+        "paddingright": 15,
+        "paddingtopmobile": 40,
+        "paddingbottommobile": 40,
+        "paddingleftmobile": 32,
+        "paddingrightmobile": 32
       }
     },
     "pdp_ingredients_slider_kfGJJH": {
       "type": "pdp-Ingredients-slider",
+      "disabled": true,
       "settings": {}
     },
     "pdp_tab_section_QxyRcd": {
       "type": "pdp-tab-section",
+      "disabled": true,
       "settings": {}
     },
     "pdp_reviews_9MHAWi": {
       "type": "pdp-reviews",
+      "disabled": true,
       "settings": {}
     },
     "product_recommendations_96y7Ew": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "title": ""
       }
     },
     "related_products_Jg4r6B": {
       "type": "related-products",
+      "disabled": true,
       "settings": {}
     },
     "product_faq_y9BRKL": {
       "type": "product-faq",
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 768px) {h2 {text-align: left; max-width: 90%; margin: 0 auto; } p {text-align: left; }}"
       ],
@@ -68,7 +314,12 @@
     }
   },
   "order": [
-    "product_gDBkfE",
+    "product_bpc_lx_HgGmNM",
+    "full_width_media_blocks_C8n9tP",
+    "benefits_QejPjz",
+    "what_to_expect_xRkEqL",
+    "media_background_EWf36P",
+    "professional_brand_BaihKC",
     "pdp_ingredients_slider_kfGJJH",
     "pdp_tab_section_QxyRcd",
     "pdp_reviews_9MHAWi",

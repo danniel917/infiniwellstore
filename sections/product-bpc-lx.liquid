@@ -13,11 +13,11 @@
   ============================================================
 {% endcomment %}
 
-{% if product.tags contains 'hide' or product.tags contains 'Hide' %}
+{% comment %} {% if product.tags contains 'hide' or product.tags contains 'Hide' %}
   <script>
     window.location.href = '/collections/all';
   </script>
-{% endif %}
+{% endif %} {% endcomment %}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <div id="product" class="product">
@@ -135,6 +135,25 @@
       {% comment %} Scroll down to section {% endcomment %}
       <a href="#" class="hide link--secondary ">View Ingredients & Nutrition Facts</a>
       {% comment %} Form {% endcomment %}
+       <div class="product-benefits_section">
+        <div class="product-benefits_section_inner">
+          <div class="product-benefits_section_inner_content">
+            {% assign benefit_items = "LipoEmulsion™ Tasteless fine mist|Bypasses digestion for rapid onset|cGMP manufactured in the USA|3rd-party tested by ISO-Certified Labs" | split: "|" %}
+            {% for i in (1..4) %}
+              {% assign item_text = benefit_items[forloop.index0] %}
+              <div class="inner-content">
+                <div class="title">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ item_text }}</span>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+       </div>
+       
       <div class="product__form">
         <form
           action="/cart/add"

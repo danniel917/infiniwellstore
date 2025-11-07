@@ -9,30 +9,23 @@
  */
 {
   "sections": {
-    "product_gDBkfE": {
+    "product_h7ccLw": {
       "type": "product",
       "blocks": {
-        "recharge_subscriptions_subscription_widget_GNm6Ba": {
-          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget/371eed76-0b44-4869-9813-730372ea378e",
-          "disabled": true,
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "recharge_subscriptions_subscription_widget_v2_cgJg3L": {
+        "recharge_subscriptions_subscription_widget_v2_4Fnthf": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         }
       },
       "block_order": [
-        "recharge_subscriptions_subscription_widget_GNm6Ba",
-        "recharge_subscriptions_subscription_widget_v2_cgJg3L"
+        "recharge_subscriptions_subscription_widget_v2_4Fnthf"
       ],
+      "name": "Product Information",
       "settings": {
         "product_quantity_enable": false,
         "enable_payment_button": true,
-        "onetimeText": "or set up interest-free payments with Shop Pay",
-        "subscribeText": "Delivery every 30 Days. Cancel anytime."
+        "onetimeText": "",
+        "subscribeText": ""
       }
     },
     "pdp_ingredients_slider_kfGJJH": {
@@ -68,7 +61,7 @@
     }
   },
   "order": [
-    "product_gDBkfE",
+    "product_h7ccLw",
     "pdp_ingredients_slider_kfGJJH",
     "pdp_tab_section_QxyRcd",
     "pdp_reviews_9MHAWi",
