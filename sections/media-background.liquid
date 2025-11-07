@@ -1,0 +1,178 @@
+{% comment %}
+  Section: Media Background
+  - Full-width section with media background
+  - Video or Image options for desktop and mobile
+  - Max height settings for mobile and desktop
+{% endcomment %}
+
+{{ 'media-background.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Dynamic Height */
+  .section-{{ section.id }} {
+    height: {{ section.settings.max_height_desktop | round: 0 }}px;
+  }
+
+  /* Transform Desktop */
+  {% if section.settings.flip_horizontal_desktop %}
+    .section-{{ section.id }} .media-background-video.none-480,
+    .section-{{ section.id }} .media-background-image.none-480 {
+      transform: scaleX(-1);
+    }
+  {% endif %}
+
+  /* Mobile Height and Transform */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      height: {{ section.settings.max_height_mobile | round: 0 }}px;
+    }
+
+    {% if section.settings.flip_horizontal_mobile %}
+      .section-{{ section.id }} .media-background-video.block-480,
+      .section-{{ section.id }} .media-background-image.block-480 {
+        transform: scaleX(-1);
+      }
+    {% endif %}
+  }
+</style>
+
+<section class="media-background section-{{ section.id }}">
+  <div class="media-container">
+
+    {% if section.settings.use_video_desktop %}
+      <!-- Desktop Video -->
+      {% if section.settings.video_desktop != blank %}
+        {{ section.settings.video_desktop | video_tag: autoplay: true, loop: true, muted: true, class: 'media-background-video none-480' }}
+      {% endif %}
+    {% else %}
+      <!-- Desktop Image -->
+      {% if section.settings.image_desktop != blank %}
+        <img
+          class="media-background-image none-480"
+          src="{{ section.settings.image_desktop | image_url: width: 2880 }}"
+          alt="{{ section.settings.image_desktop.alt }}"
+          width="2880"
+          height="1620"
+          loading="lazy">
+      {% endif %}
+    {% endif %}
+
+    {% if section.settings.use_video_mobile %}
+      <!-- Mobile Video -->
+      {% if section.settings.video_mobile != blank %}
+        {% assign mobile_video = section.settings.video_mobile %}
+      {% else %}
+        {% assign mobile_video = section.settings.video_desktop %}
+      {% endif %}
+      {% if mobile_video != blank %}
+        {{ mobile_video | video_tag: autoplay: true, loop: true, muted: true, class: 'media-background-video block-480' }}
+      {% endif %}
+    {% else %}
+      <!-- Mobile Image -->
+      {% if section.settings.image_mobile != blank %}
+        {% assign mobile_image = section.settings.image_mobile %}
+      {% else %}
+        {% assign mobile_image = section.settings.image_desktop %}
+      {% endif %}
+      {% if mobile_image != blank %}
+        <img
+          class="media-background-image block-480"
+          src="{{ mobile_image | image_url: width: 750 }}"
+          alt="{{ mobile_image.alt }}"
+          width="750"
+          height="1400"
+          loading="lazy">
+      {% endif %}
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Media Background",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop Settings"
+    },
+    {
+      "type": "range",
+      "id": "max_height_desktop",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Height (Desktop)",
+      "default": 600
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Background Image (Desktop)",
+      "info": "2880 x 1620px recommended"
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Background Video (Desktop)",
+      "info": "Upload or select video from Files"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_video_desktop",
+      "label": "Use video instead of image (Desktop)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_horizontal_desktop",
+      "label": "Flip Horizontal (Desktop)",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+    {
+      "type": "range",
+      "id": "max_height_mobile",
+      "min": 100,
+      "max": 500,
+      "step": 5,
+      "unit": "px",
+      "label": "Max Height (Mobile)",
+      "default": 165
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "750 x 1400px recommended. Falls back to desktop if empty."
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Background Video (Mobile)",
+      "info": "Optional - falls back to desktop video if empty"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_video_mobile",
+      "label": "Use video instead of image (Mobile)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_horizontal_mobile",
+      "label": "Flip Horizontal (Mobile)",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Background"
+    }
+  ]
+}
+{% endschema %}

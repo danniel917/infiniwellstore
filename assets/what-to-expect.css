@@ -1,0 +1,200 @@
+/* ============================================================
+   What to Expect Section Styles
+   ============================================================ */
+
+/* Section Base - Full Width */
+.what-to-expect {
+  position: relative;
+  width: 100%;
+}
+
+/* Container with Max Width */
+.what-to-expect .container-expect {
+  position: relative;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Title Wrapper - Mobile First */
+.what-to-expect .title-wrapper {
+  margin-bottom: 30px;
+}
+
+.what-to-expect .title-wrapper.align-left {
+  text-align: left;
+}
+
+.what-to-expect .title-wrapper.align-center {
+  text-align: center;
+}
+
+.what-to-expect .title-wrapper.align-right {
+  text-align: right;
+}
+
+.what-to-expect .expect-title {
+  color: var(--txt-dark, #1A1B1B);
+  font-size: 32px;
+  font-style: normal;
+  line-height: 40px;
+  margin: 0;
+  text-transform: inherit;
+  max-width: 90%;
+}
+
+/* Stats Container */
+.what-to-expect .stats-container {
+  margin-bottom: 30px;
+}
+
+/* Stat Item - Mobile First */
+.what-to-expect .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.what-to-expect .stat-item.border-bottom {
+  border-bottom: 1px solid #D9D9D9;
+}
+
+/* Stat Icon */
+.what-to-expect .stat-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.what-to-expect .stat-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.what-to-expect .stat-icon.placeholder svg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Stat Content */
+.what-to-expect .stat-content {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Counter Wrapper - Creates the container for lottery effect */
+.what-to-expect .stat-counter-wrapper {
+  display: inline-block;
+}
+
+.what-to-expect .stat-counter {
+  color: var(--txt-dark, #1A1B1B);
+  text-align: right;
+  font-size: 32px;
+  font-style: normal;
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  margin: 0;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 2px;
+  height: 40px;
+  vertical-align: top;
+}
+
+/* Individual digit wrapper */
+.what-to-expect .counter-digit-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  height: 40px;
+  width: 1ch; /* Reserve space for a single digit character */
+  vertical-align: top;
+  position: relative;
+}
+
+/* Container that holds all numbers 0-9 and animates */
+.what-to-expect .counter-digit-container {
+  display: block;
+  transform: translateY(0);
+  will-change: transform;
+  transition: transform 2000ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Individual number in the lottery roll */
+.what-to-expect .counter-number {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  color: var(--txt-dark, #1A1B1B);
+  font-size: 32px;
+  font-style: normal;
+  letter-spacing: -0.64px;
+  text-align: center;
+  white-space: nowrap;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* Suffix (% sign) */
+.what-to-expect .counter-suffix {
+  color: var(--txt-dark, #1A1B1B);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.64px;
+  display: inline-block;
+  height: 40px;
+  vertical-align: top;
+}
+
+.what-to-expect .stat-text {
+  color: var(--old-v1-txt-dark, #1A1B1B);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.what-to-expect .stat-text p {
+  margin: 0 0 10px 0;
+}
+
+.what-to-expect .stat-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Rich Text Wrapper */
+.what-to-expect .rich-text-wrapper {
+  margin-top: 20px;
+}
+
+.what-to-expect .rich-text-wrapper p,
+.what-to-expect .rich-text-wrapper div,
+.what-to-expect .rich-text-wrapper a {
+  color: var(--txt-disclaim, #84827E);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+
+.what-to-expect .rich-text-wrapper p > a  {
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.what-to-expect .rich-text-wrapper p:last-child,
+.what-to-expect .rich-text-wrapper div:last-child {
+  margin-bottom: 0;
+}

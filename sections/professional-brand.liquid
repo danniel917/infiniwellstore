@@ -1,0 +1,427 @@
+{% comment %}
+  Section: Professional Brand
+  - Full-width section with header, media, content, and logo marquee
+  - Image, title, video/image media, rich text, button, and logo slider
+{% endcomment %}
+
+{{ 'professional-brand.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Dynamic Padding */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px;
+    padding-left: {{ section.settings.paddingleft | round: 0 }}px;
+    padding-right: {{ section.settings.paddingright | round: 0 }}px;
+  }
+
+  /* Mobile Padding */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottommobile | round: 0 }}px;
+      padding-left: {{ section.settings.paddingleftmobile | round: 0 }}px;
+      padding-right: {{ section.settings.paddingrightmobile | round: 0 }}px;
+    }
+  }
+
+  /* Dynamic Image Width */
+  {% for block in section.blocks %}
+    {% if block.type == 'image' %}
+      .section-{{ section.id }} .brand-image-{{ block.id }} img {
+        max-width: {{ block.settings.image_width | round: 0 }}px;
+      }
+    {% endif %}
+  {% endfor %}
+</style>
+
+<section class="professional-brand section-{{ section.id }}-padding section-{{ section.id }}">
+  <div class="container-brand">
+
+    <!-- Header Container -->
+    <div class="brand-header">
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <div class="brand-image brand-image-{{ block.id }}" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.image.alt }}"
+                width="600"
+                height="600"
+                loading="lazy">
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.type == 'title' %}
+          <div class="brand-title-wrapper align-{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h2 class="brand-title">{{ block.settings.title }}</h2>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Media Container -->
+    <div class="brand-media">
+      {% for block in section.blocks %}
+        {% if block.type == 'media' %}
+          {% if block.settings.use_video_desktop %}
+            <!-- Desktop Video -->
+            {% if block.settings.video_desktop != blank %}
+              {{ block.settings.video_desktop | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'brand-media-video none-480' }}
+            {% else %}
+              <div class="brand-media-placeholder none-480">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% else %}
+            <!-- Desktop Image -->
+            {% if block.settings.image_desktop != blank %}
+              <img
+                class="brand-media-image none-480"
+                src="{{ block.settings.image_desktop | image_url: width: 1440 }}"
+                alt="{{ block.settings.image_desktop.alt }}"
+                width="1440"
+                height="810"
+                loading="lazy">
+            {% else %}
+              <div class="brand-media-placeholder none-480">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% endif %}
+
+          {% if block.settings.use_video_mobile %}
+            <!-- Mobile Video -->
+            {% if block.settings.video_mobile != blank %}
+              {% assign mobile_video = block.settings.video_mobile %}
+            {% else %}
+              {% assign mobile_video = block.settings.video_desktop %}
+            {% endif %}
+            {% if mobile_video != blank %}
+              {{ mobile_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'brand-media-video block-480' }}
+            {% else %}
+              <div class="brand-media-placeholder block-480">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% else %}
+            <!-- Mobile Image -->
+            {% if block.settings.image_mobile != blank %}
+              {% assign mobile_image = block.settings.image_mobile %}
+            {% else %}
+              {% assign mobile_image = block.settings.image_desktop %}
+            {% endif %}
+            {% if mobile_image != blank %}
+              <img
+                class="brand-media-image block-480"
+                src="{{ mobile_image | image_url: width: 750 }}"
+                alt="{{ mobile_image.alt }}"
+                width="750"
+                height="1000"
+                loading="lazy">
+            {% else %}
+              <div class="brand-media-placeholder block-480">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Content Container -->
+    <div class="brand-content">
+      {% for block in section.blocks %}
+        {% if block.type == 'rich_text' %}
+          <div class="brand-richtext" {{ block.shopify_attributes }}>
+            {% if block.settings.content != blank %}
+              {{ block.settings.content }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.type == 'button' %}
+          {% if block.settings.button_label != blank %}
+            <div class="brand-button-wrapper" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.button_url }}" class="btn--primary">
+                {{ block.settings.button_label }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <!-- Logo Marquee -->
+  {% for block in section.blocks %}
+    {% if block.type == 'logo_marquee' %}
+      <div class="brand-marquee" {{ block.shopify_attributes }}>
+        {% render 'logo-slider-marquee' %}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Professional Brand",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "paddingtop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "paddingbottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "paddingleft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "paddingright",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Section Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "paddingleftmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "paddingrightmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "label": "Image Width",
+          "default": 200
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "#1 Professional Brand"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "media",
+      "name": "Media (Video/Image)",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image (Desktop)",
+          "info": "1440 x 810px recommended"
+        },
+        {
+          "type": "video",
+          "id": "video_desktop",
+          "label": "Video (Desktop)"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_video_desktop",
+          "label": "Use video instead of image (Desktop)",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (Mobile)",
+          "info": "750 x 1000px recommended. Falls back to desktop if empty."
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "Video (Mobile)"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_video_mobile",
+          "label": "Use video instead of image (Mobile)",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "rich_text",
+      "name": "Rich Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Teaming up with world-class researcher. Trusted by over 25k+ medical professionals globally.</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Professional Product Info"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    },
+    {
+      "type": "logo_marquee",
+      "name": "Logo Marquee",
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Professional Brand",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "title"
+        },
+        {
+          "type": "media"
+        },
+        {
+          "type": "rich_text"
+        },
+        {
+          "type": "button"
+        },
+        {
+          "type": "logo_marquee"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

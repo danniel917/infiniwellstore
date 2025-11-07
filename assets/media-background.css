@@ -1,0 +1,49 @@
+/* ============================================================
+   Media Background Section Styles
+   ============================================================ */
+
+/* Section Base - Full Width */
+.media-background {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Media Container - Full Width, Full Height */
+.media-background .media-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Background Media - Full Width/Height */
+.media-background .media-background-video,
+.media-background .media-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile Responsive Utilities */
+@media screen and (max-width: 480px) {
+  .media-background .none-480 {
+    display: none !important;
+  }
+
+  .media-background .block-480 {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .media-background .block-480 {
+    display: none !important;
+  }
+
+  .media-background .none-480 {
+    display: block !important;
+  }
+}

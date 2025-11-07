@@ -1,0 +1,360 @@
+{% comment %} 
+    ============================================================
+    SECTION: Full Width Media with Content Blocks
+    ============================================================
+    Displays full-width background media (image or video) with
+    constrained inner content blocks.
+   
+    Features: 
+    - Full-width image or video background (separate for mobile/desktop) 
+    - Inner content constrained to 960px max-width 
+    - Up to 2 content blocks with optional images 
+    - Per-block text alignment 
+    - Adjustable padding and max-height per device 
+    - Optional background overlay for text readability 
+    - AOS animations support (disabled in Customizer)
+    ============================================================ 
+{% endcomment %}
+
+{{ 'full-width-media-blocks.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Dynamic Padding */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px;
+  }
+
+  /* Dynamic Max Height */
+  .section-{{ section.id }} {
+    height: {{ section.settings.max_height_desktop | round: 0 }}px;
+  }
+
+  /* Background Overlay */
+  {% if section.settings.overlay_enable %}
+    .section-{{ section.id }}::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+      z-index: 0;
+    }
+  {% endif %}
+
+  /* Block Image Custom Width */
+  {% for block in section.blocks %}
+    .section-{{ section.id }}
+    .block-{{ block.id }}
+    .block-image img {
+      max-width: {{ block.settings.image_max_width | round: 0 }}px;
+    }
+  {% endfor %}
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottomMobile | round: 0 }}px;
+    }
+
+    .section-{{ section.id }} {
+      height: {{ section.settings.max_height_mobile | round: 0 }}px;
+    }
+  }
+</style>
+
+<section class="full-width-media-blocks section-{{ section.id }}-padding section-{{ section.id }}">
+
+  <!-- Background Media (Absolute Positioned) -->
+  {% assign use_video_desktop = section.settings.use_video_desktop %}
+  {% assign use_video_mobile = section.settings.use_video_mobile %}
+
+    {%- if use_video_desktop -%}
+    <!-- Desktop Video Background -->
+    {% if section.settings.video_desktop != blank %}
+      {{ section.settings.video_desktop | video_tag: autoplay: true, loop: true, muted: true, class: 'media-background-video none-480' }}
+    {% endif %}
+  {% else %}
+    <!-- Desktop Image Background -->
+    {% if section.settings.image_desktop != blank %}
+      <img
+        class="media-background-image none-480"
+        src="{{ section.settings.image_desktop | image_url: width: 2880 }}"
+        alt="{{ section.settings.image_desktop.alt }}"
+        width="2880"
+        height="1620"
+        loading="lazy">
+    {% endif %}
+  {%- endif -%}
+
+  {%- if use_video_mobile -%}
+    <!-- Mobile Video Background -->
+    {% if section.settings.video_mobile != blank %}
+      {% assign mobile_video = section.settings.video_mobile %}
+    {% else %}
+      {% assign mobile_video = section.settings.video_desktop %}
+    {% endif %}
+    {% if mobile_video != blank %}
+      {{ mobile_video | video_tag: autoplay: true, loop: true, muted: true, class: 'media-background-video block-480' }}
+    {% endif %}
+  {% else %}
+    <!-- Mobile Image Background -->
+    {% if section.settings.image_mobile != blank %}
+      {% assign mobile_image = section.settings.image_mobile %}
+    {% else %}
+      {% assign mobile_image = section.settings.image_desktop %}
+    {% endif %}
+    {% if mobile_image != blank %}
+      <img
+        class="media-background-image block-480"
+        src="{{ mobile_image | image_url: width: 750 }}"
+        alt="{{ mobile_image.alt }}"
+        width="750"
+        height="1400"
+        loading="lazy">
+    {% endif %}
+  {%- endif -%}
+
+  <!-- Content Container (Relative Positioned, Flex Column) -->
+  <div class="container-960">
+    {% for block in section.blocks limit: 2 %}
+      {% assign alignment_class = '' %}
+      {% case block.settings.alignment %}
+        {% when 'left' %}
+          {% assign alignment_class = 'left-align' %}
+        {% when 'center' %}
+          {% assign alignment_class = 'center-align' %}
+        {% when 'right' %}
+          {% assign alignment_class = 'right-align' %}
+      {% endcase %}
+
+      <div
+        class="content-block block-{{ block.id }} {{ alignment_class }}"
+        {% unless request.design_mode %}
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="{{ forloop.index0 | times: 200 }}"
+        {% endunless %}
+        {{ block.shopify_attributes }}>
+
+        {% if block.settings.image != blank %}
+          <div class="block-image">
+            <img
+              src="{{ block.settings.image | image_url: width: 400 }}"
+              alt="{{ block.settings.image.alt }}"
+              width="400"
+              height="400"
+              loading="lazy">
+          </div>
+        {% endif %}
+
+        <div class="block-text">
+          {% if block.settings.title != blank %}
+            <h3 class="block-title h2">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.description != blank %}
+            <div class="block-description">
+              {{ block.settings.description }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Full Width Media Blocks",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background Media - Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Background Image (Desktop)",
+        "info": "2880 x 1620px recommended"
+      },
+      {
+        "type": "video",
+        "id": "video_desktop",
+        "label": "Background Video (Desktop)",
+        "info": "Upload or select video from Files"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_video_desktop",
+        "label": "Use video instead of image (Desktop)",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "max_height_desktop",
+        "min": 400,
+        "max": 1200,
+        "step": 50,
+        "unit": "px",
+        "label": "Maximum Height (Desktop)",
+        "default": 800
+      }, {
+        "type": "header",
+        "content": "Background Media - Mobile"
+      }, {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Background Image (Mobile)",
+        "info": "750 x 1400px recommended. Falls back to desktop if empty."
+      }, {
+        "type": "video",
+        "id": "video_mobile",
+        "label": "Background Video (Mobile)",
+        "info": "Optional - falls back to desktop video if empty"
+      }, {
+        "type": "checkbox",
+        "id": "use_video_mobile",
+        "label": "Use video instead of image (Mobile)",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "max_height_mobile",
+        "min": 300,
+        "max": 800,
+        "step": 50,
+        "unit": "px",
+        "label": "Maximum Height (Mobile)",
+        "default": 600
+      }, {
+        "type": "header",
+        "content": "Background Overlay"
+      }, {
+        "type": "checkbox",
+        "id": "overlay_enable",
+        "label": "Enable dark overlay",
+        "default": false,
+        "info": "Improves text readability over media"
+      }, {
+        "type": "range",
+        "id": "overlay_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Overlay Opacity",
+        "default": 40
+      }, {
+        "type": "header",
+        "content": "Spacing"
+      }, {
+        "type": "range",
+        "id": "paddingtop",
+        "min": 0,
+        "max": 140,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Desktop)",
+        "default": 80
+      }, {
+        "type": "range",
+        "id": "paddingtopmobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Top (Mobile)",
+        "default": 60
+      }, {
+        "type": "range",
+        "id": "paddingbottom",
+        "min": 0,
+        "max": 140,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Desktop)",
+        "default": 80
+      }, {
+        "type": "range",
+        "id": "paddingbottomMobile",
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Padding Bottom (Mobile)",
+        "default": 60
+      }
+    ],
+    "blocks": [
+      {
+        "type": "content_block",
+        "name": "Content Block",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image (Optional)",
+            "info": "Displayed above title."
+          },
+          {
+            "type": "range",
+            "id": "image_max_width",
+            "min": 100,
+            "max": 200,
+            "step": 1,
+            "unit": "px",
+            "label": "Image Max Width",
+            "default": 174
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Block Title"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": "Text Alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "center"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Width Media Blocks",
+        "blocks": [
+          {
+            "type": "content_block",
+            "settings": {
+              "title": "Content Block 1",
+              "description": "<p>Add your content here</p>",
+              "alignment": "center"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
