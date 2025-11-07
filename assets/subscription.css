@@ -1,0 +1,214 @@
+/* ============================================================
+   Subscription Section Styles
+   Mobile-First Approach
+   ============================================================ */
+
+/* Section Base */
+.subscription-win {
+  position: relative;
+  width: 100%;
+}
+
+/* Wrapper */
+.subscription-win .subscription-win-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 398px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Image Container - Full Width with Fixed Height */
+.subscription-win .subscription-win-image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-left: calc(-1 * var(--page-padding, 16px));
+  margin-right: calc(-1 * var(--page-padding, 16px));
+  width: calc(100% + 2 * var(--page-padding, 16px));
+}
+
+.subscription-win .subscription-win-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.subscription-win .subscription-win-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscription-win .subscription-win-image-placeholder .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* Title */
+.subscription-win .subscription-win-title-wrapper.align-left {
+  text-align: left;
+}
+
+.subscription-win .subscription-win-title-wrapper.align-center {
+  text-align: center;
+}
+
+.subscription-win .subscription-win-title-wrapper.align-right {
+  text-align: right;
+}
+
+.subscription-win .subscription-win-title {
+  color: var(--txt-dark, #1A1B1B);
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  margin: 0;
+}
+
+/* Text */
+.subscription-win .subscription-win-text-wrapper.align-left {
+  text-align: left;
+}
+
+.subscription-win .subscription-win-text-wrapper.align-center {
+  text-align: center;
+}
+
+.subscription-win .subscription-win-text-wrapper.align-right {
+  text-align: right;
+}
+
+.subscription-win .subscription-win-text p {
+  color: var(--txt-dark, #1A1B1B);
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Newsletter Form */
+.subscription-win .subscription-win-newsletter-wrapper {
+  width: 100%;
+}
+
+.subscription-win .subscription-win-form {
+  width: 100%;
+}
+
+.subscription-win .subscription-win-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Input Field */
+.subscription-win .subscription-win-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--txt-dark, #1A1B1B);
+  border-radius: 4px;
+  background-color: var(--txt-light, #FFFDF7);
+  color: var(--txt-dark, #1A1B1B);
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  box-sizing: border-box;
+}
+
+.subscription-win .subscription-win-input::placeholder {
+  color: rgba(26, 27, 27, 0.5);
+}
+
+.subscription-win .subscription-win-input:focus {
+  outline: none;
+  border-color: var(--txt-dark, #1A1B1B);
+}
+
+/* Button with Arrow */
+.subscription-win .btn--primary.subscription-win-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: var(--txt-dark, #1A1B1B);
+  color: var(--txt-light, #FFFDF7);
+  border: 1px solid var(--txt-dark, #1A1B1B);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.subscription-win .btn--primary.subscription-win-button:hover {
+  background-color: transparent;
+  color: var(--txt-dark, #1A1B1B);
+  border-color: var(--txt-dark, #1A1B1B);
+}
+
+.subscription-win .button-arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Success/Error Messages */
+.subscription-win .subscription-win-success-message {
+  color: #059669;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 8px 0 0;
+}
+
+.subscription-win .subscription-win-error-message {
+  color: #DC2626;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 8px 0 0;
+}
+
+/* Visibility Utilities */
+.subscription-win .none-480 {
+  display: block;
+}
+
+.subscription-win .block-480 {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .subscription-win .none-480 {
+    display: none !important;
+  }
+
+  .subscription-win .block-480 {
+    display: block !important;
+  }
+}
