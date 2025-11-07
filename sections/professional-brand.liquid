@@ -164,7 +164,7 @@
   {% for block in section.blocks %}
     {% if block.type == 'logo_marquee' %}
       <div class="brand-marquee" {{ block.shopify_attributes }}>
-        {% render 'logo-slider-marquee' %}
+        {% comment %} {% render 'logo-slider-marquee' %} {% endcomment %}
       </div>
     {% endif %}
   {% endfor %}

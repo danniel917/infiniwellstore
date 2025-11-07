@@ -103,6 +103,22 @@
             "content": "<p>Promotes healthy tissue function and cellular stability after physical activity or stress.</p>"
           }
         },
+        "collapsible_Qjipia": {
+          "type": "collapsible",
+          "settings": {
+            "icon_image": "shopify://shop_images/IW-Sleep-Gradient_3.png",
+            "title": "Gut Rejuvenation",
+            "content": "<p>Supports gut lining health and nutrient absorption for healthy digestive and nutrient absorption</p>"
+          }
+        },
+        "collapsible_RH4WTc": {
+          "type": "collapsible",
+          "settings": {
+            "icon_image": "shopify://shop_images/IW-Aging-Gradient_2924794f-4703-44be-9775-8384f9d5e5b7_3.png",
+            "title": "Whole Body Resilience",
+            "content": "<p>Promotes whole-body resilience by supporting cellular health and optimal response to everyday physical and environmental stress</p>"
+          }
+        },
         "button_EDrYjn": {
           "type": "button",
           "settings": {
@@ -116,6 +132,8 @@
         "title_3mpVei",
         "collapsible_6BDKcC",
         "collapsible_jaUhAK",
+        "collapsible_Qjipia",
+        "collapsible_RH4WTc",
         "button_EDrYjn"
       ],
       "name": "Benefits",
@@ -275,41 +293,96 @@
         "paddingrightmobile": 32
       }
     },
-    "pdp_ingredients_slider_kfGJJH": {
-      "type": "pdp-Ingredients-slider",
-      "disabled": true,
-      "settings": {}
-    },
-    "pdp_tab_section_QxyRcd": {
-      "type": "pdp-tab-section",
-      "disabled": true,
-      "settings": {}
-    },
-    "pdp_reviews_9MHAWi": {
-      "type": "pdp-reviews",
-      "disabled": true,
-      "settings": {}
-    },
-    "product_recommendations_96y7Ew": {
-      "type": "product-recommendations",
-      "disabled": true,
+    "no_promises_proof_zGBwjV": {
+      "type": "no-promises-proof",
+      "blocks": {
+        "image_XJPXLB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Vector_2.svg",
+            "image_width": 50
+          }
+        },
+        "title_jV9CGQ": {
+          "type": "title",
+          "settings": {
+            "title": "No Promises Just Proof",
+            "alignment": "left"
+          }
+        },
+        "rich_text_frPLax": {
+          "type": "rich_text",
+          "settings": {
+            "content": "<p>3rd-party tested by ISO-Certified Labs</p>",
+            "alignment": "left"
+          }
+        },
+        "lab_logo_LkPV3c": {
+          "type": "lab_logo",
+          "settings": {
+            "logo": "shopify://shop_images/Vector_941655a3-87ce-4d30-93ed-ff1acf3368ec.svg",
+            "url": "shopify://collections",
+            "passed_text": "Passed",
+            "list_items": "70 Different pesticides\n4 types of heavy metals\n16 different contaminants\n9 Microbial contaminants"
+          }
+        },
+        "lab_logo_9G7BBN": {
+          "type": "lab_logo",
+          "settings": {
+            "logo": "shopify://shop_images/MS_Bioanalytical.svg",
+            "url": "shopify://collections",
+            "passed_text": "Passed",
+            "list_items": "Purity, Potency, Identity\nMicrobiological, Allergens\nNon GMO"
+          }
+        }
+      },
+      "block_order": [
+        "image_XJPXLB",
+        "title_jV9CGQ",
+        "rich_text_frPLax",
+        "lab_logo_LkPV3c",
+        "lab_logo_9G7BBN"
+      ],
+      "name": "No Promises Just Proof",
       "settings": {
-        "title": ""
+        "background_color": "#fafafa",
+        "max_width": 1200,
+        "paddingtop": 60,
+        "paddingbottom": 60,
+        "paddingleft": 15,
+        "paddingright": 15,
+        "paddingtopmobile": 48,
+        "paddingbottommobile": 88,
+        "paddingleftmobile": 32,
+        "paddingrightmobile": 32
       }
+    },
+    "pdp_ingredients_slider_hnpBGU": {
+      "type": "pdp-Ingredients-slider",
+      "settings": {}
     },
     "related_products_Jg4r6B": {
       "type": "related-products",
       "disabled": true,
       "settings": {}
     },
+    "pdp_reviews_9MHAWi": {
+      "type": "pdp-reviews",
+      "settings": {}
+    },
     "product_faq_y9BRKL": {
       "type": "product-faq",
-      "disabled": true,
       "custom_css": [
         "@media (max-width: 768px) {h2 {text-align: left; max-width: 90%; margin: 0 auto; } p {text-align: left; }}"
       ],
       "settings": {
         "use_product_metafield": true
+      }
+    },
+    "product_recommendations_96y7Ew": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": ""
       }
     }
   },
@@ -320,11 +393,11 @@
     "what_to_expect_xRkEqL",
     "media_background_EWf36P",
     "professional_brand_BaihKC",
-    "pdp_ingredients_slider_kfGJJH",
-    "pdp_tab_section_QxyRcd",
-    "pdp_reviews_9MHAWi",
-    "product_recommendations_96y7Ew",
+    "no_promises_proof_zGBwjV",
+    "pdp_ingredients_slider_hnpBGU",
     "related_products_Jg4r6B",
-    "product_faq_y9BRKL"
+    "pdp_reviews_9MHAWi",
+    "product_faq_y9BRKL",
+    "product_recommendations_96y7Ew"
   ]
 }
