@@ -1,0 +1,189 @@
+/* ============================================================
+   Feel the Difference or it's Free Section Styles
+   Mobile-First Approach
+   ============================================================ */
+
+/* Section Base - Full Width */
+.feel-difference-free {
+  position: relative;
+  width: 100%;
+}
+
+/* Wrapper */
+.feel-difference-free .difference-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Image Container - Full Width with Fixed Height */
+.feel-difference-free .difference-image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.feel-difference-free .difference-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feel-difference-free .difference-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #E5E7EB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feel-difference-free .difference-image-placeholder .placeholder-svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* Content Container */
+.feel-difference-free .difference-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 398px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Title */
+.feel-difference-free .difference-title-wrapper.align-left {
+  text-align: left;
+}
+
+.feel-difference-free .difference-title-wrapper.align-center {
+  text-align: center;
+}
+
+.feel-difference-free .difference-title-wrapper.align-right {
+  text-align: right;
+}
+
+.feel-difference-free .difference-title {
+  color: var(--txt-dark, #1A1B1B);
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+  margin: 0;
+  text-transform: inherit;
+}
+
+/* Text */
+.feel-difference-free .difference-text-wrapper.align-left {
+  text-align: left;
+}
+
+.feel-difference-free .difference-text-wrapper.align-center {
+  text-align: center;
+}
+
+.feel-difference-free .difference-text-wrapper.align-right {
+  text-align: right;
+}
+
+.feel-difference-free .difference-text p {
+  color: var(--txt-dark, #1A1B1B);
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Icon + Text Row */
+.feel-difference-free .difference-icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feel-difference-free .icon-wrapper {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feel-difference-free .icon-image {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.feel-difference-free .icon-placeholder {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.feel-difference-free .icon-text {
+  color: var(--txt-dark, #1A1B1B);
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+/* Button */
+.feel-difference-free .difference-button-wrapper {
+  width: 100%;
+}
+
+.feel-difference-free .btn--primary.difference-button {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  background-color: var(--txt-dark, #1A1B1B);
+  color: var(--txt-light, #FFFDF7);
+  border: 1px solid var(--txt-dark, #1A1B1B);
+  border-radius: 4px;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.feel-difference-free .btn--primary.difference-button:hover {
+  background-color: transparent;
+  color: var(--txt-dark, #1A1B1B);
+}
+
+/* Visibility Utilities */
+.feel-difference-free .none-480 {
+  display: block;
+}
+
+.feel-difference-free .block-480 {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .feel-difference-free .none-480 {
+    display: none !important;
+  }
+
+  .feel-difference-free .block-480 {
+    display: block !important;
+  }
+}

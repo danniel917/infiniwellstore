@@ -1,0 +1,543 @@
+{% comment %}
+  Section: Feel the Difference or it's Free
+  - Full-width section with image background
+  - Content container with title, text, icon+text items, and button
+{% endcomment %}
+
+{{ 'feel-difference-free.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Dynamic Padding - Outer Container */
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.paddingbottom | round: 0 }}px;
+    padding-left: {{ section.settings.paddingleft | round: 0 }}px;
+    padding-right: {{ section.settings.paddingright | round: 0 }}px;
+  }
+
+  /* Mobile Padding - Outer Container */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.paddingbottommobile | round: 0 }}px;
+      padding-left: {{ section.settings.paddingleftmobile | round: 0 }}px;
+      padding-right: {{ section.settings.paddingrightmobile | round: 0 }}px;
+    }
+  }
+
+  /* Image Container Height - Desktop */
+  .section-{{ section.id }} .difference-image-container {
+    height: {{ section.settings.image_height_desktop | round: 0 }}px;
+    max-height: {{ section.settings.image_max_height_desktop | round: 0 }}px;
+  }
+
+  /* Image Container Height - Mobile */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} .difference-image-container {
+      height: {{ section.settings.image_height_mobile | round: 0 }}px;
+      max-height: {{ section.settings.image_max_height_mobile | round: 0 }}px;
+    }
+  }
+
+  /* Content Container Padding - Desktop */
+  .section-{{ section.id }} .difference-content {
+    padding-top: {{ section.settings.content_paddingtop | round: 0 }}px;
+    padding-bottom: {{ section.settings.content_paddingbottom | round: 0 }}px;
+    padding-left: {{ section.settings.content_paddingleft | round: 0 }}px;
+    padding-right: {{ section.settings.content_paddingright | round: 0 }}px;
+  }
+
+  /* Content Container Padding - Mobile */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} .difference-content {
+      padding-top: {{ section.settings.content_paddingtopmobile | round: 0 }}px;
+      padding-bottom: {{ section.settings.content_paddingbottommobile | round: 0 }}px;
+      padding-left: {{ section.settings.content_paddingleftmobile | round: 0 }}px;
+      padding-right: {{ section.settings.content_paddingrightmobile | round: 0 }}px;
+    }
+  }
+</style>
+
+<section class="feel-difference-free section-{{ section.id }}-padding section-{{ section.id }}">
+  <div class="difference-wrapper">
+
+    <!-- Image Container -->
+    <div class="difference-image-container">
+      {% for block in section.blocks %}
+        {% if block.type == 'image' %}
+          <!-- Desktop Image -->
+          {% if block.settings.image_desktop != blank %}
+            {{ block.settings.image_desktop | image_url: width: 1920 | image_tag: class: 'difference-background-image none-480', loading: 'lazy' }}
+          {% else %}
+            <div class="difference-image-placeholder none-480">
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+
+          <!-- Mobile Image -->
+          {% if block.settings.image_mobile != blank %}
+            {{ block.settings.image_mobile | image_url: width: 1344 | image_tag: class: 'difference-background-image block-480', loading: 'lazy' }}
+          {% elsif block.settings.image_desktop != blank %}
+            {{ block.settings.image_desktop | image_url: width: 1344 | image_tag: class: 'difference-background-image block-480', loading: 'lazy' }}
+          {% else %}
+            <div class="difference-image-placeholder block-480">
+              {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Content Container -->
+    <div class="difference-content">
+
+      {% for block in section.blocks %}
+
+        {% if block.type == 'title' %}
+          <div class="difference-title-wrapper align-{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h2 class="difference-title">{{ block.settings.title }}</h2>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.type == 'text' %}
+          <div class="difference-text-wrapper align-{{ block.settings.alignment }}" {{ block.shopify_attributes }}>
+            {% if block.settings.content != blank %}
+              <div class="difference-text">{{ block.settings.content }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.type == 'icon_text' %}
+          <div class="difference-icon-text" {{ block.shopify_attributes }}>
+            {% if block.settings.icon != blank %}
+              <div class="icon-wrapper">
+                <img
+                  src="{{ block.settings.icon | image_url: width: 48 }}"
+                  alt="{{ block.settings.icon.alt }}"
+                  class="icon-image"
+                  loading="lazy">
+              </div>
+            {% else %}
+              <div class="icon-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-placeholder">
+                  <rect width="24" height="24" rx="4" fill="#E5E7EB"/>
+                </svg>
+              </div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <span class="icon-text">{{ block.settings.text }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.type == 'button' %}
+          {% if block.settings.button_label != blank %}
+            <div class="difference-button-wrapper" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.button_url }}" class="btn btn--primary difference-button">
+                {{ block.settings.button_label }}
+              </a>
+            </div>
+          {% endif %}
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feel the Difference",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "paddingtop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingbottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingleft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingright",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingleftmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "paddingrightmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Image Container (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "image_height_desktop",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_max_height_desktop",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Height",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Image Container (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "min": 150,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Height",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "image_max_height_mobile",
+      "min": 150,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Height",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Content Padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "content_paddingtop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_paddingbottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_paddingleft",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "content_paddingright",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Content Padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "content_paddingtopmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "content_paddingbottommobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "content_paddingleftmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "content_paddingrightmobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Background Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image (Desktop)",
+          "info": "1920px width recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (Mobile)",
+          "info": "1344px width recommended. Falls back to desktop if empty."
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feel the Difference or it's Free"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>If you don't feel a difference in 30 days, we'll refund your order.</p>"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "icon_text",
+      "name": "Icon + Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image",
+          "info": "24x24px recommended"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature text"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Try BPC-Lx Risk-Free"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feel the Difference or it's Free",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "title"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "icon_text",
+          "settings": {
+            "text": "Fast + Free US Shipping"
+          }
+        },
+        {
+          "type": "icon_text",
+          "settings": {
+            "text": "Pause, adjust, or cancel anytime"
+          }
+        },
+        {
+          "type": "icon_text",
+          "settings": {
+            "text": "30-day money-back guarantee"
+          }
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
