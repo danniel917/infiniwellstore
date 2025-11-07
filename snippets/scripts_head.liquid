@@ -1,5 +1,5 @@
 {% comment %} AOS Style
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 {% endcomment %}
 {{ 'aos.css' | asset_url | stylesheet_tag }}
 
@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
   CartJS.init({{ cart | json }}, {
-  "debug": true
+  "debug": false
   });
 </script>
 <!-- PDP Page Variant Selection BEGINS -->

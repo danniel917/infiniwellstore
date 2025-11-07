@@ -20,10 +20,12 @@
     <!-- begin-boost-pfs-filter-css -->
     {% render 'boost-pfs-style' %}
     <!-- end-boost-pfs-filter-css -->
-    <script
-      async
-      defer
-      src="https://tools.luckyorange.com/core/lo.js?site-id=8894106a"></script>
+    {% unless request.design_mode %}
+      <script
+        async
+        defer
+        src="https://tools.luckyorange.com/core/lo.js?site-id=8894106a"></script>
+    {% endunless %}
 
 
     <script>
@@ -99,96 +101,106 @@
       });
     </script>
     <!-- Begin: Northbeam pixel -->
-    <script>
-      (function () {
-        var t;
-        ((n = t = t || {}).A = 'identify'),
-          (n.B = 'trackPageView'),
-          (n.C = 'fireEmailCaptureEvent'),
-          (n.D = 'fireCustomGoal'),
-          (n.E = 'firePurchaseEvent'),
-          (n.F = 'trackPageViewInitial');
-        var n = '//j.northbeam.io/ota-sp/f98b0c8d-ab0a-435c-909c-e61db824bd6a.js';
-        function r(n) {
-          for (var e = [], t = 1; t < arguments.length; t++) e[t - 1] = arguments[t];
-          a.push({ fnName: n, args: e });
-        }
-        var e,
-          a = [],
-          i =
-            (((e = {})[t.F] = function (n) {
-              r(t.F, n);
-            }),
-            ((i = { _q: a })[t.A] = function (n, e) {
-              return r(t.A, n, e);
-            }),
-            (i[t.B] = function () {
-              return r(t.B);
-            }),
-            (i[t.C] = function (n, e) {
-              return r(t.C, n, e);
-            }),
-            (i[t.D] = function (n, e) {
-              return r(t.D, n, e);
-            }),
-            (i[t.E] = function (n) {
-              return r(t.E, n);
-            }),
-            (window.Northbeam = i),
-            document.createElement('script'));
-        (i.async = !0), (i.src = n), document.head.appendChild(i), e.trackPageViewInitial(window.location.href);
-      })();
-    </script>
-    <!-- End: Northbeam pixel -->
-    <script>
-       window.Northbeam.fireCustomGoal("add_to_cart", {})
-       window.Northbeam.fireCustomGoal("initiate_checkout", {})
-    </script>
+    {% unless request.design_mode %}
+      <script>
+        (function () {
+          var t;
+          ((n = t = t || {}).A = 'identify'),
+            (n.B = 'trackPageView'),
+            (n.C = 'fireEmailCaptureEvent'),
+            (n.D = 'fireCustomGoal'),
+            (n.E = 'firePurchaseEvent'),
+            (n.F = 'trackPageViewInitial');
+          var n = '//j.northbeam.io/ota-sp/f98b0c8d-ab0a-435c-909c-e61db824bd6a.js';
+          function r(n) {
+            for (var e = [], t = 1; t < arguments.length; t++) e[t - 1] = arguments[t];
+            a.push({ fnName: n, args: e });
+          }
+          var e,
+            a = [],
+            i =
+              (((e = {})[t.F] = function (n) {
+                r(t.F, n);
+              }),
+              ((i = { _q: a })[t.A] = function (n, e) {
+                return r(t.A, n, e);
+              }),
+              (i[t.B] = function () {
+                return r(t.B);
+              }),
+              (i[t.C] = function (n, e) {
+                return r(t.C, n, e);
+              }),
+              (i[t.D] = function (n, e) {
+                return r(t.D, n, e);
+              }),
+              (i[t.E] = function (n) {
+                return r(t.E, n);
+              }),
+              (window.Northbeam = i),
+              document.createElement('script'));
+          (i.async = !0), (i.src = n), document.head.appendChild(i), e.trackPageViewInitial(window.location.href);
+        })();
+      </script>
+      <!-- End: Northbeam pixel -->
+      <script>
+         if (window.Northbeam) {
+           window.Northbeam.fireCustomGoal("add_to_cart", {})
+           window.Northbeam.fireCustomGoal("initiate_checkout", {})
+         }
+      </script>
+    {% endunless %}
 
     <!-- Attribution SDK - Jeeng -->
-    <script type="text/javascript">
-      window.jeeng_attribution = window.jeeng_attribution || [];
-      (function () {
-        var jn = document.createElement('script');
-        jn.async = true;
-        jn.src = 'https://cdn.powerinboxedge.com/events/jeeng-attribution.js';
-        var ref = document.getElementsByTagName('script')[0];
-        ref.parentNode.insertBefore(jn, ref);
-      })();
+    {% unless request.design_mode %}
+      <script type="text/javascript">
+        window.jeeng_attribution = window.jeeng_attribution || [];
+        (function () {
+          var jn = document.createElement('script');
+          jn.async = true;
+          jn.src = 'https://cdn.powerinboxedge.com/events/jeeng-attribution.js';
+          var ref = document.getElementsByTagName('script')[0];
+          ref.parentNode.insertBefore(jn, ref);
+        })();
 
-      window.jeeng_attribution.push(['init', { company: 4420 }]);
-    </script>
+        window.jeeng_attribution.push(['init', { company: 4420 }]);
+      </script>
+    {% endunless %}
 
     <!-- Taboola Pixel Code -->
-    <script type="text/javascript">
-      window._tfa = window._tfa || [];
-      window._tfa.push({ notify: 'event', name: 'page_view', id: 1792983 });
-      !(function (t, f, a, x) {
-        if (!document.getElementById(x)) {
-          t.async = 1;
-          t.src = a;
-          t.id = x;
-          f.parentNode.insertBefore(t, f);
-        }
-      })(
-        document.createElement('script'),
-        document.getElementsByTagName('script')[0],
-        '//cdn.taboola.com/libtrc/unip/1792983/tfa.js',
-        'tb_tfa_script'
-      );
-    </script>
+    {% unless request.design_mode %}
+      <script type="text/javascript">
+        window._tfa = window._tfa || [];
+        window._tfa.push({ notify: 'event', name: 'page_view', id: 1792983 });
+        !(function (t, f, a, x) {
+          if (!document.getElementById(x)) {
+            t.async = 1;
+            t.src = a;
+            t.id = x;
+            f.parentNode.insertBefore(t, f);
+          }
+        })(
+          document.createElement('script'),
+          document.getElementsByTagName('script')[0],
+          '//cdn.taboola.com/libtrc/unip/1792983/tfa.js',
+          'tb_tfa_script'
+        );
+      </script>
+    {% endunless %}
     <!-- End of Taboola Pixel Code -->
 
     <!-- GSC prefix property Lantern Sol -->
     <meta name="google-site-verification" content="QZztkRnCjic8xdadkhd_weuxp6Rf92UQMMFXsjWQkK8" />
     <!-- End of GSC prefix property Lantern Sol -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "sfwoafajaq");
-    </script>
+    {% unless request.design_mode %}
+      <script type="text/javascript">
+          (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "sfwoafajaq");
+      </script>
+    {% endunless %}
   </head>
 
   <body class="template-{{ request.page_type | handle }} ">
@@ -227,7 +239,7 @@
     <!-- end-boost-pfs-js -->
 
     <script>
-      AOS.init();
+      // Initialize AOS only once with proper options
       var options = {
         startEvent: 'cloneDOMContentLoaded',
       };
@@ -252,55 +264,57 @@
       // });
     </script>
     {% include 'ins_opensend' %}
-    <script>
-      window.addEventListener('load', function () {
-        var _learnq = window._learnq || [];
-        function addedToCart() {
-          fetch(`${window.location.origin}/cart.js`).then((res) =>
-            res
-              .clone()
-              .json()
-              .then((data) => {
-                var cart = {
-                  total_price: data.total_price / 100,
-                  $value: data.total_price / 100,
-                  total_discount: data.total_discount,
-                  original_total_price: data.original_total_price / 100,
-                  items: data.items,
-                };
-                if (item !== 'undefined') {
-                  cart = Object.assign(cart, item);
+    {% unless request.design_mode %}
+      <script>
+        window.addEventListener('load', function () {
+          var _learnq = window._learnq || [];
+          function addedToCart() {
+            fetch(`${window.location.origin}/cart.js`).then((res) =>
+              res
+                .clone()
+                .json()
+                .then((data) => {
+                  var cart = {
+                    total_price: data.total_price / 100,
+                    $value: data.total_price / 100,
+                    total_discount: data.total_discount,
+                    original_total_price: data.original_total_price / 100,
+                    items: data.items,
+                  };
+                  if (item !== 'undefined') {
+                    cart = Object.assign(cart, item);
+                  }
+                  if (klAjax) {
+                    _learnq.push(['track', 'Added to Cart', cart]);
+                    klAjax = false;
+                  }
+                })
+            );
+          }
+          (function (ns, fetch) {
+            ns.fetch = function () {
+              const response = fetch.apply(this, arguments);
+              response.then((res) => {
+                if (`${window.location.origin}/cart/add.js`.includes(res.url) && res.url !== '') {
+                  addedToCart();
                 }
-                if (klAjax) {
-                  _learnq.push(['track', 'Added to Cart', cart]);
-                  klAjax = false;
-                }
-              })
-          );
-        }
-        (function (ns, fetch) {
-          ns.fetch = function () {
-            const response = fetch.apply(this, arguments);
-            response.then((res) => {
-              if (`${window.location.origin}/cart/add.js`.includes(res.url) && res.url !== '') {
-                addedToCart();
+              });
+              return response;
+            };
+          })(window, window.fetch);
+          var klAjax = true;
+          var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+          for (var i = 0; i < atcButtons.length; i++) {
+            atcButtons[i].addEventListener('click', function () {
+              if (klAjax) {
+                _learnq.push(['track', 'Added to Cart', item]);
+                klAjax = false;
               }
             });
-            return response;
-          };
-        })(window, window.fetch);
-        var klAjax = true;
-        var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
-        for (var i = 0; i < atcButtons.length; i++) {
-          atcButtons[i].addEventListener('click', function () {
-            if (klAjax) {
-              _learnq.push(['track', 'Added to Cart', item]);
-              klAjax = false;
-            }
-          });
-        }
-      });
-    </script>
+          }
+        });
+      </script>
+    {% endunless %}
     <style>
       #dynamic-checkout-cart shopify-accelerated-checkout-cart {
         display: block !important;
@@ -321,22 +335,56 @@
     </style>
 
     <script>
-      var preLoaderCookie = readCookie('preloader');
+      // Skip preloader in customizer for performance
+      {% unless request.design_mode %}
+        (function() {
+          // Wait for jQuery to be available
+          function initPreloader() {
+            if (typeof jQuery !== 'undefined' && typeof readCookie === 'function') {
+              var preLoaderCookie = readCookie('preloader');
+              var preloader = document.getElementById('preloader');
+              
+              if (preloader) {
+                if (preLoaderCookie == null || preLoaderCookie != 'Yes') {
+                  jQuery('#preloader').children('img').show();
+                } else {
+                  jQuery('#preloader').hide();
+                }
 
-      if (preLoaderCookie == null || preLoaderCookie != 'Yes') {
-        $('#preloader').children('img').show();
-      } else {
-        $('#preloader').hide();
-      }
-
-      window.addEventListener('load', () => {
-        const preload = document.getElementById('preloader');
-        setTimeout(function () {
-          preload.classList.add('preload-finish');
-          preload.style.display = 'none';
-          createCookie('preloader', 'Yes', '1');
-        }, 1000);
-      });
+                window.addEventListener('load', () => {
+                  const preload = document.getElementById('preloader');
+                  if (preload) {
+                    setTimeout(function () {
+                      preload.classList.add('preload-finish');
+                      preload.style.display = 'none';
+                      if (typeof createCookie === 'function') {
+                        createCookie('preloader', 'Yes', '1');
+                      }
+                    }, 1000);
+                  }
+                });
+              }
+            } else {
+              // Retry if jQuery not loaded yet
+              setTimeout(initPreloader, 100);
+            }
+          }
+          
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPreloader);
+          } else {
+            initPreloader();
+          }
+        })();
+      {% else %}
+        // Hide preloader immediately in customizer
+        document.addEventListener('DOMContentLoaded', function() {
+          var preloader = document.getElementById('preloader');
+          if (preloader) {
+            preloader.style.display = 'none';
+          }
+        });
+      {% endunless %}
     </script>
 
     <script src="{{ 'custom.js' | asset_url }}" defer></script>
