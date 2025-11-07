@@ -7,12 +7,19 @@
 .feel-difference-free {
   position: relative;
   width: 100%;
+  background-color: #FEFFFE;
 }
 
 /* Wrapper */
 .feel-difference-free .difference-wrapper {
   position: relative;
   width: 100%;
+}
+
+.feel-difference-free .difference-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
 }
 
 /* Image Container - Full Width with Fixed Height */
@@ -73,7 +80,6 @@
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 32px;
   font-style: normal;
-  font-weight: 500;
   line-height: 40px;
   margin: 0;
   text-transform: inherit;
@@ -144,17 +150,15 @@
 /* Button */
 .feel-difference-free .difference-button-wrapper {
   width: 100%;
+  margin-top: 16px;
 }
 
 .feel-difference-free .btn--primary.difference-button {
   width: 100%;
-  display: inline-block;
   text-align: center;
   background-color: var(--txt-dark, #1A1B1B);
   color: var(--txt-light, #FFFDF7);
-  border: 1px solid var(--txt-dark, #1A1B1B);
-  border-radius: 4px;
-  padding: 12px 24px;
+  padding-block: 12px;
   text-decoration: none;
   transition: all 0.3s ease;
   font-family: Helvetica, sans-serif;
@@ -162,6 +166,7 @@
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.5px;
+  height: 50px;
 }
 
 .feel-difference-free .btn--primary.difference-button:hover {
