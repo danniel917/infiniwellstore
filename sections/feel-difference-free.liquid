@@ -1,7 +1,7 @@
-{% comment %}
-  Section: Feel the Difference or it's Free
-  - Full-width section with image background
-  - Content container with title, text, icon+text items, and button
+{% comment %} 
+  Section: Feel the Difference or it's Free 
+  - Full-width section with image background 
+  - Content container with title, text, icon+text items, and button 
 {% endcomment %}
 
 {{ 'feel-difference-free.css' | asset_url | stylesheet_tag }}
@@ -121,8 +121,18 @@
               </div>
             {% else %}
               <div class="icon-wrapper">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-placeholder">
-                  <rect width="24" height="24" rx="4" fill="#E5E7EB"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon-placeholder">
+                  <rect
+                    width="24"
+                    height="24"
+                    rx="4"
+                    fill="#E5E7EB" />
                 </svg>
               </div>
             {% endif %}
@@ -135,7 +145,7 @@
         {% if block.type == 'button' %}
           {% if block.settings.button_label != blank %}
             <div class="difference-button-wrapper" {{ block.shopify_attributes }}>
-              <a href="{{ block.settings.button_url }}" class="btn btn--primary difference-button">
+              <a href="{{ block.settings.button_url }}" class="btn--primary difference-button">
                 {{ block.settings.button_label }}
               </a>
             </div>
@@ -150,394 +160,359 @@
 </section>
 
 {% schema %}
-{
-  "name": "Feel the Difference",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Section Padding (Desktop)"
-    },
-    {
-      "type": "range",
-      "id": "paddingtop",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "paddingbottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "paddingleft",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Left",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "paddingright",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Right",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Section Padding (Mobile)"
-    },
-    {
-      "type": "range",
-      "id": "paddingtopmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "paddingbottommobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "paddingleftmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Left",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "paddingrightmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Right",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Image Container (Desktop)"
-    },
-    {
-      "type": "range",
-      "id": "image_height_desktop",
-      "min": 200,
-      "max": 800,
-      "step": 10,
-      "unit": "px",
-      "label": "Height",
-      "default": 400
-    },
-    {
-      "type": "range",
-      "id": "image_max_height_desktop",
-      "min": 200,
-      "max": 800,
-      "step": 10,
-      "unit": "px",
-      "label": "Max Height",
-      "default": 600
-    },
-    {
-      "type": "header",
-      "content": "Image Container (Mobile)"
-    },
-    {
-      "type": "range",
-      "id": "image_height_mobile",
-      "min": 150,
-      "max": 600,
-      "step": 10,
-      "unit": "px",
-      "label": "Height",
-      "default": 300
-    },
-    {
-      "type": "range",
-      "id": "image_max_height_mobile",
-      "min": 150,
-      "max": 600,
-      "step": 10,
-      "unit": "px",
-      "label": "Max Height",
-      "default": 400
-    },
-    {
-      "type": "header",
-      "content": "Content Padding (Desktop)"
-    },
-    {
-      "type": "range",
-      "id": "content_paddingtop",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "content_paddingbottom",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "content_paddingleft",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Left",
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "content_paddingright",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Right",
-      "default": 15
-    },
-    {
-      "type": "header",
-      "content": "Content Padding (Mobile)"
-    },
-    {
-      "type": "range",
-      "id": "content_paddingtopmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Top",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "content_paddingbottommobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Bottom",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "content_paddingleftmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Left",
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "content_paddingrightmobile",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding Right",
-      "default": 15
-    }
-  ],
-  "blocks": [
-    {
-      "type": "image",
-      "name": "Background Image",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image_desktop",
-          "label": "Image (Desktop)",
-          "info": "1920px width recommended"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_mobile",
-          "label": "Image (Mobile)",
-          "info": "1344px width recommended. Falls back to desktop if empty."
-        }
-      ]
-    },
-    {
-      "type": "title",
-      "name": "Title",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Feel the Difference or it's Free"
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
+  {
+    "name": "Feel the Difference",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section Padding (Desktop)"
+      },
+      {
+        "type": "range",
+        "id": "paddingtop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "paddingbottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "paddingleft",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "paddingright",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "Section Padding (Mobile)"
+      }, {
+        "type": "range",
+        "id": "paddingtopmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 32
+      }, {
+        "type": "range",
+        "id": "paddingbottommobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "paddingleftmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "paddingrightmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "Image Container (Desktop)"
+      }, {
+        "type": "range",
+        "id": "image_height_desktop",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Height",
+        "default": 400
+      }, {
+        "type": "range",
+        "id": "image_max_height_desktop",
+        "min": 200,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Max Height",
+        "default": 600
+      }, {
+        "type": "header",
+        "content": "Image Container (Mobile)"
+      }, {
+        "type": "range",
+        "id": "image_height_mobile",
+        "min": 150,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Height",
+        "default": 300
+      }, {
+        "type": "range",
+        "id": "image_max_height_mobile",
+        "min": 150,
+        "max": 600,
+        "step": 10,
+        "unit": "px",
+        "label": "Max Height",
+        "default": 400
+      }, {
+        "type": "header",
+        "content": "Content Padding (Desktop)"
+      }, {
+        "type": "range",
+        "id": "content_paddingtop",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "content_paddingbottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 40
+      }, {
+        "type": "range",
+        "id": "content_paddingleft",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 15
+      }, {
+        "type": "range",
+        "id": "content_paddingright",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 15
+      }, {
+        "type": "header",
+        "content": "Content Padding (Mobile)"
+      }, {
+        "type": "range",
+        "id": "content_paddingtopmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 32
+      }, {
+        "type": "range",
+        "id": "content_paddingbottommobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 32
+      }, {
+        "type": "range",
+        "id": "content_paddingleftmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Left",
+        "default": 15
+      }, {
+        "type": "range",
+        "id": "content_paddingrightmobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Right",
+        "default": 15
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Background Image",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image (Desktop)",
+            "info": "1920px width recommended"
+          }, {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image (Mobile)",
+            "info": "1344px width recommended. Falls back to desktop if empty."
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Feel the Difference or it's Free"
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "<p>If you don't feel a difference in 30 days, we'll refund your order.</p>"
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": "Alignment",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          }
+        ]
+      },
+      {
+        "type": "icon_text",
+        "name": "Icon + Text",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icon Image",
+            "info": "24x24px recommended"
+          }, {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Feature text"
+          }
+        ]
+      }, {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label",
+            "default": "Try BPC-Lx Risk-Free"
+          }, {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Feel the Difference or it's Free",
+        "blocks": [
+          {
+            "type": "image"
+          },
+          {
+            "type": "title"
+          },
+          {
+            "type": "text"
+          },
+          {
+            "type": "icon_text",
+            "settings": {
+              "text": "Fast + Free US Shipping"
             }
-          ],
-          "default": "left"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "Text",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>If you don't feel a difference in 30 days, we'll refund your order.</p>"
-        },
-        {
-          "type": "select",
-          "id": "alignment",
-          "label": "Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
+          }, {
+            "type": "icon_text",
+            "settings": {
+              "text": "Pause, adjust, or cancel anytime"
             }
-          ],
-          "default": "left"
-        }
-      ]
-    },
-    {
-      "type": "icon_text",
-      "name": "Icon + Text",
-      "limit": 3,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "icon",
-          "label": "Icon Image",
-          "info": "24x24px recommended"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Feature text"
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "Button",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button Label",
-          "default": "Try BPC-Lx Risk-Free"
-        },
-        {
-          "type": "url",
-          "id": "button_url",
-          "label": "Button URL"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Feel the Difference or it's Free",
-      "blocks": [
-        {
-          "type": "image"
-        },
-        {
-          "type": "title"
-        },
-        {
-          "type": "text"
-        },
-        {
-          "type": "icon_text",
-          "settings": {
-            "text": "Fast + Free US Shipping"
+          }, {
+            "type": "icon_text",
+            "settings": {
+              "text": "30-day money-back guarantee"
+            }
+          }, {
+            "type": "button"
           }
-        },
-        {
-          "type": "icon_text",
-          "settings": {
-            "text": "Pause, adjust, or cancel anytime"
-          }
-        },
-        {
-          "type": "icon_text",
-          "settings": {
-            "text": "30-day money-back guarantee"
-          }
-        },
-        {
-          "type": "button"
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}
