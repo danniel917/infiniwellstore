@@ -45,7 +45,7 @@
           "type": "content_block",
           "settings": {
             "image": "shopify://shop_images/Line_6_1.svg",
-            "image_max_width": 174,
+            "image_max_width": 165,
             "title": "Rapid Absorption & Bioavailability",
             "description": "<p>Via LipoEmulsion lipid-based oral delivery.</p>",
             "alignment": "right"
@@ -60,8 +60,8 @@
       "settings": {
         "use_video_desktop": false,
         "max_height_desktop": 650,
-        "video_mobile": "shopify://files/videos/infiniwell-bottle-mobile.webm",
-        "use_video_mobile": true,
+        "image_mobile": "shopify://shop_images/12c411281ee4d87021364590e73abae8938aa9fc.gif",
+        "use_video_mobile": false,
         "max_height_mobile": 500,
         "overlay_enable": false,
         "overlay_opacity": 80,
@@ -140,12 +140,12 @@
       "settings": {
         "paddingtop": 60,
         "paddingbottom": 60,
-        "paddingtopmobile": 40,
-        "paddingbottommobile": 40,
-        "content_paddingtop": 60,
-        "content_paddingbottom": 60,
-        "content_paddingtopmobile": 40,
-        "content_paddingbottommobile": 40
+        "paddingtopmobile": 0,
+        "paddingbottommobile": 50,
+        "content_paddingtop": 0,
+        "content_paddingbottom": 0,
+        "content_paddingtopmobile": 0,
+        "content_paddingbottommobile": 0
       }
     },
     "what_to_expect_xRkEqL": {
@@ -329,7 +329,7 @@
         "lab_logo_9G7BBN": {
           "type": "lab_logo",
           "settings": {
-            "logo": "shopify://shop_images/MS_Bioanalytical.svg",
+            "logo": "shopify://shop_images/msb-logo.svg",
             "url": "shopify://collections",
             "passed_text": "Passed",
             "list_items": "Purity, Potency, Identity\nMicrobiological, Allergens\nNon GMO"
@@ -346,6 +346,7 @@
       "name": "No Promises Just Proof",
       "settings": {
         "background_color": "#fafafa",
+        "background_image": "shopify://shop_images/3rdparty-bg-mobile.png",
         "max_width": 1200,
         "paddingtop": 60,
         "paddingbottom": 60,
@@ -355,6 +356,91 @@
         "paddingbottommobile": 88,
         "paddingleftmobile": 32,
         "paddingrightmobile": 32
+      }
+    },
+    "feel_difference_free_7aqf3a": {
+      "type": "feel-difference-free",
+      "blocks": {
+        "image_xemEhF": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify://shop_images/image_54.jpg"
+          }
+        },
+        "title_tdxdBr": {
+          "type": "title",
+          "settings": {
+            "title": "Feel the Difference or it's Free",
+            "alignment": "left"
+          }
+        },
+        "text_mrXhU8": {
+          "type": "text",
+          "settings": {
+            "content": "<p>If you don't feel a difference in 30 days, we'll refund your order.</p>",
+            "alignment": "left"
+          }
+        },
+        "icon_text_hikGQN": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/shipping-fast-solid.svg",
+            "text": "Fast + Free US Shipping"
+          }
+        },
+        "icon_text_9aLiGP": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/pencil-alt-solid.svg",
+            "text": "Pause, adjust, or cancel anytime"
+          }
+        },
+        "icon_text_Rrw9zQ": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shopify://shop_images/redo-alt-solid.svg",
+            "text": "30-day money-back guarantee"
+          }
+        },
+        "button_VaBr6D": {
+          "type": "button",
+          "settings": {
+            "button_label": "Try BPC-Lx Risk-Free",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_xemEhF",
+        "title_tdxdBr",
+        "text_mrXhU8",
+        "icon_text_hikGQN",
+        "icon_text_9aLiGP",
+        "icon_text_Rrw9zQ",
+        "button_VaBr6D"
+      ],
+      "name": "Feel the Difference or it's Free",
+      "settings": {
+        "paddingtop": 0,
+        "paddingbottom": 0,
+        "paddingleft": 0,
+        "paddingright": 0,
+        "paddingtopmobile": 0,
+        "paddingbottommobile": 48,
+        "paddingleftmobile": 0,
+        "paddingrightmobile": 0,
+        "image_height_desktop": 400,
+        "image_max_height_desktop": 600,
+        "image_height_mobile": 300,
+        "image_max_height_mobile": 300,
+        "content_paddingtop": 40,
+        "content_paddingbottom": 40,
+        "content_paddingleft": 15,
+        "content_paddingright": 15,
+        "content_paddingtopmobile": 0,
+        "content_paddingbottommobile": 0,
+        "content_paddingleftmobile": 32,
+        "content_paddingrightmobile": 32
       }
     },
     "pdp_ingredients_slider_hnpBGU": {
@@ -379,6 +465,68 @@
         "use_product_metafield": true
       }
     },
+    "subscription_fz6phF": {
+      "type": "subscription",
+      "blocks": {
+        "image_re8FVR": {
+          "type": "image",
+          "settings": {
+            "image_mobile": "shopify://shop_images/image_54_1.png",
+            "image_height_desktop": 400,
+            "image_max_height_desktop": 600,
+            "image_height_mobile": 420,
+            "image_max_height_mobile": 420
+          }
+        },
+        "title_PD6i9B": {
+          "type": "title",
+          "settings": {
+            "title": "Win a Month's Supply of BPC-Lx",
+            "alignment": "left"
+          }
+        },
+        "text_ea4a9F": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Join our newsletter for exclusive offers and health insights.</p>",
+            "alignment": "left"
+          }
+        },
+        "newsletter_TPXPtG": {
+          "type": "newsletter",
+          "settings": {
+            "placeholder": "Enter your email",
+            "button_text": "Enter To Win",
+            "success_message": "Thanks for subscribing!"
+          }
+        }
+      },
+      "block_order": [
+        "image_re8FVR",
+        "title_PD6i9B",
+        "text_ea4a9F",
+        "newsletter_TPXPtG"
+      ],
+      "name": "Subscription",
+      "settings": {
+        "paddingtop": 0,
+        "paddingbottom": 0,
+        "paddingleft": 0,
+        "paddingright": 0,
+        "paddingtopmobile": 48,
+        "paddingbottommobile": 48,
+        "paddingleftmobile": 32,
+        "paddingrightmobile": 32,
+        "content_paddingtop": 0,
+        "content_paddingbottom": 0,
+        "content_paddingleft": 0,
+        "content_paddingright": 0,
+        "content_paddingtopmobile": 0,
+        "content_paddingbottommobile": 0,
+        "content_paddingleftmobile": 0,
+        "content_paddingrightmobile": 0
+      }
+    },
     "product_recommendations_96y7Ew": {
       "type": "product-recommendations",
       "settings": {
@@ -394,10 +542,12 @@
     "media_background_EWf36P",
     "professional_brand_BaihKC",
     "no_promises_proof_zGBwjV",
+    "feel_difference_free_7aqf3a",
     "pdp_ingredients_slider_hnpBGU",
     "related_products_Jg4r6B",
     "pdp_reviews_9MHAWi",
     "product_faq_y9BRKL",
+    "subscription_fz6phF",
     "product_recommendations_96y7Ew"
   ]
 }
