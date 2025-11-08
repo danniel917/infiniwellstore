@@ -19,7 +19,7 @@
 
 /* Title Wrapper - Mobile First */
 .what-to-expect .title-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .what-to-expect .title-wrapper.align-left {
@@ -46,34 +46,37 @@
 
 /* Stats Container */
 .what-to-expect .stats-container {
-  margin-bottom: 30px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 /* Stat Item - Mobile First */
 .what-to-expect .stat-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 20px 0;
+  gap: 16px;
 }
 
 .what-to-expect .stat-item.border-bottom {
   border-bottom: 1px solid #D9D9D9;
+  padding-bottom: 24px;
 }
 
 /* Stat Icon */
 .what-to-expect .stat-icon {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 20px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .what-to-expect .stat-icon img {
-  width: 48px;
-  height: 48px;
+  width:100%;
+  height:100%;
   object-fit: contain;
 }
 
@@ -104,10 +107,9 @@
   letter-spacing: -0.64px;
   margin: 0;
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 2px;
   height: 40px;
-  vertical-align: top;
 }
 
 /* Individual digit wrapper */
@@ -146,14 +148,12 @@
 /* Suffix (% sign) */
 .what-to-expect .counter-suffix {
   color: var(--txt-dark, #1A1B1B);
-  font-size: 32px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 40px;
-  letter-spacing: -0.64px;
-  display: inline-block;
-  height: 40px;
-  vertical-align: top;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.4px;
 }
 
 .what-to-expect .stat-text {
@@ -174,10 +174,6 @@
 }
 
 /* Rich Text Wrapper */
-.what-to-expect .rich-text-wrapper {
-  margin-top: 20px;
-}
-
 .what-to-expect .rich-text-wrapper p,
 .what-to-expect .rich-text-wrapper div,
 .what-to-expect .rich-text-wrapper a {
