@@ -9,6 +9,15 @@
   overflow: hidden;
 }
 
+.media-background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: linear-gradient(#FEFFFE, transparent, #FEFFFE);
+}
+
 /* Media Container - Full Width, Full Height */
 .media-background .media-container {
   position: relative;
