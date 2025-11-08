@@ -15,17 +15,19 @@
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
 }
 
 /* Header Container - Max Width 512px */
 .professional-brand .brand-header {
   max-width: 512px;
-  margin-bottom: 32px;
 }
 
 /* Brand Image */
 .professional-brand .brand-image {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .professional-brand .brand-image img {
@@ -35,10 +37,6 @@
 }
 
 /* Title Wrapper */
-.professional-brand .brand-title-wrapper {
-  margin-bottom: 20px;
-}
-
 .professional-brand .brand-title-wrapper.align-left {
   text-align: left;
 }
@@ -65,7 +63,6 @@
 /* Media Container - Max Width 720px */
 .professional-brand .brand-media {
   max-width: 720px;
-  margin-bottom: 32px;
   overflow: hidden;
 }
 
