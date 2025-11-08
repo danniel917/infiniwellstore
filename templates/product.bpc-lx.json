@@ -454,6 +454,10 @@
     },
     "pdp_reviews_9MHAWi": {
       "type": "pdp-reviews",
+      "custom_css": [
+        ".product-reviews-widget {background: var(--bg-white, #FEFFFE);}",
+        "h2.text-center {text-align: left; text-transform: capitalize; font-size: 32px;}"
+      ],
       "settings": {}
     },
     "product_faq_y9BRKL": {
