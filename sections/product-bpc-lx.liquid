@@ -20,38 +20,35 @@
 {% endif %} {% endcomment %}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-<div id="product" class="product">
+<div id="product" class="product {{ template.suffix }}">
   {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-    {%- assign t = template | split: '.' | first -%}
-    <!-- Breadcrumb - Single Line -->
-    <div class="breadcrump" role="navigation" aria-label="breadcrumbs" style="font-weight: normal;">
-      <div class="container-1300">
-        {% assign full_url = request.path %}
-        {% assign productURL = full_url | split: '/' %}
-
-        <a href="{{ routes.root_url }}" style="font-weight: normal;">Home</a>
-        <span> / </span>
-
-        {% if productURL[1] == 'collections' and collections[productURL[2]] %}
-          <a href="{{ collections[productURL[2]].url }}" title="{{ collections[productURL[2]].title }}" style="font-weight: normal;">
-            {{ collections[productURL[2]].title }}
-          </a>
-          <span> / </span>
-        {% elsif product.collections.size > 0 %}
-          <a href="{{ product.collections.first.url }}" title="{{ product.collections.first.title }}" style="font-weight: normal;">
-            {{ product.collections.first.title }}
-          </a>
-          <span> / </span>
-        {% endif %}
-
-        <span style="font-weight: normal;">{{ product.title }}</span>
-      </div>
-    </div>
+    {% comment %} {%- assign t = template | split: '.' | first -%} {% endcomment %}
   {%- endunless -%}
 
   <!-- Product Title -->
-  <div class="container-1220">
-    <h1 class="js__pdp-title uppercase small">
+  <div class="container-1220 product-header">
+    <div class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+      {% assign full_url = request.path %}
+      {% assign product_url = full_url | split: '/' %}
+
+      <a href="{{ routes.root_url }}" class="breadcrumb-link">Home</a>
+      <span> / </span>
+
+      {% if product_url[1] == 'collections' and collections[product_url[2]] %}
+        <a href="{{ collections[product_url[2]].url }}" title="{{ collections[product_url[2]].title }}" class="breadcrumb-link">
+          {{ collections[product_url[2]].title }}
+        </a>
+        <span> / </span>
+      {% elsif product.collections.size > 0 %}
+        <a href="{{ product.collections.first.url }}" title="{{ product.collections.first.title }}" class="breadcrumb-link">
+          {{ product.collections.first.title }}
+        </a>
+        <span> / </span>
+      {% endif %}
+
+      <span class="breadcrumb-text">{{ product.title }}</span>
+    </div>
+    <h1 class="js__pdp-title uppercase small product-title">
       {% if product.metafields.custom.alternate_title != blank %}
         {{ product.metafields.custom.alternate_title }}
       {% else %}
@@ -61,7 +58,7 @@
 
     <!-- Product Short Description -->
     {% if product.metafields.product.short_description != blank %}
-      <div class="description">
+      <div class="description product-description">
         <p>
           {{ product.metafields.product.short_description }}
         </p>
@@ -74,7 +71,7 @@
     </div>
   </div>
 
-  <div class="container-1220 flex-wrap">
+  <div class="container-1220 flex-wrap product-content">
     <!-- Product Media -->
     <div class="left-section">
       {% include 'product_images' %}
@@ -136,22 +133,26 @@
       <a href="#" class="hide link--secondary ">View Ingredients & Nutrition Facts</a>
       {% comment %} Form {% endcomment %}
        <div class="product-benefits_section">
-        <div class="product-benefits_section_inner">
           <div class="product-benefits_section_inner_content">
             {% assign benefit_items = "LipoEmulsion™ Tasteless fine mist|Bypasses digestion for rapid onset|cGMP manufactured in the USA|3rd-party tested by ISO-Certified Labs" | split: "|" %}
-            {% for i in (1..4) %}
-              {% assign item_text = benefit_items[forloop.index0] %}
+            {% assign benefit_icons = "icon-mist.svg|icon-drop-wave.svg|icon-usa.svg|icon-microscope.svg" | split: "|" %}
+            {% for item_text in benefit_items %}
+              {% assign icon_name = benefit_icons[forloop.index0] %}
               <div class="inner-content">
                 <div class="title">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <span>{{ item_text }}</span>
+                  <img src="{{ icon_name | asset_url }}" alt="{{ icon_name | replace: 'icon-', '' | replace: '.svg', '' }}" width="24" height="24">
+                  <span>
+                    {% if item_text contains 'ISO-Certified Labs' and section.settings.iso_certified_labs_url != blank %}
+                      {% assign text_parts = item_text | split: 'ISO-Certified Labs' %}
+                      {{ text_parts[0] }}<a href="{{ section.settings.iso_certified_labs_url }}" target="_blank" rel="noopener">ISO-Certified Labs</a>{{ text_parts[1] }}
+                    {% else %}
+                      {{ item_text }}
+                    {% endif %}
+                  </span>
                 </div>
               </div>
             {% endfor %}
           </div>
-        </div>
        </div>
        
       <div class="product__form">
@@ -411,6 +412,12 @@
       "type": "text",
       "id": "subscribeText",
       "label": "Subscribe info"
+    },
+    {
+      "type": "url",
+      "id": "iso_certified_labs_url",
+      "label": "ISO-Certified Labs URL",
+      "info": "URL for the ISO-Certified Labs link in the product benefits section"
     }
   ]
   ,
@@ -560,5 +567,132 @@
     .pdp-slider.pdp-slider {
         margin-top: 0;
     }
+}
+
+
+.product.bpc-lx {
+  background-color: #FEFFFE;
+  padding-top: 0;
+  padding-bottom: 48px;
+
+  .container-1220.product-header {
+    padding-inline: 32px;
+  }
+
+  .product-header {
+    padding-block-start: 18px;
+    padding-block-end: 16px;
+  }
+
+  .breadcrumb {
+    .breadcrumb-link {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: 0.5px;
+    }
+
+    .breadcrumb-text {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 20px; /* 142.857% */
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .product-title {
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 0;
+  }
+
+  .product-description p {
+    color: var(--txt-dark, #1A1B1B);
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+  }
+
+  .oke-sr-count {
+    color: var(--txt-dark, #1A1B1B);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  div[data-oke-star-rating] {
+    margin-top: 8px;
+  }
+
+  .product-content {
+    padding-inline: 0;
+    row-gap: 24px;
+    .swiper-button-next {
+      display: none;
+    }
+    .swiper-button-prev {
+      display: none;
+    }
+
+    .pdp-slider .image-section,
+    .pdp-slider .video-section {
+      height: 390px;
+    }
+
+    .outer-pdp-thumbnail-slider {
+      padding: 0;
+    }
+
+    .pdp-thumbnail .slide .image-section,
+    .pdp-thumbnail .slide .video-section {
+      width: 64px;
+      height: 64px;
+    }
+
+    .pdp-thumbnail .slide .image-section {
+      border-radius: 0;
+    }
+
+    .pdp-thumbnail .slide {
+        width: 64px !important;
+        height: 64px !important;
+        margin-right: 0 !important;
+    }
+
+    .product__information {
+        margin-top: 0;
+        padding-inline: 32px;
+    }
+
+    .product-benefits_section_inner_content {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+
+    .product-benefits_section .inner-content .title {
+      display: flex;
+      column-gap: 16px;
+      align-items: center;
+      line-height: 24px;
+
+      a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        font-weight: 400;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .product-benefits_section {
+      margin-bottom: 24px;
+    }
+  }
 }
 {% endstylesheet %}
