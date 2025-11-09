@@ -12,7 +12,7 @@
 {% endfor %}
 
 {% unless hide_faq %}
-  {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
+  {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank and section.settings.use_designed_layout == false %}
     <h2 class="text-center">
       {{ product.metafields.custom.faq_heading | default: 'FAQs' }}
     </h2>
@@ -20,6 +20,11 @@
 
   {{ 'section-faq-dropdown-collection-page.css' | asset_url | stylesheet_tag }}
   <div class="learn-more-sec {% if section.settings.use_designed_layout %}custom-faq-layout{% endif %}">
+    {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank and section.settings.use_designed_layout != false %}
+      <h2 class="text-center">
+        {{ product.metafields.custom.faq_heading | default: 'FAQs' }}
+      </h2>
+    {% endif %}
     {{ product.metafields.custom.short_description | metafield_tag }}
     <div class="additional-content">
 
@@ -198,11 +203,24 @@
 {% endschema %}
 
 {% stylesheet %}
-  .custom-faq-layout {
+
+  .learn-more-sec.custom-faq-layout {
     background-color: #F1F3F4;
     margin: 0;
     padding-block: 48px;
     padding-inline: 32px;
+
+    .metafield-rich_text_field {
+      max-width: 100%;
+    }
+
+    h2.text-center {
+      max-width: 100% !important;
+      margin-bottom: 16px !important;
+      text-transform: none;
+      line-height: 40px;
+      font-size: 32px;
+    }
 
 
     section.pdp-tab-small.collection-faq-section {
@@ -220,7 +238,7 @@
     }
 
     ul.custom-accordion-list li:not(.content ul li) {
-      padding: 24px 0;
+      padding: 24px 40px 24px 0;
       border-bottom: 1px solid #84827E;
     }
 
@@ -240,7 +258,7 @@
     .pdp-tab-small__wrapper ul.accordian li .h5:after {
       width: 16.5px;
       height: 16.5px;
-      right: 0 !important;
+      right: -40px !important;
       background-size: 16.5px;
     }
 
@@ -255,6 +273,7 @@
       padding-block: 12px;
       width: 100%;
       height: 50px;
+      font-weight: 400;
     }
   }
 {% endstylesheet %}
