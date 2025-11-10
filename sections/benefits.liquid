@@ -133,8 +133,136 @@ Section: Benefits
         {% endif %}
       {% endfor %}
 
-      <!-- Collapsible Content Blocks -->
+      <!-- Collapsible Content Blocks / Desktop Grid -->
       <div class="collapsible-wrapper">
+
+        <!-- Desktop Grid Container (visible ≥960px) -->
+        <div class="desktop-grid">
+
+          <!-- Left Column (First 2 blocks) -->
+          <div class="grid-column grid-column-left">
+            {% assign collapsible_count = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'collapsible' %}
+                {% assign collapsible_count = collapsible_count | plus: 1 %}
+                {% if collapsible_count <= 2 %}
+                  <div class="grid-item" {{ block.shopify_attributes }}>
+                    <div class="grid-item-icon">
+                      {% if block.settings.icon_image != blank %}
+                        <img
+                          src="{{ block.settings.icon_image | image_url: width: 200 }}"
+                          alt=""
+                          class="accordion-icon"
+                          width="48"
+                          height="48">
+                      {% else %}
+                        <svg
+                          class="icon-default"
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle
+                            cx="24"
+                            cy="24"
+                            r="23"
+                            stroke="currentColor"
+                            stroke-width="2" />
+                          <path
+                            d="M24 14V34M14 24H34"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round" />
+                        </svg>
+                      {% endif %}
+                    </div>
+                    <h3 class="grid-item-title">{{ block.settings.title }}</h3>
+                    {% if block.settings.content != blank %}
+                      <div class="grid-item-content">{{ block.settings.content }}</div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <!-- Middle Column (Image) -->
+          <div class="grid-column grid-column-middle">
+            {% for block in section.blocks %}
+              {% if block.type == 'middle_image' %}
+                <div class="grid-middle-image" {{ block.shopify_attributes }}>
+                  {% if block.settings.image != blank %}
+                    <img
+                      src="{{ block.settings.image | image_url: width: 600 }}"
+                      srcset="{{ block.settings.image | image_url: width: 300 }} 300w,
+                              {{ block.settings.image | image_url: width: 600 }} 600w"
+                      sizes="(min-width: 960px) 300px, 100vw"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                      alt=""
+                      loading="lazy">
+                  {% else %}
+                    <div class="grid-middle-placeholder">
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <!-- Right Column (Last 2 blocks) -->
+          <div class="grid-column grid-column-right">
+            {% assign collapsible_count = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'collapsible' %}
+                {% assign collapsible_count = collapsible_count | plus: 1 %}
+                {% if collapsible_count > 2 %}
+                  <div class="grid-item" {{ block.shopify_attributes }}>
+                    <div class="grid-item-icon">
+                      {% if block.settings.icon_image != blank %}
+                        <img
+                          src="{{ block.settings.icon_image | image_url: width: 200 }}"
+                          alt=""
+                          class="accordion-icon"
+                          width="48"
+                          height="48">
+                      {% else %}
+                        <svg
+                          class="icon-default"
+                          width="48"
+                          height="48"
+                          viewBox="0 0 48 48"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle
+                            cx="24"
+                            cy="24"
+                            r="23"
+                            stroke="currentColor"
+                            stroke-width="2" />
+                          <path
+                            d="M24 14V34M14 24H34"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round" />
+                        </svg>
+                      {% endif %}
+                    </div>
+                    <h3 class="grid-item-title">{{ block.settings.title }}</h3>
+                    {% if block.settings.content != blank %}
+                      <div class="grid-item-content">{{ block.settings.content }}</div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+
+        <!-- Mobile Accordion (visible <960px) -->
         <ul class="accordian js__accordian">
           {% for block in section.blocks %}
             {% if block.type == 'collapsible' %}
@@ -437,6 +565,18 @@ Section: Benefits
             "id": "content",
             "label": "Content",
             "default": "<p>Add your content here.</p>"
+          }
+        ]
+      }, {
+        "type": "middle_image",
+        "name": "Middle Image",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "This image will appear in the center column on desktop (≥960px). Hidden on mobile."
           }
         ]
       }, {
