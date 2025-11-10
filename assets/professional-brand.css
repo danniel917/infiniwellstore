@@ -12,7 +12,7 @@
 /* Container with Max Width */
 .professional-brand .container-brand {
   position: relative;
-  max-width: 1200px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -63,7 +63,6 @@
 
 /* Media Container - Max Width 720px */
 .professional-brand .brand-media {
-  max-width: 720px;
   overflow: hidden;
 }
 
@@ -93,11 +92,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-/* Content Container - Max Width 512px */
-.professional-brand .brand-content {
-  max-width: 512px;
 }
 
 /* Rich Text */
@@ -166,5 +160,53 @@
 
   .professional-brand .none-480 {
     display: block !important;
+  }
+}
+
+/* ============================================================
+   Desktop Layout (≥960px)
+   ============================================================ */
+
+@media screen and (min-width: 960px) {
+  /* Container - Grid layout with 2 columns, 3 rows */
+  .professional-brand .container-brand {
+    display: grid;
+    grid-template-columns: 720px 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: 48px;
+    row-gap: 24px;
+  }
+
+  /* Brand Header - Row 1, Column 2 */
+  .professional-brand .brand-header {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: 512px;
+    width: 100%;
+  }
+
+  /* Brand Media - Column 1, spans all 3 rows */
+  .professional-brand .brand-media {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    max-width: 720px;
+    align-self: start;
+    width: 100%;
+  }
+
+  /* Brand Content - Row 2, Column 2 */
+  .professional-brand .brand-content {
+    grid-column: 2;
+    grid-row: 2;
+    max-width: 512px;
+    align-self: start;  
+    width: 100%;
+  }
+
+  /* Title - Larger on desktop */
+  .professional-brand .brand-title {
+    font-size: 45px;
+    line-height: 52px;
+    letter-spacing: 0;
   }
 }
