@@ -110,7 +110,6 @@
 .no-promises-proof .proof-columns {
   display: flex;
   flex-direction: column;
-  gap: 32px;
 }
 
 /* Lab Logos Column */
@@ -302,6 +301,11 @@
    ============================================================ */
 
 @media screen and (min-width: 960px) {
+
+  .no-promises-proof .lab-logo-box {
+    padding: 32px 24px;
+  }
+
   /* Header - Grid layout */
   .no-promises-proof .proof-header {
     display: grid;
@@ -349,6 +353,7 @@
   /* Lab columns - side by side */
   .no-promises-proof .proof-columns {
     flex-direction: row;
+    gap: 20px;
   }
 
   .no-promises-proof .proof-labs-column {
