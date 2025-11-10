@@ -25,8 +25,8 @@
     {% comment %} {%- assign t = template | split: '.' | first -%} {% endcomment %}
   {%- endunless -%}
 
-  <!-- Product Title -->
-  <div class="container-1220 product-header">
+  <!-- Product Title (Mobile Only) -->
+  <div class="container-1220 product-header product-header-mobile">
     <div class="breadcrumb" role="navigation" aria-label="breadcrumbs">
       {% assign full_url = request.path %}
       {% assign product_url = full_url | split: '/' %}
@@ -75,18 +75,11 @@
     <!-- Product Media -->
     <div class="left-section">
       {% include 'product_images' %}
-      <div class="five-column-icons-section none-980">
-        <ul class="flex">
-          {% for value in product.metafields.accentuate.ico %}
-            {% assign image = product.metafields.accentuate.ico[forloop.index0] | first %}
-            <li>
-              <div class="image-section">
-                <img src="{{ image.cloudinary_src}}" alt="{{image.alt }}">
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+      <!-- Thumbnail expand/collapse button for bpc-lx -->
+      <button class="bpc-lx-thumbnail-toggle" type="button" aria-label="Toggle thumbnail gallery">
+        <span class="toggle-icon-plus">{% render 'icon-plus' %}</span>
+        <span class="toggle-icon-minus">{% render 'icon-minus' %}</span>
+      </button>
     </div>
 
     <!-- Right Product Information Section -->
@@ -99,6 +92,53 @@
       data-extra-tab-content="{{ section.settings.extra_tab_content }}"
       data-enable-history-state="true"
     >
+      <!-- Product Header (Desktop Only) -->
+      <div class="product-header product-header-desktop">
+        <div class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+          {% assign full_url = request.path %}
+          {% assign product_url = full_url | split: '/' %}
+
+          <a href="{{ routes.root_url }}" class="breadcrumb-link">Home</a>
+          <span> / </span>
+
+          {% if product_url[1] == 'collections' and collections[product_url[2]] %}
+            <a href="{{ collections[product_url[2]].url }}" title="{{ collections[product_url[2]].title }}" class="breadcrumb-link">
+              {{ collections[product_url[2]].title }}
+            </a>
+            <span> / </span>
+          {% elsif product.collections.size > 0 %}
+            <a href="{{ product.collections.first.url }}" title="{{ product.collections.first.title }}" class="breadcrumb-link">
+              {{ product.collections.first.title }}
+            </a>
+            <span> / </span>
+          {% endif %}
+
+          <span class="breadcrumb-text">{{ product.title }}</span>
+        </div>
+        <h1 class="js__pdp-title uppercase small product-title">
+          {% if product.metafields.custom.alternate_title != blank %}
+            {{ product.metafields.custom.alternate_title }}
+          {% else %}
+            {{ product.title }}
+          {% endif %}
+        </h1>
+
+        <!-- Reviews -->
+        <div class="product-reviews-summary">
+          {% render 'okendo-reviews-product-rating-summary', product: product %}
+        </div>
+
+        <!-- Product Short Description -->
+        {% if product.metafields.product.short_description != blank %}
+          <div class="description product-description">
+            <p>
+              {{ product.metafields.product.short_description }}
+            </p>
+          </div>
+        {% endif %}
+
+      </div>
+
       <!-- Price - Hidden -->
       <div class="flex-column price__wrapper hide">
         {% comment %} Price {% endcomment %}
@@ -116,26 +156,12 @@
         </div>
       </div>
 
-      <!-- 980 Ends -->
-      {% comment %}
-        <div class="">
-          <div class="product__reviews flex-space-between">
-            <!-- product type -->
-            {% if product.type != blank %}
-              <p class="h5">{{ product.type }}</p>
-            {% endif %}
-            <div data-oke-reviews-product-listing-rating>{{ product.metafields.okendo.ProductListingSnippet }}</div>
-          </div>
-        </div>
-      {% endcomment %}
-      {% comment %} information section ends {% endcomment %}
-      {% comment %} Scroll down to section {% endcomment %}
       <a href="#" class="hide link--secondary ">View Ingredients & Nutrition Facts</a>
       {% comment %} Form {% endcomment %}
        <div class="product-benefits_section">
           <div class="product-benefits_section_inner_content">
             {% assign benefit_items = "LipoEmulsion™ Tasteless fine mist|Bypasses digestion for rapid onset|cGMP manufactured in the USA|3rd-party tested by ISO-Certified Labs" | split: "|" %}
-            {% assign benefit_icons = "icon-mist.svg|icon-drop-wave.svg|icon-usa.svg|icon-microscope.svg" | split: "|" %}
+            {% assign benefit_icons = "icon-mist-02.svg|flash.svg|icon-usa.svg|icon-microscope.svg" | split: "|" %}
             {% for item_text in benefit_items %}
               {% assign icon_name = benefit_icons[forloop.index0] %}
               <div class="inner-content">
@@ -368,6 +394,190 @@
 {{ 'product-sticky-atc.css' | asset_url | stylesheet_tag }}
 <script src="{{'product-sticky-atc.js' | asset_url}}" defer="defer"></script>
 {% render 'product-sticky-atc' %}
+
+<script>
+  // Custom Swiper initialization for bpc-lx template with 2-column vertical layout (Desktop only)
+  (function() {
+    function initBpcLxThumbnails() {
+      if (!document.querySelector('.product.bpc-lx')) return;
+      
+      // Only apply 2-column grid behavior on desktop (min-width: 960px)
+      var isDesktop = window.innerWidth >= 960;
+      if (!isDesktop) {
+        // On mobile, use default Swiper behavior
+        return;
+      }
+      
+      var thumbnailContainer = document.querySelector('.product.bpc-lx .js__pdp-thumbnail-slider');
+      if (!thumbnailContainer || typeof Swiper === 'undefined') {
+        setTimeout(initBpcLxThumbnails, 100);
+        return;
+      }
+      
+      // Wait a bit for main Swiper to initialize
+      setTimeout(function() {
+        // Destroy existing Swiper instance if it exists
+        if (thumbnailContainer.swiper) {
+          thumbnailContainer.swiper.destroy(true, true);
+        }
+        
+        // For 2-column grid layout, we'll use CSS Grid for layout
+        // and handle interactions manually while keeping Swiper for compatibility
+        // Initialize Swiper but disable its layout transforms
+        var bpcThumbnail = new Swiper('.product.bpc-lx .js__pdp-thumbnail-slider', {
+          slidesPerView: 'auto',
+          direction: 'vertical',
+          spaceBetween: 0,
+          freeMode: false,
+          watchSlidesProgress: true,
+          clickable: true,
+          grabCursor: false, // Disable grab cursor since we're using native scroll
+          mousewheel: false, // Use native scrolling instead
+          // Disable Swiper's transform-based scrolling
+          allowTouchMove: false,
+          // Let CSS Grid handle the layout
+          autoHeight: false,
+          // Prevent Swiper from applying transforms
+          on: {
+            init: function() {
+              // Disable Swiper's transform on the wrapper
+              var wrapper = this.el.querySelector('.swiper-wrapper');
+              if (wrapper) {
+                wrapper.style.transform = 'none !important';
+                wrapper.style.transition = 'none';
+              }
+            },
+            slideChange: function() {
+              // This won't fire with allowTouchMove: false, but kept for compatibility
+            }
+          }
+        });
+        
+        // Store reference for manual control
+        window.bpcThumbnail = bpcThumbnail;
+        
+        // Handle thumbnail clicks manually for grid layout
+        var thumbnails = document.querySelectorAll('.product.bpc-lx .pdp-thumbnail .swiper-slide');
+        
+        function updateThumbnailActive(index) {
+          thumbnails.forEach(function(t) { 
+            t.classList.remove('swiper-slide-thumb-active'); 
+          });
+          if (thumbnails[index]) {
+            thumbnails[index].classList.add('swiper-slide-thumb-active');
+            // Scroll thumbnail into view if needed
+            thumbnails[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+        
+        thumbnails.forEach(function(thumb, index) {
+          thumb.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Each thumbnail maps directly to a slide (1:1 mapping)
+            // In a 2-column grid, thumbnails are arranged:
+            // Row 1: [0, 1] -> Slides [0, 1]
+            // Row 2: [2, 3] -> Slides [2, 3]
+            // So thumbnail index = slide index
+            var slideIndex = index;
+            if (window.pdpSlider) {
+              // Use slideToLoop for loop mode, or slideTo for non-loop mode
+              if (window.pdpSlider.params.loop) {
+                window.pdpSlider.slideToLoop(slideIndex);
+              } else {
+                window.pdpSlider.slideTo(slideIndex);
+              }
+            }
+            updateThumbnailActive(index);
+          });
+        });
+        
+        // Sync thumbnail active state when main slider changes
+        if (window.pdpSlider) {
+          window.pdpSlider.on('slideChange', function() {
+            // Use realIndex when loop is enabled, otherwise use activeIndex
+            var activeIndex = (this.params && this.params.loop && typeof this.realIndex !== 'undefined') 
+              ? this.realIndex 
+              : (this.activeIndex || 0);
+            // Thumbnail index matches slide index (1:1 mapping)
+            updateThumbnailActive(activeIndex);
+          });
+          
+          // Set initial active thumbnail after a short delay to ensure Swiper is ready
+          setTimeout(function() {
+            if (window.pdpSlider) {
+              var initialIndex = (window.pdpSlider.params && window.pdpSlider.params.loop && typeof window.pdpSlider.realIndex !== 'undefined')
+                ? window.pdpSlider.realIndex 
+                : (window.pdpSlider.activeIndex || 0);
+              updateThumbnailActive(initialIndex);
+            }
+          }, 100);
+        }
+      }, 300);
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBpcLxThumbnails);
+    } else {
+      initBpcLxThumbnails();
+    }
+  })();
+
+  // Thumbnail expand/collapse toggle functionality
+  (function() {
+    function initThumbnailToggle() {
+      if (!document.querySelector('.product.bpc-lx')) return;
+      
+      var isDesktop = window.innerWidth >= 960;
+      if (!isDesktop) return;
+      
+      var toggleButton = document.querySelector('.product.bpc-lx .bpc-lx-thumbnail-toggle');
+      var thumbnailContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
+      
+      if (!toggleButton || !thumbnailContainer) {
+        setTimeout(initThumbnailToggle, 100);
+        return;
+      }
+      
+      // Initialize: Start in collapsed state
+      thumbnailContainer.classList.add('collapsed');
+      
+      // Toggle functionality
+      toggleButton.addEventListener('click', function() {
+        if (thumbnailContainer.classList.contains('collapsed')) {
+          // Expand
+          thumbnailContainer.classList.remove('collapsed');
+          thumbnailContainer.classList.add('expanded');
+          toggleButton.classList.add('expanded');
+        } else {
+          // Collapse
+          thumbnailContainer.classList.remove('expanded');
+          thumbnailContainer.classList.add('collapsed');
+          toggleButton.classList.remove('expanded');
+
+          // Scroll to the top of the page
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initThumbnailToggle);
+    } else {
+      initThumbnailToggle();
+    }
+    
+    // Reinitialize on resize
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        if (window.innerWidth >= 960) {
+          initThumbnailToggle();
+        }
+      }, 250);
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -693,6 +903,227 @@
     .product-benefits_section {
       margin-bottom: 24px;
     }
+  }
+
+  /* Hide desktop header on mobile */
+  .product-header-desktop {
+    display: none;
+  }
+
+  /* Show mobile header on mobile */
+  .product-header-mobile {
+    display: block;
+  }
+
+  /* Desktop: Show desktop header, hide mobile header */
+  @media screen and (min-width: 960px) {
+    .product-header-desktop {
+      display: block;
+      padding-top: 0;
+
+      .breadcrumb {
+        margin-bottom: 26px;
+      }
+
+      .description.product-description {
+          margin-top: 8px;
+      }
+    }
+
+    .product-header-mobile {
+      display: none;
+    }
+
+    .product-content {
+      padding-top: 48px;
+      display: grid;
+      grid-template-columns: 720px 400px;
+      column-gap: 32px;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .product.bpc-lx .product-content .pdp-slider .image-section, .product.bpc-lx .product-content .pdp-slider .video-section {
+      height: 720px;
+      max-height: 720px;
+      border-radius: 16px 16px 0 0 ;
+  }
+
+  .product.bpc-lx .product__information.product__information {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0;
+    position: sticky;
+    top: 120px;
+    align-self: start;
+}
+
+.product.bpc-lx  .left-section {
+    width: 100%;
+}
+
+.product.bpc-lx .product-content .pdp-thumbnail .slide .image-section,
+.product.bpc-lx .product-content .pdp-thumbnail .slide .video-section {
+    width: 358px;
+    height: 358px;
+}
+
+.product.bpc-lx .product-content .pdp-thumbnail .slide {
+    width: 358px !important;
+    height: 358px !important;
+}
+
+.product.bpc-lx .left-section {
+    max-height: 100%;
+}
+
+/* Desktop-only: 2-column vertical layout for thumbnails */
+.product.bpc-lx .pdp-thumbnail {
+    height: auto !important;
+    gap: 4px;
+}
+
+/* Ensure Swiper wrapper works with grid layout - Desktop only */
+.product.bpc-lx .js__pdp-thumbnail-slider {
+    width: 100%;
+    overflow: visible;
+}
+
+.product.bpc-lx .pdp-thumbnail-outer {
+    width: 100%;
+}
+
+/* Make sure slides fit in grid - Desktop only */
+.product.bpc-lx .pdp-thumbnail .swiper-slide {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    /* Prevent Swiper from overriding grid layout */
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+/* Override Swiper's wrapper flex properties for grid - Desktop only */
+.product.bpc-lx .pdp-thumbnail.swiper-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: row;
+    flex-direction: unset !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100%;
+}
+
+/* Adjust thumbnail container for vertical scrolling - Desktop only */
+.product.bpc-lx .outer-pdp-thumbnail-slider {
+    max-height: 720px;
+    overflow-x: hidden;
+    padding-right: 4px;
+    position: relative;
+    transition: max-height 0.3s ease-in-out;
+    margin-bottom: 60px; /* Space for the toggle button */
+}
+
+/* Collapsed state: Show only 4 thumbnails (2 rows x 2 columns) */
+.product.bpc-lx .outer-pdp-thumbnail-slider.collapsed {
+    max-height: calc(358px * 2 + 4px); /* 2 rows: (thumbnail height * 2) + gap between rows */
+    overflow: hidden;
+}
+
+/* Expanded state: Show all thumbnails without scroll */
+.product.bpc-lx .outer-pdp-thumbnail-slider.expanded {
+    max-height: none;
+    overflow: visible;
+    height: auto;
+}
+
+/* Gradient overlay - only visible when collapsed */
+.product.bpc-lx .outer-pdp-thumbnail-slider.collapsed::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #FEFFFE 25%, transparent);
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.product.bpc-lx .outer-pdp-thumbnail-slider.expanded::before {
+    display: none;
+}
+
+/* Toggle button styles */
+.product.bpc-lx .product-content {
+    position: relative;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: transparent;
+    transition: bottom 0.3s ease-in-out;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle.expanded {
+    bottom: -24px;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle svg {
+    width: 56px;
+    height: 56px;
+}
+
+/* Show/hide icons based on state */
+.product.bpc-lx .bpc-lx-thumbnail-toggle .toggle-icon-plus {
+    display: block;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle .toggle-icon-minus {
+    display: none;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle.expanded .toggle-icon-plus {
+    display: none;
+}
+
+.product.bpc-lx .bpc-lx-thumbnail-toggle.expanded .toggle-icon-minus {
+    display: block;
+}
+
+/* Custom scrollbar styling - Desktop only */
+.product.bpc-lx .outer-pdp-thumbnail-slider::-webkit-scrollbar {
+    width: 4px;
+}
+
+.product.bpc-lx .outer-pdp-thumbnail-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.product.bpc-lx .outer-pdp-thumbnail-slider::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.product.bpc-lx .outer-pdp-thumbnail-slider::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.product.bpc-lx .pdp-slider {
+    margin-bottom: 4px;
   }
 }
 {% endstylesheet %}
