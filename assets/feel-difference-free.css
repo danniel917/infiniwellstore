@@ -192,3 +192,22 @@
     display: block !important;
   }
 }
+
+
+@media screen and (min-width: 960px) {
+  .feel-difference-free .difference-title {
+    font-size: 45px;
+    line-height: 52px;
+  }
+
+  .feel-difference-free .difference-image-container {
+    border-radius: 0 24px 24px 0;
+    max-width: 720px;
+  }
+
+  .feel-difference-free .difference-wrapper {
+    flex-direction: row;
+    column-gap: 32px;
+    align-items: center;
+  }
+}
