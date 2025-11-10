@@ -59,3 +59,102 @@ p#shopify-pc__banner__body-title {
   text-transform: uppercase;
   letter-spacing: .23px;
 }
+
+body.bpc-lx {
+  background-color: #FEFFFE;
+  [id*="pdp_reviews"] {
+    background-color: #FEFFFE;
+
+    .product-reviews-widget-bpc-lx {
+      padding-bottom: 49px;
+    }
+
+    .product-reviews-widget-bpc-lx h2.text-center {
+      text-align: left;
+      text-transform: capitalize;
+      font-size: 32px;
+    }
+
+    @media (min-width: 960px) {
+      .product-reviews-widget-bpc-lx h2.text-center {
+        text-align: center;
+        font-size: 45px;
+        line-height: 52px;
+        margin-bottom: 48px;
+      }
+    }
+  }
+
+  
+  .pdp-recommendations {
+    background-color: #FEFFFE;
+
+    @media (min-width: 960px) {
+      margin-bottom: 64px;
+
+      h2 {
+        font-size: 45px;
+        line-height: 52px;
+        text-transform: capitalize;
+      }
+    
+      .four-column-product-slider .top-section {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  .footer-top-bar,
+  .main-footer__newsletter {
+    display: none;
+  }
+
+  .rc-purchase-option__badge {
+    top: .8rem !important;
+    right: 5rem !important;
+    font-size: 14px !important;
+    line-height: 20px !important;
+    padding: 4px 8px !important;
+    font-weight: bold !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .rc-purchase-option {
+    border-width: 2px !important;
+  }
+  
+  .rc-purchase-option[rc-selected] {
+    --rc-widget-brand-color: #1A1B1B !important;
+    border-color: var(--rc-widget-brand-color) !important;
+  }
+
+  .rc-price.text-muted {
+    order: 2 !important;
+  }
+
+  .rc-purchase-option__label {
+    padding: 16px !important;
+  }
+
+  .product__actions .btn--primary {
+    max-width: 198px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  @media (min-width: 960px) {
+    .product__actions .btn--primary {
+      max-width: 272px;
+    }
+
+    .product__actions .add-to-cart {
+      margin-left: 8px;
+    }
+  }
+
+}
+
+
