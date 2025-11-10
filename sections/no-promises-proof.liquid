@@ -106,6 +106,63 @@
     <!-- Two Column Layout -->
     <div class="proof-columns">
 
+      <!-- Content Column with Image -->
+      <div class="proof-content-column">
+        {% for block in section.blocks %}
+          {% if block.type == 'content_image' %}
+            <div class="proof-content-image" {{ block.shopify_attributes }}>
+              {% if block.settings.image_desktop != blank or block.settings.image_mobile != blank %}
+                <!-- Desktop Image -->
+                {% if block.settings.image_desktop != blank %}
+                  <img
+                    src="{{ block.settings.image_desktop | image_url: width: 1200 }}"
+                    srcset="{{ block.settings.image_desktop | image_url: width: 600 }} 600w,
+                            {{ block.settings.image_desktop | image_url: width: 1200 }} 1200w"
+                    sizes="(min-width: 960px) 50vw, 100vw"
+                    alt="{{ block.settings.image_desktop.alt }}"
+                    width="{{ block.settings.image_desktop.width }}"
+                    height="{{ block.settings.image_desktop.height }}"
+                    class="content-image-desktop none-480"
+                    loading="lazy">
+                {% else %}
+                  <div class="content-image-placeholder none-480">
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+
+                <!-- Mobile Image -->
+                {% if block.settings.image_mobile != blank %}
+                  {% assign mobile_image = block.settings.image_mobile %}
+                {% else %}
+                  {% assign mobile_image = block.settings.image_desktop %}
+                {% endif %}
+
+                {% if mobile_image != blank %}
+                  <img
+                    src="{{ mobile_image | image_url: width: 800 }}"
+                    srcset="{{ mobile_image | image_url: width: 400 }} 400w,
+                            {{ mobile_image | image_url: width: 800 }} 800w"
+                    sizes="100vw"
+                    alt="{{ mobile_image.alt }}"
+                    width="{{ mobile_image.width }}"
+                    height="{{ mobile_image.height }}"
+                    class="content-image-mobile block-480"
+                    loading="lazy">
+                {% else %}
+                  <div class="content-image-placeholder block-480">
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              {% else %}
+                <div class="content-image-placeholder">
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
       <!-- Lab Logos Column -->
       <div class="proof-labs-column">
         {% for block in section.blocks %}
@@ -119,6 +176,8 @@
                         <img
                           src="{{ block.settings.logo | image_url: width: 200 }}"
                           alt="{{ block.settings.logo.alt }}"
+                          width="{{ block.settings.logo.width }}"
+                          height="{{ block.settings.logo.height }}"
                           class="lab-logo-img"
                           loading="lazy">
                       </a>
@@ -126,6 +185,8 @@
                       <img
                         src="{{ block.settings.logo | image_url: width: 200 }}"
                         alt="{{ block.settings.logo.alt }}"
+                        width="{{ block.settings.logo.width }}"
+                        height="{{ block.settings.logo.height }}"
                         class="lab-logo-img"
                         loading="lazy">
                     {% endif %}
@@ -182,11 +243,6 @@
             </div>
           {% endif %}
         {% endfor %}
-      </div>
-
-      <!-- Empty Content Column -->
-      <div class="proof-content-column">
-        <!-- This container is intentionally left empty for future content -->
       </div>
 
     </div>
@@ -403,6 +459,25 @@
             }
           ],
           "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "content_image",
+      "name": "Content Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image (Desktop)",
+          "info": "1200px width recommended. Shown only on desktop ≥960px."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image (Mobile)",
+          "info": "800px width recommended. Falls back to desktop image if empty."
         }
       ]
     },
