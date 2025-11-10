@@ -120,9 +120,42 @@
   margin-left: auto;
 }
 
-/* Mobile Responsive */
-@media screen and (max-width: 768px) {
-  .full-width-media-blocks .content-block {
-    gap: 15px;
-  }
+.full-width-media-blocks .content-block {
+  gap: 15px;
 }
+
+@media screen and (min-width: 960px) {
+  .full-width-media-blocks .container-960 {
+    padding-left: 0;
+    padding-right: 0;
+    row-gap: 148px;
+  }
+
+  .full-width-media-blocks .media-background-video, .full-width-media-blocks .media-background-image {
+    object-fit: contain;
+  }
+
+  .full-width-media-blocks .block-text {
+    max-width: 424px;
+  }
+
+  .full-width-media-blocks .block-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .full-width-media-blocks .block-description > * {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .full-width-media-blocks .block-image img {
+    max-width: 424px !important;
+  }
+
+  .full-width-media-blocks .content-block:last-child .block-description {
+    max-width: 300px;
+  }
+
+}
+ 
