@@ -220,3 +220,21 @@
     display: block !important;
   }
 }
+
+@media screen and (min-width: 960px) {
+  .subscription-win .subscription-win-title {
+    font-size: 45px;
+    line-height: 52px;
+  }
+
+  .subscription-win .subscription-win-wrapper{
+    flex-direction: row;
+    column-gap: 32px;
+    align-items: center;
+  }
+
+  .subscription-win .subscription-win-image-container {
+    border-radius: 0 24px 24px 0;
+    max-width: 720px;
+  }
+}
