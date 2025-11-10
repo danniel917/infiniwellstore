@@ -203,7 +203,7 @@
     {% endunless %}
   </head>
 
-  <body class="template-{{ request.page_type | handle }} ">
+  <body class="template-{{ request.page_type | handle }} {{ template.suffix }}">
     <div id="preloader" class="page-loader hide">
       <img
         src="{{"preloader-logo-2.png" | asset_url  }}"
