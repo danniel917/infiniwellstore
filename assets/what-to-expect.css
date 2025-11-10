@@ -12,7 +12,7 @@
 /* Container with Max Width */
 .what-to-expect .container-expect {
   position: relative;
-  max-width: 1200px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -194,4 +194,107 @@
 .what-to-expect .rich-text-wrapper p:last-child,
 .what-to-expect .rich-text-wrapper div:last-child {
   margin-bottom: 0;
+}
+
+/* ============================================================
+   Desktop Layout (≥960px)
+   ============================================================ */
+
+@media screen and (min-width: 960px) {
+  .what-to-expect .expect-title {
+    font-size: 45px;
+    line-height: 52px;
+  }
+
+  .what-to-expect .rich-text-wrapper p,
+  .what-to-expect .rich-text-wrapper div,
+  .what-to-expect .rich-text-wrapper a {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  /* Stats Container - Row layout on desktop */
+  .what-to-expect .stats-container {
+    margin-bottom: 40px;
+    flex-direction: row;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  /* Stat Item - Grid layout: icon and number on top, text below */
+  .what-to-expect .stat-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 6px;
+    row-gap: 16px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .what-to-expect .stat-item.border-bottom {
+    border-bottom: none;
+    padding-bottom: 0;
+    border-right: 1px solid #D9D9D9;
+    padding-right: 24px;
+  }
+
+  /* Icon - Top left, row 1 */
+  .what-to-expect .stat-icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 37px;
+    height: 60px;
+  }
+
+  /* Content wrapper - Top right, row 1, then extends to row 2 */
+  .what-to-expect .stat-content {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .what-to-expect .stat-counter-wrapper {
+    display: block;
+  }
+
+  .what-to-expect .stat-counter {
+    font-size: 80px;
+    line-height: 60px;
+    height: 60px;
+  }
+
+  .what-to-expect .counter-digit-wrapper {
+    height: 60px;
+  }
+
+  .what-to-expect .counter-number {
+    height: 60px;
+    line-height: 60px;
+    font-size: 80px;
+  }
+
+  .what-to-expect .counter-suffix {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  /* Text - Inside stat-content, below counter */
+  .what-to-expect .stat-text {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-left: -43px; /* Offset by icon width (37px) + gap (16px) to align with icon left edge */
+  }
+
+  .what-to-expect .stat-text p {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: bold;
+  }
+
 }
