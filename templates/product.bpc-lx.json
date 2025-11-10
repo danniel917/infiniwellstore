@@ -59,16 +59,17 @@
       ],
       "name": "Full Width Media Blocks",
       "settings": {
+        "image_desktop": "shopify://shop_images/12c411281ee4d87021364590e73abae8938aa9fc.gif",
         "use_video_desktop": false,
-        "max_height_desktop": 650,
+        "max_height_desktop": 600,
         "image_mobile": "shopify://shop_images/12c411281ee4d87021364590e73abae8938aa9fc.gif",
         "use_video_mobile": false,
         "max_height_mobile": 500,
         "overlay_enable": false,
         "overlay_opacity": 80,
-        "paddingtop": 80,
+        "paddingtop": 64,
         "paddingtopmobile": 56,
-        "paddingbottom": 80,
+        "paddingbottom": 64,
         "paddingbottomMobile": 56
       }
     },
@@ -79,6 +80,7 @@
           "type": "video",
           "settings": {
             "media_type_desktop": "image",
+            "image_desktop": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif",
             "media_type_mobile": "image",
             "image_mobile": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif"
           }
@@ -88,6 +90,12 @@
           "settings": {
             "title": "Benefits of Daily Use",
             "alignment": "center"
+          }
+        },
+        "middle_image_txF6YJ": {
+          "type": "middle_image",
+          "settings": {
+            "image": "shopify://shop_images/InfiniWell_Spray_Tube_front-spacetube.png"
           }
         },
         "collapsible_6BDKcC": {
@@ -133,6 +141,7 @@
       "block_order": [
         "video_34dadH",
         "title_3mpVei",
+        "middle_image_txF6YJ",
         "collapsible_6BDKcC",
         "collapsible_jaUhAK",
         "collapsible_Qjipia",
@@ -141,8 +150,8 @@
       ],
       "name": "Benefits",
       "settings": {
-        "paddingtop": 60,
-        "paddingbottom": 60,
+        "paddingtop": 0,
+        "paddingbottom": 65,
         "paddingtopmobile": 0,
         "paddingbottommobile": 50,
         "content_paddingtop": 0,
@@ -210,10 +219,10 @@
       ],
       "name": "What to Expect",
       "settings": {
-        "paddingtop": 60,
-        "paddingbottom": 60,
-        "paddingleft": 15,
-        "paddingright": 15,
+        "paddingtop": 64,
+        "paddingbottom": 64,
+        "paddingleft": 0,
+        "paddingright": 0,
         "paddingtopmobile": 48,
         "paddingbottommobile": 0,
         "paddingleftmobile": 32,
@@ -224,9 +233,10 @@
       "type": "media-background",
       "name": "Media Background",
       "settings": {
-        "max_height_desktop": 600,
+        "max_height_desktop": 200,
+        "image_desktop": "shopify://shop_images/a51ab71348952073100d3245f5d7a5365853bd3c_1.gif",
         "use_video_desktop": false,
-        "flip_horizontal_desktop": false,
+        "flip_horizontal_desktop": true,
         "max_height_mobile": 165,
         "image_mobile": "shopify://shop_images/a51ab71348952073100d3245f5d7a5365853bd3c_1.gif",
         "use_video_mobile": false,
@@ -253,8 +263,8 @@
         "media_VBfH6c": {
           "type": "media",
           "settings": {
+            "image_desktop": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif",
             "use_video_desktop": false,
-            "image_mobile": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e.gif",
             "use_video_mobile": false
           }
         },
@@ -286,10 +296,10 @@
       ],
       "name": "Professional Brand",
       "settings": {
-        "paddingtop": 60,
-        "paddingbottom": 60,
-        "paddingleft": 15,
-        "paddingright": 15,
+        "paddingtop": 64,
+        "paddingbottom": 64,
+        "paddingleft": 0,
+        "paddingright": 0,
         "paddingtopmobile": 40,
         "paddingbottommobile": 40,
         "paddingleftmobile": 32,
@@ -299,6 +309,12 @@
     "no_promises_proof_zGBwjV": {
       "type": "no-promises-proof",
       "blocks": {
+        "content_image_6LTkUT": {
+          "type": "content_image",
+          "settings": {
+            "image_desktop": "shopify://shop_images/Frame_1321317670_1_fde33379-561f-4d5f-a5f2-1cad1d3b3e6d.png"
+          }
+        },
         "image_XJPXLB": {
           "type": "image",
           "settings": {
@@ -340,6 +356,7 @@
         }
       },
       "block_order": [
+        "content_image_6LTkUT",
         "image_XJPXLB",
         "title_jV9CGQ",
         "rich_text_frPLax",
