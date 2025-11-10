@@ -30,13 +30,14 @@
     {% if block.type == 'image' %}
       .section-{{ section.id }} .brand-image-{{ block.id }} img {
         max-width: {{ block.settings.image_width | round: 0 }}px;
+        width: 100%;
       }
     {% endif %}
   {% endfor %}
 </style>
 
 <section class="professional-brand section-{{ section.id }}-padding section-{{ section.id }}">
-  <div class="container-brand">
+  <div class="container-brand container-960">
 
     <!-- Header Container -->
     <div class="brand-header">
