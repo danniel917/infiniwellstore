@@ -20,103 +20,152 @@
 
   {{ 'section-faq-dropdown-collection-page.css' | asset_url | stylesheet_tag }}
   <div class="learn-more-sec {% if section.settings.use_designed_layout %}custom-faq-layout{% endif %}">
-    {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank and section.settings.use_designed_layout != false %}
-      <h2 class="text-center">
+    {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
+      <h2 class="text-center {% if section.settings.use_designed_layout %}hide-desktop-custom{% endif %}">
         {{ product.metafields.custom.faq_heading | default: 'FAQs' }}
       </h2>
     {% endif %}
-    {{ product.metafields.custom.short_description | metafield_tag }}
-    <div class="additional-content">
+    <div class="{% if section.settings.use_designed_layout %}hide-desktop-custom{% endif %}">
+      {{ product.metafields.custom.short_description | metafield_tag }}
+    </div>
+    <div class="additional-content {% if section.settings.use_designed_layout %}faq-two-columns{% endif %}">
 
-      {% if product.metafields.custom.faq %}
-        <section class="pdp-tab-small collection-faq-section">
+      {% if section.settings.use_designed_layout %}
+        <div class="custom-content-column none-480">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'custom_title' %}
+                {% if block.settings.title != blank %}
+                  <h2 class="custom-column-title">{{ block.settings.title }}</h2>
+                {% endif %}
 
-          <div class="pdp-tab-small__wrapper">
-            {% assign questions = product.metafields.custom.faq | metafield_tag | split: 'Q: ' %}
-            <ul class="accordian js__accordian {% if section.settings.use_designed_layout %}custom-accordion-list{% endif %}">
-              {% for question in questions offset: 1 %}
-                <li class="outer-list">
-                  <h3 class="h5">{{ question | split: 'A:' | first | remove: '<p>' | remove: '</p>' }}</h3>
-                  <div class="content">
-                    {{ question | split: 'A: ' | last | remove_last: '<p>' }}
+              {% when 'custom_text' %}
+                {% if block.settings.content != blank %}
+                  <div class="custom-column-text">
+                    {% if block.settings.icon != blank %}
+                      <div class="custom-text-icon">{{ block.settings.icon }}</div>
+                    {% endif %}
+                    <div
+                      class="custom-text-content"
+                      {% if block.settings.text_color %}
+                      style="color: {{ block.settings.text_color }};"
+                      {% endif %}>
+                      {{ block.settings.content }}
+                    </div>
                   </div>
-                </li>
-              {% endfor %}
-            </ul>
-            {% if section.settings.use_designed_layout %}
-              <div class="faq-footer">
-                <a href="/pages/faqs" class="btn--primary">See All</a>
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      {% else %}
-        {% if section.blocks.size > 0 %}
-          <div class="collapsible-container">
-            {% for block in section.blocks %}
-              <div class="collapsible">
-                <div class="dropdown-header">
-                  <h2>{{ block.settings.title }}</h2>
-                  <svg
-                    class="collapsed"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15.117"
-                    height="15.117"
-                    viewBox="0 0 15.117 15.117">
-                    <g
-                      id="Grupo_1124"
-                      data-name="Grupo 1124"
-                      transform="translate(1 1)">
-                      <path
-                        id="Trazado_449"
-                        data-name="Trazado 449"
-                        d="M7027.74,1021v13.117"
-                        transform="translate(-7020.74 -1021)"
-                        fill="none"
-                        stroke="#6b86ab"
-                        stroke-linecap="round"
-                        stroke-width="2" />
-                      <path
-                        id="Trazado_450"
-                        data-name="Trazado 450"
-                        d="M0,0V13.117"
-                        transform="translate(0 6) rotate(-90)"
-                        fill="none"
-                        stroke="#6b86ab"
-                        stroke-linecap="round"
-                        stroke-width="2" />
-                    </g>
-                  </svg>
-                  <svg
-                    class="expanded"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15.117"
-                    height="2"
-                    viewBox="0 0 15.117 2">
-                    <g
-                      id="Grupo_1097"
-                      data-name="Grupo 1097"
-                      transform="translate(1 -5)">
-                      <path
-                        id="Trazado_450"
-                        data-name="Trazado 450"
-                        d="M0,0V13.117"
-                        transform="translate(0 6) rotate(-90)"
-                        fill="none"
-                        stroke="#6b86ab"
-                        stroke-linecap="round"
-                        stroke-width="2" />
-                    </g>
-                  </svg>
-                </div>
-                <div class="dropdown-content">
-                  {{ block.settings.copy }}
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        {% endif %}
+                {% endif %}
+
+              {% when 'custom_button' %}
+                {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                  <a href="{{ block.settings.button_url }}" class="btn--{{ block.settings.button_style }} custom-column-button">
+                    {% if block.settings.button_icon != blank %}
+                      <img
+                        src="{{ block.settings.button_icon | image_url: width: 24 }}"
+                        alt=""
+                        class="custom-button-icon"
+                        width="24"
+                        height="24"
+                        loading="lazy">
+                    {% endif %}
+                    <span>{{ block.settings.button_text }}</span>
+                  </a>
+                {% endif %}
+            {% endcase %}
+          {% endfor %}
+        </div>
       {% endif %}
+
+      <div class="faq-questions-column">
+        {% if product.metafields.custom.faq %}
+          <section class="pdp-tab-small collection-faq-section">
+
+            <div class="pdp-tab-small__wrapper">
+              {% assign questions = product.metafields.custom.faq | metafield_tag | split: 'Q: ' %}
+              <ul class="accordian js__accordian {% if section.settings.use_designed_layout %}custom-accordion-list{% endif %}">
+                {% for question in questions offset: 1 %}
+                  <li class="outer-list">
+                    <h3 class="h5">{{ question | split: 'A:' | first | remove: '<p>' | remove: '</p>' }}</h3>
+                    <div class="content">
+                      {{ question | split: 'A: ' | last | remove_last: '<p>' }}
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if section.settings.use_designed_layout %}
+                <div class="faq-footer">
+                  <a href="/pages/faqs" class="btn--primary">See All</a>
+                </div>
+              {% endif %}
+            </div>
+          </section>
+        {% else %}
+          {% if section.blocks.size > 0 %}
+            <div class="collapsible-container">
+              {% for block in section.blocks %}
+                <div class="collapsible">
+                  <div class="dropdown-header">
+                    <h2>{{ block.settings.title }}</h2>
+                    <svg
+                      class="collapsed"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.117"
+                      height="15.117"
+                      viewBox="0 0 15.117 15.117">
+                      <g
+                        id="Grupo_1124"
+                        data-name="Grupo 1124"
+                        transform="translate(1 1)">
+                        <path
+                          id="Trazado_449"
+                          data-name="Trazado 449"
+                          d="M7027.74,1021v13.117"
+                          transform="translate(-7020.74 -1021)"
+                          fill="none"
+                          stroke="#6b86ab"
+                          stroke-linecap="round"
+                          stroke-width="2" />
+                        <path
+                          id="Trazado_450"
+                          data-name="Trazado 450"
+                          d="M0,0V13.117"
+                          transform="translate(0 6) rotate(-90)"
+                          fill="none"
+                          stroke="#6b86ab"
+                          stroke-linecap="round"
+                          stroke-width="2" />
+                      </g>
+                    </svg>
+                    <svg
+                      class="expanded"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.117"
+                      height="2"
+                      viewBox="0 0 15.117 2">
+                      <g
+                        id="Grupo_1097"
+                        data-name="Grupo 1097"
+                        transform="translate(1 -5)">
+                        <path
+                          id="Trazado_450"
+                          data-name="Trazado 450"
+                          d="M0,0V13.117"
+                          transform="translate(0 6) rotate(-90)"
+                          fill="none"
+                          stroke="#6b86ab"
+                          stroke-linecap="round"
+                          stroke-width="2" />
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="dropdown-content">
+                    {{ block.settings.copy }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
     </div>
   </div>
   {% render 'dropdown-helper' %}
@@ -192,11 +241,118 @@
             "default": "<p>Welcome to my shop!</p>"
           }
         ]
+      }, {
+        "type": "custom_title",
+        "name": "Custom Title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Have more questions? We have answers",
+            "info": "Only shown on desktop (≥960px) when 'Use Designed Layout' is enabled"
+          }
+        ]
+      }, {
+        "type": "custom_text",
+        "name": "Custom Text",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "content",
+            "label": "Content",
+            "default": "<p>InfiniCare—your personal concierge for longevity. Our team of experts, including our on-staff physician, are standing by to ensure world-class service.</p>",
+            "info": "Only shown on desktop (≥960px) when 'Use Designed Layout' is enabled"
+          }, {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color",
+            "default": "#1A1B1B"
+          }, {
+            "type": "html",
+            "id": "icon",
+            "label": "Icon SVG (optional)",
+            "info": "Add SVG code for an icon to display before the text"
+          }
+        ]
+      }, {
+        "type": "custom_button",
+        "name": "Custom Button",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text",
+            "default": "Go to Live Chat"
+          }, {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+          }, {
+            "type": "image_picker",
+            "id": "button_icon",
+            "label": "Button Icon (optional)",
+            "info": "Icon will appear before the button text"
+          }, {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button Style",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              }, {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ],
+            "default": "primary",
+            "info": "Only shown on desktop (≥960px) when 'Use Designed Layout' is enabled"
+          }
+        ]
       }
     ],
     "presets": [
       {
-        "name": "Product FAQ"
+        "name": "Product FAQ",
+        "blocks": [
+          {
+            "type": "custom_title",
+            "settings": {
+              "title": "Have more questions? We have answers"
+            }
+          },
+          {
+            "type": "custom_text",
+            "settings": {
+              "content": "<p>InfiniCare—your personal concierge for longevity. Our team of experts, including our on-staff physician, are standing by to ensure world-class service.</p>"
+            }
+          },
+          {
+            "type": "custom_button",
+            "settings": {
+              "button_text": "Go to Live Chat",
+              "button_url": "#",
+              "button_style": "primary"
+            }
+          },
+          {
+            "type": "custom_text",
+            "settings": {
+              "content": "<p>Call Us 1-888-819-4640</p>",
+              "icon": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.49187 2.25C6.0993 2.25 5.71258 2.39063 5.39031 2.64844L5.34344 2.67188L5.32 2.69531L2.97625 5.10938L2.99969 5.13281C2.27605 5.80078 2.0534 6.7998 2.36687 7.66406C2.3698 7.66992 2.36394 7.68164 2.36687 7.6875C3.00262 9.50684 4.62859 13.0195 7.80437 16.1953C10.9919 19.3828 14.5514 20.9443 16.3122 21.6328H16.3356C17.2468 21.9375 18.2341 21.7207 18.9372 21.1172L21.3044 18.75C21.9255 18.1289 21.9255 17.0508 21.3044 16.4297L18.2575 13.3828L18.2341 13.3359C17.613 12.7148 16.5114 12.7148 15.8903 13.3359L14.3903 14.8359C13.8483 14.5752 12.5563 13.9072 11.32 12.7266C10.0925 11.5547 9.46551 10.207 9.23406 9.67969L10.7341 8.17969C11.3639 7.54981 11.3757 6.50098 10.7106 5.88281L10.7341 5.85938L10.6637 5.78906L7.66375 2.69531L7.64031 2.67188L7.59344 2.64844C7.27117 2.39063 6.88445 2.25 6.49187 2.25ZM6.49187 3.75C6.54754 3.75 6.6032 3.77637 6.65594 3.82031L9.65594 6.89063L9.72625 6.96094C9.72039 6.95508 9.77019 7.03418 9.67937 7.125L7.80437 9L7.45281 9.32813L7.61687 9.79688C7.61687 9.79688 8.4782 12.1025 10.2887 13.8281L10.4528 13.9688C12.196 15.5596 14.2497 16.4297 14.2497 16.4297L14.7184 16.6406L16.945 14.4141C17.0739 14.2852 17.0505 14.2852 17.1794 14.4141L20.2497 17.4844C20.3786 17.6133 20.3786 17.5664 20.2497 17.6953L17.9528 19.9922C17.6071 20.2881 17.2409 20.3496 16.8044 20.2031C15.1052 19.5352 11.8034 18.085 8.85906 15.1406C5.89129 12.1729 4.34148 8.80664 3.77312 7.17188C3.65887 6.86719 3.7409 6.41602 4.0075 6.1875L4.05437 6.14063L6.32781 3.82031C6.38055 3.77637 6.43621 3.75 6.49187 3.75Z\" fill=\"#28323F\"/></svg>"
+            }
+          }, {
+            "type": "custom_text",
+            "settings": {
+              "content": "<p>Our team is all located Dallas, TX, USA</p>",
+              "icon": "<svg width=\"23\" height=\"14\" viewBox=\"0 0 23 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M21.8428 0C22.0945 6.11546e-05 22.3008 0.20349 22.3008 0.456055V12.8447C22.3008 13.0973 22.0945 13.3007 21.8428 13.3008H0.458008C0.20627 13.3007 9.82008e-07 13.0973 0 12.8447V0.456055C0 0.203494 0.206264 6.72871e-05 0.458008 0H21.8428ZM0.916016 12.3896H21.3848V11.1084H0.916016V12.3896ZM0.916016 10.1973H21.3848V9.03223H10.0947C10.0878 9.03223 10.081 9.03058 10.0742 9.03027H0.916016V10.1973ZM10.5537 8.12109H21.3848V7.10449H15.9688C14.5004 7.1046 13.032 7.10555 11.9307 7.10547C11.3801 7.10543 10.9209 7.10461 10.5996 7.10449C10.584 7.10449 10.5686 7.1045 10.5537 7.10449V8.12109ZM0.916016 8.11914H9.6377V6.65332L9.63672 6.64844C9.63672 6.64517 9.63762 6.64192 9.6377 6.63867V4.65137L9.63672 4.64648C9.63672 4.64322 9.63762 4.63997 9.6377 4.63672V2.65039L9.63672 2.64551C9.63672 2.6424 9.63763 2.63884 9.6377 2.63574V0.911133H0.916016V8.11914ZM10.5537 6.19336C10.5687 6.19337 10.584 6.19335 10.5996 6.19336C10.9208 6.19347 11.38 6.1943 11.9307 6.19434C13.032 6.19441 14.5004 6.19346 15.9688 6.19336H21.3848V5.10254H20.0068C18.9055 5.10267 17.4371 5.10341 15.9688 5.10352C14.5004 5.10362 13.032 5.10359 11.9307 5.10352C11.3801 5.10348 10.9209 5.10265 10.5996 5.10254C10.584 5.10253 10.5686 5.10254 10.5537 5.10254V6.19336ZM15.9688 3.10156H10.5996C10.584 3.10156 10.5686 3.10059 10.5537 3.10059V4.19141C10.5687 4.19141 10.584 4.1914 10.5996 4.19141C10.9208 4.19152 11.38 4.19234 11.9307 4.19238C13.032 4.19246 14.5004 4.19249 15.9688 4.19238C17.4371 4.19228 18.9055 4.19154 20.0068 4.19141H21.3848V3.10059H20.0068C18.9055 3.10072 17.4371 3.10146 15.9688 3.10156ZM10.5537 2.18945C10.5687 2.18946 10.584 2.19042 10.5996 2.19043H15.9688C17.4371 2.19032 18.9055 2.18958 20.0068 2.18945H21.3848V0.911133H10.5537V2.18945Z\" fill=\"#84827E\"/><path d=\"M2.51256 1.46069L2.75376 1.94591L3.29305 2.02374L2.90286 2.40141L2.99496 2.93472L2.51256 2.68288L2.03027 2.93472L2.12237 2.40141L1.73218 2.02374L2.27147 1.94591L2.51256 1.46069Z\" fill=\"#84827E\"/><path d=\"M2.51256 3.86161L2.75376 4.34683L3.29305 4.42465L2.90286 4.80232L2.99496 5.33554L2.51256 5.08379L2.03027 5.33554L2.12237 4.80232L1.73218 4.42465L2.27147 4.34683L2.51256 3.86161Z\" fill=\"#84827E\"/><path d=\"M2.51256 6.09561L2.75376 6.58083L3.29305 6.65856L2.90286 7.03633L2.99496 7.56954L2.51256 7.3178L2.03027 7.56954L2.12237 7.03633L1.73218 6.65856L2.27147 6.58083L2.51256 6.09561Z\" fill=\"#84827E\"/><path d=\"M5.27704 1.46069L5.51823 1.94591L6.05742 2.02374L5.66723 2.40141L5.75933 2.93472L5.27704 2.68288L4.79474 2.93472L4.88684 2.40141L4.49665 2.02374L5.03594 1.94591L5.27704 1.46069Z\" fill=\"#84827E\"/><path d=\"M5.27704 3.86161L5.51823 4.34683L6.05742 4.42465L5.66723 4.80232L5.75933 5.33554L5.27704 5.08379L4.79474 5.33554L4.88684 4.80232L4.49665 4.42465L5.03594 4.34683L5.27704 3.86161Z\" fill=\"#84827E\"/><path d=\"M5.27704 6.09561L5.51823 6.58083L6.05742 6.65856L5.66723 7.03633L5.75933 7.56954L5.27704 7.3178L4.79474 7.56954L4.88684 7.03633L4.49665 6.65856L5.03594 6.58083L5.27704 6.09561Z\" fill=\"#84827E\"/><path d=\"M8.04151 1.46069L8.28261 1.94591L8.8219 2.02374L8.4317 2.40141L8.5238 2.93472L8.04151 2.68288L7.55921 2.93472L7.65132 2.40141L7.26112 2.02374L7.80031 1.94591L8.04151 1.46069Z\" fill=\"#84827E\"/><path d=\"M8.04151 3.86161L8.28261 4.34683L8.8219 4.42465L8.4317 4.80232L8.5238 5.33554L8.04151 5.08379L7.55921 5.33554L7.65132 4.80232L7.26112 4.42465L7.80031 4.34683L8.04151 3.86161Z\" fill=\"#84827E\"/><path d=\"M8.04151 6.09561L8.28261 6.58083L8.8219 6.65856L8.4317 7.03633L8.5238 7.56954L8.04151 7.3178L7.55921 7.56954L7.65132 7.03633L7.26112 6.65856L7.80031 6.58083L8.04151 6.09561Z\" fill=\"#84827E\"/></svg>"
+            }
+          }
+        ]
       }
     ]
   }
@@ -207,7 +363,7 @@
   .learn-more-sec.custom-faq-layout {
     background-color: #F1F3F4;
     margin: 0;
-    padding-block: 48px;
+    padding-block: 64px;
     padding-inline: 32px;
 
     .metafield-rich_text_field {
@@ -235,6 +391,11 @@
 
     .custom-accordion-list .outer-list {
       cursor: pointer;
+    }
+
+    .custom-accordion-list .outer-list .content,
+    .custom-accordion-list .outer-list .content > * {
+      line-height: 24px;
     }
 
     ul.custom-accordion-list li:not(.content ul li) {
@@ -274,6 +435,150 @@
       width: 100%;
       height: 50px;
       font-weight: 400;
+    }
+  }
+
+  /* Hide custom content column on mobile */
+  .none-480 {
+    display: none;
+  }
+
+  @media screen and (min-width: 480px) {
+    .none-480 {
+      display: block;
+    }
+  }
+
+  /* Desktop 2-column layout */
+  @media screen and (min-width: 960px) {
+    .learn-more-sec.custom-faq-layout .faq-two-columns {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 56px;
+      align-items: start;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-content-column {
+      grid-column: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 482px;
+      position: sticky;
+      top: 120px;
+      align-self: start;
+    }
+
+    .learn-more-sec.custom-faq-layout .faq-questions-column {
+      grid-column: 2;
+    }
+
+    /* Custom column title */
+    .learn-more-sec.custom-faq-layout .custom-column-title {
+      color: var(--txt-dark, #1A1B1B);
+      font-size: 45px;
+      line-height: 52px;
+      margin: 0;
+      text-transform: none;
+      text-align: left;
+    }
+
+    /* Custom column text with icon */
+    .learn-more-sec.custom-faq-layout .custom-column-text {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-text-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-text-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-text-content {
+      flex: 1;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-text-content p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      text-align: left;
+      color: inherit;
+    }
+
+    /* Custom column buttons */
+    .learn-more-sec.custom-faq-layout .custom-column-button {
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.5px;
+      padding-block: 14px;
+      width: 277px;
+      height: 50px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .learn-more-sec.custom-faq-layout .custom-button-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      transition: 0.6s ease all;
+    }
+
+    .learn-more-sec.custom-faq-layout .btn--secondary.custom-column-button {
+      border-color: var(--txt-dark, #1A1F29);
+      background-color: transparent;
+      color: var(--txt-dark, #1A1F29);
+      margin-top: -12px;
+
+       &:hover {
+        background-color: var(--txt-dark, #1a1b1b);
+        color: var(--txt-light, #FFF);
+      }
+
+       &:hover .custom-button-icon {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .learn-more-sec.custom-faq-layout .btn--secondary.custom-column-button .custom-button-icon {
+      filter: brightness(0) saturate(100%);
+    }
+
+    section.pdp-tab-small.collection-faq-section {
+      max-width: 100% !important;
+    }
+
+    .faq-footer {
+      display: none;
+    }
+
+    /* Hide FAQ heading and description on desktop when custom layout is active */
+    .learn-more-sec.custom-faq-layout .hide-desktop-custom {
+      display: none;
+    }
+  }
+
+  /* Show FAQ heading and description on mobile */
+  @media screen and (max-width: 959px) {
+    .learn-more-sec.custom-faq-layout .hide-desktop-custom {
+      display: block;
     }
   }
 {% endstylesheet %}
