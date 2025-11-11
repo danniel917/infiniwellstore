@@ -1,9 +1,9 @@
 {% comment %} 
-                                    Section: What to Expect from BPC-Lx 
-                                    - Full-width section with max-width container 
-                                    - Title with alignment options 
-                                    - Stat blocks with icons, animated counter numbers, and content (max 4) 
-                                    - Rich text block with customizable color and font size 
+                                      Section: What to Expect from BPC-Lx 
+                                      - Full-width section with max-width container 
+                                      - Title with alignment options 
+                                      - Stat blocks with icons, animated counter numbers, and content (max 4) 
+                                      - Rich text block with customizable color and font size 
 {% endcomment %}
 
 {{ 'what-to-expect.css' | asset_url | stylesheet_tag }}
@@ -118,8 +118,9 @@
 <script>
   // Lottery-style counter animation for stat numbers
   document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('.what-to-expect');
     const counters = document.querySelectorAll('.stat-counter');
-  
+
     // Initialize counter structure immediately to reserve space
     const initializeCounter = (counterElement) => {
       const target = counterElement.getAttribute('data-counter');
@@ -246,14 +247,34 @@
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
           entry.target.classList.add('animated');
-          animateCounter(entry.target);
+
+          // Animate all counters in the section
+          counters.forEach(counter => {
+            animateCounter(counter);
+          });
+
+          // Animate all icons in the section
+          const statItems = entry.target.querySelectorAll('.stat-item');
+          statItems.forEach(statItem => {
+            const icon = statItem.querySelector('.stat-icon');
+            if (icon) {
+              icon.classList.add('animated');
+            }
+          });
+
           // Stop observing after animation starts (runs only once)
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 });
-  
-    counters.forEach(counter => observer.observe(counter));
+    }, {
+      threshold: 0,
+      rootMargin: '600px 0px 0px 0px'
+    });
+
+    // Observe the entire section instead of individual counters
+    if (section) {
+      observer.observe(section);
+    }
   });
 </script>
 
