@@ -86,8 +86,21 @@ body.bpc-lx {
   }
 
   
-  .pdp-recommendations {
+  .pdp-recommendations.pdp-recommendations {
     background-color: #FEFFFE;
+    padding-bottom: 48px;
+    
+    .four-column-product-slider .top-section {
+      margin-bottom: 32px;
+    }
+
+    h2 {
+      font-size: 32px;
+      line-height: 40px;
+      text-transform: capitalize;
+      text-align: left;
+      width: 80%;
+    }
 
     @media (min-width: 960px) {
       margin-bottom: 64px;
@@ -95,12 +108,10 @@ body.bpc-lx {
       h2 {
         font-size: 45px;
         line-height: 52px;
-        text-transform: capitalize;
+        text-align: center;
+        width: auto;
       }
     
-      .four-column-product-slider .top-section {
-        margin-bottom: 32px;
-      }
     }
   }
 
@@ -136,6 +147,23 @@ body.bpc-lx {
     padding: 16px !important;
   }
 
+  .okeReviews[data-oke-container] .oke-w-reviews-writeReview,
+  div.okeReviews .oke-w-reviews-writeReview {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .okeReviews[data-oke-container] .oke-button,
+  div.okeReviews .oke-button {
+    border-color: #1A1B1B;
+    background-color: transparent;
+    padding: 12px 99px;
+  }
+
+  .oke-showMore .oke-button {
+    font-weight: 400;
+  }
+
   .product__actions .btn--primary {
     max-width: 198px;
     height: 50px;
@@ -143,6 +171,7 @@ body.bpc-lx {
     line-height: 24px;
     font-weight: 400;
     letter-spacing: 0.5px;
+    gap: 8px;
   }
 
   @media (min-width: 960px) {
@@ -157,4 +186,9 @@ body.bpc-lx {
 
 }
 
+.four-column-product-slider .inner .swiper-button-prev-product-slider svg circle,
+.four-column-product-slider .inner .swiper-button-next-product-slider svg circle {
+  fill: #F1F3F4;
+  stroke: #F1F3F4;
+}
 
