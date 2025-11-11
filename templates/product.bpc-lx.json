@@ -384,6 +384,7 @@
         "image_xemEhF": {
           "type": "image",
           "settings": {
+            "image_desktop": "shopify://shop_images/image_54_2.png",
             "image_mobile": "shopify://shop_images/image_54.jpg"
           }
         },
@@ -441,22 +442,22 @@
       ],
       "name": "Feel the Difference or it's Free",
       "settings": {
-        "paddingtop": 0,
-        "paddingbottom": 0,
+        "paddingtop": 64,
+        "paddingbottom": 64,
         "paddingleft": 0,
         "paddingright": 0,
         "paddingtopmobile": 0,
         "paddingbottommobile": 48,
         "paddingleftmobile": 0,
         "paddingrightmobile": 0,
-        "image_height_desktop": 400,
-        "image_max_height_desktop": 600,
+        "image_height_desktop": 510,
+        "image_max_height_desktop": 510,
         "image_height_mobile": 300,
         "image_max_height_mobile": 300,
-        "content_paddingtop": 40,
-        "content_paddingbottom": 40,
-        "content_paddingleft": 15,
-        "content_paddingright": 15,
+        "content_paddingtop": 0,
+        "content_paddingbottom": 0,
+        "content_paddingleft": 0,
+        "content_paddingright": 0,
         "content_paddingtopmobile": 0,
         "content_paddingbottommobile": 0,
         "content_paddingleftmobile": 32,
@@ -474,14 +475,59 @@
     },
     "pdp_reviews_9MHAWi": {
       "type": "pdp-reviews",
-      "custom_css": [
-        ".product-reviews-widget {background: var(--bg-white, #fefffe);}",
-        "h2.text-center {text-align: left; text-transform: capitalize; font-size: 32px;}"
-      ],
+      "custom_css": [],
       "settings": {}
     },
     "product_faq_y9BRKL": {
       "type": "product-faq",
+      "blocks": {
+        "custom_title_Y9gKNz": {
+          "type": "custom_title",
+          "settings": {
+            "title": "Have more questions? We have answers"
+          }
+        },
+        "custom_text_VmTdTi": {
+          "type": "custom_text",
+          "settings": {
+            "content": "<p>InfiniCare—your personal concierge for longevity. Our team of experts, including our on-staff physician, are standing by to ensure world-class service.</p>",
+            "text_color": "#1a1b1b",
+            "icon": ""
+          }
+        },
+        "custom_button_W4awyd": {
+          "type": "custom_button",
+          "settings": {
+            "button_text": "Go to Live Chat",
+            "button_url": "shopify://collections",
+            "button_style": "primary"
+          }
+        },
+        "custom_button_VQ4QYw": {
+          "type": "custom_button",
+          "settings": {
+            "button_text": "Call Us 1-888-819-4640",
+            "button_url": "shopify://collections",
+            "button_icon": "shopify://shop_images/Vector_c6fa81e1-8c3b-48c9-a106-851f60a8bec3.svg",
+            "button_style": "secondary"
+          }
+        },
+        "custom_text_Yc8kqU": {
+          "type": "custom_text",
+          "settings": {
+            "content": "<p><em>Our team is all located Dallas, TX, USA</em></p>",
+            "text_color": "#84827e",
+            "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M22.6924 4.84961C22.9441 4.84967 23.1504 5.0531 23.1504 5.30566V17.6943C23.1504 17.9469 22.9441 18.1503 22.6924 18.1504H1.30762C1.05588 18.1503 0.84961 17.9469 0.849609 17.6943V5.30566C0.849609 5.0531 1.05587 4.84968 1.30762 4.84961H22.6924ZM1.76562 17.2393H22.2344V15.958H1.76562V17.2393ZM1.76562 15.0469H22.2344V13.8818H10.9443C10.9374 13.8818 10.9307 13.8802 10.9238 13.8799H1.76562V15.0469ZM11.4033 12.9707H22.2344V11.9541H16.8184C15.35 11.9542 13.8816 11.9552 12.7803 11.9551C12.2297 11.955 11.7705 11.9542 11.4492 11.9541C11.4337 11.9541 11.4182 11.9541 11.4033 11.9541V12.9707ZM1.76562 12.9688H10.4873V11.5029L10.4863 11.498C10.4863 11.4948 10.4872 11.4915 10.4873 11.4883V9.50098L10.4863 9.49609C10.4863 9.49283 10.4872 9.48958 10.4873 9.48633V7.5L10.4863 7.49512C10.4863 7.49201 10.4872 7.48845 10.4873 7.48535V5.76074H1.76562V12.9688ZM11.4033 11.043C11.4183 11.043 11.4336 11.043 11.4492 11.043C11.7704 11.0431 12.2296 11.0439 12.7803 11.0439C13.8816 11.044 15.35 11.0431 16.8184 11.043H22.2344V9.95215H20.8564C19.7551 9.95228 18.2867 9.95302 16.8184 9.95312C15.35 9.95323 13.8816 9.9532 12.7803 9.95312C12.2297 9.95309 11.7705 9.95226 11.4492 9.95215C11.4337 9.95214 11.4182 9.95215 11.4033 9.95215V11.043ZM16.8184 7.95117H11.4492C11.4337 7.95117 11.4182 7.9502 11.4033 7.9502V9.04102C11.4183 9.04102 11.4336 9.04101 11.4492 9.04102C11.7704 9.04113 12.2296 9.04195 12.7803 9.04199C13.8816 9.04207 15.35 9.0421 16.8184 9.04199C18.2867 9.04189 19.7551 9.04115 20.8564 9.04102H22.2344V7.9502H20.8564C19.7551 7.95033 18.2867 7.95107 16.8184 7.95117ZM11.4033 7.03906C11.4183 7.03907 11.4336 7.04003 11.4492 7.04004H16.8184C18.2867 7.03993 19.7551 7.03919 20.8564 7.03906H22.2344V5.76074H11.4033V7.03906Z\" fill=\"#84827E\"></path>\n<path d=\"M3.36217 6.3103L3.60337 6.79552L4.14266 6.87335L3.75247 7.25101L3.84457 7.78433L3.36217 7.53249L2.87988 7.78433L2.97198 7.25101L2.58179 6.87335L3.12108 6.79552L3.36217 6.3103Z\" fill=\"#84827E\"></path>\n<path d=\"M3.36217 8.71122L3.60337 9.19644L4.14266 9.27426L3.75247 9.65193L3.84457 10.1851L3.36217 9.9334L2.87988 10.1851L2.97198 9.65193L2.58179 9.27426L3.12108 9.19644L3.36217 8.71122Z\" fill=\"#84827E\"></path>\n<path d=\"M3.36217 10.9452L3.60337 11.4304L4.14266 11.5082L3.75247 11.8859L3.84457 12.4192L3.36217 12.1674L2.87988 12.4192L2.97198 11.8859L2.58179 11.5082L3.12108 11.4304L3.36217 10.9452Z\" fill=\"#84827E\"></path>\n<path d=\"M6.12665 6.3103L6.36784 6.79552L6.90703 6.87335L6.51684 7.25101L6.60894 7.78433L6.12665 7.53249L5.64435 7.78433L5.73645 7.25101L5.34626 6.87335L5.88555 6.79552L6.12665 6.3103Z\" fill=\"#84827E\"></path>\n<path d=\"M6.12665 8.71122L6.36784 9.19644L6.90703 9.27426L6.51684 9.65193L6.60894 10.1851L6.12665 9.9334L5.64435 10.1851L5.73645 9.65193L5.34626 9.27426L5.88555 9.19644L6.12665 8.71122Z\" fill=\"#84827E\"></path>\n<path d=\"M6.12665 10.9452L6.36784 11.4304L6.90703 11.5082L6.51684 11.8859L6.60894 12.4192L6.12665 12.1674L5.64435 12.4192L5.73645 11.8859L5.34626 11.5082L5.88555 11.4304L6.12665 10.9452Z\" fill=\"#84827E\"></path>\n<path d=\"M8.89112 6.3103L9.13222 6.79552L9.6715 6.87335L9.28131 7.25101L9.37341 7.78433L8.89112 7.53249L8.40882 7.78433L8.50093 7.25101L8.11073 6.87335L8.64992 6.79552L8.89112 6.3103Z\" fill=\"#84827E\"></path>\n<path d=\"M8.89112 8.71122L9.13222 9.19644L9.6715 9.27426L9.28131 9.65193L9.37341 10.1851L8.89112 9.9334L8.40882 10.1851L8.50093 9.65193L8.11073 9.27426L8.64992 9.19644L8.89112 8.71122Z\" fill=\"#84827E\"></path>\n<path d=\"M8.89112 10.9452L9.13222 11.4304L9.6715 11.5082L9.28131 11.8859L9.37341 12.4192L8.89112 12.1674L8.40882 12.4192L8.50093 11.8859L8.11073 11.5082L8.64992 11.4304L8.89112 10.9452Z\" fill=\"#84827E\"></path>\n</svg>"
+          }
+        }
+      },
+      "block_order": [
+        "custom_title_Y9gKNz",
+        "custom_text_VmTdTi",
+        "custom_button_W4awyd",
+        "custom_button_VQ4QYw",
+        "custom_text_Yc8kqU"
+      ],
       "custom_css": [
         "@media (max-width: 768px) {h2 {text-align: left; max-width: 90%; margin: 0 auto; } p {text-align: left; }}"
       ],
@@ -496,9 +542,10 @@
         "image_re8FVR": {
           "type": "image",
           "settings": {
+            "image_desktop": "shopify://shop_images/image_54_3.png",
             "image_mobile": "shopify://shop_images/image_54_1.png",
-            "image_height_desktop": 400,
-            "image_max_height_desktop": 600,
+            "image_height_desktop": 510,
+            "image_max_height_desktop": 510,
             "image_height_mobile": 420,
             "image_max_height_mobile": 420
           }
@@ -513,7 +560,7 @@
         "text_ea4a9F": {
           "type": "text",
           "settings": {
-            "content": "<p>Join our newsletter for exclusive offers and health insights.</p>",
+            "content": "<p>We choose 4 lucky subscribers every month! Join our mailing list for your chance to win.</p>",
             "alignment": "left"
           }
         },
@@ -534,8 +581,8 @@
       ],
       "name": "Subscription",
       "settings": {
-        "paddingtop": 0,
-        "paddingbottom": 0,
+        "paddingtop": 64,
+        "paddingbottom": 64,
         "paddingleft": 0,
         "paddingright": 0,
         "paddingtopmobile": 48,
