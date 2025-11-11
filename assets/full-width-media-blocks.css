@@ -131,7 +131,8 @@
     row-gap: 148px;
   }
 
-  .full-width-media-blocks .media-background-video, .full-width-media-blocks .media-background-image {
+  .full-width-media-blocks .media-background-video,
+  .full-width-media-blocks .media-background-image {
     object-fit: contain;
   }
 
