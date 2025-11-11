@@ -132,14 +132,38 @@
   letter-spacing: 0.5px;
 }
 
-/* Logo Marquee - Full Width */
+/* Logo Marquee */
 .professional-brand .brand-marquee {
+  overflow: hidden;
+  padding-top: 32px;
+  opacity: .3;
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+/* Marquee Logo Item */
+.professional-brand .marquee-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.professional-brand .marquee-logo-item img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.professional-brand .marquee-logo-item .placeholder-svg {
+  max-height: 60px;
+  width: auto;
+  opacity: 0.3;
 }
 
 /* Mobile/Desktop Visibility Utilities */
@@ -208,5 +232,32 @@
     font-size: 45px;
     line-height: 52px;
     letter-spacing: 0;
+  }
+
+  /* Logo Marquee - Reset full-width on desktop */
+  .professional-brand .brand-marquee {
+    width: auto;
+    position: static;
+    left: auto;
+    right: auto;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+@media screen and (min-width: 1279px) {
+  .professional-brand .brand-marquee {
+    padding-top: 19.5px;
+    padding-bottom: 19.5px;
+    margin-top: -100px;
+  }
+
+  .professional-brand .container-brand {
+    max-width: 1220px;
+  }
+
+  .professional-brand .brand-header {
+    margin-top: 32px;
   }
 }
