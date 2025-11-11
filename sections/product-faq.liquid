@@ -12,12 +12,6 @@
 {% endfor %}
 
 {% unless hide_faq %}
-  {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank and section.settings.use_designed_layout == false %}
-    <h2 class="text-center">
-      {{ product.metafields.custom.faq_heading | default: 'FAQs' }}
-    </h2>
-  {% endif %}
-
   {{ 'section-faq-dropdown-collection-page.css' | asset_url | stylesheet_tag }}
   <div class="learn-more-sec {% if section.settings.use_designed_layout %}custom-faq-layout{% endif %}">
     {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
