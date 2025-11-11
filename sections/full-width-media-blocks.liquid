@@ -133,11 +133,6 @@
 
       <div
         class="content-block block-{{ block.id }} {{ alignment_class }}"
-        {% unless request.design_mode %}
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-delay="{{ forloop.index0 | times: 200 }}"
-        {% endunless %}
         {{ block.shopify_attributes }}>
 
         {% if block.settings.image != blank %}
