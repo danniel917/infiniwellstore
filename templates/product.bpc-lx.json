@@ -281,9 +281,29 @@
             "button_url": ""
           }
         },
-        "logo_marquee_6XBbdM": {
-          "type": "logo_marquee",
-          "settings": {}
+        "logo_item_3KPLCX": {
+          "type": "logo_item",
+          "settings": {
+            "logo": "shopify://shop_images/logo-03.svg"
+          }
+        },
+        "logo_item_hemCje": {
+          "type": "logo_item",
+          "settings": {
+            "logo": "shopify://shop_images/logo-02.svg"
+          }
+        },
+        "logo_item_pLbK4i": {
+          "type": "logo_item",
+          "settings": {
+            "logo": "shopify://shop_images/Vector_3.svg"
+          }
+        },
+        "logo_item_R4wJbt": {
+          "type": "logo_item",
+          "settings": {
+            "logo": "shopify://shop_images/Vector_4.svg"
+          }
         }
       },
       "block_order": [
@@ -292,7 +312,10 @@
         "media_VBfH6c",
         "rich_text_HXKxRD",
         "button_nKXarz",
-        "logo_marquee_6XBbdM"
+        "logo_item_3KPLCX",
+        "logo_item_hemCje",
+        "logo_item_pLbK4i",
+        "logo_item_R4wJbt"
       ],
       "name": "Professional Brand",
       "settings": {
@@ -567,7 +590,7 @@
         "newsletter_TPXPtG": {
           "type": "newsletter",
           "settings": {
-            "placeholder": "Enter your email",
+            "placeholder": "name@mail.com",
             "button_text": "Enter To Win",
             "success_message": "Thanks for subscribing!"
           }
