@@ -89,7 +89,7 @@ body.bpc-lx {
   .pdp-recommendations.pdp-recommendations {
     background-color: #FEFFFE;
     padding-bottom: 48px;
-    
+
     .four-column-product-slider .top-section {
       margin-bottom: 32px;
     }
@@ -118,33 +118,6 @@ body.bpc-lx {
   .footer-top-bar,
   .main-footer__newsletter {
     display: none;
-  }
-
-  .rc-purchase-option__badge {
-    top: .8rem !important;
-    right: 5rem !important;
-    font-size: 14px !important;
-    line-height: 20px !important;
-    padding: 4px 8px !important;
-    font-weight: bold !important;
-    letter-spacing: 0.5px !important;
-  }
-
-  .rc-purchase-option {
-    border-width: 2px !important;
-  }
-  
-  .rc-purchase-option[rc-selected] {
-    --rc-widget-brand-color: #1A1B1B !important;
-    border-color: var(--rc-widget-brand-color) !important;
-  }
-
-  .rc-price.text-muted {
-    order: 2 !important;
-  }
-
-  .rc-purchase-option__label {
-    padding: 16px !important;
   }
 
   .okeReviews[data-oke-container] .oke-w-reviews-writeReview,
