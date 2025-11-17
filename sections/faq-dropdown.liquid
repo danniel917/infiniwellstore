@@ -2,7 +2,7 @@
   FAQ Exclude List - Collection Pages
   To add/remove collections from FAQ exclusion, edit the excluded_collections array below
 {% endcomment %}
-{% assign excluded_collections = 'bpc-products,optimize,nourishment,yunique-medical-iw,essentials,joint-and-muscle-support,immunity-and-detoxification,gut-health,cardio-metabolic-support,cosmetic' | split: ',' %}
+{% assign excluded_collections = '' | split: ',' %}
 {% assign hide_faq = false %}
 {% for excluded_handle in excluded_collections %}
   {% if collection.handle == excluded_handle %}
