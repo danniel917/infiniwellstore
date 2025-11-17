@@ -29,7 +29,10 @@
 </style>
 
 <section class="what-to-expect section-{{ section.id }}-padding section-{{ section.id }}">
-  <div class="container-expect container-960">
+  <div class="container-expect container-960"
+    data-aos="fade-up" 
+    data-aos-duration="3000"
+  >
 
     <!-- Title Block -->
     {% for block in section.blocks %}
@@ -141,9 +144,9 @@
         const digitContainer = document.createElement('span');
         digitContainer.className = 'counter-digit-container';
   
-        // Create multiple sequences of numbers (0-9) to support multiple rotations
-        // We need at least 4 sequences (400%) to support 3 rotations + target position
-        const sequences = 4; // Enough for 3 rotations + any target
+        // Create multiple sequences of numbers (0-9) to support rotations
+        // Need 3 sequences to support 1.5 rotations (1.5 * 10 = 15 numbers + up to 9 for target)
+        const sequences = 3;
         for (let seq = 0; seq < sequences; seq++) {
           for (let i = 0; i < 10; i++) {
             const span = document.createElement('span');
@@ -175,65 +178,69 @@
     const animateCounter = (counterElement) => {
       const target = counterElement.getAttribute('data-counter');
       const targetNumber = parseFloat(target);
-  
+
       // Split target into individual digits
       const targetStr = Math.floor(targetNumber).toString();
       const digits = targetStr.split('');
-  
+
       // Get all digit containers
       const digitContainers = counterElement.querySelectorAll('.counter-digit-container');
-  
+
       // Ensure we have the right number of containers
       if (digitContainers.length !== digits.length) {
+        console.error('Mismatch:', digitContainers.length, 'containers vs', digits.length, 'digits');
         return; // Skip if structure doesn't match
       }
-  
-      // Animate each digit to its target value with double rotation
+
+      // Animate each digit to its target value with rotations
+      // Left side finishes first, right side finishes last for cascade effect
       digitContainers.forEach((container, index) => {
         const targetDigit = parseInt(digits[index]);
         const totalDigits = digits.length;
         const isRightSide = index >= totalDigits - 2; // Last 2 digits are "right side"
-        
-        // Calculate rotations: at least 2 full rounds, more for right-side digits
-        const baseRotations = 2; // Minimum 2 full rotations
-        const extraRotations = isRightSide ? 1 : 0; // Extra rotation for right-side digits
+
+        // Calculate rotations: lighter animation with fewer loops
+        const baseRotations = 1; // Just 1 full rotation for lighter feel
+        const extraRotations = isRightSide ? 0.5 : 0; // Half rotation extra for right-side
         const totalRotations = baseRotations + extraRotations;
-        
-        // Start lottery animation after a brief delay
+
+        // Start lottery animation immediately
+        const delay = 0;
+
         setTimeout(() => {
-          const delay = index * 100; // Stagger animation
-          
-          setTimeout(() => {
-            // Calculate the translateY value to show the target digit
-            // We have 4 sequences of 0-9 (40 numbers total)
-            // Each sequence = 1 full rotation = 25% of total height (100% / 4 sequences)
-            // Each number = 2.5% of total height (100% / 40 numbers)
-            // Formula: -(rotations * 25% + targetDigit * 2.5%)
-            const sequences = 4;
-            const numbersPerSequence = 10;
-            const totalNumbers = sequences * numbersPerSequence; // 40
-            
-            // Each rotation = 1 sequence = 100% / sequences = 25%
-            const rotationPercent = 100 / sequences;
-            // Each number = 100% / totalNumbers = 2.5%
-            const numberPercent = 100 / totalNumbers;
-            
-            // Calculate total translation
-            const rotationsPercent = totalRotations * rotationPercent;
-            const targetPercent = targetDigit * numberPercent;
-            const translateValue = -(rotationsPercent + targetPercent) + '%';
-            
-            // Slower duration for smoother multi-rotation effect
-            // Right-side digits are slower for more dramatic effect
-            const baseDuration = 4000; // Base duration in ms
-            const rightSideExtra = 2000; // Extra duration for right-side digits
-            const duration = baseDuration + (isRightSide ? rightSideExtra : 0);
-            
-            // Use a smoother easing function for more natural deceleration
-            container.style.transition = `transform ${duration}ms cubic-bezier(0.2, 0, 0.2, 1)`;
-            container.style.transform = `translateY(${translateValue})`;
-          }, delay);
-        }, 50);
+          // With 3 sequences of [0-9], we have 30 total numbers (indices 0-29)
+          // Structure: [0,1,2,3,4,5,6,7,8,9, 0,1,2,3,4,5,6,7,8,9, 0,1,2,3,4,5,6,7,8,9]
+          //   Sequence: [     0 (first)     ,      1 (second)    ,      2 (third)     ]
+          const sequences = 3;
+          const numbersPerSequence = 10;
+          const totalNumbersInContainer = sequences * numbersPerSequence; // 30
+
+          // Calculate which sequence to land in after rotations
+          // 1 rotation = land in sequence 1 (second sequence)
+          // 1.5 rotations = land in sequence 2 (third sequence) - we need the ceiling
+          const whichSequence = Math.ceil(totalRotations);
+
+          // Calculate the exact index to land on
+          // We want to land on targetDigit within the destination sequence
+          // For 1 rotation + digit 9: sequence 1, index = 10 + 9 = 19
+          // For 1.5 rotations + digit 3: sequence 2, index = 20 + 3 = 23
+          const targetIndex = (whichSequence * numbersPerSequence) + targetDigit;
+
+          // Each number occupies (100% / 30) of the container height
+          const percentPerNumber = 100 / totalNumbersInContainer;
+          const translatePercent = targetIndex * percentPerNumber;
+          const translateValue = -translatePercent + '%';
+
+          // Faster base duration, progressive increase from left to right
+          const baseDuration = 1000;
+          const progressiveDelay = index * 150;
+          const duration = baseDuration + progressiveDelay;
+
+          // Ease-out-back: overshoots slightly then comes back to settle
+          // Using a gentler overshoot to avoid showing blank space
+          container.style.transition = `transform ${duration}ms cubic-bezier(0.34, 1.2, 0.64, 1)`;
+          container.style.transform = `translateY(${translateValue})`;
+        }, delay);
       });
     };
   
@@ -243,6 +250,7 @@
     });
   
     // Intersection Observer for animation on scroll - runs only once
+    // Triggers much earlier (before section is visible) for smooth entry
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -268,7 +276,7 @@
       });
     }, {
       threshold: 0,
-      rootMargin: '600px 0px 0px 0px'
+      rootMargin: '100% 0px 0px 0px' // Trigger when section is 1 full viewport height before visible
     });
 
     // Observe the entire section instead of individual counters

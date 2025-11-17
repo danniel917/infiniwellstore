@@ -133,7 +133,10 @@
 
       <div
         class="content-block block-{{ block.id }} {{ alignment_class }}"
-        {{ block.shopify_attributes }}>
+        {{ block.shopify_attributes }}
+          data-aos="fade-up" 
+          data-aos-duration="3000"
+      >
 
         {% if block.settings.image != blank %}
           <div class="block-image">

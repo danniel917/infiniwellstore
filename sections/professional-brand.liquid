@@ -37,7 +37,10 @@
 </style>
 
 <section class="professional-brand section-{{ section.id }}-padding section-{{ section.id }}">
-  <div class="container-brand container-960">
+  <div class="container-brand container-960"
+      data-aos="fade-up" 
+      data-aos-duration="3000"
+  >
 
     <!-- Header Container -->
     <div class="brand-header">
@@ -71,6 +74,7 @@
     <div class="brand-media">
       {% for block in section.blocks %}
         {% if block.type == 'media' %}
+          <!-- Desktop Media -->
           {% if block.settings.use_video_desktop %}
             <!-- Desktop Video -->
             {% if block.settings.video_desktop != blank %}
@@ -97,12 +101,16 @@
             {% endif %}
           {% endif %}
 
+          <!-- Mobile Media - Falls back to desktop if empty -->
           {% if block.settings.use_video_mobile %}
             <!-- Mobile Video -->
             {% if block.settings.video_mobile != blank %}
               {% assign mobile_video = block.settings.video_mobile %}
-            {% else %}
+            {% elsif block.settings.use_video_desktop %}
+              {% comment %} Fallback: Use desktop video if mobile video is empty and desktop is using video {% endcomment %}
               {% assign mobile_video = block.settings.video_desktop %}
+            {% else %}
+              {% assign mobile_video = blank %}
             {% endif %}
             {% if mobile_video != blank %}
               {{ mobile_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'brand-media-video block-480' }}
@@ -116,6 +124,7 @@
             {% if block.settings.image_mobile != blank %}
               {% assign mobile_image = block.settings.image_mobile %}
             {% else %}
+              {% comment %} Fallback: Use desktop image if mobile image is empty {% endcomment %}
               {% assign mobile_image = block.settings.image_desktop %}
             {% endif %}
             {% if mobile_image != blank %}
@@ -165,60 +174,29 @@
   {% assign logo_items = section.blocks | where: "type", "logo_item" %}
   {% if logo_items.size > 0 %}
     <div class="brand-marquee">
-      <div class="splide js-logo-marquee-{{ section.id }}">
-        <div class="splide__track">
-          <div class="splide__list">
+      <div class="marquee-track">
+        {% comment %} Duplicate logos 6 times to ensure no empty space on any screen size {% endcomment %}
+        {% for i in (1..6) %}
+          <div class="marquee-content" {% if i > 1 %}aria-hidden="true"{% endif %}>
             {% for block in section.blocks %}
               {% if block.type == 'logo_item' %}
-                <div class="splide__slide" {{ block.shopify_attributes }}>
-                  <div class="marquee-logo-item">
-                    {% if block.settings.logo != blank %}
-                      <img
-                        src="{{ block.settings.logo | image_url: width: 200 }}"
-                        alt="{{ block.settings.logo.alt | default: 'Logo' }}"
-                        width="200"
-                        height="auto"
-                        loading="lazy">
-                    {% else %}
-                      {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
-                    {% endif %}
-                  </div>
+                <div class="marquee-logo-item"{% if i == 1 %} {{ block.shopify_attributes }}{% endif %}>
+                  {% if block.settings.logo != blank %}
+                    <img
+                      src="{{ block.settings.logo | image_url: width: 200 }}"
+                      alt="{{ block.settings.logo.alt | default: 'Logo' }}"
+                      width="200"
+                      height="auto"
+                      loading="lazy">
+                  {% else %}
+                    {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
                 </div>
               {% endif %}
             {% endfor %}
           </div>
-        </div>
+        {% endfor %}
       </div>
-
-      <!-- Splide JS and CSS -->
-      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" defer></script>
-      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js" defer></script>
-      <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
-
-      <script defer>
-        document.addEventListener('DOMContentLoaded', function () {
-          if (document.querySelector('.js-logo-marquee-{{ section.id }}')) {
-            new Splide('.js-logo-marquee-{{ section.id }}', {
-              type: 'loop',
-              drag: false,
-              arrows: false,
-              pagination: false,
-              perPage: 'auto',
-              perMove: 1,
-              gap: '88px',
-              autoWidth: true,
-              focus: 'center',
-              updateOnMove: true,
-              keyboard: false,
-              autoScroll: {
-                speed: 1,
-                pauseOnHover: false,
-                pauseOnFocus: false,
-              },
-            }).mount(window.splide.Extensions);
-          }
-        });
-      </script>
     </div>
   {% endif %}
 

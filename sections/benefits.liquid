@@ -22,6 +22,18 @@ Section: Benefits
     padding-bottom: {{ section.settings.content_paddingbottom | round: 0 }}px;
   }
 
+  /* Custom Media Heights */
+  {% for block in section.blocks %}
+    {% if block.type == 'video' %}
+      .section-{{ section.id }} .video-container-wrapper,
+      .section-{{ section.id }} .video-container,
+      .section-{{ section.id }} .video-background {
+        height: {{ block.settings.height_desktop | round: 0 }}px;
+        max-height: {{ block.settings.height_desktop | round: 0 }}px;
+      }
+    {% endif %}
+  {% endfor %}
+
   /* Mobile Padding */
   @media screen and (max-width: 768px) {
     .section-{{ section.id }}-padding {
@@ -34,6 +46,18 @@ Section: Benefits
       padding-top: {{ section.settings.content_paddingtopmobile | round: 0 }}px;
       padding-bottom: {{ section.settings.content_paddingbottommobile | round: 0 }}px;
     }
+
+    /* Custom Mobile Media Heights */
+    {% for block in section.blocks %}
+      {% if block.type == 'video' %}
+        .section-{{ section.id }} .video-container-wrapper,
+        .section-{{ section.id }} .video-container,
+        .section-{{ section.id }} .video-background {
+          height: {{ block.settings.height_mobile | round: 0 }}px;
+          max-height: {{ block.settings.height_mobile | round: 0 }}px;
+        }
+      {% endif %}
+    {% endfor %}
   }
 </style>
 
@@ -115,12 +139,60 @@ Section: Benefits
             {% endif %}
 
           </div>
+
+          {% comment %} Overlay Content - Title, Text, Button {% endcomment %}
+          {% assign has_overlay_content = false %}
+          {% for overlay_block in section.blocks %}
+            {% if overlay_block.type == 'overlay_title' or overlay_block.type == 'overlay_text' or overlay_block.type == 'overlay_button' %}
+              {% assign has_overlay_content = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if has_overlay_content %}
+            <div class="overlay-content-wrapper align-v-{{ section.settings.overlay_vertical_alignment }} align-h-{{ section.settings.overlay_horizontal_alignment }}">
+              <div class="overlay-content align-text-{{ section.settings.overlay_text_alignment }}"
+                data-aos="fade-up" 
+                data-aos-duration="2000"
+              >
+
+                {% for overlay_block in section.blocks %}
+                  {% if overlay_block.type == 'overlay_title' %}
+                    {% if overlay_block.settings.title != blank %}
+                      <h2 class="overlay-title" {{ overlay_block.shopify_attributes }}>{{ overlay_block.settings.title }}</h2>
+                    {% endif %}
+                  {% endif %}
+
+                  {% if overlay_block.type == 'overlay_text' %}
+                    {% if overlay_block.settings.text != blank %}
+                      <div class="overlay-text" {{ overlay_block.shopify_attributes }}>{{ overlay_block.settings.text }}</div>
+                    {% endif %}
+                  {% endif %}
+
+                  {% if overlay_block.type == 'overlay_button' %}
+                    {% if overlay_block.settings.button_label != blank %}
+                      <div class="overlay-button-wrapper {% if overlay_block.settings.button_full_width_mobile %}full-width-mobile{% endif %}" {{ overlay_block.shopify_attributes }}>
+                        <a href="{{ overlay_block.settings.button_url }}" class="btn--{{ overlay_block.settings.button_style }}">
+                          {{ overlay_block.settings.button_label }}
+                        </a>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+
+              </div>
+            </div>
+          {% endif %}
+
         </div>
       {% endif %}
     {% endfor %}
 
     <!-- Content Container (with padding) -->
-    <div class="content-container content-padding">
+    <div class="content-container content-padding"
+      data-aos="fade-up" 
+      data-aos-duration="3000"
+    >
 
       <!-- Title Block -->
       {% for block in section.blocks %}
@@ -193,15 +265,17 @@ Section: Benefits
               {% if block.type == 'middle_image' %}
                 <div class="grid-middle-image" {{ block.shopify_attributes }}>
                   {% if block.settings.image != blank %}
-                    <img
-                      src="{{ block.settings.image | image_url: width: 600 }}"
-                      srcset="{{ block.settings.image | image_url: width: 300 }} 300w,
-                              {{ block.settings.image | image_url: width: 600 }} 600w"
-                      sizes="(min-width: 960px) 300px, 100vw"
-                      width="{{ block.settings.image.width }}"
-                      height="{{ block.settings.image.height }}"
-                      alt=""
-                      loading="lazy">
+                  <img
+                    src="{{ block.settings.image | image_url: width: 1500 }}"
+                    srcset="{{ block.settings.image | image_url: width: 300 }} 300w,
+                            {{ block.settings.image | image_url: width: 600 }} 600w,
+                            {{ block.settings.image | image_url: width: 1000 }} 1000w,
+                            {{ block.settings.image | image_url: width: 1500 }} 1500w"
+                    sizes="(min-width: 960px) {{ block.settings.image.width }}px, 100vw"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    alt=""
+                    loading="lazy">
                   {% else %}
                     <div class="grid-middle-placeholder">
                       {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -404,7 +478,75 @@ Section: Benefits
         "unit": "px",
         "label": "Padding Bottom (Mobile)",
         "default": 40
-      }, {
+      },
+      {
+        "type": "header",
+        "content": "Overlay Content Alignment"
+      },
+      {
+        "type": "select",
+        "id": "overlay_vertical_alignment",
+        "label": "Vertical Alignment",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "middle",
+            "label": "Middle"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ],
+        "default": "middle",
+        "info": "Vertical position of overlay content on the media"
+      },
+      {
+        "type": "select",
+        "id": "overlay_horizontal_alignment",
+        "label": "Horizontal Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "info": "Horizontal position of overlay content on the media"
+      },
+      {
+        "type": "select",
+        "id": "overlay_text_alignment",
+        "label": "Text Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center",
+        "info": "Text alignment within the overlay content"
+      },
+      {
         "type": "header",
         "content": "Content Container Padding"
       }, {
@@ -514,6 +656,32 @@ Section: Benefits
             "id": "image_mobile",
             "label": "Background Image (Mobile)",
             "info": "Optional - falls back to desktop image if empty"
+          },
+          {
+            "type": "header",
+            "content": "Media Height Settings"
+          },
+          {
+            "type": "range",
+            "id": "height_desktop",
+            "min": 300,
+            "max": 1200,
+            "step": 50,
+            "unit": "px",
+            "label": "Height (Desktop)",
+            "default": 600,
+            "info": "Custom height for desktop media"
+          },
+          {
+            "type": "range",
+            "id": "height_mobile",
+            "min": 200,
+            "max": 800,
+            "step": 50,
+            "unit": "px",
+            "label": "Height (Mobile)",
+            "default": 400,
+            "info": "Custom height for mobile media"
           }
         ]
       }, {
@@ -593,6 +761,76 @@ Section: Benefits
             "type": "url",
             "id": "button_url",
             "label": "Button URL"
+          }
+        ]
+      },
+      {
+        "type": "overlay_title",
+        "name": "Overlay Title",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Overlay Title",
+            "info": "This title will overlay the video/image background"
+          }
+        ]
+      },
+      {
+        "type": "overlay_text",
+        "name": "Overlay Text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Add your overlay text here.</p>",
+            "info": "This text will overlay the video/image background"
+          }
+        ]
+      },
+      {
+        "type": "overlay_button",
+        "name": "Overlay Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label",
+            "default": "Learn More",
+            "info": "Button that overlays the video/image background"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button Style",
+            "options": [
+              {
+                "value": "primary",
+                "label": "Primary"
+              },
+              {
+                "value": "secondary",
+                "label": "Secondary"
+              }
+            ],
+            "default": "primary"
+          },
+          {
+            "type": "checkbox",
+            "id": "button_full_width_mobile",
+            "label": "Full Width on Mobile",
+            "default": false,
+            "info": "Make button full width on mobile devices"
           }
         ]
       }
