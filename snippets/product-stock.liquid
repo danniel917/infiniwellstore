@@ -1,0 +1,217 @@
+{% comment %} 
+  Snippet: Product Stock Display 
+  - Displays current inventory quantity for the selected variant 
+  - Shows visual indicator based on stock level
+ 
+  Parameters: 
+  - product: The product object (required) 
+  - show_icon: Show icon before text (optional, default: false) 
+  - threshold_low: Show "low stock" warning when below this number (optional, default: 10) 
+  - threshold_high: Show "in stock" when above this number (optional, default: 50) 
+{% endcomment %}
+
+{% assign variant = product.selected_or_first_available_variant %}
+{% assign stock_qty = variant.inventory_quantity %}
+
+{% if show_icon == blank %}
+  {% assign show_icon = false %}
+{% endif %}
+
+{% if threshold_low == blank %}
+  {% assign threshold_low = 10 %}
+{% endif %}
+
+{% if threshold_high == blank %}
+  {% assign threshold_high = 50 %}
+{% endif %}
+
+{% comment %} Always show the stock number {% endcomment %}
+{% if stock_qty %}
+  {% if stock_qty <= 0 %}
+    {% assign stock_status = 'out-of-stock' %}
+    {% assign stock_text = 'Out of stock' %}
+  {% elsif stock_qty <= threshold_low %}
+    {% assign stock_status = 'low-stock' %}
+    {% assign stock_text = 'Only ' | append: stock_qty | append: ' left in stock' %}
+  {% else %}
+    {% comment %} For any stock above threshold_low, show the number {% endcomment %}
+    {% assign stock_status = 'in-stock' %}
+    {% assign stock_text = stock_qty | append: ' in stock' %}
+  {% endif %}
+{% else %}
+  {% assign stock_status = 'in-stock' %}
+  {% assign stock_text = 'In stock' %}
+{% endif %}
+
+<!-- DEBUG: stock_status = {{ stock_status }}, stock_text = {{ stock_text }} -->
+
+<div
+  class="product-stock js__product-stock"
+  data-inventory="{{ stock_qty }}"
+  data-variant-id="{{ variant.id }}">
+  <div class="product-stock__wrapper product-stock--{{ stock_status }}">
+    {% if show_icon %}
+      <span class="product-stock__icon">
+        {% if stock_status == 'out-of-stock' %}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="8"
+              cy="8"
+              r="7"
+              stroke="currentColor"
+              stroke-width="2" />
+            <path
+              d="M5 8H11"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round" />
+          </svg>
+        {% elsif stock_status == 'low-stock' %}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8 2L8 10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round" />
+            <circle
+              cx="8"
+              cy="13"
+              r="1"
+              fill="currentColor" />
+          </svg>
+        {% else %}
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle
+              cx="8"
+              cy="8"
+              r="7"
+              stroke="currentColor"
+              stroke-width="2" />
+            <path
+              d="M5 8L7 10L11 6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        {% endif %}
+      </span>
+    {% endif %}
+    <span class="product-stock__text">{{ stock_text }}</span>
+  </div>
+</div>
+
+<style>
+  .product-stock {
+    margin: 12px 0;
+  }
+
+  .product-stock__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  .product-stock__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .product-stock__text {
+    display: inline-block;
+  }
+
+  /* Stock Status Colors */
+  .product-stock--out-of-stock {
+    color: #DC2626;
+    /* Red */
+  }
+
+  .product-stock--low-stock {
+    color: #F59E0B;
+    /* Orange/Amber */
+  }
+
+  .product-stock--in-stock,
+  .product-stock--in-stock-high {
+    color: #16A34A;
+    /* Green */
+  }
+</style>
+
+<script>
+  // Update stock display when variant changes
+  (function() {
+    function updateProductStock() {
+      var stockElement = document.querySelector('.js__product-stock');
+      if (!stockElement) return;
+  
+      // Listen for variant change events
+      document.addEventListener('variantChange', function(event) {
+        if (!event.detail || !event.detail.variant) return;
+  
+        var variant = event.detail.variant;
+        var stockQty = variant.inventory_quantity;
+        var thresholdLow = 10;
+        var thresholdHigh = 50;
+  
+        // Update stock display
+        var stockText = '';
+        var stockStatus = '';
+  
+        if (stockQty <= 0) {
+          stockStatus = 'out-of-stock';
+          stockText = 'Out of stock';
+        } else if (stockQty <= thresholdLow) {
+          stockStatus = 'low-stock';
+          stockText = 'Only ' + stockQty + ' left in stock';
+        } else if (stockQty <= thresholdHigh) {
+          stockStatus = 'in-stock';
+          stockText = stockQty + ' in stock';
+        } else {
+          stockStatus = 'in-stock-high';
+          stockText = 'In stock';
+        }
+  
+        // Update DOM
+        var wrapper = stockElement.querySelector('.product-stock__wrapper');
+        var textElement = stockElement.querySelector('.product-stock__text');
+  
+        if (wrapper && textElement) {
+          wrapper.className = 'product-stock__wrapper product-stock--' + stockStatus;
+          textElement.textContent = stockText;
+        }
+  
+        // Update data attributes
+        stockElement.setAttribute('data-inventory', stockQty);
+        stockElement.setAttribute('data-variant-id', variant.id);
+      });
+    }
+  
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateProductStock);
+    } else {
+      updateProductStock();
+    }
+  })();
+</script>
