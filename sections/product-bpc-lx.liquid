@@ -26,7 +26,11 @@
   {%- endunless -%}
 
   <!-- Product Title (Mobile Only) -->
-  <div class="container-1220 product-header product-header-mobile">
+  <div class="container-1220 product-header product-header-mobile"
+    data-aos="fade-up" 
+    data-aos-duration="3000"
+    data-aos-once="true"
+  >
     <div class="breadcrumb hide" role="navigation" aria-label="breadcrumbs">
       {% assign full_url = request.path %}
       {% assign product_url = full_url | split: '/' %}
@@ -454,15 +458,6 @@
       }
     }
 
-    function removeGradient() {
-      var outerContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
-      if (outerContainer) {
-        outerContainer.classList.remove('grid-active');
-        outerContainer.classList.remove('collapsed');
-        outerContainer.classList.remove('expanded');
-      }
-    }
-
     function setupGradient() {
       var outerContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
       if (outerContainer) {
@@ -506,7 +501,6 @@
 
       // Hide toggle button and remove gradient when grid is not active
       hideToggleButton();
-      removeGradient();
 
       bpcThumbnailInstance = null;
       window.bpcThumbnail = null;
@@ -514,22 +508,25 @@
     
     function initBpcLxThumbnails() {
       if (!document.querySelector('.product.bpc-lx')) return;
-      
+
       var isDesktop = window.innerWidth >= 1279;
       var thumbnailContainer = document.querySelector('.product.bpc-lx .js__pdp-thumbnail-slider');
-      
+
       if (!thumbnailContainer || typeof Swiper === 'undefined') {
         setTimeout(initBpcLxThumbnails, 100);
         return;
       }
-      
-      // Clean up any existing instance first
-      cleanupBpcLxThumbnails();
-      
+
+      // IMPORTANT: Only clean up and initialize custom behavior on desktop
+      // On mobile, let the default Swiper from _sm-theme.js handle everything
       if (!isDesktop) {
-        // On mobile, let the default Swiper from _sm-theme.js handle it
+        // Don't interfere with mobile - just hide the toggle button
+        hideToggleButton();
         return;
       }
+
+      // Clean up any existing desktop instance first (only runs on desktop now)
+      cleanupBpcLxThumbnails();
 
       // Setup gradient BEFORE thumbnails load (ensure it's ready)
       setupGradient();
