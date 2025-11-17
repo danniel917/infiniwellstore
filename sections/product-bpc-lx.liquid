@@ -192,6 +192,9 @@
           </div>
        </div>
 
+       {% comment %} Live Stock Display {% endcomment %}
+       {% render 'product-stock', product: product, show_icon: true, threshold_low: 10, threshold_high: 50 %}
+
       <div class="product__form">
         <form
           action="/cart/add"
