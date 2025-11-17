@@ -235,6 +235,20 @@
 
   .subscription-win .subscription-win-image-container {
     border-radius: 0 24px 24px 0;
+    width: 720px;
     max-width: 720px;
+    flex-shrink: 0;
+  }
+
+  .subscription-win .subscription-win-content {
+    max-width: 512px;
+    margin-right: auto;
+  }
+}
+
+/* For ultra-wide screens, constrain the content from spreading too far */
+@media screen and (min-width: 1440px) {
+  .subscription-win .subscription-win-wrapper {
+    padding-right: calc((100vw - 1440px) / 2);
   }
 }
