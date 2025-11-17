@@ -1,0 +1,145 @@
+<div class="fullMedia">
+    <div class="fullMedia__background">
+        <img class="fullMedia__image fullMedia__image--desktop"
+        src="{{ section.settings.backgroundImage | img_url: '1600x' }}"
+        alt="{{ section.settings.backgroundImage.alt }}">
+        {% if section.settings.backgroundImageMobile != blank %}
+          <img class="fullMedia__image fullMedia__image--mobile"
+          src="{{ section.settings.backgroundImageMobile | img_url: '1600x' }}"
+          alt="{{ section.settings.backgroundImageMobile.alt }}">
+        {% else %}
+          <img class="fullMedia__image fullMedia__image--mobile"
+          src="{{ section.settings.backgroundImage | img_url: '1600x' }}"
+          alt="{{ section.settings.backgroundImage.alt }}">
+        {% endif %}
+        {% if section.settings.backgroundVideo != blank %}
+            <div class="fullMedia__videoWrapper">
+                {% if section.settings.backgroundVideo contains '.mp4' %}
+                    <video muted loop autoplay>
+                      <source src="{{ section.settings.backgroundVideo }}" type="video/mp4">
+                    </video>
+                  {% else %}
+                    {% if section.settings.backgroundVideo != blank %}
+                      {% assign videoId = section.settings.backgroundVideo | split: 'vimeo.com/' %}
+                      <iframe
+                        src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
+                        frameborder="0"
+                        allow="fullscreen"
+                        allowfullscreen
+                        loading="lazy"
+                      ></iframe>
+                    {% endif %}
+                  {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="fullMedia__contentWrapper">
+        <div class="fullMedia__contentColumn fullMedia__contentColumn--{{ section.settings.alignment }}">
+            <div class="fullMedia__content">
+                <h2 class="fullMedia__title"
+                style="color:{{ section.settings.fontColor }};">
+                    {{ section.settings.title }}
+                </h2>
+                <div class="fullMedia__text"
+                style="color:{{ section.settings.fontColor }};">
+                    {{ section.settings.text }}
+                </div>
+                {% if section.settings.buttonLink != blank %}
+                    <a class="fullMedia__button btn--{{ section.settings.buttonColor }}"
+                    href="{{ section.settings.buttonLink }}">
+                        {{ section.settings.buttonText }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Full Width Media",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "backgroundImage",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "backgroundImageMobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "backgroundVideo",
+      "label": "Background Video"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options":[
+        {
+            "value": "left",
+            "label": "Left"
+        },
+        {
+            "value": "center",
+            "label": "Center"
+        },
+        {
+            "value": "right",
+            "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "fontColor",
+      "label": "Font Color"
+    },
+    {
+      "type": "url",
+      "id": "buttonLink",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "text",
+      "id": "buttonText",
+      "label": "CTA Button Text"
+    },
+    {
+      "type": "select",
+      "id": "buttonColor",
+      "label": "CTA Button Color",
+      "options":[
+        {
+            "value": "primary",
+            "label": "Black"
+        },
+        {
+            "value": "secondary",
+            "label": "White"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+  ],
+  "presets": [
+    {
+      "name": "Full Width Media"
+    }
+  ]
+}
+{% endschema %}
