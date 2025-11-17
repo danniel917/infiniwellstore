@@ -1,4 +1,4 @@
-class iwSearch extends HTMLElement {
+/*class iwSearch extends HTMLElement {
   constructor() {
     super();
     this.limit = this.dataset.limit;
@@ -493,3 +493,4 @@ class iwSearch extends HTMLElement {
 
 customElements.get('iw-search') ||
   customElements.define('iw-search', iwSearch);
+*/
