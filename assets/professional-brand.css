@@ -231,7 +231,7 @@
   /* Container - Grid layout with 2 columns, 3 rows */
   .professional-brand .container-brand {
     display: grid;
-    grid-template-columns: minmax(400px, 720px) 1fr;
+    grid-template-columns: minmax(400px, 700px) 1fr;
     grid-template-rows: auto auto auto;
     column-gap: clamp(24px, 3vw, 48px);
     row-gap: 24px;
@@ -323,6 +323,27 @@
   }
 }
 
+/* Targets WebKit browsers (Safari, Chrome on macOS) */
+@media screen and (min-width: 1239px) {
+  @supports (-webkit-appearance: none) {
+    .professional-brand .brand-content {
+      padding-bottom: 0; /* macOS-specific value */
+    }
+    
+    .professional-brand .brand-marquee {
+      margin-top: 0;
+      padding-top: 2rem;
+      position: relative;
+      z-index: 0; /* Behind content */
+      padding-bottom: 0;
+    }
+    
+    .professional-brand .brand-header {
+      margin-top: 3rem;
+    }
+  }
+}
+
 @media screen and (min-width: 1279px) {
 
   .professional-brand .container-brand {
@@ -335,7 +356,7 @@
   }
 
   .professional-brand .brand-header {
-    margin-top: 16px;
+    /* margin-top: 16px; */
     max-width: 512px;
   }
 
