@@ -27,7 +27,7 @@
 
   <!-- Product Title (Mobile Only) -->
   <div class="container-1220 product-header product-header-mobile">
-    <div class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+    <div class="breadcrumb hide" role="navigation" aria-label="breadcrumbs">
       {% assign full_url = request.path %}
       {% assign product_url = full_url | split: '/' %}
 
@@ -71,12 +71,17 @@
     </div>
   </div>
 
-  <div class="container-1220 flex-wrap product-content">
+  <div class="container-1220 flex-wrap product-content"
+      data-aos="fade-up" 
+      data-aos-duration="3000"
+      data-aos-once="true"
+  >
     <!-- Product Media -->
-    <div class="left-section">
+    <div class="left-section"
+    >
       {% include 'product_images' %}
       <!-- Thumbnail expand/collapse button for bpc-lx -->
-      <button class="bpc-lx-thumbnail-toggle none-980" type="button" aria-label="Toggle thumbnail gallery">
+      <button class="bpc-lx-thumbnail-toggle hide" type="button" aria-label="Toggle thumbnail gallery">
         <span class="toggle-icon-plus">{% render 'icon-toggle-plus' %}</span>
         <span class="toggle-icon-minus">{% render 'icon-toggle-minus' %}</span>
       </button>
@@ -94,7 +99,7 @@
     >
       <!-- Product Header (Desktop Only) -->
       <div class="product-header product-header-desktop">
-        <div class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+        <div class="breadcrumb hide" role="navigation" aria-label="breadcrumbs">
           {% assign full_url = request.path %}
           {% assign product_url = full_url | split: '/' %}
 
@@ -160,17 +165,19 @@
       {% comment %} Form {% endcomment %}
        <div class="product-benefits_section">
           <div class="product-benefits_section_inner_content">
-            {% assign benefit_items = "LipoEmulsion™ Tasteless fine mist|Bypasses digestion for rapid onset|cGMP manufactured in the USA|3rd-party tested by ISO-Certified Labs" | split: "|" %}
-            {% assign benefit_icons = "icon-mist-02.svg|flash.svg|icon-usa.svg|icon-microscope.svg" | split: "|" %}
+            {% assign benefit_items = "LipoEmulsion™ tasteless fine mist,Bypasses digestion for rapid onset,cGMP manufactured in the USA,3rd-party tested by ISO-Certified Labs,FAQs|Supplement Facts" | split: "," %}
+            {% assign benefit_icons = "icon-mist-02.svg,flash.svg,icon-usa.svg,icon-microscope.svg,icon-question.svg" | split: "," %}
             {% for item_text in benefit_items %}
               {% assign icon_name = benefit_icons[forloop.index0] %}
               <div class="inner-content">
                 <div class="title">
                   <img src="{{ icon_name | asset_url }}" alt="{{ icon_name | replace: 'icon-', '' | replace: '.svg', '' }}" width="24" height="24">
                   <span>
-                    {% if item_text contains 'ISO-Certified Labs' and section.settings.iso_certified_labs_url != blank %}
-                      {% assign text_parts = item_text | split: 'ISO-Certified Labs' %}
-                      {{ text_parts[0] }}<a href="{{ section.settings.iso_certified_labs_url }}" target="_blank" rel="noopener">ISO-Certified Labs</a>{{ text_parts[1] }}
+                    {% if item_text contains '3rd-party tested' and section.settings.iso_certified_labs_url != blank %}
+                      {% assign text_parts = item_text | split: '3rd-party tested' %}
+                      {{ text_parts[0] }}<a href="{{ section.settings.iso_certified_labs_url }}" rel="noopener">3rd-party tested</a>{{ text_parts[1] }}
+                    {% elsif item_text == 'FAQs|Supplement Facts' %}
+                      <a href="#product-faq" rel="noopener">FAQs</a> | {% if section.settings.supplement_facts_image != blank %}<a href="#" class="js__supplement-facts-trigger" rel="noopener">Supplement Facts</a>{% else %}Supplement Facts{% endif %}
                     {% else %}
                       {{ item_text }}
                     {% endif %}
@@ -180,7 +187,7 @@
             {% endfor %}
           </div>
        </div>
-       
+
       <div class="product__form">
         <form
           action="/cart/add"
@@ -392,6 +399,26 @@
   </div>
 </div>
 
+{% comment %} Supplement Facts Modal - Outside product container for proper z-index {% endcomment %}
+{% if section.settings.supplement_facts_image != blank %}
+  <div id="modal-supplement-facts" style="display: none">
+    <div class="modal-content supplement-facts-popup">
+      <button class="close js__supplement-facts-close" aria-label="Close supplement facts">
+        {% render 'icon-mobile-menu-close' %}
+      </button>
+      <div class="supplement-facts-image-wrapper">
+        <img
+          src="{{ section.settings.supplement_facts_image | image_url: width: 1024 }}"
+          alt="Supplement Facts"
+          width="{{ section.settings.supplement_facts_image.width }}"
+          height="{{ section.settings.supplement_facts_image.height }}"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+{% endif %}
+
 <span class="hide js__onetimeText">{{ section.settings.onetimeText }}</span>
 <span class="hide js__subscribeText">{{ section.settings.subscribeText }}</span>
 {% unless product == empty %}
@@ -404,36 +431,121 @@
 <script src="{{'product-sticky-atc.js' | asset_url}}" defer="defer"></script>
 {% render 'product-sticky-atc' %}
 
+<!-- BPC-LX Thumbnail Grid Swiper Initialization -->
 <script>
-  // Custom Swiper initialization for bpc-lx template with 2-column vertical layout (Desktop only)
   (function() {
+    var bpcThumbnailInstance = null;
+    var thumbnailClickHandlers = [];
+    var sliderChangeHandler = null;
+
+    function hideToggleButton() {
+      var toggleButton = document.querySelector('.product.bpc-lx .bpc-lx-thumbnail-toggle');
+      if (toggleButton) {
+        toggleButton.classList.remove('grid-active');
+        toggleButton.style.display = 'none';
+      }
+    }
+
+    function showToggleButton() {
+      var toggleButton = document.querySelector('.product.bpc-lx .bpc-lx-thumbnail-toggle');
+      if (toggleButton) {
+        toggleButton.classList.add('grid-active');
+        toggleButton.style.display = 'flex';
+      }
+    }
+
+    function removeGradient() {
+      var outerContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
+      if (outerContainer) {
+        outerContainer.classList.remove('grid-active');
+        outerContainer.classList.remove('collapsed');
+        outerContainer.classList.remove('expanded');
+      }
+    }
+
+    function setupGradient() {
+      var outerContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
+      if (outerContainer) {
+        outerContainer.classList.add('grid-active');
+        if (!outerContainer.classList.contains('collapsed') && !outerContainer.classList.contains('expanded')) {
+          outerContainer.classList.add('collapsed');
+        }
+      }
+    }
+
+    function cleanupBpcLxThumbnails() {
+      // Remove all click event listeners
+      thumbnailClickHandlers.forEach(function(handler) {
+        if (handler.element && handler.listener) {
+          handler.element.removeEventListener('click', handler.listener);
+        }
+      });
+      thumbnailClickHandlers = [];
+
+      // Remove slider change listener
+      if (sliderChangeHandler && window.pdpSlider) {
+        window.pdpSlider.off('slideChange', sliderChangeHandler);
+        sliderChangeHandler = null;
+      }
+
+      // Destroy Swiper instance if it exists
+      var thumbnailContainer = document.querySelector('.product.bpc-lx .js__pdp-thumbnail-slider');
+      if (thumbnailContainer && thumbnailContainer.swiper) {
+        thumbnailContainer.swiper.destroy(true, true);
+        thumbnailContainer.swiper = null;
+      }
+
+      // Clean up wrapper styles
+      if (thumbnailContainer) {
+        var wrapper = thumbnailContainer.querySelector('.swiper-wrapper');
+        if (wrapper) {
+          wrapper.style.transform = '';
+          wrapper.style.transition = '';
+        }
+      }
+
+      // Hide toggle button and remove gradient when grid is not active
+      hideToggleButton();
+      removeGradient();
+
+      bpcThumbnailInstance = null;
+      window.bpcThumbnail = null;
+    }
+    
     function initBpcLxThumbnails() {
       if (!document.querySelector('.product.bpc-lx')) return;
       
-      // Only apply 2-column grid behavior on desktop (min-width: 960px)
-      var isDesktop = window.innerWidth >= 960;
-      if (!isDesktop) {
-        // On mobile, use default Swiper behavior
-        return;
-      }
-      
+      var isDesktop = window.innerWidth >= 1279;
       var thumbnailContainer = document.querySelector('.product.bpc-lx .js__pdp-thumbnail-slider');
+      
       if (!thumbnailContainer || typeof Swiper === 'undefined') {
         setTimeout(initBpcLxThumbnails, 100);
         return;
       }
       
+      // Clean up any existing instance first
+      cleanupBpcLxThumbnails();
+      
+      if (!isDesktop) {
+        // On mobile, let the default Swiper from _sm-theme.js handle it
+        return;
+      }
+
+      // Setup gradient BEFORE thumbnails load (ensure it's ready)
+      setupGradient();
+
       // Wait a bit for main Swiper to initialize
       setTimeout(function() {
-        // Destroy existing Swiper instance if it exists
-        if (thumbnailContainer.swiper) {
-          thumbnailContainer.swiper.destroy(true, true);
+        // Double-check we're still on desktop after timeout
+        if (window.innerWidth < 1279) {
+          cleanupBpcLxThumbnails();
+          return;
         }
-        
+
         // For 2-column grid layout, we'll use CSS Grid for layout
         // and handle interactions manually while keeping Swiper for compatibility
         // Initialize Swiper but disable its layout transforms
-        var bpcThumbnail = new Swiper('.product.bpc-lx .js__pdp-thumbnail-slider', {
+        bpcThumbnailInstance = new Swiper('.product.bpc-lx .js__pdp-thumbnail-slider', {
           slidesPerView: 'auto',
           direction: 'vertical',
           spaceBetween: 0,
@@ -446,10 +558,20 @@
           allowTouchMove: false,
           // Let CSS Grid handle the layout
           autoHeight: false,
+          observer: true,
+          observeParents: true,
           // Prevent Swiper from applying transforms
           on: {
             init: function() {
               // Disable Swiper's transform on the wrapper
+              var wrapper = this.el.querySelector('.swiper-wrapper');
+              if (wrapper) {
+                wrapper.style.transform = 'none !important';
+                wrapper.style.transition = 'none';
+              }
+            },
+            resize: function() {
+              // Handle resize within Swiper
               var wrapper = this.el.querySelector('.swiper-wrapper');
               if (wrapper) {
                 wrapper.style.transform = 'none !important';
@@ -463,24 +585,34 @@
         });
         
         // Store reference for manual control
-        window.bpcThumbnail = bpcThumbnail;
+        window.bpcThumbnail = bpcThumbnailInstance;
+
+        // Show toggle button now that grid is active
+        showToggleButton();
+
+        // Dispatch event to notify that grid is ready
+        if (typeof window.dispatchEvent !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('bpcGridInitialized'));
+        }
         
         // Handle thumbnail clicks manually for grid layout
         var thumbnails = document.querySelectorAll('.product.bpc-lx .pdp-thumbnail .swiper-slide');
         
-        function updateThumbnailActive(index) {
-          thumbnails.forEach(function(t) { 
-            t.classList.remove('swiper-slide-thumb-active'); 
+        function updateThumbnailActive(index, shouldScroll) {
+          thumbnails.forEach(function(t) {
+            t.classList.remove('swiper-slide-thumb-active');
           });
           if (thumbnails[index]) {
             thumbnails[index].classList.add('swiper-slide-thumb-active');
-            // Scroll thumbnail into view if needed
-            thumbnails[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Scroll thumbnail into view only when triggered by user interaction
+            if (shouldScroll) {
+              thumbnails[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
           }
         }
         
         thumbnails.forEach(function(thumb, index) {
-          thumb.addEventListener('click', function(e) {
+          var clickHandler = function(e) {
             e.preventDefault();
             // Each thumbnail maps directly to a slide (1:1 mapping)
             // In a 2-column grid, thumbnails are arranged:
@@ -496,95 +628,209 @@
                 window.pdpSlider.slideTo(slideIndex);
               }
             }
-            updateThumbnailActive(index);
-          });
+            updateThumbnailActive(index, true); // Enable scroll on user click
+          };
+          
+          thumb.addEventListener('click', clickHandler);
+          thumbnailClickHandlers.push({ element: thumb, listener: clickHandler });
         });
         
         // Sync thumbnail active state when main slider changes
         if (window.pdpSlider) {
-          window.pdpSlider.on('slideChange', function() {
+          sliderChangeHandler = function() {
             // Use realIndex when loop is enabled, otherwise use activeIndex
-            var activeIndex = (this.params && this.params.loop && typeof this.realIndex !== 'undefined') 
-              ? this.realIndex 
+            var activeIndex = (this.params && this.params.loop && typeof this.realIndex !== 'undefined')
+              ? this.realIndex
               : (this.activeIndex || 0);
             // Thumbnail index matches slide index (1:1 mapping)
-            updateThumbnailActive(activeIndex);
-          });
+            updateThumbnailActive(activeIndex, true); // Enable scroll on slide change
+          };
+          
+          window.pdpSlider.on('slideChange', sliderChangeHandler);
           
           // Set initial active thumbnail after a short delay to ensure Swiper is ready
           setTimeout(function() {
             if (window.pdpSlider) {
               var initialIndex = (window.pdpSlider.params && window.pdpSlider.params.loop && typeof window.pdpSlider.realIndex !== 'undefined')
-                ? window.pdpSlider.realIndex 
+                ? window.pdpSlider.realIndex
                 : (window.pdpSlider.activeIndex || 0);
-              updateThumbnailActive(initialIndex);
+              updateThumbnailActive(initialIndex, false); // Disable scroll on initialization
             }
           }, 100);
         }
       }, 300);
     }
     
+    // Initialize on load
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initBpcLxThumbnails);
     } else {
       initBpcLxThumbnails();
     }
-  })();
+    
+    // Handle window resize to prevent breaking on desktop
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        var isDesktop = window.innerWidth >= 1279;
+        var gridIsActive = bpcThumbnailInstance !== null && window.bpcThumbnail !== null;
 
-  // Thumbnail expand/collapse toggle functionality
+        // If resized to mobile, clean up desktop instance immediately
+        if (!isDesktop && gridIsActive) {
+          cleanupBpcLxThumbnails();
+          return;
+        }
+
+        // If on desktop and grid is active, update instance
+        if (isDesktop && gridIsActive) {
+          // Update the Swiper instance to recalculate dimensions
+          bpcThumbnailInstance.update();
+
+          // Ensure wrapper styles are maintained after resize
+          var thumbnailContainer = document.querySelector('.product.bpc-lx .js__pdp-thumbnail-slider');
+          if (thumbnailContainer) {
+            var wrapper = thumbnailContainer.querySelector('.swiper-wrapper');
+            if (wrapper) {
+              wrapper.style.transform = 'none !important';
+              wrapper.style.transition = 'none';
+            }
+          }
+        } else if (isDesktop && !gridIsActive) {
+          // If on desktop but grid is not active, try to initialize
+          initBpcLxThumbnails();
+        }
+      }, 250);
+    });
+  })();
+</script>
+
+<!-- BPC-LX Thumbnail Toggle Button -->
+<script>
   (function() {
+    var toggleButtonHandler = null;
+
     function initThumbnailToggle() {
-      if (!document.querySelector('.product.bpc-lx')) return;
-      
-      var isDesktop = window.innerWidth >= 960;
-      if (!isDesktop) return;
-      
       var toggleButton = document.querySelector('.product.bpc-lx .bpc-lx-thumbnail-toggle');
       var thumbnailContainer = document.querySelector('.product.bpc-lx .outer-pdp-thumbnail-slider');
-      
+
       if (!toggleButton || !thumbnailContainer) {
-        setTimeout(initThumbnailToggle, 100);
         return;
       }
-      
-      // Initialize: Start in collapsed state
-      thumbnailContainer.classList.add('collapsed');
-      
+
+      // Only setup if grid is active (checked by parent script)
+      var gridIsActive = window.bpcThumbnail !== null && window.bpcThumbnail !== undefined;
+      if (!gridIsActive) {
+        return;
+      }
+
+      // Remove any existing event listener by cloning the button
+      if (toggleButtonHandler) {
+        var oldToggleButton = toggleButton;
+        toggleButton = toggleButton.cloneNode(true);
+        oldToggleButton.parentNode.replaceChild(toggleButton, oldToggleButton);
+        toggleButtonHandler = null;
+      }
+
       // Toggle functionality
-      toggleButton.addEventListener('click', function() {
+      toggleButtonHandler = function(e) {
+        // Prevent event bubbling and ensure we catch all clicks on button and children
+        e.preventDefault();
+        e.stopPropagation();
+
         if (thumbnailContainer.classList.contains('collapsed')) {
           // Expand
           thumbnailContainer.classList.remove('collapsed');
           thumbnailContainer.classList.add('expanded');
           toggleButton.classList.add('expanded');
         } else {
-          // Collapse
+          // Collapse - ONLY scroll to top when explicitly collapsing via button click
           thumbnailContainer.classList.remove('expanded');
           thumbnailContainer.classList.add('collapsed');
           toggleButton.classList.remove('expanded');
 
-          // Scroll to the top of the page
+          // Scroll to the top of the page (only on collapse action)
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      };
+
+      toggleButton.addEventListener('click', toggleButtonHandler);
+    }
+
+    // Listen for grid initialization event (dispatched by grid script)
+    window.addEventListener('bpcGridInitialized', function() {
+      initThumbnailToggle();
+    });
+  })();
+</script>
+
+<!-- Supplement Facts Modal -->
+<script>
+  (function() {
+    function initSupplementFactsModal() {
+      var modal = document.getElementById('modal-supplement-facts');
+      var triggers = document.querySelectorAll('.js__supplement-facts-trigger');
+      var closeBtn = document.querySelector('.js__supplement-facts-close');
+
+      if (!modal || triggers.length === 0) return;
+
+      function openModal() {
+        modal.style.display = 'flex';
+        // Add class after a small delay to trigger CSS transition
+        setTimeout(function() {
+          modal.classList.add('modal-opened');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+
+      function closeModal() {
+        modal.classList.remove('modal-opened');
+        // Wait for transition to complete before hiding
+        setTimeout(function() {
+          modal.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+
+      // Open modal when trigger is clicked
+      triggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openModal();
+        });
+      });
+
+      // Close modal when close button is clicked
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeModal();
+        });
+      }
+
+      // Close modal when clicking outside the modal content
+      modal.addEventListener('click', function(event) {
+        // Check if click is on the modal overlay (not on modal-content or its children)
+        if (event.target === modal || !event.target.closest('.modal-content')) {
+          closeModal();
+        }
+      });
+
+      // Close modal on ESC key press
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('modal-opened')) {
+          closeModal();
         }
       });
     }
-    
+
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initThumbnailToggle);
+      document.addEventListener('DOMContentLoaded', initSupplementFactsModal);
     } else {
-      initThumbnailToggle();
+      initSupplementFactsModal();
     }
-    
-    // Reinitialize on resize
-    var resizeTimeout;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(function() {
-        if (window.innerWidth >= 960) {
-          initThumbnailToggle();
-        }
-      }, 250);
-    });
   })();
 </script>
 
@@ -635,8 +881,18 @@
     {
       "type": "url",
       "id": "iso_certified_labs_url",
-      "label": "ISO-Certified Labs URL",
-      "info": "URL for the ISO-Certified Labs link in the product benefits section"
+      "label": "3rd-party tested URL",
+      "info": "URL for the 3rd-party tested link in the product benefits section"
+    },
+    {
+      "type": "header",
+      "content": "Supplement Facts"
+    },
+    {
+      "type": "image_picker",
+      "id": "supplement_facts_image",
+      "label": "Supplement Facts Image",
+      "info": "Image to display in the Supplement Facts popup modal"
     }
   ]
   ,
@@ -782,12 +1038,16 @@
 <span class="js__productid" data-id="{{product.id }}"></span>
 
 {% stylesheet %}
-  @media (max-width: 980px) {
-    .pdp-slider.pdp-slider {
-        margin-top: 0;
-    }
-}
 
+.product.bpc-lx .pdp-slider.pdp-slider {
+    margin-top: 0;
+} 
+
+  @media (max-width: 980px) {
+    .product.bpc-lx .pdp-slider.pdp-slider {
+        margin-bottom: 0;
+    } 
+}
 
 .product.bpc-lx {
   background-color: #FEFFFE;
@@ -804,6 +1064,8 @@
   }
 
   .breadcrumb {
+    margin-bottom: 10px;
+    
     .breadcrumb-link {
       font-size: 14px;
       font-weight: normal;
@@ -935,7 +1197,7 @@
   }
 
   /* Desktop: Show desktop header, hide mobile header */
-  @media screen and (min-width: 960px) {
+  @media screen and (min-width: 1279px) {
     .product-header-desktop {
       display: block;
       padding-top: 0;
@@ -963,7 +1225,7 @@
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1279px) {
   .product.bpc-lx .product-content .pdp-slider .image-section,
   .product.bpc-lx .product-content .pdp-slider .video-section {
       width: 720px !important;
@@ -1053,9 +1315,16 @@
     margin-bottom: 60px; /* Space for the toggle button */
 }
 
+/* Ensure gradient pseudo-element is always in DOM when grid is active */
+@media (min-width: 1279px) {
+  .product.bpc-lx .outer-pdp-thumbnail-slider::before {
+    content: '';
+  }
+}
+
 /* Collapsed state: Show only 4 thumbnails (2 rows x 2 columns) */
 .product.bpc-lx .outer-pdp-thumbnail-slider.collapsed {
-    max-height: calc(358px * 2 + 4px); /* 2 rows: (thumbnail height * 2) + gap between rows */
+    max-height: calc(358px * 3 + 4px * 3); /* 3 rows: (thumbnail height * 3) + gaps between rows (2 gaps) */
     overflow: hidden;
 }
 
@@ -1066,8 +1335,8 @@
     height: auto;
 }
 
-/* Gradient overlay - only visible when collapsed */
-.product.bpc-lx .outer-pdp-thumbnail-slider.collapsed::before {
+/* Gradient overlay - only present when grid is active */
+/* .product.bpc-lx .outer-pdp-thumbnail-slider.grid-active::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -1076,11 +1345,19 @@
     inset: 0;
     z-index: 2;
     pointer-events: none;
-}
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+} */
 
-.product.bpc-lx .outer-pdp-thumbnail-slider.expanded::before {
-    display: none;
-}
+/* Show gradient when grid is active AND collapsed */
+/* .product.bpc-lx .outer-pdp-thumbnail-slider.grid-active.collapsed::before {
+    opacity: 1;
+} */
+
+/* Hide gradient when expanded */
+/* .product.bpc-lx .outer-pdp-thumbnail-slider.grid-active.expanded::before {
+    opacity: 0;
+} */
 
 /* Toggle button styles */
 .product.bpc-lx .product-content {
@@ -1089,7 +1366,7 @@
 
 .product.bpc-lx .bpc-lx-thumbnail-toggle {
     position: absolute;
-    bottom: 0;
+    bottom: -.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 56px;
@@ -1097,20 +1374,23 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    display: none;
+    display: none !important; /* Hidden by default - only show when grid is active */
     align-items: center;
     justify-content: center;
     z-index: 10;
     background-color: transparent;
     transition: bottom 0.3s ease-in-out;
+    visibility: hidden; /* Additional hiding for extra safety */
+    opacity: 0;
 }
 
+/* Show toggle button only when grid is active (handled by JavaScript) */
+.product.bpc-lx .bpc-lx-thumbnail-toggle.grid-active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1;
 }
 
-@media screen and (min-width: 960px) {
-    .product.bpc-lx .bpc-lx-thumbnail-toggle {
-        display: flex;
-    }
 }
 
 .product.bpc-lx .bpc-lx-thumbnail-toggle.expanded {
@@ -1171,6 +1451,94 @@
 
   .product.bpc-lx .btn-arrow-icon {
     flex-shrink: 0;
+  }
+
+  /* Supplement Facts Modal Styles - Matching Lity Modal */
+  #modal-supplement-facts {
+    z-index: 999999 !important;
+    position: fixed;
+    inset: 0;
+    background: #0c264766;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #modal-supplement-facts.modal-opened {
+    opacity: 1;
+  }
+
+  #modal-supplement-facts .modal-content {
+    margin: auto;
+    overflow: visible;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 795px !important;
+    max-height: 90vh;
+    position: relative;
+    z-index: 999990;
+  }
+
+  #modal-supplement-facts .close {
+    display: block;
+    position: absolute;
+    top: 21px;
+    right: 18px;
+    z-index: 999991;
+  }
+
+  #modal-supplement-facts .supplement-facts-image-wrapper {
+    border-radius: 20px;
+    background-color: #FEFFFE;
+    max-height: 90vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #modal-supplement-facts .supplement-facts-image-wrapper img {
+    max-width: 100%;
+    max-height: 90vh;
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    #modal-supplement-facts {
+      padding: 16px;
+    }
+
+    #modal-supplement-facts .modal-content {
+      max-height: 95vh;
+    }
+
+    #modal-supplement-facts .supplement-facts-image-wrapper {
+      max-height: 95vh;
+    }
+
+    #modal-supplement-facts .supplement-facts-image-wrapper img {
+      max-height: 95vh;
+    }
+
+    #modal-supplement-facts .close {
+      top: 8px;
+      right: 8px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
 {% endstylesheet %}

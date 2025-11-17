@@ -1,8 +1,8 @@
-{% comment %} {% if product.tags contains 'hide' or product.tags contains 'Hide' %}
+{% if product.tags contains 'hide' or product.tags contains 'Hide' %}
   <script>
     window.location.href = '/collections/all';
   </script>
-{% endif %} {% endcomment %}
+{% endif %}
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 <div id="product" class="product">
