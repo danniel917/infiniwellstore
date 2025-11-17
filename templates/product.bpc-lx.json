@@ -26,7 +26,8 @@
         "enable_payment_button": true,
         "onetimeText": "",
         "subscribeText": "",
-        "iso_certified_labs_url": "shopify://collections"
+        "iso_certified_labs_url": "#no-promises-proof",
+        "supplement_facts_image": "shopify://shop_images/Frame_1321317670_1_fde33379-561f-4d5f-a5f2-1cad1d3b3e6d.png"
       }
     },
     "full_width_media_blocks_C8n9tP": {
@@ -79,10 +80,33 @@
         "video_34dadH": {
           "type": "video",
           "settings": {
-            "media_type_desktop": "image",
-            "image_desktop": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif",
-            "media_type_mobile": "image",
-            "image_mobile": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif"
+            "media_type_desktop": "video",
+            "video_desktop": "shopify://files/videos/231aspectvideoiw.mp4",
+            "media_type_mobile": "video",
+            "height_desktop": 700,
+            "height_mobile": 400
+          }
+        },
+        "overlay_title_DnFkzc": {
+          "type": "overlay_title",
+          "settings": {
+            "title": "Pioneering Delivery Technology"
+          }
+        },
+        "overlay_text_cAYwL4": {
+          "type": "overlay_text",
+          "settings": {
+            "text": "<p>For Precision Molecules</p>"
+          }
+        },
+        "overlay_button_3KLAMR": {
+          "type": "overlay_button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Learn More",
+            "button_url": "",
+            "button_style": "primary",
+            "button_full_width_mobile": false
           }
         },
         "title_3mpVei": {
@@ -95,7 +119,7 @@
         "middle_image_txF6YJ": {
           "type": "middle_image",
           "settings": {
-            "image": "shopify://shop_images/InfiniWell_Spray_Tube_front-spacetube.png"
+            "image": "shopify://shop_images/infiniwell_spray_tube_front-spacetube__1.webp"
           }
         },
         "collapsible_6BDKcC": {
@@ -134,12 +158,15 @@
           "type": "button",
           "settings": {
             "button_label": "Experience BPC-Lx",
-            "button_url": "shopify://collections/all"
+            "button_url": "#"
           }
         }
       },
       "block_order": [
         "video_34dadH",
+        "overlay_title_DnFkzc",
+        "overlay_text_cAYwL4",
+        "overlay_button_3KLAMR",
         "title_3mpVei",
         "middle_image_txF6YJ",
         "collapsible_6BDKcC",
@@ -154,6 +181,9 @@
         "paddingbottom": 65,
         "paddingtopmobile": 0,
         "paddingbottommobile": 50,
+        "overlay_vertical_alignment": "top",
+        "overlay_horizontal_alignment": "left",
+        "overlay_text_alignment": "left",
         "content_paddingtop": 0,
         "content_paddingbottom": 0,
         "content_paddingtopmobile": 0,
@@ -233,13 +263,12 @@
       "type": "media-background",
       "name": "Media Background",
       "settings": {
-        "max_height_desktop": 200,
-        "image_desktop": "shopify://shop_images/a51ab71348952073100d3245f5d7a5365853bd3c_1.gif",
-        "use_video_desktop": false,
+        "max_height_desktop": 350,
+        "video_desktop": "shopify://files/videos/spiral-animation-video-2.mp4",
+        "use_video_desktop": true,
         "flip_horizontal_desktop": true,
         "max_height_mobile": 165,
-        "image_mobile": "shopify://shop_images/a51ab71348952073100d3245f5d7a5365853bd3c_1.gif",
-        "use_video_mobile": false,
+        "use_video_mobile": true,
         "flip_horizontal_mobile": true
       }
     },
@@ -263,15 +292,15 @@
         "media_VBfH6c": {
           "type": "media",
           "settings": {
-            "image_desktop": "shopify://shop_images/deeaa7b71e0d9efb8ff5cec90562aeb6881f5b3e_3.gif",
-            "use_video_desktop": false,
-            "use_video_mobile": false
+            "video_desktop": "shopify://files/videos/183651-cityscape-New_York_City-Brooklyn_Bridge_1.mp4",
+            "use_video_desktop": true,
+            "use_video_mobile": true
           }
         },
         "rich_text_HXKxRD": {
           "type": "rich_text",
           "settings": {
-            "content": "<p>Teaming up with world-class researcher. Trusted by over 25k+ medical professionals globally.</p>"
+            "content": "<p>Teaming up with world-class researchers. Trusted by over 25k+ medical professionals globally.</p>"
           }
         },
         "button_nKXarz": {
@@ -363,7 +392,7 @@
           "type": "lab_logo",
           "settings": {
             "logo": "shopify://shop_images/Vector_941655a3-87ce-4d30-93ed-ff1acf3368ec.svg",
-            "url": "shopify://collections",
+            "url": "https://cdn.shopify.com/s/files/1/0114/7741/8065/files/BPCLxCofA_4.pdf?v=1763139189",
             "passed_text": "Passed",
             "list_items": "70 Different pesticides\n4 types of heavy metals\n16 different contaminants\n9 Microbial contaminants"
           }
@@ -372,7 +401,7 @@
           "type": "lab_logo",
           "settings": {
             "logo": "shopify://shop_images/msb-logo.svg",
-            "url": "shopify://collections",
+            "url": "https://cdn.shopify.com/s/files/1/0114/7741/8065/files/BPCLxCofA_4.pdf?v=1763139189",
             "passed_text": "Passed",
             "list_items": "Purity, Potency, Identity\nMicrobiological, Allergens\nNon GMO"
           }
@@ -450,7 +479,7 @@
           "type": "button",
           "settings": {
             "button_label": "Try BPC-Lx Risk-Free",
-            "button_url": ""
+            "button_url": "#"
           }
         }
       },
@@ -522,7 +551,9 @@
           "type": "custom_button",
           "settings": {
             "button_text": "Go to Live Chat",
-            "button_url": "shopify://collections",
+            "button_url": "",
+            "open_chat": true,
+            "chat_id": "gorgias-chat-messenger-button",
             "button_style": "primary"
           }
         },
@@ -530,7 +561,9 @@
           "type": "custom_button",
           "settings": {
             "button_text": "Call Us 1-888-819-4640",
-            "button_url": "shopify://collections",
+            "button_url": "tel:18888194640",
+            "open_chat": false,
+            "chat_id": "",
             "button_icon": "shopify://shop_images/Vector_c6fa81e1-8c3b-48c9-a106-851f60a8bec3.svg",
             "button_style": "secondary"
           }
@@ -624,8 +657,71 @@
     },
     "product_recommendations_96y7Ew": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "title": ""
+      }
+    },
+    "four_column_product_slider_gKzE9c": {
+      "type": "four-column-product-slider",
+      "blocks": {
+        "product_8PNJNj": {
+          "type": "product",
+          "settings": {
+            "product": "bpc-157-rapid-pro"
+          }
+        },
+        "product_kTKG7J": {
+          "type": "product",
+          "settings": {
+            "product": "ptd-dbm-methyl-vanillate"
+          }
+        },
+        "product_GPig4m": {
+          "type": "product",
+          "settings": {
+            "product": "dhh-b"
+          }
+        },
+        "product_rDG6w7": {
+          "type": "product",
+          "settings": {
+            "product": "bpc-157-rapid"
+          }
+        },
+        "product_TraPjK": {
+          "type": "product",
+          "settings": {
+            "product": "duo-cosmetic-ghk-cu-zu-thymulin"
+          }
+        },
+        "product_C9hNCf": {
+          "type": "product",
+          "settings": {
+            "product": "control"
+          }
+        },
+        "product_FDpFGF": {
+          "type": "product",
+          "settings": {
+            "product": "ignight"
+          }
+        }
+      },
+      "block_order": [
+        "product_8PNJNj",
+        "product_kTKG7J",
+        "product_GPig4m",
+        "product_rDG6w7",
+        "product_TraPjK",
+        "product_C9hNCf",
+        "product_FDpFGF"
+      ],
+      "settings": {
+        "title1": "PRACTITIONERS",
+        "title2": "Recommend",
+        "buttonText": "Shop All",
+        "buttonLink": "shopify://collections/best-sellers"
       }
     }
   },
@@ -643,6 +739,7 @@
     "pdp_reviews_9MHAWi",
     "product_faq_y9BRKL",
     "subscription_fz6phF",
-    "product_recommendations_96y7Ew"
+    "product_recommendations_96y7Ew",
+    "four_column_product_slider_gKzE9c"
   ]
 }

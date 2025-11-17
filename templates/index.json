@@ -19,6 +19,7 @@
             "backgroundImage": "shopify://shop_images/Desktop_-_NEW_74f26ff8-73eb-4c7e-ad82-4f262e1f1005.jpg",
             "video": "",
             "videobanner": false,
+            "slideLength": 4,
             "contentImage": "shopify://shop_images/Copy_9fc4be8c-2a0b-4a89-8e55-3457e45856e6.png",
             "contentImageWidth": 470,
             "contentImageHeight": 550,
@@ -54,6 +55,7 @@
             "backgroundImage": "shopify://shop_images/CM-Desktop-Slide.gif",
             "video": "",
             "videobanner": false,
+            "slideLength": 4,
             "contentImageWidth": 400,
             "contentImageHeight": 400,
             "pretitle": "Cyber Monday Sale",
@@ -84,29 +86,30 @@
         "slide_PcfEAq": {
           "type": "slide",
           "settings": {
-            "backgroundImage": "shopify://shop_images/Desktop_-_NEW_1d2d2b38-09be-46fa-9d7b-8b2e93d6a531.jpg",
+            "backgroundImage": "shopify://shop_images/astronautdesktop.jpg",
             "video": "",
             "videobanner": false,
-            "contentImage": "shopify://shop_images/Copy_2.png",
-            "contentImageWidth": 470,
-            "contentImageHeight": 320,
+            "slideLength": 10,
+            "contentImage": "shopify://shop_images/Group_3_1.png",
+            "contentImageWidth": 390,
+            "contentImageHeight": 140,
             "pretitle": "",
             "title": "",
             "fontSizeTitle": 40,
             "fontSizeTitleMobile": 25,
             "subtitle": "",
             "description": "",
-            "buttonText": "Available Now",
-            "buttonLink": "shopify://collections/all-products",
+            "buttonText": "Shop BPC-Lx Pro",
+            "buttonLink": "shopify://products/bpc-lx-pro-spray",
             "paddingtop": 150,
             "paddingbottom": 100,
             "gradient": false,
             "gradiendCss": "",
-            "content_alignment": "center",
-            "content_alignment_vertical": "center",
-            "content_width": 500,
-            "color_scheme": "#1A1F2A",
-            "button_style": "outline",
+            "content_alignment": "right",
+            "content_alignment_vertical": "bottom",
+            "content_width": 380,
+            "color_scheme": "#fff",
+            "button_style": "solid",
             "ratingCount": "",
             "ratingSummary": "",
             "ratingType": false,
@@ -117,31 +120,28 @@
         },
         "b1c4ec73-ff39-42b2-a07e-8cb1425f5b23": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "backgroundImage": "shopify://shop_images/Desktop_-_NEW_a09fc119-e56d-4074-925f-1c7327897bf3.jpg",
-            "video": "",
-            "videobanner": false,
-            "productImage": "shopify://shop_images/BPC-157_91961196-1e50-4cca-8682-63efda951876.png",
-            "contentImage": "shopify://shop_images/Copy.gif",
-            "contentImageWidth": 500,
-            "contentImageHeight": 250,
+            "video": "https://cdn.shopify.com/videos/c/o/v/367d4daa06024a36aaaf29eff426c4cb.mp4",
+            "videobanner": true,
+            "slideLength": 11,
+            "contentImageWidth": 430,
+            "contentImageHeight": 170,
             "pretitle": "",
-            "title": "",
-            "fontSizeTitle": 40,
+            "title": "For a Long Life, <em>Well-Lived</em>",
+            "fontSizeTitle": 26,
             "fontSizeTitleMobile": 25,
-            "subtitle": "",
-            "description": "",
-            "buttonText": "Shop BPC",
-            "buttonLink": "shopify://collections/bpc-products",
+            "subtitle": "<p>★★★★★ 8,087 reviews</p>",
+            "description": "<p>Enjoy the InfiniWell edge<br/>to look and feel your best</p>",
+            "buttonText": "Shop Now",
+            "buttonLink": "shopify://products/bpc-lx-pro-spray",
             "paddingtop": 150,
             "paddingbottom": 100,
             "gradient": true,
             "gradiendCss": "",
-            "content_alignment": "center",
-            "content_alignment_vertical": "center",
-            "content_width": 500,
-            "color_scheme": "#1A1F2A",
+            "content_alignment": "left",
+            "content_alignment_vertical": "bottom",
+            "content_width": 380,
+            "color_scheme": "#fff",
             "button_style": "solid",
             "ratingCount": "",
             "ratingSummary": "",
@@ -153,10 +153,12 @@
         },
         "slide_J4PAjy": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "backgroundImage": "shopify://shop_images/Group_96_1.jpg",
             "video": "",
             "videobanner": false,
+            "slideLength": 4,
             "contentImageWidth": 500,
             "contentImageHeight": 250,
             "pretitle": "",
@@ -198,10 +200,13 @@
     "home_hero_banner_mobile_Re6PYg": {
       "type": "home-hero-banner-mobile",
       "blocks": {
-        "slide_QAxnLy": {
+        "slide_cXU3yV": {
           "type": "slide",
           "settings": {
-            "backgroundimage": "shopify://shop_images/Mobile-NEW_1.jpg",
+            "videobanner": false,
+            "video": "",
+            "backgroundimage": "shopify://shop_images/astronaut.png",
+            "slideLength": 5,
             "pretitle": "",
             "title": "",
             "subtitle": "",
@@ -212,62 +217,52 @@
         "slide_nBm7Yy": {
           "type": "slide",
           "settings": {
-            "backgroundimage": "shopify://shop_images/Group_102_1.jpg",
+            "videobanner": true,
+            "video": "https://cdn.shopify.com/videos/c/o/v/392c533961134cc0b20b47e74d159952.mp4",
+            "backgroundimage": "shopify://shop_images/BPC-Lx_1_-homepage.jpg",
+            "slideLength": 11,
             "pretitle": "",
             "title": "",
             "subtitle": "",
             "buttonText": "",
-            "buttonLink": "shopify://collections/bpc-products"
-          }
-        },
-        "slide_cXU3yV": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "backgroundimage": "shopify://shop_images/Mobile-Slide-2-Resize_3424686b-d8a2-4c51-8b27-93e191b2c978.jpg",
-            "pretitle": "",
-            "title": "",
-            "subtitle": "",
-            "buttonText": "",
-            "buttonLink": "shopify://collections/all-products"
+            "buttonLink": "shopify://products/bpc-lx-pro-spray"
           }
         }
       },
       "block_order": [
-        "slide_QAxnLy",
-        "slide_nBm7Yy",
-        "slide_cXU3yV"
+        "slide_cXU3yV",
+        "slide_nBm7Yy"
       ],
       "settings": {}
     },
     "product_slider_mobile_Jg6WTC": {
       "type": "product-slider-mobile",
       "blocks": {
-        "product_r8bhGL": {
-          "type": "product",
-          "settings": {
-            "image": "shopify://shop_images/PTD-Slide-1.jpg",
-            "link": "shopify://collections/cosmetic"
-          }
-        },
         "product_dwWDwp": {
           "type": "product",
           "settings": {
-            "image": "shopify://shop_images/ABC-Slide-2_c61231ef-79c7-495e-9e3d-1c4bcba861d1.jpg",
-            "link": "shopify://products/abc"
+            "image": "shopify://shop_images/PTD-Slide-1_2.png",
+            "link": "shopify://collections/cosmetic"
+          }
+        },
+        "product_r8bhGL": {
+          "type": "product",
+          "settings": {
+            "image": "shopify://shop_images/BPC-Lx.png",
+            "link": "shopify://products/bpc-lx-pro-spray"
           }
         },
         "product_3BMQYw": {
           "type": "product",
           "settings": {
-            "image": "shopify://shop_images/BPC-Slide-3_14b523d5-0414-4e58-8b07-0cb8840cf50d.jpg",
-            "link": "shopify://collections/joint-and-muscle-support"
+            "image": "shopify://shop_images/NMN.png",
+            "link": "shopify://products/nmn"
           }
         }
       },
       "block_order": [
-        "product_r8bhGL",
         "product_dwWDwp",
+        "product_r8bhGL",
         "product_3BMQYw"
       ],
       "settings": {}
@@ -523,11 +518,127 @@
         "8f3168bc-4808-4648-b6b8-684dbf6e497b",
         "c31e7db9-3edb-448d-9343-e8a9f723e35b"
       ],
+      "disabled": true,
       "settings": {
         "title1": "Shop By",
         "title2": "Health Benefit",
         "buttonText": "All Health Concerns",
         "buttonLink": "shopify://collections/all-products"
+      }
+    },
+    "home_hero_banner_XLcAJM": {
+      "type": "home-hero-banner",
+      "blocks": {
+        "slide_VFqE9V": {
+          "type": "slide",
+          "settings": {
+            "backgroundImage": "shopify://shop_images/bpclx.jpg",
+            "video": "",
+            "videobanner": false,
+            "slideLength": 10,
+            "contentImage": "shopify://shop_images/Group_4_2.png",
+            "contentImageWidth": 470,
+            "contentImageHeight": 220,
+            "pretitle": "",
+            "title": "",
+            "fontSizeTitle": 40,
+            "fontSizeTitleMobile": 25,
+            "subtitle": "",
+            "description": "",
+            "buttonText": "Shop BPC-Lx Pro",
+            "buttonLink": "https://infiniwell.com/products/bpc-lx-pro-spray",
+            "paddingtop": 150,
+            "paddingbottom": 100,
+            "gradient": false,
+            "gradiendCss": "",
+            "content_alignment": "left",
+            "content_alignment_vertical": "top",
+            "content_width": 500,
+            "color_scheme": "#fff",
+            "button_style": "solid",
+            "ratingCount": "",
+            "ratingSummary": "",
+            "ratingType": false,
+            "listTitle1": "",
+            "listTitle2": "",
+            "listTitle3": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_VFqE9V"
+      ],
+      "settings": {}
+    },
+    "home_hero_banner_mobile_NbY8Qe": {
+      "type": "home-hero-banner-mobile",
+      "blocks": {
+        "slide_tHGagp": {
+          "type": "slide",
+          "settings": {
+            "videobanner": false,
+            "video": "",
+            "backgroundimage": "shopify://shop_images/BPC-Lx_1_-homepage.jpg",
+            "slideLength": 4,
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://products/bpc-lx-pro-spray"
+          }
+        },
+        "slide_VptHNT": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "videobanner": false,
+            "video": "",
+            "backgroundimage": "shopify://shop_images/Group_102_1.jpg",
+            "slideLength": 4,
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://collections/bpc-products"
+          }
+        },
+        "slide_F7EUi6": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "videobanner": false,
+            "video": "",
+            "backgroundimage": "shopify://shop_images/Mobile-Slide-2-Resize_3424686b-d8a2-4c51-8b27-93e191b2c978.jpg",
+            "slideLength": 4,
+            "pretitle": "",
+            "title": "",
+            "subtitle": "",
+            "buttonText": "",
+            "buttonLink": "shopify://collections/all-products"
+          }
+        }
+      },
+      "block_order": [
+        "slide_tHGagp",
+        "slide_VptHNT",
+        "slide_F7EUi6"
+      ],
+      "settings": {}
+    },
+    "full_width_media_zW3Kyc": {
+      "type": "full-width-media",
+      "disabled": true,
+      "name": "Full Width Media",
+      "settings": {
+        "backgroundImage": "shopify://shop_images/bpclx.jpg",
+        "backgroundVideo": "",
+        "alignment": "left",
+        "title": "Test title to show style",
+        "text": "<p><strong>bold subtitle can be added</strong></p><p>regular text beneath that, you can put a pretty good amount of content down here before it begins to break the layout.</p><p>The grey fox jumps over the lazy dog, lorem ipsum dolor set amet consequetour</p>",
+        "fontColor": "#ffffff",
+        "buttonLink": "shopify://pages/contact-us",
+        "buttonText": "Contact Us",
+        "buttonColor": "secondary"
       }
     },
     "00a41cab-e697-463c-895f-0f913877cd03": {
@@ -603,6 +714,7 @@
         "d9134c38-7048-4014-890d-58fd064ed08d",
         "04f6e26a-6873-42c6-82ae-f3b0e5ca1bd6"
       ],
+      "disabled": true,
       "settings": {
         "title1": "New Tools",
         "title2": "For Longevity"
@@ -725,6 +837,9 @@
     "b7c0adba-211b-4155-a21a-02766b639e02",
     "c4d7ff72-37b2-43b8-b953-296d8e6c34d0",
     "5b4880df-73ec-486d-a4d9-4b56678a1549",
+    "home_hero_banner_XLcAJM",
+    "home_hero_banner_mobile_NbY8Qe",
+    "full_width_media_zW3Kyc",
     "00a41cab-e697-463c-895f-0f913877cd03",
     "db495d0d-bf14-44f7-a6e0-29d363d36792",
     "42461fe4-e893-4c18-8cee-089f1a955346",

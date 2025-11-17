@@ -49,6 +49,7 @@
     },
     "product_recommendations_96y7Ew": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "title": ""
       }
