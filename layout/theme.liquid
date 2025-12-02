@@ -227,16 +227,27 @@
     <!-- end-boost-pfs-js -->
 
     <script>
-      AOS.init();
-      var options = {
-        startEvent: 'cloneDOMContentLoaded',
-      };
-      AOS.init(options);
+      // AOS initialization: Queue for when AOS library is ready
+      if (typeof window.ThemeInitQueue !== 'undefined') {
+        window.ThemeInitQueue.add(function() {
+          if (typeof AOS !== 'undefined') {
+            AOS.init();
+            var options = {
+              startEvent: 'cloneDOMContentLoaded',
+            };
+            AOS.init(options);
 
-      document.addEventListener('DOMContentLoaded', function (event) {
-        var cloneDOMContentLoaded = new Event('cloneDOMContentLoaded');
-        document.dispatchEvent(cloneDOMContentLoaded);
-      });
+            document.addEventListener('DOMContentLoaded', function (event) {
+              var cloneDOMContentLoaded = new Event('cloneDOMContentLoaded');
+              document.dispatchEvent(cloneDOMContentLoaded);
+            });
+          }
+        }, {
+          name: 'AOS Init',
+          requires: ['aos'],
+          priority: 5
+        });
+      }
     </script>
     <script>
       // var initGorgiasChatPromise = window.GorgiasChat
@@ -253,53 +264,56 @@
     </script>
     {% include 'ins_opensend' %}
     <script>
-      window.addEventListener('load', function () {
-        var _learnq = window._learnq || [];
-        function addedToCart() {
-          fetch(`${window.location.origin}/cart.js`).then((res) =>
-            res
-              .clone()
-              .json()
-              .then((data) => {
-                var cart = {
-                  total_price: data.total_price / 100,
-                  $value: data.total_price / 100,
-                  total_discount: data.total_discount,
-                  original_total_price: data.original_total_price / 100,
-                  items: data.items,
-                };
-                if (item !== 'undefined') {
-                  cart = Object.assign(cart, item);
+      // Klaviyo cart tracking: Queue for window load (non-critical)
+      if (typeof window.ThemeInitQueue !== 'undefined') {
+        window.ThemeInitQueue.windowLoad(function () {
+          var _learnq = window._learnq || [];
+          function addedToCart() {
+            fetch(window.location.origin + '/cart.js').then(function(res) {
+              return res
+                .clone()
+                .json()
+                .then(function(data) {
+                  var cart = {
+                    total_price: data.total_price / 100,
+                    $value: data.total_price / 100,
+                    total_discount: data.total_discount,
+                    original_total_price: data.original_total_price / 100,
+                    items: data.items,
+                  };
+                  if (typeof item !== 'undefined') {
+                    cart = Object.assign(cart, item);
+                  }
+                  if (klAjax) {
+                    _learnq.push(['track', 'Added to Cart', cart]);
+                    klAjax = false;
+                  }
+                });
+            });
+          }
+          (function (ns, fetch) {
+            ns.fetch = function () {
+              const response = fetch.apply(this, arguments);
+              response.then(function(res) {
+                if ((window.location.origin + '/cart/add.js').includes(res.url) && res.url !== '') {
+                  addedToCart();
                 }
-                if (klAjax) {
-                  _learnq.push(['track', 'Added to Cart', cart]);
-                  klAjax = false;
-                }
-              })
-          );
-        }
-        (function (ns, fetch) {
-          ns.fetch = function () {
-            const response = fetch.apply(this, arguments);
-            response.then((res) => {
-              if (`${window.location.origin}/cart/add.js`.includes(res.url) && res.url !== '') {
-                addedToCart();
+              });
+              return response;
+            };
+          })(window, window.fetch);
+          var klAjax = true;
+          var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+          for (var i = 0; i < atcButtons.length; i++) {
+            atcButtons[i].addEventListener('click', function () {
+              if (klAjax && typeof item !== 'undefined') {
+                _learnq.push(['track', 'Added to Cart', item]);
+                klAjax = false;
               }
             });
-            return response;
-          };
-        })(window, window.fetch);
-        var klAjax = true;
-        var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
-        for (var i = 0; i < atcButtons.length; i++) {
-          atcButtons[i].addEventListener('click', function () {
-            if (klAjax) {
-              _learnq.push(['track', 'Added to Cart', item]);
-              klAjax = false;
-            }
-          });
-        }
-      });
+          }
+        });
+      }
     </script>
     <style>
       #dynamic-checkout-cart shopify-accelerated-checkout-cart {
@@ -321,22 +335,35 @@
     </style>
 
     <script>
-      var preLoaderCookie = readCookie('preloader');
+      // Preloader functionality: Queue for when jQuery and cookies.js are ready
+      if (typeof window.ThemeInitQueue !== 'undefined') {
+        window.ThemeInitQueue.add(function() {
+          if (typeof readCookie === 'function' && typeof $ !== 'undefined') {
+            var preLoaderCookie = readCookie('preloader');
 
-      if (preLoaderCookie == null || preLoaderCookie != 'Yes') {
-        $('#preloader').children('img').show();
-      } else {
-        $('#preloader').hide();
+            if (preLoaderCookie == null || preLoaderCookie != 'Yes') {
+              $('#preloader').children('img').show();
+            } else {
+              $('#preloader').hide();
+            }
+
+            window.addEventListener('load', function() {
+              const preload = document.getElementById('preloader');
+              setTimeout(function () {
+                preload.classList.add('preload-finish');
+                preload.style.display = 'none';
+                if (typeof createCookie === 'function') {
+                  createCookie('preloader', 'Yes', '1');
+                }
+              }, 1000);
+            });
+          }
+        }, {
+          name: 'Preloader Init',
+          requires: ['jquery'],
+          priority: 2
+        });
       }
-
-      window.addEventListener('load', () => {
-        const preload = document.getElementById('preloader');
-        setTimeout(function () {
-          preload.classList.add('preload-finish');
-          preload.style.display = 'none';
-          createCookie('preloader', 'Yes', '1');
-        }, 1000);
-      });
     </script>
 
     <script src="{{ 'custom.js' | asset_url }}" defer></script>
