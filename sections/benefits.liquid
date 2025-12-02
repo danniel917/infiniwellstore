@@ -151,10 +151,7 @@ Section: Benefits
 
           {% if has_overlay_content %}
             <div class="overlay-content-wrapper align-v-{{ section.settings.overlay_vertical_alignment }} align-h-{{ section.settings.overlay_horizontal_alignment }}">
-              <div class="overlay-content align-text-{{ section.settings.overlay_text_alignment }}"
-                data-aos="fade-up" 
-                data-aos-duration="2000"
-              >
+              <div class="overlay-content align-text-{{ section.settings.overlay_text_alignment }}">
 
                 {% for overlay_block in section.blocks %}
                   {% if overlay_block.type == 'overlay_title' %}
@@ -189,10 +186,7 @@ Section: Benefits
     {% endfor %}
 
     <!-- Content Container (with padding) -->
-    <div class="content-container content-padding"
-      data-aos="fade-up" 
-      data-aos-duration="3000"
-    >
+    <div class="content-container content-padding">
 
       <!-- Title Block -->
       {% for block in section.blocks %}
