@@ -27,7 +27,8 @@
         "onetimeText": "",
         "subscribeText": "",
         "iso_certified_labs_url": "#no-promises-proof",
-        "supplement_facts_image": "shopify://shop_images/Frame_1321317670_1_fde33379-561f-4d5f-a5f2-1cad1d3b3e6d.png"
+        "supplement_facts_image": "shopify://shop_images/Frame_1321317670_1_fde33379-561f-4d5f-a5f2-1cad1d3b3e6d.png",
+        "custom_text": "Limited Edition"
       }
     },
     "full_width_media_blocks_C8n9tP": {
@@ -356,7 +357,8 @@
         "paddingtopmobile": 40,
         "paddingbottommobile": 40,
         "paddingleftmobile": 32,
-        "paddingrightmobile": 32
+        "paddingrightmobile": 32,
+        "enable_marquee": false
       }
     },
     "no_promises_proof_zGBwjV": {
@@ -391,6 +393,7 @@
         },
         "lab_logo_LkPV3c": {
           "type": "lab_logo",
+          "disabled": true,
           "settings": {
             "logo": "shopify://shop_images/Vector_941655a3-87ce-4d30-93ed-ff1acf3368ec.svg",
             "url": "https://cdn.shopify.com/s/files/1/0114/7741/8065/files/BPCLxCofA_4.pdf?v=1763139189",
@@ -404,7 +407,7 @@
             "logo": "shopify://shop_images/msb-logo.svg",
             "url": "https://cdn.shopify.com/s/files/1/0114/7741/8065/files/BPCLxCofA_4.pdf?v=1763139189",
             "passed_text": "Passed",
-            "list_items": "Purity, Potency, Identity\nMicrobiological, Allergens\nNon GMO"
+            "list_items": "Identity\nPotency\nPurity\nMicrobiological\nAllergens\nHeavy metals"
           }
         }
       },
@@ -419,7 +422,7 @@
       "name": "No Promises Just Proof",
       "settings": {
         "background_color": "#fafafa",
-        "background_image": "shopify://shop_images/3rdparty-bg-mobile.png",
+        "background_image": "shopify://shop_images/openart-image_StD4s2co_1763676679749_raw_a55635a6-bba9-4568-8bc3-233f8bf4222f.jpg",
         "max_width": 1200,
         "paddingtop": 60,
         "paddingbottom": 60,
@@ -437,8 +440,8 @@
         "image_xemEhF": {
           "type": "image",
           "settings": {
-            "image_desktop": "shopify://shop_images/image_54_2.png",
-            "image_mobile": "shopify://shop_images/image_54.jpg"
+            "image_desktop": "shopify://shop_images/astro_10.png",
+            "image_mobile": "shopify://shop_images/astro_10.png"
           }
         },
         "title_tdxdBr": {
@@ -599,8 +602,8 @@
         "image_re8FVR": {
           "type": "image",
           "settings": {
-            "image_desktop": "shopify://shop_images/image_54_3.png",
-            "image_mobile": "shopify://shop_images/image_54_1.png",
+            "image_desktop": "shopify://shop_images/applestylewithdryice.png",
+            "image_mobile": "shopify://shop_images/applestylewithdryice.png",
             "image_height_desktop": 510,
             "image_max_height_desktop": 510,
             "image_height_mobile": 420,
@@ -719,10 +722,10 @@
         "product_FDpFGF"
       ],
       "settings": {
-        "title1": "PRACTITIONERS",
-        "title2": "Recommend",
-        "buttonText": "Shop All",
-        "buttonLink": "shopify://collections/best-sellers"
+        "title1": "Complete your",
+        "title2": "Routine",
+        "buttonText": "",
+        "buttonLink": ""
       }
     }
   },
