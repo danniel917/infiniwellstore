@@ -183,7 +183,10 @@ function cartInfo(data) {
 		$('.js__top-cart-form-actions').hide();
 		$('.js__freq-bought-products').show();
 		$('.js__top-cart-addons').html($('.js__minicart-rec-items').html());
-		freqProductSlider.destroy();
+		// Safely destroy existing slider if it exists
+		if (freqProductSlider && typeof freqProductSlider.destroy === 'function') {
+			freqProductSlider.destroy();
+		}
 		freqProductSlider = new Swiper('.js__freq-product-slider', {
 			slidesPerView: 2,
 			spaceBetween: 20,
@@ -391,7 +394,10 @@ function cartInfo(data) {
 						}
 					});
 					try {
-						freqProductSlider.destroy();
+						// Safely destroy existing slider if it exists
+						if (freqProductSlider && typeof freqProductSlider.destroy === 'function') {
+							freqProductSlider.destroy();
+						}
 						freqProductSlider = new Swiper(
 							'.js__freq-product-slider',
 							{
@@ -1405,7 +1411,10 @@ $(document).ready(function ($) {
          const targetClass = 'remove-slide';
          // Select the <ul> and check if all <li> elements within it have the target class
          const allHaveClass = $('.addons-slide').length === $('.addons-slide.' + targetClass).length;
-         freqProductSlider.destroy();
+         // Safely destroy existing slider if it exists
+         if (freqProductSlider && typeof freqProductSlider.destroy === 'function') {
+             freqProductSlider.destroy();
+         }
          if (allHaveClass) {
              $(".js__freq-bought-products").addClass("hide");
              console.log('All <li> elements have the class:', targetClass);
