@@ -340,6 +340,10 @@
     </script>
 
     <script src="{{ 'custom.js' | asset_url }}" defer></script>
-
+    {% if page.handle == 'quiz' %}
+      {{ 'quiz-custom.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'quiz-custom.js' | asset_url }}" defer></script>
+      <script src="{{ 'quiz-results-page.js' | asset_url }}" defer></script>
+    {% endif %}
   </body>
 </html>
