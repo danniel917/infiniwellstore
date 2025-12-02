@@ -376,6 +376,12 @@
         </div>
         {%- comment -%} END TOOLBAR {%- endcomment -%}
 
+        <script>
+          var subscriptionDic = { {%- for product in collection.products -%}
+          "{{ product.handle }}": {{ product.selling_plan_groups[0].selling_plans[0].id }}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%} };
+        </script>
+
         <div
           class="feature-product-slider dfdf collection__product-list boost-pfs-filter-products {% if section.settings.equal_height == 'auto' %}boost-pfs-filter-product-item-equal-height-auto {% endif %} {% if section.settings.show_item_swatch_tooltip %}boost-pfs-filter-product-item-show-swatch-tooltip {% endif %} {% if section.settings.show_product_label_image %}boost-pfs-filter-product-item-label-use-img{% endif %} boost-pfs-filter-product-item-label-type-{{ section.settings.product_label_type }} {% if section.settings.product_label_has_border_radius %} boost-pfs-filter-product-item-label-has-border{% endif %} boost-pfs-filter-product-item-show-details-{{ section.settings.show_details_when_hovering }} boost-pfs-filter-product-item-layout-{{ section.settings.product_item_layout }} boost-pfs-filter-product-item-label-{{ section.settings.product_item_label_position }} boost-pfs-filter-product-item-{{ section.settings.swatch_color_display_type }} boost-pfs-filter-swatch-shape-{{ section.settings.swatches_color_shape}} boost-pfs-filter-product-item-text-alignment-{{ section.settings.text_alignment}}"
           data-bc-sort="{{ collection.default_sort_by }}"
