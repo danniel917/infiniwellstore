@@ -1,0 +1,99 @@
+<div class="tabbedProds tabbedProds--{{ section.index }}">
+    <div class="tabbedProds__inner">
+        <div class="tabbedProds__titleRow">
+            <div class="tabbedProds__left">
+                <h3 class="tabbedProds__title">
+                    {{ section.settings.title1 }}{% if section.settings.title2 != blank %} <span class="color-grey">{{ section.settings.title2 }}</span>{% endif %}
+                </h3>
+                <div class="tabbedProds__tabsWrapper">
+                    <div class="tabbedProds__tabs">
+                    {% for block in section.blocks %}
+                        <button class="tabbedProds__tab{% if forloop.first %} tabbedProds__tab--active{% endif %}"
+                        data-tab="{{ forloop.index }}">
+                            <span class="tabbedProds__tabLabelDesktop">{{ block.settings.title }}</span>
+                            <span class="tabbedProds__tabLabelMobile">{{ block.settings.mobileLabel }}</span>
+                        </button>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabbedProds__slidersWrapper">
+            {% for block in section.blocks %}
+                <div class="tabbedProds__sliderOuterWrapper{% if forloop.first %} tabbedProds__sliderOuterWrapper--active{% endif %}"
+                data-slider="{{ forloop.index }}">
+                    <div class="tabbedProds__sliderInnerWrapper">
+                        <div class="tabbedProds__slider swiper-wrapper">
+                            {% for _product in block.settings.collection.products %}
+                                <div class="tabbedProds__cardWrapper swiper-slide product-card">
+                                {% include 'product_card'  with  productRelated: _product , show_price: true, show_tags: true, show_auto_tags: true, show_title: true, show_fav: false, show_secondary_button: false %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tabbedProds__bullets">
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="tabbedModals">
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {% for _product in block.settings.collection.products %}
+    {% render 'product-modal', productData: _product %}
+  {% endfor %}
+{% endfor %}
+{% endif %}
+</div>
+
+
+{% schema %}
+{
+  "name": "Tabbed Product Sliders",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "Title (Black)"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title (Grey)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "mobileLabel",
+          "label": "Mobile Label"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Tabbed Product Sliders"
+    }
+  ]
+}
+{% endschema %}
