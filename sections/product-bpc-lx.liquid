@@ -26,11 +26,7 @@
   {%- endunless -%}
 
   <!-- Product Title (Mobile Only) -->
-  <div class="container-1220 product-header product-header-mobile"
-    data-aos="fade-up" 
-    data-aos-duration="3000"
-    data-aos-once="true"
-  >
+  <div class="container-1220 product-header product-header-mobile">
     <div class="breadcrumb hide" role="navigation" aria-label="breadcrumbs">
       {% assign full_url = request.path %}
       {% assign product_url = full_url | split: '/' %}
@@ -75,11 +71,7 @@
     </div>
   </div>
 
-  <div class="container-1220 flex-wrap product-content"
-      data-aos="fade-up" 
-      data-aos-duration="3000"
-      data-aos-once="true"
-  >
+  <div class="container-1220 flex-wrap product-content">
     <!-- Product Media -->
     <div class="left-section"
     >
@@ -192,8 +184,11 @@
           </div>
        </div>
 
-       {% comment %} Live Stock Display {% endcomment %}
-       {% render 'product-stock', product: product, show_icon: true, threshold_low: 10, threshold_high: 50 %}
+       {% render 'product-stock',
+          product: product,
+          show_icon: true,
+          custom_text: section.settings.custom_text
+        %}
 
       <div class="product__form">
         <form
@@ -893,6 +888,13 @@
       "id": "supplement_facts_image",
       "label": "Supplement Facts Image",
       "info": "Image to display in the Supplement Facts popup modal"
+    },
+    {
+      "type": "text",
+      "id": "custom_text",
+      "label": "Stock text prefix",
+      "info": "Optional text before quantity (e.g., 'Limited initial release')",
+      "placeholder": "Limited initial release"
     }
   ]
   ,
