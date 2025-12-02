@@ -609,12 +609,21 @@ var boostPFSFilterConfig = {
 
         itemHtml = itemHtml.replace(/{{itemWishlist}}/g, itemWishlistHtml);
 
+        if (data.available == true) {
+            itemHtml = itemHtml.replace(/{{addToCartText}}/g, "Add to Cart");
+        } else {
+            itemHtml = itemHtml.replace(/{{addToCartText}}/g, "Out of Stock");
+        }
+        itemHtml = itemHtml.replace(/{{itemPlanDefault}}/g, subscriptionDic[data.handle]);
+
+
         // Add main attribute (Always put at the end of this function)
         itemHtml = itemHtml.replace(/{{itemId}}/g, data.id);
         itemHtml = itemHtml.replace(/{{itemTitle}}/g, data.title);
         itemHtml = itemHtml.replace(/{{itemHandle}}/g, data.handle);
         itemHtml = itemHtml.replace(/{{itemVendorLabel}}/g, data.vendor);
         itemHtml = itemHtml.replace(/{{itemVariants}}/g, data.variants);
+        itemHtml = itemHtml.replace(/{{itemVariantId}}/g, data.variants[0].id);
         itemHtml = itemHtml.replace(/{{itemUrl}}/g, Utils.buildProductItemUrl(data));
         /* Metafields */
         // console.log(data);
@@ -1214,41 +1223,41 @@ var boostPFSFilterConfig = {
     };
     var originalRenderProductDisplayType = ProductDisplayType.prototype.render;
     ProductDisplayType.prototype.render = function() {
-            // Call the original function in our app lib.
-            // We don't have to copy a very big function out here to modify.
-            // function.call(this, param1, param2) binds the "this" pointer and params to the original function.
-            originalRenderProductDisplayType.call(this);
-            // Do your custom code after the original function has run
-            // Active current display type
-            if (this.$element.length) {
-                this.$element.find(this.selector.productDisplayTypeList).removeClass('active');
-                this.$element.find(this.selector.productDisplayTypeGrid).removeClass('active');
-                if (Globals.queryParams.display == 'list') {
-                    this.$element.find(this.selector.productDisplayTypeList).addClass('active');
-                } else if (Globals.queryParams.display == 'grid') {
-                    if (boostPFSThemeConfig.custom.view_as_type == 'view_as_type_list_grid_multi_col' && !Utils.isMobile()) {
-                        var curentGridColumn = boostPFSThemeConfig.custom.products_per_row;
-                        this.$element.find(this.selector.productDisplayTypeGrid).each(function() {
-                            var $parent = jQ(this).parent();
-                            var $cssNames = jQ('.boost-pfs-filter-top-display-type').attr('class').split(' ');
-                            var $activeClass = $cssNames[$cssNames.length - 1];
-                            var indexCurrentColumn = $activeClass.split('-')[$activeClass.split('-').length - 1];
-                            if ($parent.hasClass('boost-pfs-filter-view-as-click') && jQ(this).data('view') == $activeClass) {
-                                jQ(this).addClass('active');
-                                jQ('.boost-pfs-filter-product-item').removeClass(function(index, css) {
-                                    return (css.match(/(^|\s)boost-pfs-filter-grid-width-\S+/g) || []).join(' ');
-                                }).addClass('boost-pfs-filter-grid-width-' + indexCurrentColumn);
-                            } else if (!$parent.hasClass('boost-pfs-filter-view-as-click') && jQ(this).data('view').split('-')[1] == curentGridColumn) {
-                                jQ(this).addClass('active');
-                            }
-                        });
-                    } else {
-                        this.$element.find(this.selector.productDisplayTypeGrid).addClass('active');
-                    }
+        // Call the original function in our app lib.
+        // We don't have to copy a very big function out here to modify.
+        // function.call(this, param1, param2) binds the "this" pointer and params to the original function.
+        originalRenderProductDisplayType.call(this);
+        // Do your custom code after the original function has run
+        // Active current display type
+        if (this.$element.length) {
+            this.$element.find(this.selector.productDisplayTypeList).removeClass('active');
+            this.$element.find(this.selector.productDisplayTypeGrid).removeClass('active');
+            if (Globals.queryParams.display == 'list') {
+                this.$element.find(this.selector.productDisplayTypeList).addClass('active');
+            } else if (Globals.queryParams.display == 'grid') {
+                if (boostPFSThemeConfig.custom.view_as_type == 'view_as_type_list_grid_multi_col' && !Utils.isMobile()) {
+                    var curentGridColumn = boostPFSThemeConfig.custom.products_per_row;
+                    this.$element.find(this.selector.productDisplayTypeGrid).each(function() {
+                        var $parent = jQ(this).parent();
+                        var $cssNames = jQ('.boost-pfs-filter-top-display-type').attr('class').split(' ');
+                        var $activeClass = $cssNames[$cssNames.length - 1];
+                        var indexCurrentColumn = $activeClass.split('-')[$activeClass.split('-').length - 1];
+                        if ($parent.hasClass('boost-pfs-filter-view-as-click') && jQ(this).data('view') == $activeClass) {
+                            jQ(this).addClass('active');
+                            jQ('.boost-pfs-filter-product-item').removeClass(function(index, css) {
+                                return (css.match(/(^|\s)boost-pfs-filter-grid-width-\S+/g) || []).join(' ');
+                            }).addClass('boost-pfs-filter-grid-width-' + indexCurrentColumn);
+                        } else if (!$parent.hasClass('boost-pfs-filter-view-as-click') && jQ(this).data('view').split('-')[1] == curentGridColumn) {
+                            jQ(this).addClass('active');
+                        }
+                    });
+                } else {
+                    this.$element.find(this.selector.productDisplayTypeGrid).addClass('active');
                 }
             }
         }
-        // Build Show Limit
+    }
+    // Build Show Limit
     ProductLimit.prototype.compileTemplate = function() {
         var html = '';
         if (boostPFSThemeConfig.custom.show_limit && boostPFSTemplate.hasOwnProperty('showLimitHtml')) {
@@ -1300,13 +1309,13 @@ var boostPFSFilterConfig = {
 
         //   setTimeout(function(){
         jQ('.text-m').each(function() {
-                var review = jQ(this).html()
-                var reviews = review.substring(0, 2)
-                review = '(' + reviews + ')'
-                jQ(this).html(review)
-            })
-            // }, 2000)
-            /** End Swym integration **/
+            var review = jQ(this).html()
+            var reviews = review.substring(0, 2)
+            review = '(' + reviews + ')'
+            jQ(this).html(review)
+        })
+        // }, 2000)
+        /** End Swym integration **/
         document.dispatchEvent(new CustomEvent("swym:collections-loaded"));
 
 
@@ -1339,30 +1348,31 @@ var boostPFSFilterConfig = {
             /*Added this code for destroy multiple click of same buttons its fire multiple times when click of add to cart in over view*/
             $(".js__popup-addtocart").off("click");
             callRechargeScript()
+
             function formatEuroPrices() {
                 // Select all price elements
                 const priceElements = document.querySelectorAll('.product-card__price span');
-            
+
                 priceElements.forEach(function(element) {
-                  let priceText = element.textContent.trim();
-                  
-                  // Check if the price text starts with the Euro symbol
-                  if (priceText.startsWith('€')) {
-                    // Remove the Euro symbol temporarily
-                    priceText = priceText.substring(1);
-                    
-                    // Replace the comma with a dot
-                    priceText = priceText.replace(',', '.');
-                    
-                    // Add the Euro symbol back and update the element
-                    element.textContent = '€' + priceText;
-                  }
+                    let priceText = element.textContent.trim();
+
+                    // Check if the price text starts with the Euro symbol
+                    if (priceText.startsWith('€')) {
+                        // Remove the Euro symbol temporarily
+                        priceText = priceText.substring(1);
+
+                        // Replace the comma with a dot
+                        priceText = priceText.replace(',', '.');
+
+                        // Add the Euro symbol back and update the element
+                        element.textContent = '€' + priceText;
+                    }
                 });
-              }
-            
-              // Run the formatting function when the page loads
-              formatEuroPrices();
-                // Check if the device has touch capability
+            }
+
+            // Run the formatting function when the page loads
+            formatEuroPrices();
+            // Check if the device has touch capability
             if ('ontouchstart' in window || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
                 // If it's a touch device, make each button inside product cards visible
                 var productCards = document.querySelectorAll('.product-card');
@@ -1665,28 +1675,28 @@ var boostPFSFilterConfig = {
         }
     }
     ProductListPlaceholder.prototype.compileTemplateExtra = function() {
-            var display = Globals.queryParams.display
-            switch (display) {
-                case 'list':
-                    //Todo: Build placeholder for List mode
-                    var template = boostPFSTemplate.productListPlaceholderHtml;
-                    var imgRatioSetting = parseFloat(this.settings.placeholderImageRatio);
-                    var imgRatio = imgRatioSetting > 0 ? imgRatioSetting : 1.4; // It mean w1:h1.4
-                    /**
-                     * Set product class for product skeleton (to set column, style, etc.)
-                     * - If had defined product_grid_class in boostPFSThemeConfig => use this config ELSE use our setting
-                     */
-                    break;
-            }
-            return template
-                .replace(/{{class.filterProductSkeleton}}/g, Class.filterProductSkeleton)
-                .replace(/{{class.filterSkeleton}}/g, Class.filterSkeleton)
-                .replace(/{{class.filterSkeletonText}}/g, Class.filterSkeletonText)
-                .replace(/{{paddingTop}}/g, imgRatio * 100)
+        var display = Globals.queryParams.display
+        switch (display) {
+            case 'list':
+                //Todo: Build placeholder for List mode
+                var template = boostPFSTemplate.productListPlaceholderHtml;
+                var imgRatioSetting = parseFloat(this.settings.placeholderImageRatio);
+                var imgRatio = imgRatioSetting > 0 ? imgRatioSetting : 1.4; // It mean w1:h1.4
+                /**
+                 * Set product class for product skeleton (to set column, style, etc.)
+                 * - If had defined product_grid_class in boostPFSThemeConfig => use this config ELSE use our setting
+                 */
+                break;
         }
-        /* Prevent conflict with theme vendor js */
+        return template
+            .replace(/{{class.filterProductSkeleton}}/g, Class.filterProductSkeleton)
+            .replace(/{{class.filterSkeleton}}/g, Class.filterSkeleton)
+            .replace(/{{class.filterSkeletonText}}/g, Class.filterSkeletonText)
+            .replace(/{{paddingTop}}/g, imgRatio * 100)
+    }
+    /* Prevent conflict with theme vendor js */
     Array.prototype.insert = function(a, b) {}
-        /* Math qual Height */
+    /* Math qual Height */
     function equalHeight(data) {
         var equal_i = -1;
         var equal_els = [];
@@ -1845,7 +1855,9 @@ var boostPFSFilterConfig = {
     AjaxCart.prototype.getCart = function(isOpenCart) {
         fetch('/cart.js', {
                 method: 'GET',
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
             .then(res => res.json())
             .then(data => {
@@ -1860,7 +1872,7 @@ var boostPFSFilterConfig = {
                     progressBar();
                     //calculate the cart total
                     setTimeout(function() {
-                       
+
                         addons();
                     }, 1000);
                 } else if (jQ('.boost-pfs-select-option-show').length > 0) {
@@ -1915,48 +1927,50 @@ var boostPFSFilterConfig = {
             .replace(/{{icoCart}}/g, productIsFirst ? icoCart : icoCartLink);
     }
     QuickView.prototype.getQuickViewModalContent = function(e) {
-            if (!e) return;
-            e.stopPropagation();
-            e.preventDefault();
+        if (!e) return;
+        e.stopPropagation();
+        e.preventDefault();
 
-            // Get quickview url
-            var url = jQ(e.currentTarget).data('href');
-            if (Utils.isBadUrl(url)) return;
+        // Get quickview url
+        var url = jQ(e.currentTarget).data('href');
+        if (Utils.isBadUrl(url)) return;
 
-            this.isGetQuickViewOption = jQ(e.currentTarget).attr('data-get-quickview-option') ? true : false;
+        this.isGetQuickViewOption = jQ(e.currentTarget).attr('data-get-quickview-option') ? true : false;
 
-            // Clear all select option in product item
-            jQ('.boost-pfs-select-option-wrapper').remove();
-            jQ('.boost-pfs-select-option-show').removeClass('boost-pfs-select-option-show');
+        // Clear all select option in product item
+        jQ('.boost-pfs-select-option-wrapper').remove();
+        jQ('.boost-pfs-select-option-show').removeClass('boost-pfs-select-option-show');
 
-            if (this.isGetQuickViewOption) {
-                jQ(e.currentTarget).removeAttr('data-get-quickview-option');
-                url += '-option';
-                this.parent.$element.addClass('boost-pfs-select-option-show');
-                jQ('body').addClass('boost-pfs-select-option-show-body');
-            } else {
-                // Hide the quickview button so it doesn't show on top of modal
-                this.$element.closest('.boost-pfs-action-list-wrapper').css('visibility', 'hidden');
-                // Render the backdrop and modal empty html
-                //       this.renderQuickViewBackdrop();
-            }
-
-            fetch(url, {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'text/html;charset=UTF-8' }
-                })
-                .then(res => res.text())
-                .then(data => {
-                    this.renderQuickViewModal(data);
-                    this.bindQuickViewModalEvents();
-                })
-
-            if (boostPFS.filter && !this.isGetQuickViewOption) {
-                boostPFS.filter.filterLoadingIcon.setShow(true);
-            }
+        if (this.isGetQuickViewOption) {
+            jQ(e.currentTarget).removeAttr('data-get-quickview-option');
+            url += '-option';
+            this.parent.$element.addClass('boost-pfs-select-option-show');
+            jQ('body').addClass('boost-pfs-select-option-show-body');
+        } else {
+            // Hide the quickview button so it doesn't show on top of modal
+            this.$element.closest('.boost-pfs-action-list-wrapper').css('visibility', 'hidden');
+            // Render the backdrop and modal empty html
+            //       this.renderQuickViewBackdrop();
         }
-        /* start-boost-custom */
-        /* #boost-121574: show refine by on mobile */
+
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/html;charset=UTF-8'
+                }
+            })
+            .then(res => res.text())
+            .then(data => {
+                this.renderQuickViewModal(data);
+                this.bindQuickViewModalEvents();
+            })
+
+        if (boostPFS.filter && !this.isGetQuickViewOption) {
+            boostPFS.filter.filterLoadingIcon.setShow(true);
+        }
+    }
+    /* start-boost-custom */
+    /* #boost-121574: show refine by on mobile */
     function resizeFilter() {
         if (Utils.isMobile()) {
             var $filter = jQ('.boost-pfs-filter-tree-v[data-is-mobile]');
@@ -1999,130 +2013,180 @@ var boostPFSFilterConfig = {
 
 
     AjaxCart.prototype.addToCart = function(variantId, quantity, $addingLabel, $errorLabel, isAddedFromQuickView = false) {
-            var addToCartLabel = isAddedFromQuickView ? Labels.action_list.qvAddToCartBtnLabel : Labels.action_list.atcAvailableLabel
-            this.changeButtonLabel($addingLabel, addToCartLabel, Labels.action_list.atcAddingToCartBtnLabel);
+        var addToCartLabel = isAddedFromQuickView ? Labels.action_list.qvAddToCartBtnLabel : Labels.action_list.atcAvailableLabel
+        this.changeButtonLabel($addingLabel, addToCartLabel, Labels.action_list.atcAddingToCartBtnLabel);
 
-            var postData = {
-                "id": variantId.toString(),
-                "quantity": parseInt(quantity)
-            }
-
-            var metafield = $addingLabel.closest('form').find('[name="properties[_expected_shipping_date_non_customer_facing]"]');
-            var metafieldCustomerFacingShipDate = $addingLabel.closest('form').find('[name="properties[expected_shipping_date]"]');
-            var metafieldPreorder = $addingLabel.closest('form').find('[name="properties[_pre-order]"]');
-            var metafieldPresale = $addingLabel.closest('form').find('[name="properties[_pre-sale]"]');
-
-
-
-            if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPreorder.length && metafieldPreorder.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-order': 'Yes', '_pre-sale': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPreorder.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-order': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPresale.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-sale': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length && metafield.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_expected_shipping_date_non_customer_facing': metafield.val() }
-            } else if (metafieldCustomerFacingShipDate.length && metafieldPreorder.length && metafieldPresale.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_pre-order': 'Yes', '_pre-sale': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length && metafieldPreorder.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_pre-order': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length && metafieldPresale.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val(), '_pre-sale': 'Yes' }
-            } else if (metafieldCustomerFacingShipDate.length) {
-                postData.properties = { 'Expected Shipping Date': metafieldCustomerFacingShipDate.val() }
-            } else if (metafield.length && metafieldPreorder.length && metafieldPresale.length) {
-                postData.properties = { '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-order': 'Yes', '_pre-sale': 'Yes' }
-            } else if (metafield.length && metafieldPreorder.length) {
-                postData.properties = { '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-order': 'Yes' }
-            } else if (metafield.length && metafieldPresale.length) {
-                postData.properties = { '_expected_shipping_date_non_customer_facing': metafield.val(), '_pre-sale': 'Yes' }
-            } else if (metafield.length) {
-                postData.properties = { '_expected_shipping_date_non_customer_facing': metafield.val() }
-            } else if (metafieldPreorder.length && metafieldPresale.length) {
-                postData.properties = { '_pre-order': 'Yes', '_pre-sale': 'Yes' }
-            } else if (metafieldPreorder.length) {
-                postData.properties = { '_pre-order': 'Yes' }
-            } else if (metafieldPresale.length) {
-                postData.properties = { '_pre-sale': 'Yes' }
-            }
-
-
-
-            fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
-                    body: JSON.stringify(postData)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.status != undefined && data.status != 200) {
-                        this.onError(data, $addingLabel, $errorLabel, addToCartLabel);
-                    } else {
-                        this.onSucess(data, $addingLabel, $errorLabel, addToCartLabel);
-                    }
-                })
+        var postData = {
+            "id": variantId.toString(),
+            "quantity": parseInt(quantity)
         }
-        /* end-boost-custom */
+
+        var metafield = $addingLabel.closest('form').find('[name="properties[_expected_shipping_date_non_customer_facing]"]');
+        var metafieldCustomerFacingShipDate = $addingLabel.closest('form').find('[name="properties[expected_shipping_date]"]');
+        var metafieldPreorder = $addingLabel.closest('form').find('[name="properties[_pre-order]"]');
+        var metafieldPresale = $addingLabel.closest('form').find('[name="properties[_pre-sale]"]');
+
+
+
+        if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPreorder.length && metafieldPreorder.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-order': 'Yes',
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPreorder.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-order': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafield.length && metafieldPresale.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafield.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_expected_shipping_date_non_customer_facing': metafield.val()
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafieldPreorder.length && metafieldPresale.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_pre-order': 'Yes',
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafieldPreorder.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_pre-order': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length && metafieldPresale.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val(),
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafieldCustomerFacingShipDate.length) {
+            postData.properties = {
+                'Expected Shipping Date': metafieldCustomerFacingShipDate.val()
+            }
+        } else if (metafield.length && metafieldPreorder.length && metafieldPresale.length) {
+            postData.properties = {
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-order': 'Yes',
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafield.length && metafieldPreorder.length) {
+            postData.properties = {
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-order': 'Yes'
+            }
+        } else if (metafield.length && metafieldPresale.length) {
+            postData.properties = {
+                '_expected_shipping_date_non_customer_facing': metafield.val(),
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafield.length) {
+            postData.properties = {
+                '_expected_shipping_date_non_customer_facing': metafield.val()
+            }
+        } else if (metafieldPreorder.length && metafieldPresale.length) {
+            postData.properties = {
+                '_pre-order': 'Yes',
+                '_pre-sale': 'Yes'
+            }
+        } else if (metafieldPreorder.length) {
+            postData.properties = {
+                '_pre-order': 'Yes'
+            }
+        } else if (metafieldPresale.length) {
+            postData.properties = {
+                '_pre-sale': 'Yes'
+            }
+        }
+
+
+
+        fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify(postData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status != undefined && data.status != 200) {
+                    this.onError(data, $addingLabel, $errorLabel, addToCartLabel);
+                } else {
+                    this.onSucess(data, $addingLabel, $errorLabel, addToCartLabel);
+                }
+            })
+    }
+    /* end-boost-custom */
 
     Utils.buildProductItemUrl = (data, hasCollection) => {
-          // Get url information
-          var params = Utils.getWindowLocation().search.substring(1);
-          var pathname = window.location.pathname;
-          var elements = pathname.split('/');
-        
-          // Check if has locale
-          var localeURLPart = "";
-          var hasShopifyRoutes = Shopify && Shopify.routes && typeof Shopify.routes.root != 'undefined';
-          if (Settings.getSettingValue('general.useShopifyRouteForMultiLanguageURL') && hasShopifyRoutes) {
+        // Get url information
+        var params = Utils.getWindowLocation().search.substring(1);
+        var pathname = window.location.pathname;
+        var elements = pathname.split('/');
+
+        // Check if has locale
+        var localeURLPart = "";
+        var hasShopifyRoutes = Shopify && Shopify.routes && typeof Shopify.routes.root != 'undefined';
+        if (Settings.getSettingValue('general.useShopifyRouteForMultiLanguageURL') && hasShopifyRoutes) {
             localeURLPart = Shopify.routes.root.replace(/\/$/, '');
-          } else if (elements.indexOf(boostPFSAppConfig.general.current_locale) > -1) {
+        } else if (elements.indexOf(boostPFSAppConfig.general.current_locale) > -1) {
             localeURLPart = "/" + boostPFSAppConfig.general.current_locale;
-          }
-        
-          // Get product handle
-          var handle = typeof data === 'object' && data.hasOwnProperty('handle') ? data.handle : data;
-          var hasCollection = typeof hasCollection !== 'undefined' ? hasCollection : Settings.getSettingValue('general.addCollectionToProductUrl');
-          if (hasCollection) {
+        }
+
+        // Get product handle
+        var handle = typeof data === 'object' && data.hasOwnProperty('handle') ? data.handle : data;
+        var hasCollection = typeof hasCollection !== 'undefined' ? hasCollection : Settings.getSettingValue('general.addCollectionToProductUrl');
+        if (hasCollection) {
             // Homepage or Search page
             if (pathname == '/' || Utils.isSearchPage() || Utils.isVendorPage() || Utils.isTypePage()) {
-              var preHandle = localeURLPart + '/collections/all/products/';
-              return preHandle + handle;
-        
-              // Tag Page
+                var preHandle = localeURLPart + '/collections/all/products/';
+                return preHandle + handle;
+
+                // Tag Page
             } else if (Utils.isTagPage()) {
-              var preHandle = localeURLPart + '/collections/';
-              var collectionHandleIndex = elements.indexOf("collections") + 1
-              if (elements.length >= 4) return preHandle + elements[collectionHandleIndex] + '/products/' + handle;
-              return '/collections/all/products/' + handle;
+                var preHandle = localeURLPart + '/collections/';
+                var collectionHandleIndex = elements.indexOf("collections") + 1
+                if (elements.length >= 4) return preHandle + elements[collectionHandleIndex] + '/products/' + handle;
+                return '/collections/all/products/' + handle;
             } else {
-              // Google cache URL
-              // An URL of Google cache will look like this: webcache.googleusercontent.com/search?q=cache:xxx:https://xxx.xxx/collections/xxx+&....
-              if (params.indexOf('cache:') > -1) {
-                var collectionHandle = 'all';
-                var temp = params.split('&')[0].split('?')[0].split('collections/');
-                if (temp.length > 1) {
-                  if (temp[1].indexOf('/') > -1) {
-                    collectionHandle = temp[1].split('/')[0];
-                  } else {
-                    collectionHandle = temp[1];
-                  }
+                // Google cache URL
+                // An URL of Google cache will look like this: webcache.googleusercontent.com/search?q=cache:xxx:https://xxx.xxx/collections/xxx+&....
+                if (params.indexOf('cache:') > -1) {
+                    var collectionHandle = 'all';
+                    var temp = params.split('&')[0].split('?')[0].split('collections/');
+                    if (temp.length > 1) {
+                        if (temp[1].indexOf('/') > -1) {
+                            collectionHandle = temp[1].split('/')[0];
+                        } else {
+                            collectionHandle = temp[1];
+                        }
+                    }
+                    collectionHandle = collectionHandle.replace(/[`~!@#$%^&*()_|+\=?;:'",.<>\{\}\[\]\\\/]/g, '');
+                    return '/collections/' + collectionHandle + '/products/' + handle;
                 }
-                collectionHandle = collectionHandle.replace(/[`~!@#$%^&*()_|+\=?;:'",.<>\{\}\[\]\\\/]/g, '');
-                return '/collections/' + collectionHandle + '/products/' + handle;
-              }
-              var collectionHandleIndex = elements.indexOf("collections") + 1;
-              var preHandle = localeURLPart + '/collections/';
-              if (typeof elements[2] !== 'undefined') {
-                // Build for collection pages
-                if ((localeURLPart === '' && elements[1] === 'collections') || localeURLPart !== '') return preHandle + elements[collectionHandleIndex] + '/products/' + handle;
-                //Build for other pages, use collection/all
-                return preHandle + 'all' + elements[collectionHandleIndex] + '/products/' + handle;
-              }
-              return window.location.pathname + '/products/' + handle;
+                var collectionHandleIndex = elements.indexOf("collections") + 1;
+                var preHandle = localeURLPart + '/collections/';
+                if (typeof elements[2] !== 'undefined') {
+                    // Build for collection pages
+                    if ((localeURLPart === '' && elements[1] === 'collections') || localeURLPart !== '') return preHandle + elements[collectionHandleIndex] + '/products/' + handle;
+                    //Build for other pages, use collection/all
+                    return preHandle + 'all' + elements[collectionHandleIndex] + '/products/' + handle;
+                }
+                return window.location.pathname + '/products/' + handle;
             }
-          }
-          return localeURLPart + '/products/' + handle;
-        };
+        }
+        return localeURLPart + '/products/' + handle;
+    };
 })();
 /* CUSTOM - Replace "10 Reviews" with (10) */
 jQ(document).ready(function() {
@@ -2206,355 +2270,369 @@ function callRechargeScript() {
 
     // RECHARGE
     (function($) {
-       
-            console.log('from custom js')
-            $('.modal[data-recharge="true"]').each(function() {
-                var matchString = false;
 
-                var thisThing = $(this);
+        console.log('from custom js')
+        $('.modal[data-recharge="true"]').each(function() {
+            var matchString = false;
 
-                function getMatchString() {
-                    var matchStringArray = [];
-                    if (thisThing.find('[sm-rc-option1-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
-                    }
-                    if (thisThing.find('[sm-rc-option2-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
-                    }
-                    if (thisThing.find('[sm-rc-option3-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
-                    }
-                    if (matchStringArray.length) {
-                        matchString = matchStringArray.join(' / ');
-                    } else {
-                        matchString = false;
-                    }
+            var thisThing = $(this);
+
+            function getMatchString() {
+                var matchStringArray = [];
+                if (thisThing.find('[sm-rc-option1-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
                 }
-
-                function setCurrentVariant() {
-                    getMatchString();
-                    if (matchString) {
-                        var newVal = thisThing
-                            .find('[sm-rc-variant-selector]')
-                            .find('[data-title="' + matchString + '"]')
-                            .val();
-                        thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
-                    }
+                if (thisThing.find('[sm-rc-option2-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
                 }
-
-                function getCurrentVariant() {
-                    var value = thisThing.find('[sm-rc-variant-selector]').val();
-                    var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
-                    currentVariant.title = target.attr('data-title');
-                    currentVariant.id = target.attr('value');
-                    currentVariant.available = target.attr('data-available');
-                    currentVariant.price = target.attr('data-price');
-                    currentVariant.compare_price = target.attr('data-compare-price');
-                    currentVariant.img_url = target.attr('data-image');
+                if (thisThing.find('[sm-rc-option3-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
                 }
-
-                function getCurrentPlan() {
-                    var value = thisThing.find('[sm-rc-plan-selector]').val();
-                    var target = thisThing.find('[sm-rc-plan-selector]').find('[value="' + value + '"]');
-                    currentPlan.title = target.attr('data-title');
-                    currentPlan.id = target.attr('value');
-                    currentPlan.discount = target.attr('data-discount');
+                if (matchStringArray.length) {
+                    matchString = matchStringArray.join(' / ');
+                } else {
+                    matchString = false;
                 }
+            }
 
-                function renderVariables() {
-                    getCurrentVariant();
-                    getCurrentPlan();
-                    var lastPlan = thisThing.find('[sm-rc-plan-selector]').find('option').eq(1);
-
-                    var currentPlanTitle = currentPlan.title;
-                    var currentVariantTitle = currentVariant.title;
-
-// Currency symbol mapping
-var currencySymbols = {
-    'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': 'C$', 'AUD': 'A$',
-    'CHF': 'CHF', 'CNY': '¥', 'SEK': 'kr', 'NZD': 'NZ$'
-    // Add more currencies as needed
-    };
-    // Function to get currency symbol
-    function getCurrencySymbol(currencyCode) {
-    return currencySymbols[currencyCode] || currencyCode;
-    }
-    // Function to format price
-    function formatPrice(price, currencyCode) {
-    var symbol = getCurrencySymbol(currencyCode);
-    var formattedPrice = (price / 100).toFixed(2);
-    if (currencyCode === 'EUR') {
-    formattedPrice = formattedPrice.replace('.', ',');
-    }
-    return symbol + formattedPrice;
-    }
-    // Function to parse price string to number
-    function parsePrice(priceString) {
-    if (Shopify.currency.active === 'EUR') {
-    // For EUR, replace comma with dot before parsing
-    return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.')) * 100;
-    } else {
-    // For other currencies, remove non-digit characters and parse
-    return parseInt(priceString.replace(/[^\d]/g, ''), 10);
-    }
-    }
-    var oneTimePrice = parsePrice(currentVariant.price);
-    var discountAmount = parseFloat(lastPlan.attr('data-discount')) || 0;
-    var discountAmountDisplay = discountAmount > 0 ? '& Save ' + discountAmount + '%' : '';
-    var subscribePrice = Math.round(oneTimePrice * (1 - discountAmount / 100));
-    var currencyCode = Shopify.currency ? Shopify.currency.active : 'USD';
-    var currentPrice = currentPlan.id !== 'false' ? formatPrice(subscribePrice, currencyCode) : formatPrice(oneTimePrice, currencyCode);
-    // Update DOM elements with calculated values
-    thisThing.find('[sm-rc-current-price]').html(currentPrice);
-    thisThing.find('[sm-rc-current-plan-title]').text(currentPlanTitle);
-    thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
-    thisThing.find('[sm-rc-variant-subscribe-price]').html(formatPrice(subscribePrice, currencyCode));
-    thisThing.find('[sm-rc-variant-one-time-price]').html(formatPrice(oneTimePrice, currencyCode));
-    thisThing.find('[sm-rc-discount-ammount]').text(discountAmountDisplay);
-
-                    if (currentVariant.available == 'false') {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
-                        thisThing.find('.oos-text').show();
-                        thisThing.find('.is-text').hide();
-                    } else {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
-                        thisThing.find('.oos-text').hide();
-                        thisThing.find('.is-text').show();
-                    }
-                }
-
+            function setCurrentVariant() {
                 getMatchString();
+                if (matchString) {
+                    var newVal = thisThing
+                        .find('[sm-rc-variant-selector]')
+                        .find('[data-title="' + matchString + '"]')
+                        .val();
+                    thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
+                }
+            }
 
-                thisThing
-                    .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
-                    .on('change', function() {
-                        setCurrentVariant();
-                    });
+            function getCurrentVariant() {
+                var value = thisThing.find('[sm-rc-variant-selector]').val();
+                var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
+                currentVariant.title = target.attr('data-title');
+                currentVariant.id = target.attr('value');
+                currentVariant.available = target.attr('data-available');
+                currentVariant.price = target.attr('data-price');
+                currentVariant.compare_price = target.attr('data-compare-price');
+                currentVariant.img_url = target.attr('data-image');
+            }
 
-                var currentVariant = {
-                    title: '',
-                    id: '',
-                    available: '',
-                    price: '',
-                    compare_price: '',
-                };
+            function getCurrentPlan() {
+                var value = thisThing.find('[sm-rc-plan-selector]').val();
+                var target = thisThing.find('[sm-rc-plan-selector]').find('[value="' + value + '"]');
+                currentPlan.title = target.attr('data-title');
+                currentPlan.id = target.attr('value');
+                currentPlan.discount = target.attr('data-discount');
+            }
 
+            function renderVariables() {
                 getCurrentVariant();
-
-                var currentPlan = {
-                    title: '',
-                    id: '',
-                    discount: '',
-                };
-
                 getCurrentPlan();
+                var lastPlan = thisThing.find('[sm-rc-plan-selector]').find('option').eq(1);
 
-                renderVariables();
+                var currentPlanTitle = currentPlan.title;
+                var currentVariantTitle = currentVariant.title;
 
-                thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
-                    renderVariables();
-                });
-
-                thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
-                    var id=$(this).attr("data-id");
-                    console.log("click");
-                    var qty = thisThing.find('[sm-rc-quantity-selector]').val();
-                    console.log(qty);
-                    console.log(parseInt(currentVariant.id));
-                    if (currentPlan.id == 'false') {
-                        CartJS.addItem(
-                            parseInt(currentVariant.id),
-                            qty, {}, {
-                                success: function(data, textStatus, jqXHR) {
-                                    //success state
-                                    successState();
-                                    if (getglobalLib('Mini_Cart') == 'yes') {
-                                        $('.modal-quick-view').hide();
-                                        jQuery.getJSON('/cart.js', function(cart) {
-                                            // show message
-                                            showCartSuccessMessage();
-                                            // now have access to Shopify cart object
-                                            reloadAjaxCartItemUsingCartAjaxObject(cart);
-                                            //Progress Bar of shipping in cart and mini cart; Varies from theme to theme
-                                            progressBar();
-                                            //Show and hide empty cart depending upon the cart items
-                                            setTimeout(function() {
-                                               
-                                                addons();
-                                            }, 1000);
-                                        });
-                                    } else {
-                                        window.location = '/cart';
-                                    }
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    //error state
-                                    console.log('Error: ' + errorThrown + '!');
-                                },
-                            }
-                        );
-                    } else {
-                        CartJS.addItem(
-                            parseInt(currentVariant.id),
-                            qty, {
-                                selling_plan: parseInt(currentPlan.id),
-                            }, {
-                                success: function(data, textStatus, jqXHR) {
-                                    console.log("dropdown"+$(".js__custom-dropdown-select-"+id).val())
-                                    $(".js__custom-dropdown-select-"+id).children('option:first-child').prop('selected', true);
-                                    $(".js__custom-dropdown-select-"+id).val($(".js__custom-dropdown-select-"+id).children('option:first-child').attr("value"))
-                                    console.log("dropdown"+$(".js__custom-dropdown-select-"+id).val())
-                                    //success state
-                                    successState();
-                                    $('.modal-quick-view').hide();
-                                    if (getglobalLib('Mini_Cart') == 'yes') {
-                                        jQuery.getJSON('/cart.js', function(cart) {
-                                            // show message
-                                            showCartSuccessMessage();
-                                            // now have access to Shopify cart object
-                                            reloadAjaxCartItemUsingCartAjaxObject(cart);
-                                            //Progress Bar of shipping in cart and mini cart; Varies from theme to theme
-                                            progressBar();
-
-                                            //Show and hide empty cart depending upon the cart items
-                                            setTimeout(function() {
-                                               
-                                                addons();
-                                            }, 1000);
-                                        });
-                                    } else {
-                                        window.location = '/cart';
-                                    }
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    //error state
-                                    console.log('Error: ' + errorThrown + '!');
-                                },
-                            }
-                        );
-                    }
-                });
-            });
-       
-    })(jQuery);
-
-    // NO RECHARGE
-    (function($) {
-       
-            $('.modal[data-recharge="false"]').each(function() {
-                var matchString = false;
-
-                var thisThing = $(this);
-
-                var currentVariant = {
-                    title: '',
-                    id: '',
-                    available: '',
-                    price: '',
-                    compare_price: '',
+                // Currency symbol mapping
+                var currencySymbols = {
+                    'USD': '$',
+                    'EUR': '€',
+                    'GBP': '£',
+                    'JPY': '¥',
+                    'CAD': 'C$',
+                    'AUD': 'A$',
+                    'CHF': 'CHF',
+                    'CNY': '¥',
+                    'SEK': 'kr',
+                    'NZD': 'NZ$'
+                    // Add more currencies as needed
                 };
-
-                function getMatchString() {
-                    var matchStringArray = [];
-                    if (thisThing.find('[sm-rc-option1-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
+                // Function to get currency symbol
+                function getCurrencySymbol(currencyCode) {
+                    return currencySymbols[currencyCode] || currencyCode;
+                }
+                // Function to format price
+                function formatPrice(price, currencyCode) {
+                    var symbol = getCurrencySymbol(currencyCode);
+                    var formattedPrice = (price / 100).toFixed(2);
+                    if (currencyCode === 'EUR') {
+                        formattedPrice = formattedPrice.replace('.', ',');
                     }
-                    if (thisThing.find('[sm-rc-option2-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
-                    }
-                    if (thisThing.find('[sm-rc-option3-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
-                    }
-                    if (matchStringArray.length) {
-                        matchString = matchStringArray.join(' / ');
+                    return symbol + formattedPrice;
+                }
+                // Function to parse price string to number
+                function parsePrice(priceString) {
+                    if (Shopify.currency.active === 'EUR') {
+                        // For EUR, replace comma with dot before parsing
+                        return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.')) * 100;
                     } else {
-                        matchString = false;
+                        // For other currencies, remove non-digit characters and parse
+                        return parseInt(priceString.replace(/[^\d]/g, ''), 10);
                     }
                 }
+                var oneTimePrice = parsePrice(currentVariant.price);
+                var discountAmount = parseFloat(lastPlan.attr('data-discount')) || 0;
+                var discountAmountDisplay = discountAmount > 0 ? '& Save ' + discountAmount + '%' : '';
+                var subscribePrice = Math.round(oneTimePrice * (1 - discountAmount / 100));
+                var currencyCode = Shopify.currency ? Shopify.currency.active : 'USD';
+                var currentPrice = currentPlan.id !== 'false' ? formatPrice(subscribePrice, currencyCode) : formatPrice(oneTimePrice, currencyCode);
+                // Update DOM elements with calculated values
+                thisThing.find('[sm-rc-current-price]').html(currentPrice);
+                thisThing.find('[sm-rc-current-plan-title]').text(currentPlanTitle);
+                thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
+                thisThing.find('[sm-rc-variant-subscribe-price]').html(formatPrice(subscribePrice, currencyCode));
+                thisThing.find('[sm-rc-variant-one-time-price]').html(formatPrice(oneTimePrice, currencyCode));
+                thisThing.find('[sm-rc-discount-ammount]').text(discountAmountDisplay);
 
-                function getCurrentVariant() {
-                    var value = thisThing.find('[sm-rc-variant-selector]').val();
-                    var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
-                    currentVariant.title = target.attr('data-title');
-                    currentVariant.id = target.attr('value');
-                    currentVariant.available = target.attr('data-available');
-                    currentVariant.price = target.attr('data-price');
-                    currentVariant.compare_price = target.attr('data-compare-price');
-                    currentVariant.img_url = target.attr('data-image');
+                console.log("check one");
+                console.log(currentVariant);
+
+                if (currentVariant.available == 'false') {
+                    thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
+                    thisThing.find('.oos-text').show();
+                    thisThing.find('.is-text').hide();
+                } else {
+                    thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
+                    thisThing.find('.oos-text').hide();
+                    thisThing.find('.is-text').show();
                 }
+            }
 
-                function setCurrentVariant() {
-                    getMatchString();
-                    if (matchString) {
-                        var newVal = thisThing
-                            .find('[sm-rc-variant-selector]')
-                            .find('[data-title="' + matchString + '"]')
-                            .val();
-                        thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
-                    }
-                }
+            getMatchString();
 
-                function renderVariables() {
-                    getCurrentVariant();
-
-                    var currentVariantTitle = currentVariant.title;
-
-                    var oneTimePrice = currentVariant.price;
-                    var currentPrice = oneTimePrice;
-
-                    thisThing.find('[sm-rc-current-price]').text(currentPrice);
-                    thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
-
-                    var image = currentVariant.img_url;
-
-                    // setVarImg( image );
-
-                    if (currentVariant.available == 'false') {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
-                        thisThing.find('.oos-text').show();
-                        thisThing.find('.is-text').hide();
-                    } else {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
-                        thisThing.find('.oos-text').hide();
-                        thisThing.find('.is-text').show();
-                    }
-                }
-
-                getMatchString();
-
-                thisThing
-                    .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
-                    .on('change', function() {
-                        setCurrentVariant();
-                    });
-
-                getCurrentVariant();
-
-                renderVariables();
-
-                thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
-                    renderVariables();
+            thisThing
+                .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
+                .on('change', function() {
+                    setCurrentVariant();
                 });
 
-                thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
-                    var qty = thisThing.find('[sm-rc-quantity-selector]').val();
+            var currentVariant = {
+                title: '',
+                id: '',
+                available: '',
+                price: '',
+                compare_price: '',
+            };
 
+            getCurrentVariant();
+
+            var currentPlan = {
+                title: '',
+                id: '',
+                discount: '',
+            };
+
+            getCurrentPlan();
+
+            renderVariables();
+
+            thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
+                renderVariables();
+            });
+
+            thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
+                var id = $(this).attr("data-id");
+                console.log("click");
+                var qty = thisThing.find('[sm-rc-quantity-selector]').val();
+                console.log(qty);
+                console.log(parseInt(currentVariant.id));
+                if (currentPlan.id == 'false') {
                     CartJS.addItem(
                         parseInt(currentVariant.id),
                         qty, {}, {
                             success: function(data, textStatus, jqXHR) {
                                 //success state
                                 successState();
+                                if (getglobalLib('Mini_Cart') == 'yes') {
+                                    $('.modal-quick-view').hide();
+                                    jQuery.getJSON('/cart.js', function(cart) {
+                                        // show message
+                                        showCartSuccessMessage();
+                                        // now have access to Shopify cart object
+                                        reloadAjaxCartItemUsingCartAjaxObject(cart);
+                                        //Progress Bar of shipping in cart and mini cart; Varies from theme to theme
+                                        progressBar();
+                                        //Show and hide empty cart depending upon the cart items
+                                        setTimeout(function() {
+
+                                            addons();
+                                        }, 1000);
+                                    });
+                                } else {
+                                    window.location = '/cart';
+                                }
                             },
                             error: function(jqXHR, textStatus, errorThrown) {
                                 //error state
-                                console.log('Error: ' + errorThrown + '! - here');
+                                console.log('Error: ' + errorThrown + '!');
                             },
                         }
                     );
-                });
+                } else {
+                    CartJS.addItem(
+                        parseInt(currentVariant.id),
+                        qty, {
+                            selling_plan: parseInt(currentPlan.id),
+                        }, {
+                            success: function(data, textStatus, jqXHR) {
+                                console.log("dropdown" + $(".js__custom-dropdown-select-" + id).val())
+                                $(".js__custom-dropdown-select-" + id).children('option:first-child').prop('selected', true);
+                                $(".js__custom-dropdown-select-" + id).val($(".js__custom-dropdown-select-" + id).children('option:first-child').attr("value"))
+                                console.log("dropdown" + $(".js__custom-dropdown-select-" + id).val())
+                                //success state
+                                successState();
+                                $('.modal-quick-view').hide();
+                                if (getglobalLib('Mini_Cart') == 'yes') {
+                                    jQuery.getJSON('/cart.js', function(cart) {
+                                        // show message
+                                        showCartSuccessMessage();
+                                        // now have access to Shopify cart object
+                                        reloadAjaxCartItemUsingCartAjaxObject(cart);
+                                        //Progress Bar of shipping in cart and mini cart; Varies from theme to theme
+                                        progressBar();
+
+                                        //Show and hide empty cart depending upon the cart items
+                                        setTimeout(function() {
+
+                                            addons();
+                                        }, 1000);
+                                    });
+                                } else {
+                                    window.location = '/cart';
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                //error state
+                                console.log('Error: ' + errorThrown + '!');
+                            },
+                        }
+                    );
+                }
             });
-      
+        });
+
+    })(jQuery);
+
+    // NO RECHARGE
+    (function($) {
+
+        $('.modal[data-recharge="false"]').each(function() {
+            var matchString = false;
+
+            var thisThing = $(this);
+
+            var currentVariant = {
+                title: '',
+                id: '',
+                available: '',
+                price: '',
+                compare_price: '',
+            };
+
+            function getMatchString() {
+                var matchStringArray = [];
+                if (thisThing.find('[sm-rc-option1-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
+                }
+                if (thisThing.find('[sm-rc-option2-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
+                }
+                if (thisThing.find('[sm-rc-option3-selector]').length) {
+                    matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
+                }
+                if (matchStringArray.length) {
+                    matchString = matchStringArray.join(' / ');
+                } else {
+                    matchString = false;
+                }
+            }
+
+            function getCurrentVariant() {
+                var value = thisThing.find('[sm-rc-variant-selector]').val();
+                var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
+                currentVariant.title = target.attr('data-title');
+                currentVariant.id = target.attr('value');
+                currentVariant.available = target.attr('data-available');
+                currentVariant.price = target.attr('data-price');
+                currentVariant.compare_price = target.attr('data-compare-price');
+                currentVariant.img_url = target.attr('data-image');
+            }
+
+            function setCurrentVariant() {
+                getMatchString();
+                if (matchString) {
+                    var newVal = thisThing
+                        .find('[sm-rc-variant-selector]')
+                        .find('[data-title="' + matchString + '"]')
+                        .val();
+                    thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
+                }
+            }
+
+            function renderVariables() {
+                getCurrentVariant();
+
+                var currentVariantTitle = currentVariant.title;
+
+                var oneTimePrice = currentVariant.price;
+                var currentPrice = oneTimePrice;
+
+                thisThing.find('[sm-rc-current-price]').text(currentPrice);
+                thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
+
+                var image = currentVariant.img_url;
+
+                // setVarImg( image );
+
+                console.log("check two");
+                console.log(currentVariant);
+
+                if (currentVariant.available == 'false') {
+                    thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
+                    thisThing.find('.oos-text').show();
+                    thisThing.find('.is-text').hide();
+                } else {
+                    thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
+                    thisThing.find('.oos-text').hide();
+                    thisThing.find('.is-text').show();
+                }
+            }
+
+            getMatchString();
+
+            thisThing
+                .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
+                .on('change', function() {
+                    setCurrentVariant();
+                });
+
+            getCurrentVariant();
+
+            renderVariables();
+
+            thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
+                renderVariables();
+            });
+
+            thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
+                var qty = thisThing.find('[sm-rc-quantity-selector]').val();
+
+                CartJS.addItem(
+                    parseInt(currentVariant.id),
+                    qty, {}, {
+                        success: function(data, textStatus, jqXHR) {
+                            //success state
+                            successState();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            //error state
+                            console.log('Error: ' + errorThrown + '! - here');
+                        },
+                    }
+                );
+            });
+        });
+
     })(jQuery);
 
     function successState() {
