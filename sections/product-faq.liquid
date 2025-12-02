@@ -166,10 +166,7 @@
 
 {% unless hide_faq %}
   {{ 'section-faq-dropdown-collection-page.css' | asset_url | stylesheet_tag }}
-  <div id="product-faq" class="learn-more-sec {% if section.settings.use_designed_layout %}custom-faq-layout{% endif %}"
-    data-aos="fade-up" 
-    data-aos-duration="3000"
-  >
+  <div id="product-faq" class="learn-more-sec {% if section.settings.use_designed_layout %}custom-faq-layout{% endif %}">
     {% if section.settings.use_product_metafield and product.metafields.custom.faq != blank %}
       <h2 class="text-center {% if section.settings.use_designed_layout %}hide-desktop-custom{% endif %}">
         {{ product.metafields.custom.faq_heading | default: 'FAQs' }}
