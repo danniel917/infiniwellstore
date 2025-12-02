@@ -55,7 +55,24 @@
      </div>
 
   </div>
-   <a class="btn--primary js__quick-view-click" href="javascript:;" title="{{itemTitle}}" data-id="{{productID}}" data-slider_main="{{sliderMain}}" data-slider_thumb="{{sliderThumbs}}" data-var_images="{{varImages}}">Quick View</a>
+
+    <button class="productCard__buy btn--primary"
+    data-prod="{{itemVariantId}}"
+    data-plan={{itemPlanDefault}}>
+        {{addToCartText}}
+    </button>
+
+    <a
+    class="productCard__quickviewLink js__quick-view-click"
+    title="{{itemTitle}}"
+    href="javascript:;"
+    data-id="{{productID}}"
+    data-slider_main="{{sliderMain}}"
+    data-slider_thumb="{{sliderThumbs}}"
+    data-var_images="{{varImages}}"
+    >
+      Quick View
+    </a>
     
 </div>
 {% endraw %}
