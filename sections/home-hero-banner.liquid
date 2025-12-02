@@ -80,6 +80,30 @@
               }
             }
 
+            .block-{{ block.id }}-sub{
+                font-size: {{ block.settings.fontSizeSubTitle | round: 0 }}px !important;
+                  color: {{ block.settings.color_scheme }} !important;
+              }
+
+              @media screen and (max-width: 480px) {
+              .block-{{ block.id }}-sub{
+                font-size: {{ block.settings.fontSizeSubTitleMobile | round: 0 }}px !important;
+
+              }
+            }
+
+            .block-{{ block.id }}-pre{
+                font-size: {{ block.settings.fontSizePreTitle | round: 0 }}px !important;
+                  color: {{ block.settings.color_scheme }} !important;
+              }
+
+              @media screen and (max-width: 480px) {
+              .block-{{ block.id }}-pre{
+                font-size: {{ block.settings.fontSizePreTitleMobile | round: 0 }}px !important;
+
+              }
+            }
+
             .slide-{{ block.id }} .image-section:before{
               background:{{ block.settings.gradiendCss }} !important
             }
@@ -202,7 +226,7 @@
                 {% endif %}
 
                 {% if block.settings.pretitle != blank %}
-                  <span class="pre-title">{{ block.settings.pretitle }}</span>
+                  <span class="pre-title block-{{ block.id }}-pre">{{ block.settings.pretitle }}</span>
                 {% endif %}
                 {% if block.settings.title != blank %}
                   {% if section.blocks.size > 1 %}
@@ -214,7 +238,7 @@
                   {% endif %}
                 {% endif %}
                 {% if block.settings.subtitle != blank %}
-                  <div class="subtitle" style="color: {{ block.settings.color_scheme }};">
+                  <div class="subtitle block-{{ block.id }}-sub" style="color: {{ block.settings.color_scheme }};">
                     {{ block.settings.subtitle }}
                   </div>
                 {% endif %}
@@ -582,12 +606,32 @@
         },
         {
           "type": "range",
+          "id": "fontSizePreTitle",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Pre Title Font Size (Desktop)",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "fontSizePreTitleMobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Pre Title Font Size (Mobile)",
+          "default": 25
+        },
+        {
+          "type": "range",
           "id": "fontSizeTitle",
           "min": 0,
           "max": 100,
           "step": 1,
           "unit": "px",
-          "label": "Font Size (Desktop)",
+          "label": "Title Font Size (Desktop)",
           "default": 40
         },
         {
@@ -597,7 +641,27 @@
           "max": 100,
           "step": 1,
           "unit": "px",
-          "label": "Font Size (Mobile)",
+          "label": "Title Font Size (Mobile)",
+          "default": 25
+        },
+        {
+          "type": "range",
+          "id": "fontSizeSubTitle",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Sub Title Font Size (Desktop)",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "fontSizeSubTitleMobile",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Sub Title Font Size (Mobile)",
           "default": 25
         },
         {
