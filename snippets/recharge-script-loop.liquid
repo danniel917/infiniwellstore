@@ -2,32 +2,37 @@
 var trndingProductsCount = 0;
 // RECHARGE
 (function ($) {
-  
-  
-    
     //callRechargeScript();
-
 })(jQuery);
 
 function callRechargeScript(container) {
-    
+    /*
     if(!container) return;
     if(container.classList.contains('instant-search__trending-products-modal') && trndingProductsCount == 0) {
         trndingProductsCount++;
         return;
     }
+    */
+
     console.log(container);
+
+    var setArray = [];
 
     // RECHARGE
     (function($) {
 
-            $(container).find('.modal[data-recharge="true"]').each(function() {
+        //$(container).find('.modal[data-recharge="true"]').each(function() {
+        $('.modal[data-recharge="true"]').each(function() {
+            var thisThing = $(this);
+
+            console.log(setArray);
+            console.log(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'));
+            console.log(setArray.includes(thisThing.find('[sm-rc-add-to-cart]').attr('data-id')));
+            if (!setArray.includes(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'))){
                 var matchString = false;
 
-                var thisThing = $(this);
-
                 function getMatchString() {
-                    var matchStringArray = [];
+                var matchStringArray = [];
                     if (thisThing.find('[sm-rc-option1-selector]').length) {
                         matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
                     }
@@ -82,49 +87,55 @@ function callRechargeScript(container) {
                     var currentPlanTitle = currentPlan.title;
                     var currentVariantTitle = currentVariant.title;
 
-// Currency symbol mapping
-var currencySymbols = {
-    'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': 'C$', 'AUD': 'A$',
-    'CHF': 'CHF', 'CNY': '¥', 'SEK': 'kr', 'NZD': 'NZ$'
-    // Add more currencies as needed
-    };
-    // Function to get currency symbol
-    function getCurrencySymbol(currencyCode) {
-    return currencySymbols[currencyCode] || currencyCode;
-    }
-    // Function to format price
-    function formatPrice(price, currencyCode) {
-    var symbol = getCurrencySymbol(currencyCode);
-    var formattedPrice = (price / 100).toFixed(2);
-    if (currencyCode === 'EUR') {
-    formattedPrice = formattedPrice.replace('.', ',');
-    }
-    return symbol + formattedPrice;
-    }
-    // Function to parse price string to number
-    function parsePrice(priceString) {
-    if (Shopify.currency.active === 'EUR') {
-    // For EUR, replace comma with dot before parsing
-    return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.')) * 100;
-    } else {
-    // For other currencies, remove non-digit characters and parse
-    return parseInt(priceString.replace(/[^\d]/g, ''), 10);
-    }
-    }
-    var oneTimePrice = parsePrice(currentVariant.price);
-    var discountAmount = parseFloat(lastPlan.attr('data-discount')) || 0;
-    var discountAmountDisplay = discountAmount > 0 ? '& Save ' + discountAmount + '%' : '';
-    var subscribePrice = Math.round(oneTimePrice * (1 - discountAmount / 100));
-    var currencyCode = Shopify.currency ? Shopify.currency.active : 'USD';
-    var currentPrice = currentPlan.id !== 'false' ? formatPrice(subscribePrice, currencyCode) : formatPrice(oneTimePrice, currencyCode);
-    // Update DOM elements with calculated values
-    thisThing.find('[sm-rc-current-price]').html(currentPrice);
-    thisThing.find('[sm-rc-current-plan-title]').text(currentPlanTitle);
-    thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
-    thisThing.find('[sm-rc-variant-subscribe-price]').html(formatPrice(subscribePrice, currencyCode));
-    thisThing.find('[sm-rc-variant-one-time-price]').html(formatPrice(oneTimePrice, currencyCode));
-    thisThing.find('[sm-rc-discount-ammount]').text(discountAmountDisplay);
+                    // Currency symbol mapping
+                    var currencySymbols = {
+                        'USD': '$', 'EUR': '€', 'GBP': '£', 'JPY': '¥', 'CAD': 'C$', 'AUD': 'A$', 'CHF': 'CHF', 'CNY': '¥', 'SEK': 'kr', 'NZD': 'NZ$'
+                        // Add more currencies as needed
+                    };
 
+                    // Function to get currency symbol
+                    function getCurrencySymbol(currencyCode) {
+                        return currencySymbols[currencyCode] || currencyCode;
+                    }
+
+                    // Function to format price
+                    function formatPrice(price, currencyCode) {
+                        var symbol = getCurrencySymbol(currencyCode);
+                        var formattedPrice = (price / 100).toFixed(2);
+                        if (currencyCode === 'EUR') {
+                            formattedPrice = formattedPrice.replace('.', ',');
+                        }
+                        return symbol + formattedPrice;
+                    }
+
+                    // Function to parse price string to number
+                    function parsePrice(priceString) {
+                        if (Shopify.currency.active === 'EUR') {
+                        // For EUR, replace comma with dot before parsing
+                            return parseFloat(priceString.replace(/[^\d,]/g, '').replace(',', '.')) * 100;
+                        } else {
+                        // For other currencies, remove non-digit characters and parse
+                            return parseInt(priceString.replace(/[^\d]/g, ''), 10);
+                        }
+                    }
+                    
+                    var oneTimePrice = parsePrice(currentVariant.price);
+                    var discountAmount = parseFloat(lastPlan.attr('data-discount')) || 0;
+                    var discountAmountDisplay = discountAmount > 0 ? '& Save ' + discountAmount + '%' : '';
+                    var subscribePrice = Math.round(oneTimePrice * (1 - discountAmount / 100));
+                    var currencyCode = Shopify.currency ? Shopify.currency.active : 'USD';
+                    var currentPrice = currentPlan.id !== 'false' ? formatPrice(subscribePrice, currencyCode) : formatPrice(oneTimePrice, currencyCode);
+        
+                    // Update DOM elements with calculated values
+                    thisThing.find('[sm-rc-current-price]').html(currentPrice);
+                    thisThing.find('[sm-rc-current-plan-title]').text(currentPlanTitle);
+                    thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
+                    thisThing.find('[sm-rc-variant-subscribe-price]').html(formatPrice(subscribePrice, currencyCode));
+                    thisThing.find('[sm-rc-variant-one-time-price]').html(formatPrice(oneTimePrice, currencyCode));
+                    thisThing.find('[sm-rc-discount-ammount]').text(discountAmountDisplay);
+
+                    console.log("check three");
+                        console.log(currentVariant);
                     if (currentVariant.available == 'false') {
                         thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
                         thisThing.find('.oos-text').show();
@@ -138,11 +149,9 @@ var currencySymbols = {
 
                 getMatchString();
 
-                thisThing
-                    .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
-                    .on('change', function() {
-                        setCurrentVariant();
-                    });
+                thisThing.find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]').on('change', function() {
+                    setCurrentVariant();
+                });
 
                 var currentVariant = {
                     title: '',
@@ -168,6 +177,7 @@ var currencySymbols = {
                     renderVariables();
                 });
 
+                thisThing.find('[sm-rc-add-to-cart]').unbind( "click" );
                 thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
                     var id=$(this).attr("data-id");
                     console.log("click");
@@ -192,7 +202,7 @@ var currencySymbols = {
                                             progressBar();
                                             //Show and hide empty cart depending upon the cart items
                                             setTimeout(function() {
-                                               
+                                                
                                                 addons();
                                             }, 1000);
                                         });
@@ -231,7 +241,7 @@ var currencySymbols = {
 
                                             //Show and hide empty cart depending upon the cart items
                                             setTimeout(function() {
-                                               
+                                                
                                                 addons();
                                             }, 1000);
                                         });
@@ -247,125 +257,144 @@ var currencySymbols = {
                         );
                     }
                 });
-            });
+
+                setArray.push(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'));
+            }
+            else{
+                thisThing.remove();
+            }
+        });
        
     })(jQuery);
 
     // NO RECHARGE
     (function($) {
        
-            $(container).find('.modal[data-recharge="false"]').each(function() {
-                var matchString = false;
-
+            //$(container).find('.modal[data-recharge="false"]').each(function() {
+            $('.modal[data-recharge="false"]').each(function() {
                 var thisThing = $(this);
+                if (!setArray.includes(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'))){
+                    var matchString = false;
 
-                var currentVariant = {
-                    title: '',
-                    id: '',
-                    available: '',
-                    price: '',
-                    compare_price: '',
-                };
+                    
 
-                function getMatchString() {
-                    var matchStringArray = [];
-                    if (thisThing.find('[sm-rc-option1-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
-                    }
-                    if (thisThing.find('[sm-rc-option2-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
-                    }
-                    if (thisThing.find('[sm-rc-option3-selector]').length) {
-                        matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
-                    }
-                    if (matchStringArray.length) {
-                        matchString = matchStringArray.join(' / ');
-                    } else {
-                        matchString = false;
-                    }
-                }
+                    var currentVariant = {
+                        title: '',
+                        id: '',
+                        available: '',
+                        price: '',
+                        compare_price: '',
+                    };
 
-                function getCurrentVariant() {
-                    var value = thisThing.find('[sm-rc-variant-selector]').val();
-                    var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
-                    currentVariant.title = target.attr('data-title');
-                    currentVariant.id = target.attr('value');
-                    currentVariant.available = target.attr('data-available');
-                    currentVariant.price = target.attr('data-price');
-                    currentVariant.compare_price = target.attr('data-compare-price');
-                    currentVariant.img_url = target.attr('data-image');
-                }
+                    function getMatchString() {
+                        var matchStringArray = [];
+                        if (thisThing.find('[sm-rc-option1-selector]').length) {
+                            matchStringArray.push(thisThing.find('[sm-rc-option1-selector]').val());
+                        }
+                        if (thisThing.find('[sm-rc-option2-selector]').length) {
+                            matchStringArray.push(thisThing.find('[sm-rc-option2-selector]').val());
+                        }
+                        if (thisThing.find('[sm-rc-option3-selector]').length) {
+                            matchStringArray.push(thisThing.find('[sm-rc-option3-selector]').val());
+                        }
+                        if (matchStringArray.length) {
+                            matchString = matchStringArray.join(' / ');
+                        } else {
+                            matchString = false;
+                        }
+                    }
 
-                function setCurrentVariant() {
+                    function getCurrentVariant() {
+                        var value = thisThing.find('[sm-rc-variant-selector]').val();
+                        var target = thisThing.find('[sm-rc-variant-selector]').find('[value="' + value + '"]');
+                        currentVariant.title = target.attr('data-title');
+                        currentVariant.id = target.attr('value');
+                        currentVariant.available = target.attr('data-available');
+                        currentVariant.price = target.attr('data-price');
+                        currentVariant.compare_price = target.attr('data-compare-price');
+                        currentVariant.img_url = target.attr('data-image');
+                    }
+
+                    function setCurrentVariant() {
+                        getMatchString();
+                        if (matchString) {
+                            var newVal = thisThing
+                                .find('[sm-rc-variant-selector]')
+                                .find('[data-title="' + matchString + '"]')
+                                .val();
+                            thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
+                        }
+                    }
+
+                    function renderVariables() {
+                        getCurrentVariant();
+
+                        var currentVariantTitle = currentVariant.title;
+
+                        var oneTimePrice = currentVariant.price;
+                        var currentPrice = oneTimePrice;
+
+                        thisThing.find('[sm-rc-current-price]').text(currentPrice);
+                        thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
+
+                        var image = currentVariant.img_url;
+
+                        // setVarImg( image );
+
+                        console.log("check four");
+                        console.log(currentVariant);
+
+                        if (currentVariant.available == 'false') {
+                            thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
+                            thisThing.find('.oos-text').show();
+                            thisThing.find('.is-text').hide();
+                        } else {
+                            thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
+                            thisThing.find('.oos-text').hide();
+                            thisThing.find('.is-text').show();
+                        }
+                    }
+
                     getMatchString();
-                    if (matchString) {
-                        var newVal = thisThing
-                            .find('[sm-rc-variant-selector]')
-                            .find('[data-title="' + matchString + '"]')
-                            .val();
-                        thisThing.find('[sm-rc-variant-selector]').val(newVal).trigger('change');
-                    }
-                }
 
-                function renderVariables() {
+                    thisThing
+                        .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
+                        .on('change', function() {
+                            setCurrentVariant();
+                        });
+
                     getCurrentVariant();
 
-                    var currentVariantTitle = currentVariant.title;
+                    renderVariables();
 
-                    var oneTimePrice = currentVariant.price;
-                    var currentPrice = oneTimePrice;
-
-                    thisThing.find('[sm-rc-current-price]').text(currentPrice);
-                    thisThing.find('[sm-rc-current-variant-title]').text(currentVariantTitle);
-
-                    var image = currentVariant.img_url;
-
-                    // setVarImg( image );
-
-                    if (currentVariant.available == 'false') {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
-                        thisThing.find('.oos-text').show();
-                        thisThing.find('.is-text').hide();
-                    } else {
-                        thisThing.find('[sm-rc-add-to-cart]').prop('disabled', false);
-                        thisThing.find('.oos-text').hide();
-                        thisThing.find('.is-text').show();
-                    }
-                }
-
-                getMatchString();
-
-                thisThing
-                    .find('[sm-rc-option1-selector], [sm-rc-option2-selector], [sm-rc-option3-selector]')
-                    .on('change', function() {
-                        setCurrentVariant();
+                    thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
+                        renderVariables();
                     });
 
-                getCurrentVariant();
+                    thisThing.find('[sm-rc-add-to-cart]').unbind( "click" );
+                    thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
+                        var qty = thisThing.find('[sm-rc-quantity-selector]').val();
 
-                renderVariables();
+                        CartJS.addItem(
+                            parseInt(currentVariant.id),
+                            qty, {}, {
+                                success: function(data, textStatus, jqXHR) {
+                                    //success state
+                                    successState();
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    //error state
+                                    console.log('Error: ' + errorThrown + '! - here');
+                                },
+                            }
+                        );
+                    });
 
-                thisThing.find('[sm-rc-variant-selector], [sm-rc-plan-selector]').on('change', function() {
-                    renderVariables();
-                });
-
-                thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
-                    var qty = thisThing.find('[sm-rc-quantity-selector]').val();
-
-                    CartJS.addItem(
-                        parseInt(currentVariant.id),
-                        qty, {}, {
-                            success: function(data, textStatus, jqXHR) {
-                                //success state
-                                successState();
-                            },
-                            error: function(jqXHR, textStatus, errorThrown) {
-                                //error state
-                                console.log('Error: ' + errorThrown + '! - here');
-                            },
-                        }
-                    );
-                });
+                    setArray.push(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'));
+                }
+                else{
+                    thisThing.remove();
+                }
             });
       
     })(jQuery);
