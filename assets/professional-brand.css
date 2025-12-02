@@ -202,6 +202,25 @@
   }
 }
 
+/* Static Marquee - No Animation */
+.professional-brand .brand-marquee.marquee-static .marquee-track {
+  animation: none;
+  justify-content: center;
+  width: 100%;
+}
+
+.professional-brand .brand-marquee.marquee-static .marquee-content:not(:first-child) {
+  display: none;
+}
+
+.professional-brand .brand-marquee.marquee-static .marquee-content {
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 12px 48px;
+  padding-right: 0;
+}
+
 /* Mobile/Desktop Visibility Utilities */
 @media screen and (max-width: 480px) {
   .professional-brand .none-480 {
@@ -304,6 +323,10 @@
 
   .professional-brand .brand-header {
     margin-top: 32px;
+  }
+
+  .professional-brand .brand-marquee.marquee-static .marquee-content {
+    gap: 48px;
   }
 }
 
