@@ -90,9 +90,18 @@
         {% endif %}
       </span>
     {% endif %}
+
+    <button class="productCard__buy btn--primary{% unless productRelated.variants[0].available %} productCard__buy--oos{% endunless %}"
+    data-prod="{{ productRelated.variants[0].id }}" data-plan='{{ productRelated.selling_plan_groups[0].selling_plans[0].id }}'>
+        {% if productRelated.variants[0].available %}
+        Add to Cart
+        {% else %}
+        Out of Stock
+        {% endif %}
+    </button>
+
     <a
-      class="{% if hide_star %}btn--secondary{% else %}btn--primary{% endif %} js__quick-view-click"
-      title="{{ productRelated.title }}"
+      class="productCard__quickviewLink js__quick-view-click"
       href="javascript:;"
       title="Shop {{productRelated.title}}"
       data-id="{{productRelated.id}}"
@@ -100,11 +109,7 @@
       data-slider_thumb="{%- for img in productRelated.images -%}{{- img | img_url: '150x150' -}}|{%- endfor -%}"
       data-var_images="{%- for var in productRelated.variants -%}{{- var.image | img_url: '150x150' -}}|{%- endfor -%}"
       >
-      {% if hide_star %}
-        Add
-      {% else %}
         Quick View
-      {% endif %}
       </a>
   </div>
 </div>
