@@ -6,8 +6,7 @@
   Parameters: 
   - product: The product object (required) 
   - show_icon: Show icon before text (optional, default: false) 
-  - threshold_low: Show "low stock" warning when below this number (optional, default: 10) 
-  - threshold_high: Show "in stock" when above this number (optional, default: 50) 
+  - custom_text: Custom prefix text (optional, e.g. "Limited initial release")
 {% endcomment %}
 
 {% assign variant = product.selected_or_first_available_variant %}
@@ -17,36 +16,32 @@
   {% assign show_icon = false %}
 {% endif %}
 
-{% if threshold_low == blank %}
-  {% assign threshold_low = 10 %}
-{% endif %}
-
-{% if threshold_high == blank %}
-  {% assign threshold_high = 50 %}
-{% endif %}
-
-{% comment %} Always show the stock number {% endcomment %}
+{% comment %} Build stock text {% endcomment %}
 {% if stock_qty %}
   {% if stock_qty <= 0 %}
     {% assign stock_status = 'out-of-stock' %}
-    {% assign stock_text = 'Out of stock' %}
-  {% elsif stock_qty <= threshold_low %}
-    {% assign stock_status = 'low-stock' %}
-    {% assign stock_text = 'Only ' | append: stock_qty | append: ' left in stock' %}
   {% else %}
-    {% comment %} For any stock above threshold_low, show the number {% endcomment %}
     {% assign stock_status = 'in-stock' %}
+  {% endif %}
+  
+  {% if custom_text != blank %}
+    {% assign stock_text = custom_text | append: ' (' | append: stock_qty | append: ' in stock)' %}
+  {% else %}
     {% assign stock_text = stock_qty | append: ' in stock' %}
   {% endif %}
 {% else %}
   {% assign stock_status = 'in-stock' %}
-  {% assign stock_text = 'In stock' %}
+  {% if custom_text != blank %}
+    {% assign stock_text = custom_text %}
+  {% else %}
+    {% assign stock_text = 'In stock' %}
+  {% endif %}
 {% endif %}
 
 <!-- DEBUG: stock_status = {{ stock_status }}, stock_text = {{ stock_text }} -->
 
 <div
-  class="product-stock js__product-stock"
+  class="product-stock"
   data-inventory="{{ stock_qty }}"
   data-variant-id="{{ variant.id }}">
   <div class="product-stock__wrapper product-stock--{{ stock_status }}">
@@ -70,24 +65,6 @@
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round" />
-          </svg>
-        {% elsif stock_status == 'low-stock' %}
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M8 2L8 10"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round" />
-            <circle
-              cx="8"
-              cy="13"
-              r="1"
-              fill="currentColor" />
           </svg>
         {% else %}
           <svg
@@ -147,71 +124,8 @@
     /* Red */
   }
 
-  .product-stock--low-stock {
-    color: #F59E0B;
-    /* Orange/Amber */
-  }
-
-  .product-stock--in-stock,
-  .product-stock--in-stock-high {
+  .product-stock--in-stock {
     color: #16A34A;
     /* Green */
   }
 </style>
-
-<script>
-  // Update stock display when variant changes
-  (function() {
-    function updateProductStock() {
-      var stockElement = document.querySelector('.js__product-stock');
-      if (!stockElement) return;
-  
-      // Listen for variant change events
-      document.addEventListener('variantChange', function(event) {
-        if (!event.detail || !event.detail.variant) return;
-  
-        var variant = event.detail.variant;
-        var stockQty = variant.inventory_quantity;
-        var thresholdLow = 10;
-        var thresholdHigh = 50;
-  
-        // Update stock display
-        var stockText = '';
-        var stockStatus = '';
-  
-        if (stockQty <= 0) {
-          stockStatus = 'out-of-stock';
-          stockText = 'Out of stock';
-        } else if (stockQty <= thresholdLow) {
-          stockStatus = 'low-stock';
-          stockText = 'Only ' + stockQty + ' left in stock';
-        } else if (stockQty <= thresholdHigh) {
-          stockStatus = 'in-stock';
-          stockText = stockQty + ' in stock';
-        } else {
-          stockStatus = 'in-stock-high';
-          stockText = 'In stock';
-        }
-  
-        // Update DOM
-        var wrapper = stockElement.querySelector('.product-stock__wrapper');
-        var textElement = stockElement.querySelector('.product-stock__text');
-  
-        if (wrapper && textElement) {
-          wrapper.className = 'product-stock__wrapper product-stock--' + stockStatus;
-          textElement.textContent = stockText;
-        }
-  
-        // Update data attributes
-        stockElement.setAttribute('data-inventory', stockQty);
-        stockElement.setAttribute('data-variant-id', variant.id);
-      });
-    }
-  
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateProductStock);
-    } else {
-      updateProductStock();
-    }
-  })();
-</script>
