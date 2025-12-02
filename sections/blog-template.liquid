@@ -112,6 +112,9 @@
           </div>
           <ul class="latest-blog">
             {% for article in blog.articles limit: 2 %}
+                <script>
+                  console.log('article: ' + '{{ article }}')
+                </script>
               <li>
                 {%
                   include 'article_card' with articleRelated: article, isFeatured: false,
@@ -121,21 +124,19 @@
             {% endfor %}
           </ul>
         </div>
-        {% assign popularPosts = blog.metafields.popular.articles %}
-        {% if popularPosts != blank %}
+        {% assign popular_posts = blog.metafields.popular.articles %}
+        {% if popular_posts != blank %}
           <div class="popular-section">
             <div class="heading">
               <h3 class="h5">POPULAR</h3>
             </div>
             <ul class="popular-blog">
-              {% assign popularHandles = popularPosts | split: '|' %}
-              {% for popularBlog in popularHandles limit: 2 %}
-                {% assign article = articles[popularBlog] %}
+              {% for article in popular_posts.value limit: 2 %}
                 {% if article != blank %}
                   <li>
                     {%
                       include 'article_card' with articleRelated: article, isFeatured: false,
-                      show_tags_with_limits :true, show_time: false, show_moreshortdescription: true, show_readMore: true
+                      show_tags_with_limits: true, show_time: false, show_moreshortdescription: true, show_readMore: true
                     %}
                   </li>
                 {% endif %}
