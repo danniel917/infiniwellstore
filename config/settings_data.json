@@ -13,7 +13,7 @@
     "trackLink": "",
     "tag1": "New",
     "tagLabel1": "★ New",
-    "tagColor1": "#e2eaf5",
+    "tagColor1": "#2074e9",
     "tag2": "Hide",
     "tagLabel2": "Hide",
     "tagColor2": "#000000",
@@ -136,19 +136,6 @@
               "contentColor": ""
             }
           },
-          "2908fdc1-f0cb-4940-b4c2-06f8067e366c": {
-            "type": "block",
-            "settings": {
-              "category": "results",
-              "title": "Feature Headline",
-              "image": "shopify://shop_images/featured-product.webp",
-              "video": "",
-              "linkText": "shop all",
-              "link": "shopify://products/foundational-supplement-pack",
-              "content_alignment": "right",
-              "contentColor": ""
-            }
-          },
           "265fb6ee-379a-4e0d-beb6-a717a4f8d425": {
             "type": "block",
             "settings": {
@@ -206,7 +193,7 @@
             "settings": {
               "category": "Discover",
               "title": "About Us",
-              "image": "shopify://shop_images/NavImage-Trio_1.jpg",
+              "image": "shopify://shop_images/NavImage-Hand_1.jpg",
               "video": "",
               "linkText": "Explore",
               "link": "shopify://pages/about-science",
@@ -214,8 +201,22 @@
               "contentColor": ""
             }
           },
+          "block_r8NGFB": {
+            "type": "block",
+            "settings": {
+              "category": "discover",
+              "title": "Find your BPC",
+              "image": "shopify://shop_images/leftpetri.jpg",
+              "video": "",
+              "linkText": "Take the Quiz",
+              "link": "https://infiniwell.com/pages/quiz",
+              "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
           "ef9c0d91-1159-4291-a1bc-d6336bfe6e4f": {
             "type": "block",
+            "disabled": true,
             "settings": {
               "category": "Discover",
               "title": "Science",
@@ -271,11 +272,24 @@
             "settings": {
               "category": "Products",
               "title": "Shop New Releases",
-              "image": "shopify://shop_images/ShopALL-NewProducts.jpg",
+              "image": "shopify://shop_images/sprayproductstab.jpg",
               "video": "",
               "linkText": "Shop Now",
               "link": "shopify://collections/new-releases",
               "content_alignment": "left",
+              "contentColor": ""
+            }
+          },
+          "2908fdc1-f0cb-4940-b4c2-06f8067e366c": {
+            "type": "block",
+            "settings": {
+              "category": "products",
+              "title": "Find your BPC",
+              "image": "shopify://shop_images/petrirightside.jpg",
+              "video": "",
+              "linkText": "Take the Quiz",
+              "link": "https://infiniwell.com/pages/quiz",
+              "content_alignment": "right",
               "contentColor": ""
             }
           },
@@ -290,17 +304,17 @@
           "card_YB9TLz": {
             "type": "card",
             "settings": {
-              "title": "ABC",
-              "mobile-image": "shopify://shop_images/Product_Image.png",
-              "mobile-imageLink": "shopify://products/abc"
+              "title": "BPC Oral Spray",
+              "mobile-image": "shopify://shop_images/applestylewithdryice.png",
+              "mobile-imageLink": "shopify://products/bpc-lx-pro-spray"
             }
           },
           "card_RPUBqj": {
             "type": "card",
             "settings": {
-              "title": "BPC Rapid Pro",
-              "mobile-image": "shopify://shop_images/Bottles-85_3.jpg",
-              "mobile-imageLink": "shopify://products/bpc-157-rapid-pro"
+              "title": "Bundle & Save",
+              "mobile-image": "shopify://shop_images/Group-15.jpg",
+              "mobile-imageLink": "https://infiniwell.com/apps/gbb/easybundle/1"
             }
           },
           "block_66bqQn": {
@@ -356,17 +370,18 @@
           "c13bf8ac-4132-410a-8468-583fa81a6a43",
           "bac6d11d-ca13-4da0-b8f4-09d5e62ed115",
           "1b7cf901-2179-47ab-98af-c8c7def00396",
-          "2908fdc1-f0cb-4940-b4c2-06f8067e366c",
           "265fb6ee-379a-4e0d-beb6-a717a4f8d425",
           "6ac5b87c-40f4-4eb9-afb7-06f18ae27a88",
           "deeca663-7397-4793-af60-af1f12f4314a",
           "41c3008c-08b5-4662-9847-173a745824a1",
           "805ed670-43f3-4a3d-b26f-4fce5487d971",
+          "block_r8NGFB",
           "ef9c0d91-1159-4291-a1bc-d6336bfe6e4f",
           "102c682a-dba1-4f73-bb27-6b2f9f0728db",
           "4377d616-b90c-406a-a249-e7db48064ab1",
           "bebb2c6a-069b-4c3f-95d1-e4e447fbe14e",
           "56e7d0f6-f017-4d50-aac3-e68676a35c11",
+          "2908fdc1-f0cb-4940-b4c2-06f8067e366c",
           "dcba3ad3-fa33-49fc-8913-ae52305a0151",
           "card_YB9TLz",
           "card_RPUBqj",
@@ -443,8 +458,8 @@
           "f12678f8-f284-4d0b-92d6-bd5eb23001ae": {
             "type": "announcement",
             "settings": {
-              "header_text": "<p>GLOBAL SHIPPING | USA SHIPS FREE OVER $75</p>",
-              "announcement_link": "shopify://collections",
+              "header_text": "<p><a href=\"https://infiniwell.com/pages/quiz\" title=\"Find your BPC formula\">Find my formula →</a></p>",
+              "announcement_link": "",
               "announcement_link_text": ""
             }
           }
@@ -566,6 +581,15 @@
         "settings": {
           "use_collection_metafield": true
         }
+      },
+      "collection-ad": {
+        "type": "collection-ad",
+        "settings": {
+          "show": false,
+          "link": "",
+          "title": "",
+          "text": ""
+        }
       }
     },
     "content_for_index": [],
@@ -637,6 +661,16 @@
       },
       "10840395464443086010": {
         "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      },
+      "2441077020710769822": {
+        "type": "shopify://apps/aimerce-first-party-pixel/blocks/c-track-embed/51cbda5a-dbfc-4e7b-8d12-c9e90363dcd7",
+        "disabled": false,
+        "settings": {}
+      },
+      "14652898158514659544": {
+        "type": "shopify://apps/fly-bundles-quantity-breaks/blocks/app-embed/26807bdc-c2ed-4a25-afb2-06e6b1ebf843",
         "disabled": false,
         "settings": {}
       }
