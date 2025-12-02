@@ -208,7 +208,7 @@
 
                 <li class="js__tab-small">
                   <a
-                    class="pdp-tab-link"
+                    class="pdp-tab-link{% if forloop.first %} active{% endif %}"
                     data-attr="{{title |  downcase | remove: ' '}}"
                     id="tab-{{title |  downcase | remove: ' '}}"
                   >
@@ -227,7 +227,7 @@
                 | remove: ' '
               %}
               {% if titleid == 'howtouse' %}
-                <div class="pdp-tab-content content how-to-use-tab" id="{{title |  downcase | remove: ' '}}">
+                <div class="pdp-tab-content content how-to-use-tab" id="{{title |  downcase | remove: ' '}}"{% if forloop.first %} style="display:block;"{% endif %}>
                   {% for value in product.metafields.how_to_use.title -%}
                     {% assign title = product.metafields.how_to_use.title[forloop.index0] %}
                     {% assign description = product.metafields.how_to_use.description[forloop.index0] %}
@@ -242,7 +242,7 @@
                   {%- endfor %}
                 </div>
               {% else %}
-                <div class="pdp-tab-content content" id="{{title |  downcase | remove: ' '}}">
+                <div class="pdp-tab-content content" id="{{title |  downcase | remove: ' '}}"{% if forloop.first %} style="display:block;"{% endif %}>
                   {{ product.metafields['info-small-tabs'].description[forloop.index0] }}
                 </div>
               {% endif %}
