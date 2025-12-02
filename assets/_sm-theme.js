@@ -2113,6 +2113,8 @@ const heroSliderMobile = new Swiper('.js__home-hero-mobile-slider', {
 		/*PDP select*/
 		$('.js__pdp-tab-select').val(dataId);
 	});
+
+	$('.pdp-tab-link').first().click();
 	/* GLOBAL
   Scroll to particular Div with # value */
 	$('a[href^="#"]').on('click', function (event) {
@@ -2505,32 +2507,45 @@ var popupCollectionSliderThumbnail;
 jQuery(function () {
 	/* Product card click - open quick view pop up */
 	$(document).on('click', '.js__quick-view-click', function (e) {
-		e.preventDefault();
-		e.stopImmediatePropagation();
+		console.log('clicked quick view');
+
+  		e.preventDefault();
+  		e.stopImmediatePropagation();
+
 		var id = $(this).attr('data-id');
-		//Executed after SWYM has loaded all necessary resources.
-		function onSwymLoadCallback(swat) {
-			// Please make all SWYM-related API calls inside this function.
-			// You can use the swat argument within this scope.
-			if (swat) {
-				swat.initializeActionButtons(
-					'#shopify-section-collection-modals'
-				);
+		var $modal = $('#modal-' + id);
+
+		console.log('Quick view id:', id, 'modal found:', $modal.length);
+
+		if (!$modal.length) {
+			console.warn('No quick view modal found for product id', id);
+			return;
+		}
+
+
+			//Executed after SWYM has loaded all necessary resources.
+			function onSwymLoadCallback(swat) {
+				// Please make all SWYM-related API calls inside this function.
+				// You can use the swat argument within this scope.
+				if (swat) {
+					swat.initializeActionButtons(
+						'#shopify-section-collection-modals'
+					);
+				}
 			}
-		}
-		if (!window.SwymCallbacks) {
-			window.SwymCallbacks = [];
-		}
-		window.SwymCallbacks.push(onSwymLoadCallback);
-		$('.popup-subscribe-option-' + id)
-			.find('input')
-			.click();
-		$('.pdp-tab-link-' + id + ' li:first-child')
-			.children('a')
-			.click();
-		$('.js__popup-variant-select-' + id + ' li:first-child').click();
-		// show modal pop up
-		$('#modal-' + id).show();
+			if (!window.SwymCallbacks) {
+				window.SwymCallbacks = [];
+			}
+			window.SwymCallbacks.push(onSwymLoadCallback);
+			$('.popup-subscribe-option-' + id)
+				.find('input')
+				.click();
+			$('.pdp-tab-link-' + id + ' li:first-child')
+				.children('a')
+				.click();
+			$('.js__popup-variant-select-' + id + ' li:first-child').click();
+			// show modal pop up
+			$('#modal-' + id).show();
 		/* Swiper/Slider */
 		try {
 			var sliderIMages = $(this).attr('data-slider_main').split('|');
@@ -4825,7 +4840,7 @@ $(document).ready(function ($) {
 		ad.show();
 	}
 
-	if ($('.smCollectionAd--unset').length > 0){
+	if ($('.smCollectionAd--unset').length > 0 || $('.template-collection').length > 0){
 		var readyCheck = false;
 		var boostCheck = setInterval(function(){
 			console.log('check')
@@ -4833,16 +4848,62 @@ $(document).ready(function ($) {
 			if (readyCheck){
 			clearInterval(boostCheck);
 			boostAd();
+				$('.productCard__buy').on('click', function(){
+				console.log('clicked buy button');
+				var varid = $(this).attr('data-prod');
+				var sellingPlan = parseInt($(this).attr('data-plan'));
+				CartJS.addItem(
+					parseInt(varid),
+					1, 
+					{
+						selling_plan: sellingPlan,
+					}, 
+					{
+						success: function(data, textStatus, jqXHR) {
+							//success state
+							successState();
+							if (getglobalLib('Mini_Cart') == 'yes') {
+								$('.modal-quick-view').hide();
+								jQuery.getJSON('/cart.js', function(cart) {
+									// show message
+									showCartSuccessMessage();
+									// now have access to Shopify cart object
+									reloadAjaxCartItemUsingCartAjaxObject(cart);
+									//Progress Bar of shipping in cart and mini cart; Varies from theme to theme
+									progressBar();
+									//Show and hide empty cart depending upon the cart items
+									setTimeout(function() {
+										
+										addons();
+									}, 1000);
+								});
+							} else {
+								window.location = '/cart';
+							}
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							//error state
+							console.log('Error: ' + errorThrown + '!');
+						}
+					}
+				);
+			});
 			}
 		}, 100);
 	}
 	
-
+	
 	$('.productCard__buy').on('click', function(){
+		console.log('clicked buy button');
 		var varid = $(this).attr('data-prod');
+		var sellingPlan = parseInt($(this).attr('data-plan'));
 		CartJS.addItem(
 			parseInt(varid),
-			1, {}, {
+			1, 
+			{
+				selling_plan: sellingPlan,
+			}, 
+			{
 				success: function(data, textStatus, jqXHR) {
 					//success state
 					successState();
@@ -4868,9 +4929,74 @@ $(document).ready(function ($) {
 				error: function(jqXHR, textStatus, errorThrown) {
 					//error state
 					console.log('Error: ' + errorThrown + '!');
-				},
+				}
 			}
 		);
+	});
+	
+	
+
+	var tabbedSliders = [];
+	$('.tabbedProds__sliderOuterWrapper').each(function(){
+		var wrapper = $(this);
+		var index = wrapper.attr('data-slider');
+		var config = {
+			slidesPerView: 1,
+			spaceBetween: 20,
+			grabCursor: false,
+			loop: true,
+			updateOnWindowResize: true,
+			direction: 'horizontal',
+			freeModeMomentumBounce: false,
+			threshold: 1,
+			initialSlide: 1,
+			breakpoints: {
+				0: {
+					slidesPerView: 1,
+					spaceBetween: 10,
+				},
+				481: {
+					slidesPerView: 2,
+					spaceBetween: 10,
+				},
+				601: {
+					slidesPerView: 3,
+					spaceBetween: 10,
+				},
+				769: {
+					slidesPerView: 4,
+					spaceBetween: 20,
+					initialSlide: 0,
+				},
+				981: {
+					slidesPerView: 5,
+					spaceBetween: 20,
+					initialSlide: 0,
+				},
+				1024: {
+					slidesPerView: 6,
+					spaceBetween: 20,
+					initialSlide: 0,
+				}
+			},
+			pagination: {
+				el: '.tabbedProds__sliderOuterWrapper[data-slider="' + index + '"] .tabbedProds__bullets',
+				clickable: true,
+				type: 'bullets',
+			}
+		}
+		tabbedSliders.push(new Swiper('.tabbedProds__sliderOuterWrapper[data-slider="' + index + '"] .tabbedProds__sliderInnerWrapper', config));
+		//callRechargeScript(document.querySelectorAll('.tabbedModals'));
+	});
+
+	$('.tabbedProds__tab').on('click', function(){
+		if (!$(this).hasClass('tabbedProds__tab--active')){
+			$('.tabbedProds__tab--active').removeClass('tabbedProds__tab--active');
+			$('.tabbedProds__sliderOuterWrapper--active').removeClass('tabbedProds__sliderOuterWrapper--active');
+			var tabIndex = $(this).attr('data-tab');
+			$(this).addClass('tabbedProds__tab--active');
+			$('.tabbedProds__sliderOuterWrapper[data-slider="'+tabIndex+'"]').addClass('tabbedProds__sliderOuterWrapper--active');
+		}
 	});
 
 
@@ -5376,3 +5502,4 @@ $(document).ready(function ($) {
 
 
 });
+
