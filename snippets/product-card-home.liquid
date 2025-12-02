@@ -92,7 +92,7 @@
     {% endif %}
 
     <button class="productCard__buy btn--primary{% unless productRelated.variants[0].available %} productCard__buy--oos{% endunless %}"
-    data-prod="{{ productRelated.variants[0].id }}">
+    data-prod="{{ productRelated.variants[0].id }}" data-plan='{{ productRelated.selling_plan_groups[0].selling_plans[0].id }}'>
         {% if productRelated.variants[0].available %}
         Add to Cart
         {% else %}
@@ -102,7 +102,6 @@
 
     <a
       class="productCard__quickviewLink js__quick-view-click"
-      title="{{ productRelated.title }}"
       href="javascript:;"
       title="Shop {{productRelated.title}}"
       data-id="{{productRelated.id}}"
