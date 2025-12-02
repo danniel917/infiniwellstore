@@ -15,22 +15,62 @@
         {% if section.settings.backgroundVideo != blank %}
             <div class="fullMedia__videoWrapper">
                 {% if section.settings.backgroundVideo contains '.mp4' %}
-                    <video muted loop autoplay>
-                      <source src="{{ section.settings.backgroundVideo }}" type="video/mp4">
-                    </video>
-                  {% else %}
-                    {% if section.settings.backgroundVideo != blank %}
-                      {% assign videoId = section.settings.backgroundVideo | split: 'vimeo.com/' %}
-                      <iframe
-                        src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
-                        frameborder="0"
-                        allow="fullscreen"
-                        allowfullscreen
-                        loading="lazy"
-                      ></iframe>
-                    {% endif %}
-                  {% endif %}
-            </div>
+                  <video muted loop autoplay
+                  class="fullMedia__videoDesktop">
+                    <source src="{{ section.settings.backgroundVideo }}" type="video/mp4">
+                  </video>
+                {% else %}
+                    {% assign videoId = section.settings.backgroundVideo | split: 'vimeo.com/' %}
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
+                      frameborder="0"
+                      allow="fullscreen"
+                      allowfullscreen
+                      loading="lazy"
+                      class="fullMedia__videoDesktop"
+                    ></iframe>
+                {% endif %}
+            
+              {% if section.settings.backgroundVideoMobile != blank %}
+
+                {% if section.settings.backgroundVideo contains '.mp4' %}
+                  <video muted loop autoplay
+                  class="fullMedia__videoMobile">
+                    <source src="{{ section.settings.backgroundVideoMobile }}" type="video/mp4">
+                  </video>
+                {% else %}
+                    {% assign videoId = section.settings.backgroundVideoMobile | split: 'vimeo.com/' %}
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
+                      frameborder="0"
+                      allow="fullscreen"
+                      allowfullscreen
+                      loading="lazy"
+                      class="fullMedia__videoMobile"
+                    ></iframe>
+                {% endif %}
+
+              {% else %}
+
+                {% if section.settings.backgroundVideo contains '.mp4' %}
+                  <video muted loop autoplay
+                  class="fullMedia__videoMobile">
+                    <source src="{{ section.settings.backgroundVideo }}" type="video/mp4">
+                  </video>
+                {% else %}
+                    {% assign videoId = section.settings.backgroundVideo | split: 'vimeo.com/' %}
+                    <iframe
+                      src="https://player.vimeo.com/video/{{ videoId[1] }}?loop=1&autoplay=1&muted=1"
+                      frameborder="0"
+                      allow="fullscreen"
+                      allowfullscreen
+                      loading="lazy"
+                      class="fullMedia__videoMobile"
+                    ></iframe>
+                {% endif %}
+
+              {% endif %}
+            </div> 
         {% endif %}
     </div>
     <div class="fullMedia__contentWrapper">
@@ -73,6 +113,11 @@
       "type": "text",
       "id": "backgroundVideo",
       "label": "Background Video"
+    },
+    {
+      "type": "text",
+      "id": "backgroundVideoMobile",
+      "label": "Mobile Background Video"
     },
     {
       "type": "select",
