@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "inner_hero_section_3kQfkc": {
+      "type": "inner-hero-section",
+      "disabled": true,
+      "custom_css": [
+        "@media only screen and (max-width: 600px) {.inner-hero-section.small, .pdp-full-width-image-section.small {min-height: 400px; }}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_c5b6bfa0-2590-4913-b43b-0a7f3a0c0b1e.png",
+        "mobileImage": "shopify://shop_images/ScienceBackground-ForWeb-TopHalf_c5b6bfa0-2590-4913-b43b-0a7f3a0c0b1e.png",
+        "title": "A4M Special offer",
+        "description": "<p>As a thank you for attending our booth at A4M, the InfiniWell team wanted to offer you the chance to try any of our products, completely on us! Just fill out the form below and your sample bottle will ship out to you starting on 5/6.</p>",
+        "buttonText1": "",
+        "buttonLink1": "",
+        "buttonText2": "",
+        "buttonLink2": "",
+        "content_alignment": "center",
+        "smallHeight": true,
+        "pageBanner": true,
+        "gradient": false,
+        "height-810": false
+      }
+    },
+    "1714513188b231968f": {
+      "type": "apps",
+      "blocks": {
+        "octane_ai_advanced_quiz_maker_octaneai_section_9De4pm": {
+          "type": "shopify://apps/octane-ai-advanced-quiz-maker/blocks/octaneai_section/db2513a5-c9b0-40fd-9058-42c28e6e6502",
+          "settings": {
+            "octane_id": "wtgtvxfob3xc4i4z:MLKxdS7pu5baJ4rv:quiz",
+            "embed_type": "fullpage",
+            "enable_loading": true,
+            "stroke_color": "#000000",
+            "mobile_height": "match_browser",
+            "mobile_custom_height_px": 600,
+            "desktop_height": "match_browser",
+            "desktop_custom_height_px": 600
+          }
+        }
+      },
+      "block_order": [
+        "octane_ai_advanced_quiz_maker_octaneai_section_9De4pm"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "inner_hero_section_3kQfkc",
+    "1714513188b231968f"
+  ]
+}
