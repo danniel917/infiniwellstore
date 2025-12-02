@@ -5,9 +5,17 @@
   ></script>
 {% endcomment %}
 <link href="{{ 'theme.css' | asset_url }}">
-{% comment %} AOS SCRIPT {% endcomment %}
-    <script src="{{ 'aos.js' | asset_url }}"></script>
 
+<!-- AOS Animation Library: Load before AOS.init() is called -->
+<script src="{{ 'aos.js' | asset_url }}"></script>
+<script>
+  // Mark AOS as ready for initialization queue
+  if (typeof window.ThemeInitQueue !== 'undefined' && typeof AOS !== 'undefined') {
+    window.ThemeInitQueue.markReady('aos');
+  }
+</script>
+
+<!-- Cookie utilities: Loaded synchronously (required by preloader) -->
 {{ 'cookies.js' | asset_url | script_tag }}
 <!-- Product object -->
 <script>
@@ -55,6 +63,7 @@
 </script>
 
 <script>
+  // Cart library: Available globally for cart operations
   var cartLib = [
     {% if cart.item_count > 0%}
     {% for item in cart.items %}
@@ -63,12 +72,11 @@
       "title":"{{item.title}}",
       "price":"{{item.price}}",
       "comparePrice":"{{item.variant.product.compare_at_price}}",
-      "quantity":"{{item.quantity}}",
+      "quantity":"{{item.quantity}}"
      // "variant":'{{item.variant | json}}'
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
     {%endif%}
-
   ];
 </script>
 
@@ -120,6 +128,7 @@
 {% endif %}
 
 <script>
+  // Global configuration library
   var globalLib = [
     {
       Variant_Display: 'dropdown',
@@ -140,11 +149,15 @@
       Product_Recommendation_Slider: 'off',
     },
   ];
+
+  // Helper function to get global lib values (depends on jQuery)
   function getglobalLib(type) {
     var globalLibValue = '';
-    $.each(globalLib, function (key, value) {
-      globalLibValue = value[type];
-    });
+    if (typeof $ !== 'undefined' && $.each) {
+      $.each(globalLib, function (key, value) {
+        globalLibValue = value[type];
+      });
+    }
     return globalLibValue;
   }
 </script>
@@ -180,18 +193,46 @@
 <input type="hidden" id="cartCurrencyCode" value="{{ cart.currency.iso_code }}">
 <input type="hidden" id="cartCurrencySymbol" value="{{ cart.currency.symbol }}">
 <script>
-  if (Shopify.currency) {
-    const currencySymbol = Shopify.currency.active;
-    const currencyRate = Shopify.currency.rate || 1;
-    console.log('Current active currency: ${currencySymbol}');
-    // Example output: Current active currency: USD
+  // Currency formatter: Initialize immediately (required by _sm-theme.js)
+  // This MUST be available before cart functions execute
+  var formatter;
 
-}
-const formatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: $("#cartCurrencyCode").val(),
-  minimumFractionDigits: 2,
-});
-  </script>
+  if (typeof window.ThemeInitQueue !== 'undefined') {
+    window.ThemeInitQueue.add(function() {
+      if (typeof Shopify !== 'undefined' && Shopify.currency) {
+        var currencySymbol = Shopify.currency.active;
+        var currencyRate = Shopify.currency.rate || 1;
+        console.log('Current active currency: ' + currencySymbol);
+      }
+
+      // Create formatter using jQuery to get currency code
+      if (typeof $ !== 'undefined' && document.getElementById('cartCurrencyCode')) {
+        formatter = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: $("#cartCurrencyCode").val() || "USD",
+          minimumFractionDigits: 2,
+        });
+      } else {
+        // Fallback if jQuery not ready yet
+        formatter = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "{{ cart.currency.iso_code }}" || "USD",
+          minimumFractionDigits: 2,
+        });
+      }
+    }, {
+      name: 'Currency Formatter Init',
+      requires: ['jquery'],
+      priority: 1
+    });
+  } else {
+    // Fallback initialization if queue system not available
+    formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "{{ cart.currency.iso_code }}" || "USD",
+      minimumFractionDigits: 2,
+    });
+  }
+</script>
 
   
