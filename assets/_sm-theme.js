@@ -31,14 +31,14 @@ var plusIcon =
 $(document).ready(function ($) {
 	reloadAjaxCartItemUsingCartAjaxObject();
 
-	// Queue both progressBar and quickCartTotal to wait for formatter initialization
+	// Queue both progressBar and quickCartTotal to wait for CartJS and formatter initialization
 	if (typeof window.ThemeInitQueue !== 'undefined') {
 		window.ThemeInitQueue.add(function() {
 			progressBar();
 			quickCartTotal();
 		}, {
 			name: 'Initial Cart Display',
-			requires: ['jquery'],
+			requires: ['jquery', 'cartjs'],
 			priority: 2
 		});
 	} else {
