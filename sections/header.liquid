@@ -54,10 +54,8 @@
                 <div class="header-logo relative none-980">
                     <a href="{{ routes.root_url }}" itemprop="url" alt="{{shop.name}}">
                         {% if section.settings.logo != blank %}
-                        <img src="{{section.settings.logo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo"
-                            loading="lazy">
-                            <img src="{{section.settings.whiteLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo"
-                                loading="lazy">
+                        <img src="{{section.settings.logo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo">
+                            <img src="{{section.settings.whiteLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo">
                                 
                         {%else%}
                         {{shop.name}}
@@ -67,10 +65,8 @@
                 <div class="header-logo relative block-980">
                     <a href="{{ routes.root_url }}" itemprop="url" alt="{{shop.name}}">
                         {% if section.settings.mobileLogo != blank %}
-                        <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo"
-                            loading="lazy">
-                            <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo"
-                                loading="lazy">
+                        <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="logo" alt="{{shop.name}} Logo">
+                            <img src="{{section.settings.mobileLogo | img_url: 'master' }}" class="whitelogo" alt="{{shop.name}} Logo">
                                 
                         {%else%}
                         {{shop.name}}
