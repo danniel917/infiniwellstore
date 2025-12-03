@@ -30,8 +30,22 @@ var plusIcon =
 	'<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 6.563v4h2v-4h4v-2h-4v-4h-2v4h-4v2h4z" fill="#253032"/> </svg>';
 $(document).ready(function ($) {
 	reloadAjaxCartItemUsingCartAjaxObject();
-	progressBar();
-	quickCartTotal();
+
+	// Queue both progressBar and quickCartTotal to wait for formatter initialization
+	if (typeof window.ThemeInitQueue !== 'undefined') {
+		window.ThemeInitQueue.add(function() {
+			progressBar();
+			quickCartTotal();
+		}, {
+			name: 'Initial Cart Display',
+			requires: ['jquery'],
+			priority: 2
+		});
+	} else {
+		// Fallback if queue system isn't available
+		progressBar();
+		quickCartTotal();
+	}
 	//	window.location.href = "https://checkout.rechargeapps.com/r/checkout?myshopify_domain=XXX.myshopify.com";
 	//window.location = '/checkout';
 });
@@ -48,9 +62,6 @@ function updateCartQuantity(cartThis) {
 	var id = $(cartThis).attr('data-variant-id');
 	var quantity = $('#updates_' + id).val();
 	var type = $(cartThis).attr('date-type');
-	console.log('quantity' + quantity);
-	console.log('type' + type);
-	console.log('id' + id);
 	var newQuantity = 0;
 	if (quantity != '') {
 		newQuantity = parseInt(quantity);
@@ -64,7 +75,6 @@ function updateCartQuantity(cartThis) {
 				}
 			}
 		}
-		console.log('newQuantity' + newQuantity);
 		var formData = {
 			updates: {},
 		};
@@ -95,7 +105,6 @@ function reloadAjaxCartItemUsingCartAjaxObject(data) {
 		type: 'GET',
 		url: '/cart?view=alternate.json',
 		success: function (response) {
-			console.log('success');
 			//extra information against the cart like collection title metafield, product title metafield, tags
 			cartExtraInfo = $.parseJSON(response);
 			cartInfo(data);
@@ -448,10 +457,6 @@ function cartInfo(data) {
 						}
 					}
 					if (value.product_recharge == 'True') {
-						console.log(
-							'value.product_rechargePrice' +
-								value.product_rechargePrice
-						);
 						var optionActive = 'active';
 						if (rechargeSelected == undefined) {
 							optionActive = '';
