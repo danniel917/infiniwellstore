@@ -7,7 +7,7 @@
 {%- else -%}
   <link rel="preload stylesheet" href="{{ 'boost-pfs-instant-search.css' | asset_url }}" as="style">
 {%- endif -%}
-{{ 'boost-pfs-custom.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'boost-pfs-custom.css' | asset_url }}" media="print" onload="this.media='all'">
 
 {%- comment -%}
   BC Style Setting
