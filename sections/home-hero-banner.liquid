@@ -175,7 +175,11 @@
                   <img
                     src="{{ block.settings.backgroundImage | img_url: '2880x1620' }}"
                     alt="{{ block.settings.backgroundImage.alt}}"
-                    loading="lazy"
+                    {% if forloop.first %}
+                      fetchpriority="high"
+                    {% else %}
+                      loading="lazy"
+                    {% endif %}
                   >
                 </picture>
               </div>
