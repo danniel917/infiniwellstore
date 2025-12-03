@@ -193,44 +193,31 @@
 <input type="hidden" id="cartCurrencyCode" value="{{ cart.currency.iso_code }}">
 <input type="hidden" id="cartCurrencySymbol" value="{{ cart.currency.symbol }}">
 <script>
-  // Currency formatter: Initialize immediately (required by _sm-theme.js)
-  // This MUST be available before cart functions execute
-  var formatter;
+  // Currency formatter: Initialize IMMEDIATELY and SYNCHRONOUSLY
+  // This MUST be available before any cart functions execute
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "{{ cart.currency.iso_code }}" || "USD",
+    minimumFractionDigits: 2,
+  });
 
+  // Optional: Update formatter when jQuery is ready to use dynamic currency
   if (typeof window.ThemeInitQueue !== 'undefined') {
     window.ThemeInitQueue.add(function() {
-      if (typeof Shopify !== 'undefined' && Shopify.currency) {
-        var currencySymbol = Shopify.currency.active;
-        var currencyRate = Shopify.currency.rate || 1;
-        console.log('Current active currency: ' + currencySymbol);
-      }
-
-      // Create formatter using jQuery to get currency code
       if (typeof $ !== 'undefined' && document.getElementById('cartCurrencyCode')) {
-        formatter = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: $("#cartCurrencyCode").val() || "USD",
-          minimumFractionDigits: 2,
-        });
-      } else {
-        // Fallback if jQuery not ready yet
-        formatter = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "{{ cart.currency.iso_code }}" || "USD",
-          minimumFractionDigits: 2,
-        });
+        var dynamicCurrency = $("#cartCurrencyCode").val();
+        if (dynamicCurrency && dynamicCurrency !== "{{ cart.currency.iso_code }}") {
+          formatter = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: dynamicCurrency,
+            minimumFractionDigits: 2,
+          });
+        }
       }
     }, {
-      name: 'Currency Formatter Init',
+      name: 'Currency Formatter Update',
       requires: ['jquery'],
       priority: 1
-    });
-  } else {
-    // Fallback initialization if queue system not available
-    formatter = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "{{ cart.currency.iso_code }}" || "USD",
-      minimumFractionDigits: 2,
     });
   }
 </script>
