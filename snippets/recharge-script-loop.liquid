@@ -14,8 +14,6 @@ function callRechargeScript(container) {
     }
     */
 
-    console.log(container);
-
     var setArray = [];
 
     // RECHARGE
@@ -24,10 +22,6 @@ function callRechargeScript(container) {
         //$(container).find('.modal[data-recharge="true"]').each(function() {
         $('.modal[data-recharge="true"]').each(function() {
             var thisThing = $(this);
-
-            console.log(setArray);
-            console.log(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'));
-            console.log(setArray.includes(thisThing.find('[sm-rc-add-to-cart]').attr('data-id')));
             if (!setArray.includes(thisThing.find('[sm-rc-add-to-cart]').attr('data-id'))){
                 var matchString = false;
 
@@ -134,8 +128,6 @@ function callRechargeScript(container) {
                     thisThing.find('[sm-rc-variant-one-time-price]').html(formatPrice(oneTimePrice, currencyCode));
                     thisThing.find('[sm-rc-discount-ammount]').text(discountAmountDisplay);
 
-                    console.log("check three");
-                        console.log(currentVariant);
                     if (currentVariant.available == 'false') {
                         thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
                         thisThing.find('.oos-text').show();
@@ -180,10 +172,7 @@ function callRechargeScript(container) {
                 thisThing.find('[sm-rc-add-to-cart]').unbind( "click" );
                 thisThing.find('[sm-rc-add-to-cart]').on('click', function() {
                     var id=$(this).attr("data-id");
-                    console.log("click");
                     var qty = thisThing.find('[sm-rc-quantity-selector]').val();
-                    console.log(qty);
-                    console.log(parseInt(currentVariant.id));
                     if (currentPlan.id == 'false') {
                         CartJS.addItem(
                             parseInt(currentVariant.id),
@@ -223,10 +212,8 @@ function callRechargeScript(container) {
                                 selling_plan: parseInt(currentPlan.id),
                             }, {
                                 success: function(data, textStatus, jqXHR) {
-                                    console.log("dropdown"+$(".js__custom-dropdown-select-"+id).val())
                                     $(".js__custom-dropdown-select-"+id).children('option:first-child').prop('selected', true);
                                     $(".js__custom-dropdown-select-"+id).val($(".js__custom-dropdown-select-"+id).children('option:first-child').attr("value"))
-                                    console.log("dropdown"+$(".js__custom-dropdown-select-"+id).val())
                                     //success state
                                     successState();
                                     $('.modal-quick-view').hide();
@@ -340,9 +327,6 @@ function callRechargeScript(container) {
                         var image = currentVariant.img_url;
 
                         // setVarImg( image );
-
-                        console.log("check four");
-                        console.log(currentVariant);
 
                         if (currentVariant.available == 'false') {
                             thisThing.find('[sm-rc-add-to-cart]').prop('disabled', true);
