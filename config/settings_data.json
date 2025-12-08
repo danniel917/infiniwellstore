@@ -594,13 +594,62 @@
     },
     "content_for_index": [],
     "blocks": {
+      "c5727711-05ae-4ea9-911a-a47d3c3c1d92": {
+        "type": "shopify://apps/boost-ai-search-discovery/blocks/boost-sd/7fc998ae-a150-4367-bab8-505d8a4503f7",
+        "disabled": true,
+        "settings": {}
+      },
+      "14652898158514659544": {
+        "type": "shopify://apps/fly-bundles-quantity-breaks/blocks/app-embed/26807bdc-c2ed-4a25-afb2-06e6b1ebf843",
+        "disabled": false,
+        "settings": {}
+      },
+      "11809892702313333283": {
+        "type": "shopify://apps/firework-shoppable-video-ugc/blocks/firework-header/347a2e4c-f5cb-410d-8354-490d1e80558c",
+        "disabled": false,
+        "settings": {}
+      },
+      "10840395464443086010": {
+        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      },
+      "2441077020710769822": {
+        "type": "shopify://apps/aimerce-first-party-pixel/blocks/c-track-embed/51cbda5a-dbfc-4e7b-8d12-c9e90363dcd7",
+        "disabled": false,
+        "settings": {}
+      },
+      "733389323033596483": {
+        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
+      },
+      "18209738915288330680": {
+        "type": "shopify://apps/wholesale-all-in-one/blocks/wholesale-all-in-one/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
+        "disabled": false,
+        "settings": {
+          "wsaio_app_access_token": "godzilla_wsaiouvh6qz",
+          "wsaio_main_js_file": "",
+          "wsaio_main_liquid_file": "",
+          "wsaio_modules_liquid_file": "",
+          "wsaio_addons_liquid_file": "",
+          "wsaio_custom_css_file": ""
+        }
+      },
       "855628211100114053": {
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
       },
-      "5946647744298494267": {
-        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+      "1291562577487733835": {
+        "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
+        "disabled": false,
+        "settings": {}
+      },
+      "319724205969189013": {
+        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": false,
         "settings": {}
       },
@@ -620,59 +669,21 @@
           "cards_border_color": "rgba(0,0,0,0)"
         }
       },
-      "18209738915288330680": {
-        "type": "shopify://apps/wholesale-all-in-one/blocks/wholesale-all-in-one/5a3d95fb-5647-47d5-8445-d5858f91ff9d",
+      "5946647744298494267": {
+        "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
         "disabled": false,
         "settings": {
-          "wsaio_app_access_token": "godzilla_wsaiouvh6qz",
-          "wsaio_main_js_file": "",
-          "wsaio_main_liquid_file": "",
-          "wsaio_modules_liquid_file": "",
-          "wsaio_addons_liquid_file": "",
-          "wsaio_custom_css_file": ""
+          "storefront_layout_enabled": false,
+          "storefront_layout_primary_bg_color": "#000000",
+          "storefront_layout_primary_text_color": "#ffffff",
+          "storefront_layout_secondary_bg_color": "#F4F8FE",
+          "storefront_layout_secondary_text_color": "#333333",
+          "storefront_layout_ui_border_radius": 6,
+          "storefront_layout_notification_position": "left",
+          "storefront_layout_action_popup_position": "left",
+          "storefront_layout_drawer_position": "left",
+          "storefront_layout_as_section_page": ""
         }
-      },
-      "c5727711-05ae-4ea9-911a-a47d3c3c1d92": {
-        "type": "shopify://apps/boost-ai-search-discovery/blocks/boost-sd/7fc998ae-a150-4367-bab8-505d8a4503f7",
-        "disabled": true,
-        "settings": {}
-      },
-      "11809892702313333283": {
-        "type": "shopify://apps/firework-virtual-store/blocks/firework-header/347a2e4c-f5cb-410d-8354-490d1e80558c",
-        "disabled": false,
-        "settings": {}
-      },
-      "319724205969189013": {
-        "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
-        "disabled": false,
-        "settings": {}
-      },
-      "1291562577487733835": {
-        "type": "shopify://apps/black-crow-ai-that-delivers/blocks/blackcrow_ai_script/3e73f597-cb71-47a1-8a06-0c931482ecd2",
-        "disabled": false,
-        "settings": {}
-      },
-      "733389323033596483": {
-        "type": "shopify://apps/okendo/blocks/theme-settings/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
-        "disabled": false,
-        "settings": {
-          "show_preview_data": true
-        }
-      },
-      "10840395464443086010": {
-        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
-        "disabled": false,
-        "settings": {}
-      },
-      "2441077020710769822": {
-        "type": "shopify://apps/aimerce-first-party-pixel/blocks/c-track-embed/51cbda5a-dbfc-4e7b-8d12-c9e90363dcd7",
-        "disabled": false,
-        "settings": {}
-      },
-      "14652898158514659544": {
-        "type": "shopify://apps/fly-bundles-quantity-breaks/blocks/app-embed/26807bdc-c2ed-4a25-afb2-06e6b1ebf843",
-        "disabled": false,
-        "settings": {}
       }
     }
   }
