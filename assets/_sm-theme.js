@@ -2518,6 +2518,8 @@ jQuery(function () {
 
 var popupCollectionSlider;
 var popupCollectionSliderThumbnail;
+var popupCollectionSlider;
+
 jQuery(function () {
 	/* Product card click - open quick view pop up */
 	$(document).on('click', '.js__quick-view-click', function (e) {
@@ -2644,6 +2646,7 @@ jQuery(function () {
 			.children('li:first-child')
 			.click();
 	});
+
 	$(document).on('click', '.modal', function (e) {
 		if (
 			!(

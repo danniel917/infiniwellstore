@@ -1,4 +1,13 @@
 {% if section.blocks.size > 0 %}
+  {%- comment -%}
+    PERFORMANCE: Preload first mobile hero image for fastest LCP on mobile
+  {%- endcomment -%}
+  {% for block in section.blocks %}
+    {% if forloop.first and block.settings.backgroundimage != blank %}
+      <link rel="preload" as="image" href="{{ block.settings.backgroundimage | image_url: width: 600, height: 900 }}" fetchpriority="high">
+    {% endif %}
+  {% endfor %}
+
   <div class="home-hero-mobile js__home-hero-mobile-slider">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
@@ -38,9 +47,15 @@
             {% else %}
               <div class="image-section">
                 <img
-                  src="{{ block.settings.backgroundimage | img_url: '750x920' }}"
+                  src="{{ block.settings.backgroundimage | img_url: '600x900' }}"
                   alt="{{ block.settings.backgroundimage.alt}}"
-                  loading="lazy"
+                  width="600"
+                  height="900"
+                  {% if forloop.first %}
+                    fetchpriority="high"
+                  {% else %}
+                    loading="lazy"
+                  {% endif %}
                 >
               </div>
             {% endif %}
@@ -60,7 +75,9 @@
                 <img
                   src="{{ block.settings.image | img_url: '212x212' }}"
                   alt="{{ block.settings.image.alt}}"
-                  loading="lazy"
+                  width="212"
+                  height="212"
+                  {% unless forloop.first %}loading="lazy"{% endunless %}
                 >
               </div>
             {% endif %}

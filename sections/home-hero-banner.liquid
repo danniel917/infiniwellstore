@@ -1,4 +1,17 @@
 {% if section.blocks.size > 0 %}
+  {%- comment -%}
+    PERFORMANCE: Preload first hero image for fastest LCP
+    This loads the critical hero image before any CSS/JS
+  {%- endcomment -%}
+  {% for block in section.blocks %}
+    {% if forloop.first %}
+      {% if block.settings.backgroundImageMobile != blank %}
+        <link rel="preload" as="image" href="{{ block.settings.backgroundImageMobile | image_url: width: 600, height: 900 }}" media="(max-width: 600px)" fetchpriority="high">
+      {% endif %}
+      <link rel="preload" as="image" href="{{ block.settings.backgroundImage | image_url: width: 1920, height: 1080 }}" media="(min-width: 601px)" fetchpriority="high">
+    {% endif %}
+  {% endfor %}
+
   <div class="slider hero-banner-slider   {% if section.blocks.size > 1 %} js__hero-banner-slider  padding-left-right {% endif %}">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
@@ -167,21 +180,41 @@
               </div>
             {% else %}
               <div class="image-section {%if block.settings.gradient == true%} gradient-none{%endif%}">
-                <picture>
-                  <source
-                    media="(max-width: 600px)"
-                    srcset="{% if block.settings.backgroundImageMobile != blank %}{{ block.settings.backgroundImageMobile | img_url: '750x1400' }}{%endif%}"
-                  >
-                  <img
-                    src="{{ block.settings.backgroundImage | img_url: '2880x1620' }}"
-                    alt="{{ block.settings.backgroundImage.alt}}"
-                    {% if forloop.first %}
-                      fetchpriority="high"
-                    {% else %}
-                      loading="lazy"
+                {% if forloop.first %}
+                  <picture>
+                    {% if block.settings.backgroundImageMobile != blank %}
+                      <source
+                        media="(max-width: 600px)"
+                        srcset="{{ block.settings.backgroundImageMobile | img_url: '600x900' }}"
+                        width="600"
+                        height="900"
+                        fetchpriority="high"
+                      >
                     {% endif %}
-                  >
-                </picture>
+                    <img
+                      src="{{ block.settings.backgroundImage | img_url: '1920x1080' }}"
+                      alt="{{ block.settings.backgroundImage.alt}}"
+                      width="1920"
+                      height="1080"
+                      fetchpriority="high"
+                    >
+                  </picture>
+                {% else %}
+                  <picture>
+                    <source
+                      media="(max-width: 600px)"
+                      srcset="{% if block.settings.backgroundImageMobile != blank %}{{ block.settings.backgroundImageMobile | img_url: '600x900' }}{%endif%}"
+                    >
+                    <img
+                      src="{{ block.settings.backgroundImage | img_url: '1920x1080' }}"
+                      alt="{{ block.settings.backgroundImage.alt}}"
+                      width="1920"
+                      height="1080"
+                      loading="lazy"
+                      class="image-aca"
+                    >
+                  </picture>
+                {% endif %}
               </div>
             {% endif %}
             <div class="container-1340 flex">
@@ -190,7 +223,9 @@
                   <img
                     src="{{ block.settings.productImage | img_url: '530x530' }}"
                     alt="{{ block.settings.productImage.alt}}"
-                    loading="lazy"
+                    width="530"
+                    height="530"
+                    {% unless forloop.first %}loading="lazy"{% endunless %}
                   >
                 </div>
               {% endif %}
@@ -205,7 +240,7 @@
                     <img
                       src="{{ block.settings.logo | img_url: '162x144' }}"
                       alt="{{ block.settings.logo.alt}}"
-                      loading="lazy"
+                      {% unless forloop.first %}loading="lazy"{% endunless %}
                     >
                   </div>
                 {% endif %}
@@ -214,7 +249,7 @@
                     <img
                       src="{{ block.settings.titleImage | img_url: '1000x200' }}"
                       alt="{{ block.settings.titleImage.alt}}"
-                      loading="lazy"
+                      {% unless forloop.first %}loading="lazy"{% endunless %}
                     >
                   </div>
                 {% endif %}
@@ -224,7 +259,7 @@
                     <img
                       src="{{ block.settings.contentImage | img_url: 'master' }}"
                       alt="{{ block.settings.contentImage.alt}}"
-                      loading="lazy"
+                      {% unless forloop.first %}loading="lazy"{% endunless %}
                     >
                   </div>
                 {% endif %}
@@ -253,7 +288,7 @@
                         <img
                           src="{{ block.settings.ratingImage | img_url: '320x56' }}"
                           alt="{{ block.settings.ratingImage.alt}}"
-                          loading="lazy"
+                          {% unless forloop.first %}loading="lazy"{% endunless %}
                         >
                       </div>
                       <span class="rating-count">{{ block.settings.ratingCount }}</span>
@@ -273,7 +308,7 @@
                             <img
                               src="{{ block.settings.icon1 | img_url: 'master' }}"
                               alt="{{ block.settings.icon1.alt}}"
-                              loading="lazy"
+                              {% unless forloop.first %}loading="lazy"{% endunless %}
                             >
                           </div>
                         {% endif %}
@@ -287,7 +322,7 @@
                             <img
                               src="{{ block.settings.icon2 | img_url: 'master' }}"
                               alt="{{ block.settings.icon2.alt}}"
-                              loading="lazy"
+                              {% unless forloop.first %}loading="lazy"{% endunless %}
                             >
                           </div>
                         {% endif %}
@@ -301,7 +336,7 @@
                             <img
                               src="{{ block.settings.icon3 | img_url: 'master' }}"
                               alt="{{ block.settings.icon3.alt}}"
-                              loading="lazy"
+                              {% unless forloop.first %}loading="lazy"{% endunless %}
                             >
                           </div>
                         {% endif %}

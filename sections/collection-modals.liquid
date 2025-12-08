@@ -1,5 +1,38 @@
-{% paginate collections.all.products by 1000 %}
-  {% for productData in collections.all.products %}
-    {% include 'product-modal', productData: productData %}
-  {% endfor %}
-{% endpaginate %}
+{%- comment -%}
+  PERFORMANCE OPTIMIZATION: Load modals after page load to improve initial render time
+  Only load modals for products that are in the product library (50 products)
+{%- endcomment -%}
+
+<div id="collection-modals-container" style="display: none;">
+  {%- comment -%}Modals will be loaded here after page load{%- endcomment -%}
+</div>
+
+<script>
+  // Store modal HTML to inject after page load
+  window.productModalsHTML = `
+    {% paginate collections.all.products by 50 %}
+      {% for productData in collections.all.products %}
+        {% render 'product-modal', productData: productData %}
+      {% endfor %}
+    {% endpaginate %}
+  `;
+
+  // Load modals after DOM is ready and other critical resources have loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(loadProductModals, 100);
+    });
+  } else {
+    setTimeout(loadProductModals, 100);
+  }
+
+  function loadProductModals() {
+    console.log('Loading product modals after page load...');
+    var container = document.getElementById('collection-modals-container');
+    if (container && window.productModalsHTML) {
+      container.innerHTML = window.productModalsHTML;
+      container.style.display = 'block';
+      console.log('Product modals loaded successfully');
+    }
+  }
+</script>
