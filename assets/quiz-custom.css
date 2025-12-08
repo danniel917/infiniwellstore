@@ -187,15 +187,12 @@ div#octane-quiz-outer-wrapper,
     text-align: center !important
 }
 
-#octane-question-wrapperb9d3fe085c73911d74e1b0bdc3b67227c4d47855 .oct-quiz-top_content {
-    /* margin-top: 398.5px; */
-}
-
 div#octane-question-wrapperb9d3fe085c73911d74e1b0bdc3b67227c4d47855 {
     padding-bottom: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 #octane-question-wrapperfUblsWBKBJf45nc0 input,
@@ -294,12 +291,6 @@ button.skip--button.oct-quiz-btn--primary-text {
 button.skip--button.oct-quiz-btn--primary-text:hover {
     opacity: 1 !important;
 }
-
-/*Tell us where to send your results*/
-/* button.skip--button.oct-quiz-btn--primary-text {
-    opacity: .35 !important;
-    pointer-events: none !important;
-} */
 
 /* RESULTS PAGE*/
 
@@ -844,8 +835,15 @@ span.pair-with__title {
 #octane-question-wrapper7847788c42ea45316051c56c373d27c756042229 .oct-quiz-title,
 #octane-question-wrapper69d778a0517d25ebdef7bdf3e8f816797113e48f .oct-quiz-title,
 #octane-question-wrappera5d7d23b770e02699881298f9e2f15990627d5c2 .oct-quiz-title,
-#octane-question-wrapper2b67ba55595f5ac5a526558328f4d55620a30f95 .oct-quiz-title {
+#octane-question-wrapper2b67ba55595f5ac5a526558328f4d55620a30f95 .oct-quiz-title,
+#octane-question-wrapperb219533c8ff420b3e7ef1cb7bd6a58f28577c07d .oct-quiz-title,
+#octane-question-wrapper03781f8492dc052265b90e9e4357abc7c769175c .oct-quiz-title,
+#octane-question-wrapper85d39a3ae8c111a69093ce9d7504232c819a7514 .oct-quiz-title,
+#octane-question-wrapper4a260315df4f24f49cda24208acd001f5fe9a056 .oct-quiz-title,
+#octane-question-wrapperae186d579aa98095e480239819b2869e830f588c .oct-quiz-title
+{
     color: var(--bg-accent-main, #6B86AB) !important;
+    text-align: center !important
 }
 
 #octane-question-wrapperbf3dc509c1e90858075ee062f93c51976b03a3e5 .oct-quiz-caption-text,
@@ -860,6 +858,25 @@ span.pair-with__title {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/*NEW*/
+#octane-question-wrapperb219533c8ff420b3e7ef1cb7bd6a58f28577c07d .oct-quiz-caption-text,
+#octane-question-wrapper03781f8492dc052265b90e9e4357abc7c769175c .oct-quiz-caption-text,
+#octane-question-wrapper85d39a3ae8c111a69093ce9d7504232c819a7514 .oct-quiz-caption-text,
+#octane-question-wrapper4a260315df4f24f49cda24208acd001f5fe9a056 .oct-quiz-caption-text,
+#octane-question-wrapperae186d579aa98095e480239819b2869e830f588c .oct-quiz-caption-text {
+    font-size: clamp(12px, 3vw, 14px) !important;
+    line-height: clamp(16px, 4vw, 20px) !important;
+    text-wrap: balance !important;
+    /* max-width: 35ch !important;  */
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button.skip--button {
+    border-color: transparent !important;
 }
 
 #octane-question-wrapperuFaUAPLLKifFhj6g .oct-quiz-top_content{
@@ -891,7 +908,10 @@ span.pair-with__title {
         width: 100vw;
         left: 0;
         margin-bottom: 2rem;
+    }
 
+    .logo {
+        display: none;
     }
 
     #octane-question-wrapperb9d3fe085c73911d74e1b0bdc3b67227c4d47855,
